@@ -1,0 +1,24 @@
+<br>
+<!-- <strong>Do you have a new customer 
+    
+</strong>
+<button class="btn btn-primary" (click)="toggle()">
+    Create
+</button> -->
+<br>
+<div *ngIf="isCreate" (click)="toggle()">
+
+    dsfdf dsfsf dsf dfdsf sddf dfdf d
+</div>
+
+<strong class="text-muted"> you have a {{customers.length}} customers</strong>
+
+<ol  class="customers alternating-colors">
+    <li *ngFor="let cust of customers"
+    [class.selected]="cust === selectedCustomer"
+    (click)="onSelect(cust)">
+    <span class="badge">#</span> <strong>{{cust.customerName}}</strong>
+    </li>
+ 
+</ol>
+<customer-details [customer]="selectedCustomer"></customer-details>

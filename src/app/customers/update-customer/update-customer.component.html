@@ -1,0 +1,36 @@
+
+<div  class="container  ">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-12 ">
+                 <form >
+                        <div  class="alert alert-danger"></div>
+                        <div class="form-group mb-3">
+                            <label for="customerName" class="form-label"></label>
+                            <input id="customerName" [(ngModel)]="customer.customerName" class="form-control" />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="customerEmail" class="form-label"></label>
+                            <input id="customerEmail" [(ngModel)]="customer.email" class="form-control" />
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="ustomerCity" class="form-label"></label>
+                            <input id="customerCity" [(ngModel)]="customer.address.city" class="form-control" />
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="customerZipcode" class="form-label"></label>
+                            <input id="customerZipcode" [(ngModel)]="customer.address.zipCode" class="form-control" />
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="CustomerStreetName" class="form-label"></label>
+                            <input id="CustomerStreetName" [(ngModel)]="customer.address.streetName" class="form-control" />
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="CustomerStreetNumber" class="form-label"></label>
+                            <input id="CustomerStreetNnumber" [(ngModel)]="customer.address.streetNumber" class="form-control" />
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    

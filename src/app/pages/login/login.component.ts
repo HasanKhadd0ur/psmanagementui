@@ -25,20 +25,23 @@ export class LoginComponent {
 
   onLogin() {
     this.authService
-          .Login(this.loginRequest)
-          .subscribe((res:AuthenticationResponse)=>{
-          debugger;
-          if(res.email) {
-            this.dataStorage.setItem('userDetails', JSON.stringify(res));
-            this.dataStorage.setItem('token', JSON.stringify(res.token));
-            
-            this.router.navigateByUrl('/board');
+        .Login(this.loginRequest)
+        .subscribe({
+          next: (res:AuthenticationResponse)=>{
+            if(res.email) {
+              this.dataStorage.setItem('userDetails', JSON.stringify(res));
+              this.dataStorage.setItem('token', JSON.stringify(res.token));
+              console.log(res.token)
+              this.router.navigateByUrl('/home');
 
-          } else {
-            //alert(res.message)
+            } else {
+            }
+          },
+          error: (err)=>{
+            console.log(err);
+            this.router.navigateByUrl('/home');
           }
-        },(err)=>console.log(err))
-       
-      }
+        });
+    }
        
 }

@@ -1,67 +1,29 @@
-<div class="main">
-    <div class="container-fluid">
-        <div class="row" style="padding-left: 20%;padding-top: 10%;">
-            <div class="col-sm-8 col-lg-4 col-md-4 authfy-panel-left p-2 pt-5 " style=" height: auto;">
-                <div class="brand-col">
-                    <div class="headline">
-                        <div class="brand-logo">
-                            <img src="/assets/favicon.ico" style=" width: 100%;max-width: 80px;max-height: 80px;"
-                                alt="brand-logo">
-                                <h5 class="pt-2 text-center" > Projects Status Management</h5>
+    <div class="wrapper vh-100">
+        <div class="row align-items-center h-100">
+          <form class="col-lg-3 col-md-4 col-10 mx-auto text-center">
+            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
+              <img id="logo" class="navbar-brand-img brand-md"
+              src="/assets/images/logo/logo.ico"
+              alt="logo">
+              <h6 class="h6 mb-3">Project Status Management</h6>              
+            </a>
 
-                        </div>
-                        <p class="pt-2 text-center text-secondary">a Project Status Management Application.</p>
-                        <p class=" text-center text-secondary">Manage and track your project.</p>
-                    </div>
-                </div>
+            <div class="form-group">
+              <label for="inputEmail" class="sr-only">Email address</label>
+              <input type="email" id="inputEmail" name="email" [(ngModel)]="loginRequest.email" class="form-control form-control-lg" placeholder="Email address" required="" autofocus="">
             </div>
-            <div class="col-sm-7 col-lg-6 col-md-6 p-5 authfy-panel-right" style="background-color:white ;">
-                <div class="authfy-login">
-                    <div class="authfy-panel panel-login text-center active">
-                        <div class="authfy-heading pe-4">
-                            <h3 class="auth-title">Login to your account</h3>
-                        </div>
-                        <div class="row"  >
-                            <div class="col-xs-12 col-sm-12">
-                                <form name="loginForm" class="loginForm" action="#" method="POST" >
-                                    <div class="form-group">
-                                        <input type="email"  [(ngModel)]="loginRequest.email" class="form-control email my-2" name="emailId" required
-                                            placeholder="Email address" style="width: 80%;">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="pwdMask">
-                                            <span class="d-flex">
-                                                <input type="text" [(ngModel)]="loginRequest.passWord" class="form-control password" name="password"
-                                                    placeholder="Password" style="width: 80%;">
-
-                                            </span>
-                                        </div>
-
-                                    </div>
-                                    <div class="row remember-row d-flex pt-4 me-5">
-                                       
-                                        <div class="col-xs-6 col-sm-6">
-                                            <p class="forgotPwd">
-                                                <a class="lnk-toggler" data-panel=".panel-forgot">Forgot
-                                                    password?</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-lg btn-primary btn-block " (click)="onLogin()" type="button"
-                                            style="width: 80%;">
-                                            
-                                            Login 
-                                        </button>
-
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+            <div class="form-group">
+              <label for="inputPassword" class="sr-only">Password</label>
+              <input type="password" id="inputPassword"name="password" [(ngModel)]="loginRequest.passWord" class="form-control form-control-lg" placeholder="Password" required="">
             </div>
+            <div class="checkbox mb-3">
+              <label>
+                <input type="checkbox" value="remember-me"> Stay logged in </label>
+            
+              </div>
+            <button class="btn  btn-primary btn-block" (click)="onLogin()">Let me in</button>
+            
+            <p class="mt-5 mb-3 text-muted">© 2024</p>
+          </form>
         </div>
-    </div>
-</div>
+      </div>

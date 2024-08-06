@@ -5,10 +5,16 @@
   "projects": {
     "PSManagementUI": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "css",
+          "standalone": false,
+          "skipTests": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -21,17 +27,26 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
+             
+              "src/assets",
+              "src/favicon.ico"
+             , {
                 "glob": "**/*",
                 "input": "public"
-               }
+              }
             ],
           "styles": [
-          "src/styles.css",
-          "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+            "@angular/material/prebuilt-themes/azure-blue.css",
+            "src/styles.css",
+            "src/assets/css/app-light.css",
+            "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+            "./node_modules/bootstrap/dist/css/bootstrap.min.css"
           ],
           "scripts": [
-          "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+          "./node_modules/@popperjs/core/dist/umd/popper.min.js",
+          "node_modules/feather-icons/dist/feather.min.js",
+          "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+          "./node_modules/jquery/dist/jquery.min.js"
           ]
           },
           "configurations": {
@@ -88,6 +103,7 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css"
             ],
             "scripts": []

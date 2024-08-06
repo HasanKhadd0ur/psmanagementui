@@ -3,33 +3,39 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProjectsComponent } from './pages/projects/projects.component';
-import { BoardComponent } from './pages/board/board.component';
 import { LoginComponent } from './pages/login/login.component';
-import { LayoutComponent } from './pages/layout/layout.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { UsersComponent } from './pages/users/users.component';
 import { ConfigurationService } from './core/services/configuration/configuration.service';
 import { CoreModule } from './core/core.module';
+import { HomeComponent } from './pages/home/home.component';
+import { LayoutComponent } from './shared/sharedLayout/layout/layout.component';
+import { FooterComponent } from "./shared/sharedLayout/footer/footer.component";
+import { SharedModule } from './shared/shared.module';
+import { SidebarComponent } from './shared/sharedLayout/sidebar/sidebar.component';
+import { HeaderComponent } from './shared/sharedLayout/header/header.component';
+import { CustomersModule } from './customers/customers.module';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProjectsComponent,
-    BoardComponent,
+    HomeComponent,
     LoginComponent,
-    UsersComponent,
-    LayoutComponent
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     CoreModule,
+    CustomersModule,
+    SharedModule,
     HttpClientModule
-  ],
+],
   providers: [
+  
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

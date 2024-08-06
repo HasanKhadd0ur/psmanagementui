@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { LayoutComponent } from './pages/layout/layout.component';
-import { ProjectsComponent } from './pages/projects/projects.component';
-import { BoardComponent } from './pages/board/board.component';
-import { UsersComponent } from './pages/users/users.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LayoutComponent } from './shared/sharedLayout/layout/layout.component';
+import { AuthGuard } from './core/guards/auth.guard';
+import { CustomerListComponent } from './customers/customer-list/customer-list.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
@@ -19,20 +19,18 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    canActivate:[AuthGuard],
     children: [
       {
-        path: 'projects',
-        component: ProjectsComponent
-      },
-      {
-        path: 'users',
-        component: UsersComponent
-      },
-      {
-        path: 'board',
-        component: BoardComponent
+        path: 'home',
+        component: HomeComponent
       }
-
+      ,
+      {
+        path: 'customers',
+        component: CustomerListComponent
+      }
+      
     ]
   }
 

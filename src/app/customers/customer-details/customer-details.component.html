@@ -1,0 +1,33 @@
+<div  *ngIf="customer" class="card col-6 offset-3 mb-3" style="border-radius: .5rem;">
+    <div class="row g-0">
+        <div class="col-md-4 gradient-custom text-center text-black"
+             style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+            <h5>{{customer.customerName}}</h5>
+            <p>{{customer.email}}</p>
+        </div>
+        <div class="col-md-8">
+            <div class="card-body p-4">
+                <h6>Information:</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                    
+                    <div class="col-6 mb-3">
+                        <h6>Address</h6>
+                        <p class="text-muted">{{customer.address.city}} - {{customer.address.streetName}}</p>
+                        <p class="text-muted">Street Name : {{customer.address.streetNumber}} - {{customer.address.zipCode}}</p>
+                    </div>
+
+                    
+                    <div *ngIf="customer.contactInfo.length!=0" class="col-12 mb-3">
+                        <h6>contact Info</h6>
+                        <p *ngFor="let contact of customer.contactInfo" class="text-muted">{{contact.contactType}} - {{contact.contactValue}}</p>
+                    </div>
+                </div>
+                <div class="row pt-1">
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

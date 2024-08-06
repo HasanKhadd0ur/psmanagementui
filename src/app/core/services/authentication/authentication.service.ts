@@ -14,6 +14,10 @@ export class AuthenticationService {
 
   constructor(private http : HttpClient,private config : ConfigurationService, private dataStorage : DataStorageService) { }
   
+  getAuthorizationToken() {
+    return this.dataStorage.getItem("token");
+  }
+
   Login(loginRequest : LoginRequest ) :Observable<AuthenticationResponse>{
   
     return this.http

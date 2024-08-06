@@ -1,0 +1,43 @@
+.customers {
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 15em;
+    }
+    .customers li {
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+    margin: .2em; /* top */
+    padding: .3em 0;
+    height: 1.8em;
+    border-radius: 4px;
+    }
+    .customers .selected {
+        background-color: #CFD8DC;
+        color: white;
+        }
+        .customers li.selected:hover {
+        background-color: #BBD8DC;
+        color: white;
+        }
+        .departments li:hover {
+        color: #607D8B;
+        background-color: #DDD;
+        left: .1em;
+        }
+        .customers .badge {
+            display: inline-block;
+            font-size: small;
+            color: white;
+            padding: 0.8em 0.7em 0 0.7em;
+            background-color: #607D8B;
+            line-height: 0.2em;
+            position: relative;
+            left: -1px;
+            top: -6px;
+            height: 2.2em;
+            margin-right: .8em;
+            border-radius: 4px 0 0 4px;
+            }
