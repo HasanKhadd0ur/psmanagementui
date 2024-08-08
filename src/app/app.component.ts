@@ -5,12 +5,6 @@ import { AfterViewInit, Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
   title = 'PSManagement';
-
-  ngAfterViewInit() {
-    // if (window['feather']) {
-    //   window['feather'].replace();
-    // }
-  }
 }
