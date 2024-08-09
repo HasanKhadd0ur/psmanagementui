@@ -1,11 +1,10 @@
-<div class="vertical  light  rtl">
+<div>
     <app-header></app-header>
-    <div id="wrapper">
-        <app-sidebar></app-sidebar>
-            <div role="main" class="main-content">
-                <router-outlet></router-outlet>
-            </div>
-<!--         
-        <app-footer></app-footer> -->
+
+    <div id="main" class="main">
+        <router-outlet></router-outlet>
     </div>
+    <app-sidebar></app-sidebar>        
+    <app-footer></app-footer>
+  
 </div>

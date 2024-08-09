@@ -16,12 +16,14 @@ import { SidebarComponent } from './shared/sharedLayout/sidebar/sidebar.componen
 import { HeaderComponent } from './shared/sharedLayout/header/header.component';
 import { CustomersModule } from './customers/customers.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { PageNotfoundComponent } from './pages/page-notfound/page-notfound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
+    PageNotfoundComponent,
   
   ],
   imports: [

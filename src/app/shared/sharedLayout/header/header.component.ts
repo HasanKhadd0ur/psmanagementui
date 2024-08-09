@@ -10,7 +10,10 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent  {
+  isSidebarVisible: boolean;
 
   constructor(private router: Router) { }
-
+  toggleSidebar() {
+    this.isSidebarVisible = !this.isSidebarVisible;
+  }
 }
