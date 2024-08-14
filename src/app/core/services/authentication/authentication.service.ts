@@ -31,7 +31,7 @@ export class AuthenticationService {
             this.config.getServerUrl()+ "/Authentication/register",registerRequest)       
   }
 
-  IsAuthenticated():Boolean{
+  isAuthenticated():Boolean{
     if(this.dataStorage.getItem("token")){
       return true ;
     }else{
