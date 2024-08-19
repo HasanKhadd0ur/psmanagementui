@@ -13,6 +13,13 @@
         }
       },
       "root": "",
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "fr": "src/locale/messages.fr.xlf",
+          "es": "src/locale/messages.es.xlf"
+        }
+      },
       "sourceRoot": "src",
       "prefix": "",
       "architect": {

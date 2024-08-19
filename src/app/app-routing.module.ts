@@ -4,8 +4,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LayoutComponent } from './shared/sharedLayout/layout/layout.component';
 import { AuthGuard } from './core/guards/auth.guard';
-import { CustomerListComponent } from './customers/customer-list/customer-list.component';
+import { CustomerListComponent } from './customers/pages/customer-list/customer-list.component';
 import { PageNotfoundComponent } from './pages/page-notfound/page-notfound.component';
+import { ProjectFAQComponent } from './pages/project-faq/project-faq.component';
 
 export const routes: Routes = [
   
@@ -23,15 +24,23 @@ export const routes: Routes = [
         component: HomeComponent
       },
       {
+        path: 'projectfaq',
+        component: ProjectFAQComponent
+      },
+      {
         path: '',
         component:HomeComponent  ,
         pathMatch: "full"
       }    ,
       {
         path: 'customers',
-        component: CustomerListComponent
+        loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule)
       }
-      
+     , {
+      path: 'projects',
+      loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule)
+    }
+    
     ]
 
   }

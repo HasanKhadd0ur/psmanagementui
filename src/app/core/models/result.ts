@@ -1,10 +1,13 @@
 export interface Result <T>{
     isSuccess :boolean
     isFailed :boolean
-    value :any
+    value :T
     errors : string[]
-    reasons: string[]
-    valueOrDefault:any
-    successes: any[]
+    validationErrors :{
+            identifier: any,
+            errorMessage: string,
+            errorCode: string,
+            severity:number
+    }[]
     
 }

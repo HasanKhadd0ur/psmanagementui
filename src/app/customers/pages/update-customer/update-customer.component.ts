@@ -1,6 +1,6 @@
 import { Component, Input, input, Output } from '@angular/core';
-import { Customer } from '../models/customer';
-import { CustomerService } from '../services/customer.service';
+import { Customer } from '../../models/customer';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'update-customer',

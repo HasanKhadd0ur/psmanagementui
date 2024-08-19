@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, input, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -10,10 +10,12 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent  {
-  isSidebarVisible: boolean;
+  @Input() isToggled :Boolean;
 
   constructor(private router: Router) { }
+
   toggleSidebar() {
-    this.isSidebarVisible = !this.isSidebarVisible;
+    console.log(this.isToggled)
+    this.isToggled = !this.isToggled;
   }
 }

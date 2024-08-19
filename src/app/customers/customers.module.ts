@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CustomerListComponent } from './customer-list/customer-list.component';
+import { CustomerListComponent } from './pages/customer-list/customer-list.component';
 import { CustomerService } from './services/customer.service';
 import { FormsModule, NgModel } from '@angular/forms';
-import { CustomerDetailsComponent } from './customer-details/customer-details.component';
-import { UpdateCustomerComponent } from './update-customer/update-customer.component';
+import { CustomerDetailsComponent } from './pages/customer-details/customer-details.component';
+import { UpdateCustomerComponent } from './pages/update-customer/update-customer.component';
+import { CustomerRoutingModule } from './customer-routing.module';
+import { SharedModule } from "../shared/shared.module";
+import { CustomerItemComponent } from './components/customer-item/customer-item.component';
+import { CustomerCreateComponent } from './pages/customer-create/customer-create.component';
 
 
 
@@ -12,15 +16,17 @@ import { UpdateCustomerComponent } from './update-customer/update-customer.compo
   declarations: [
     CustomerListComponent,
     CustomerDetailsComponent,
-    UpdateCustomerComponent
+    UpdateCustomerComponent,
+    CustomerItemComponent,
+    CustomerCreateComponent
    ],
   imports: [
     CommonModule,
-    FormsModule
-  ],
+    FormsModule,
+    SharedModule
+],
   providers:[CustomerService],
   exports:[
-    CustomerListComponent,
-    CustomerDetailsComponent] 
+    CustomerRoutingModule] 
 })
 export class CustomersModule { }

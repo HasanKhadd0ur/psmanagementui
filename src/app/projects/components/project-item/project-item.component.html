@@ -1,0 +1,31 @@
+
+<div class="card shadow mb-4">
+    <div class="card-body text-center">
+      <div class="avatar avatar-lg mt-4">
+        <a href="">
+          <img src="/assets/images/users/4.jpg" alt="..." class="avatar-img rounded-circle">
+        </a>
+      </div>
+      <div class="card-text my-2">
+        <strong class="card-title my-0">{{project.projectInfo.name}} </strong>
+        <p class="small">{{project.projectInfo.description}}</p>
+        <p class="small">ينفذ من قبل {{project.executer.name}}</p>
+      
+        <p class="small text-muted mb-0"> <span class="badge badge-light text-muted"> رمز المشروع {{project.projectInfo.code}} </span>, <span class="badge badge-light text-muted"> تاريخ البدء {{project.projectInfo.startDate | date}} </span></p>
+      
+      </div>
+    </div> <!-- ./card-text -->
+    <div class="card-footer">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-auto">
+          <small>
+            <span class=" mr-1"></span>  </small>
+        </div>
+        <div class="col-auto">
+          <div class="file-action">
+           {{project.currentState}}
+          </div>
+        </div>
+      </div>
+    </div> <!-- /.card-footer -->
+  </div>

@@ -1,40 +1,39 @@
 .mynav  {
-    background-color: #0747a6!important;
-    color: #fff!important;
+  background-color: #0747a6!important;
+  color: #fff!important;
 }
 .content-hover:hover {
-    background-color: #033681!important;
+  background-color: #033681!important;
 }
 .nav-link, .navbar-brand {
-    color: #fff!important;
+  color: #fff!important;
 }
 /*--------------------------------------------------------------
 # Main
 --------------------------------------------------------------*/
 #main {
-    margin-top: 60px;
-    padding: 20px 30px;
-    transition: all 0.3s;
+  margin-top: 60px;
+  padding: 20px 30px;
+  transition: all 0.3s;
+}
+
+@media (max-width: 1199px) {
+  #main {
+    padding: 20px;
   }
-  
-  @media (max-width: 1199px) {
-    #main {
-      padding: 20px;
-    }
-  }
-  
-  /*--------------------------------------------------------------
-  # Page Title
-  --------------------------------------------------------------*/
-  .pagetitle {
-    margin-bottom: 10px;
-  }
-  
-  .pagetitle h1 {
-    font-size: 24px;
-    margin-bottom: 0;
-    font-weight: 600;
-    color: #012970;
-  }
-  
-  
+}
+
+/*--------------------------------------------------------------
+# Page Title
+--------------------------------------------------------------*/
+.pagetitle {
+  margin-bottom: 10px;
+}
+
+.pagetitle h1 {
+  font-size: 24px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #012970;
+}
+

@@ -1,10 +1,10 @@
 <div>
-    <app-header></app-header>
+    <app-header [isToggled]="isToggled"></app-header>
 
     <div id="main" class="main">
         <router-outlet></router-outlet>
     </div>
-    <app-sidebar></app-sidebar>        
+    <app-sidebar [isToggled]="isToggled"></app-sidebar>        
     <app-footer></app-footer>
   
 </div>

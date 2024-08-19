@@ -1,7 +1,9 @@
 export interface User {
     id: string;
-    name: string;
+    userName: string
+    firstName :string 
+    lastName :string,
+    roles :string[] 
     email: string;
-    avatarUrl: string;
   }
   

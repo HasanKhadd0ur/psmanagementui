@@ -8,9 +8,13 @@ import { Component } from '@angular/core';
 })
 export class LayoutComponent   {
 
-
+  isToggled :Boolean= false ;
   constructor( ) {
   
+  }
+  toggleSidebar(){
+
+    this.isToggled=!this.isToggled;
   }
 
 }

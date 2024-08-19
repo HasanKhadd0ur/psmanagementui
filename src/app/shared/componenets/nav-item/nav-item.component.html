@@ -1,1 +1,10 @@
-<p>list-item works!</p>
+<li class="nav-item">
+    <a class="nav-link " [class.collapsed]="item.haschild" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+      <i class="fe fe-menu"></i><span>{{item.name}}</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul *ngFor="let i of item.child">
+        <nav-item [item]="i"></nav-item>
+    </ul>
+
+  </li><!-- End Components Nav -->
+  

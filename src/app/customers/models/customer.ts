@@ -5,8 +5,7 @@ export interface Customer{
     address :{
         city : string ,
         streetNumber : number ,
-        streetName : string ,
-        zipCode : number
+        streetName : string 
     } 
     contactInfo :{
         contactValue :string,

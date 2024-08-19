@@ -1,8 +1,7 @@
   <!-- ======= Sidebar ======= -->
-  <aside dir="" id="sidebar" class="sidebar" [class.active]="false">
+  <aside dir="rtl" id="sidebar" class="sidebar" [class.toggled]="isToggled">
 
     <ul class="sidebar-nav" id="sidebar-nav">
-
       <li class="nav-item">
         <a class="nav-link " href="index.html">
           <i class="fe fe-grid"></i>
@@ -23,7 +22,7 @@
           </li>
           <li>
             <a href="components-alerts.html">
-              <i class="fe fe-circle"></i><span>تعديل المتابعة</span>
+              <i class="fe fe-circle"></i><span>اتمام عملية متابعة</span>
             </a>
           </li>
         </ul>
@@ -59,16 +58,17 @@
         </ul>
 
       </li><!-- End Components Nav -->
+      <li class="nav-heading">الجهات الطارحة</li>
       <li class="nav-item">
-        <a class="nav-link collapsed " href="components-badges.html">
-          <i class="fe fe-file-text"></i><span>طلب تقرير</span>
+        <a  routerLink="/customers" class="nav-link collapsed ">
+          <i class="fe fe-map"></i><span> استعراض الجهات الطارحة</span>
         </a>
-      </li>        
+      </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="components-badges.html">
-          <i class="fe fe-file-text"></i><span>تعديل تقرير</span>
+        <a routerlink="/customers/create" class="nav-link collapsed " >
+          <i class="fe fe-edit-2"></i><span>إضافة جهة طارحة</span>
         </a>
-      </li>      
+      </li>
       <li class="nav-heading">إدارة المشاريع</li>
 
           <li class="nav-item">
@@ -109,8 +109,12 @@
           </li>
         </ul>
       </li><!-- End Tables Nav -->
-      <li class="nav-heading">Pages</li>
-
+      <li class="nav-heading">متفرقات</li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" routerlink="/ProjectFAQ">
+          <i class="bi bi-layout-text-window-reverse"></i><span>ملامح المشروع</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        </li>
     </ul>
 
   </aside><!-- End Sidebar-->

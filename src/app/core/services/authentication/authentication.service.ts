@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { LoginRequest } from '../../models/authentication/loginRequest';
 import { RegisterRequest } from '../../models/authentication/registerRequest';
 import { AuthenticationResponse } from '../../models/authentication/authenticationResponse';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { ConfigurationService } from '../configuration/configuration.service';
 import { DataStorageService } from '../dataStorage/data-storage.service';
 
@@ -28,7 +28,12 @@ export class AuthenticationService {
   
     return this.http
           .post<AuthenticationResponse>(
-            this.config.getServerUrl()+ "/Authentication/register",registerRequest)       
+            this.config.getServerUrl()+ "/Authentication/register",registerRequest)
+          .pipe(
+              catchError(error => {
+                return throwError(() => error.error);
+              })
+            );       
   }
 
   isAuthenticated():Boolean{
@@ -38,5 +43,8 @@ export class AuthenticationService {
       return false ;
     }
 
+  }
+  getToken(){
+    return this.dataStorage.getItem("token");
   }
 }
