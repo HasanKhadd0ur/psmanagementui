@@ -1,9 +1,9 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
-      <div class="col-12 col-lg-10 col-xl-8">
+      <div class="col-12 ">
         <div class="row align-items-center mb-4">
           <div class="col">
-            <h2 class="h5 page-title"><small class="text-muted text-uppercase">Invoice</small><br />#1806</h2>
+            <h2 class="h5 page-title"><small class="text-muted text-uppercase">بطاقة معلومات مشروع</small></h2>
           </div>
           <div class="col-auto">
             <button type="button" class="btn btn-secondary m-1">Print</button>
@@ -12,96 +12,172 @@
         <div class="card shadow">
           <div class="card-body p-5">
             <div class="row mb-5">
-              <div class="col-12 text-center mb-4">
+              <div class="col-10 offset-lg-4 col-lg-4 text-center mb-4">
                 <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto mb-4" alt="...">
-                <h2 class="mb-0 text-uppercase">  مشروع أتمتة أعمال شؤون الطلاب</h2>
-                <p class="text-muted"> بدء بتاريخ<br /> 9022 Suspendisse Rd. </p>
+                <h3 class="mb-0 text-uppercase">{{project.projectInfo.name}}</h3>
+                <p> <small>{{project.projectInfo.description}}</small></p>
+                <p class="small text-muted"><small>تاريخ البدء {{project.projectInfo.startDate | date}} <br>تاريخ الانتهاء المتوقع {{project.projectInfo.expectedEndDate| date}}</small></p>
+                
               </div>
-              <div class="col-md-7">
-                <p class="small text-muted text-uppercase mb-2">Invoice from</p>
+            </div>
+            <div class="row mb-5">
+              <div class="col-md-4">
                 <p class="mb-4">
-                  <strong>Imani Lara</strong><br /> Asset Management<br /> 9022 Suspendisse Rd.<br /> High Wycombe<br /> (478) 446-9234<br />
+                  <strong>ذاتية المشروع</strong>
+                  <br /> رئيس فريق العمل: <small>{{project.projectInfo.code}}</small>
+                  <br /> كتاب الطرح : <small>{{project.proposalInfo.proposingBookNumber}} / {{project.proposalInfo.proposingBookDate | date}}</small> 
+                  <br />كتاب الموافقة : <small>{{project.projectAggreement.aggreementNumber}} / {{project.projectAggreement.aggreementDate |date}}</small>
+                  <br />التمويل : <small> {{project.financialFund.financialStatus}} / {{project.financialFund.source}} </small>
+                  
                 </p>
-                <p>
-                  <span class="small text-muted text-uppercase">Invoice #</span><br />
-                  <strong>1806</strong>
-                </p>
+
               </div>
-              <div class="col-md-5">
-                <p class="small text-muted text-uppercase mb-2">Invoice to</p>
+              <div class="col-md-4 text-center">
                 <p class="mb-4">
-                  <strong>Walter Sawyer</strong><br /> Human Resources<br /> Ap #992-8933 Sagittis Street<br /> Ivanteyevka<br /> (803) 792-2559<br />
+                  <strong>المعلومات التنفيذية</strong>
+                  <br /> الجهة  المنفذة: <small>{{project.executer.name}}</small>
+                  <br /> رئيس فريق العمل: <small>{{project.teamLeader.personalInfo.firstName}} {{project.teamLeader.personalInfo.lastName}}</small>
+                  <br /> مدير المشروع : <small>{{project.projectManager.personalInfo.firstName}} {{project.projectManager.personalInfo.lastName}}</small>
+                  <br />ينفذ لصالح : <small> {{project.proposer.customerName}} </small>
+                  
                 </p>
-                <p>
-                  <small class="small text-muted text-uppercase">Due date</small><br />
-                  <strong>April, 20, 2020</strong>
+
+              </div>
+              <div class="col-md-4">
+                <p class="mb-4">
+                  <strong>معلومات حالة المشروع </strong>
+                  <br /> المرحلة التطويرير : <small>{{project.currentState}} </small>
+                
                 </p>
               </div>
             </div> <!-- /.row -->
+            <br>
+            <p>مراحل المشروع</p>
             <table class="table table-borderless table-striped">
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Description</th>
-                  <th scope="col" class="text-right">Rate</th>
-                  <th scope="col" class="text-right">Hours</th>
-                  <th scope="col" class="text-right">Ammout</th>
+                  <th scope="col">اسم المرحلة</th>
+                  <th scope="col" class="text-left">الوصف</th>
+                  <th scope="col" class="text-left">نسبة الانجاز</th>
+                  <th scope="col" class="text-left">النسبة التثقيلية</th>
+                  <th scope="col" class="text-left">تاريع البدء</th>
+                  <th scope="col" class="text-left">مدة التنفيذ</th>
+                  
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td> Creative Design<br />
-                    <span class="small text-muted">Design responsive website with existing prototype</span>
+                <tr  *ngFor="let step of  project.steps " >
+                  <th scope="row"></th>
+                  <td> {{step.stepInfo.stepName}}
                   </td>
-                  <td class="text-right">$15.00</td>
-                  <td class="text-right">2</td>
-                  <td class="text-right">$30.00</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td> Front-End Development<br />
-                    <span class="small text-muted">Markup conversion and adding JavaScript</span>
-                  </td>
-                  <td class="text-right">$20.00</td>
-                  <td class="text-right">5</td>
-                  <td class="text-right">$100.00</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td> Back-End Development<br />
-                    <span class="small text-muted">Database intergration with model functions</span>
-                  </td>
-                  <td class="text-right">$25.00</td>
-                  <td class="text-right">7</td>
-                  <td class="text-right">$155.00</td>
+                  <td class="text-left">{{step.stepInfo.description}}</td>
+                  <td class="text-left">{{step.currentCompletionRatio}}</td>
+                  <td class="text-left">{{step.weight}}</td>
+                  
+                  <td class="text-left">{{step.stepInfo.startDate | date}}</td>
+                  <td class="text-left">{{step.stepInfo.duration}}</td>
                 </tr>
               </tbody>
             </table>
+
+            <p>المشاركين في المشروع</p>
+            <table class="table table-borderless table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">اسم المشارك</th>
+                  <th scope="col" class="text-left">الرقم الذاتي</th>
+                  <th scope="col" class="text-left">صفة العمل</th>
+                  <th scope="col" class="text-left">الهيئة</th>
+                  <th scope="col" class="text-left">نسبة التفرغ</th>
+                  <th scope="col" class="text-left">المساهمة</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <!-- <tr  *ngFor="let participant of  project.e " >
+                  <th scope="row"></th>
+                  <td> {{step.stepInfo.stepName}}
+                  </td>
+                  <td class="text-left">{{step.stepInfo.description}}</td>
+                  <td class="text-left">{{step.currentCompletionRatio}}</td>
+                  <td class="text-left">{{step.weight}}</td>
+                  
+                  <td class="text-left">{{step.stepInfo.startDate | date}}</td>
+                  <td class="text-left">{{step.stepInfo.duration}}</td>
+                </tr> -->
+              </tbody>
+            </table>
+
+            <hr>
+            <div class="row mt-5">
+              <button class="btn btn-primary">لاطلاع على  خطة الانفاق</button>
+              <button class="btn btn-primary">الاطلاع على المرفقات </button>
+              <button class="btn btn-primary">الاطلاع على عمليات المتابعة</button>
+            
+            </div>
+            <div class="row mt-5 d-flex align-items-around">
+              <button class=" btn btn-primary">إضافة مرفقات</button>
+              <button class=" btn btn-primary">إضافة دراسة جدوى </button>
+              <button class=" btn btn-primary">إضافة تصنيف مشروع</button>
+            
+            </div>
+            
+            <div class="row mt-5">
+              <button class="btn btn-primary">إضافة مرحلة</button>
+              <button class="btn btn-primary">إضافة مشارك</button>
+           </div>
+           <div class="row mt-5">
+            <button class="btn btn-primary">إضافة عملية متابعة</button>
+            
+            
+          </div>
+           
+            
             <div class="row mt-5">
               <div class="col-2 text-center">
                 <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto my-4" alt="...">
               </div>
-              <div class="col-md-5">
-                <p class="text-muted small">
-                  <strong>Note :</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam hendrerit nisi sed sollicitudin pellentesque. Nunc posuere purus rhoncus pulvinar aliquam. </p>
+              <div class="col-2">
+            
+                <p class="mb-4">
+                  <strong>مدير المشروع </strong>
+                  <br/><small>{{project.projectManager.personalInfo.firstName}}</small>
+                    
+                  </p>
+  
               </div>
-              <div class="col-md-5">
-                <div class="text-right mr-2">
-                  <p class="mb-2 h6">
-                    <span class="text-muted">Subtotal : </span>
-                    <strong>$285.00</strong>
+              <div class="col-2">
+            
+                <p class="mb-4">
+                  <strong>رئيس فريق العمل </strong>
+                  <br/><small>{{project.projectManager.personalInfo.firstName}}</small>
+                    
                   </p>
-                  <p class="mb-2 h6">
-                    <span class="text-muted">VAT (10%) : </span>
-                    <strong>$28.50</strong>
-                  </p>
-                  <p class="mb-2 h6">
-                    <span class="text-muted">Total : </span>
-                    <span>$313.50</span>
-                  </p>
-                </div>
+  
               </div>
+              <div class="col-2">
+            
+                <p class="mb-4">
+                  <strong>الجهة الطارحة </strong>
+                  <br/><small>{{project.proposer.customerName}}</small>
+                    
+                  </p>
+  
+              </div>
+              <div class="col-2">
+            
+                <p class="mb-4">
+                  <strong>الجهة المنفذة  </strong>
+                  <br/><small>{{project.executer.name}}</small>
+                    
+                  </p>
+  
+              </div>  
+              <div class="col-2 text-center">
+                <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto my-4" alt="...">
+              </div>  
             </div> <!-- /.row -->
           </div> <!-- /.card-body -->
         </div> <!-- /.card -->

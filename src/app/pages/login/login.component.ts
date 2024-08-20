@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
             if(res.email) {
               this.dataStorage.setItem('userDetails', JSON.stringify(res));
               this.dataStorage.setItem('token', JSON.stringify(res.token));
-              console.log(res.token)
+         
               this.toastr.info('مرحبا بك مجددا يا ' + res.firstName+" " +res.lastName);
               this.router.navigateByUrl('/home');
 

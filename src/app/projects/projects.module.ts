@@ -8,6 +8,8 @@ import { ProjectService } from './services/project.service';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { ProjectRoutingModule } from './project-routing.module';
+import { StepRowItemComponent } from './components/step-row-item/step-row-item.component';
+import { ProjectHeaderComponent } from './components/project-header/project-header.component';
 
 
 
@@ -16,7 +18,9 @@ import { ProjectRoutingModule } from './project-routing.module';
     ProjectItemComponent,
     AttachmentComponent,
     ProjectListComponent,
-    ProjectDetailsComponent
+    ProjectDetailsComponent,
+    StepRowItemComponent,
+    ProjectHeaderComponent
   ],
   providers:[
     ProjectService

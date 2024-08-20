@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DataStorageService } from './services/dataStorage/data-storage.service';
 import { AuthenticationService } from './services/authentication/authentication.service';
 import { ConfigurationService } from './services/configuration/configuration.service';
-
+import { UserService } from './services/authentication/user.service';
 
 
 @NgModule({
@@ -14,7 +14,8 @@ import { ConfigurationService } from './services/configuration/configuration.ser
   providers:[
     DataStorageService,
     AuthenticationService,
-    ConfigurationService
+    ConfigurationService,
+    UserService
   ]
 })
 export class CoreModule { }

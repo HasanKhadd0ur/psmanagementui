@@ -24,8 +24,9 @@ export const routes: Routes = [
         component: HomeComponent
       },
       {
-        path: 'projectfaq',
-        component: ProjectFAQComponent
+        path: 'Project-FAQ',
+        component: ProjectFAQComponent,
+        
       },
       {
         path: '',

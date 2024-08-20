@@ -24,6 +24,7 @@ export class AuthenticationService {
           .post<AuthenticationResponse>(
             this.config.getServerUrl()+ "/Authentication/Login",loginRequest)       
   }
+
   Register(registerRequest : RegisterRequest ) :Observable<AuthenticationResponse>{
   
     return this.http
@@ -44,7 +45,10 @@ export class AuthenticationService {
     }
 
   }
-  getToken(){
-    return this.dataStorage.getItem("token");
+  
+  logou(){
+    
+    this.dataStorage.removeItem("token");
+    this.dataStorage.removeItem("userDetails");
   }
 }
