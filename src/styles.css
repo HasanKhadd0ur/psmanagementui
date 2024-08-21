@@ -1,4 +1,35 @@
+.mat-form-field {
+  color: #7722ff !important; /* Changes the color of the label */
+  background-color: #012970;
+}
 
+.mat-input-element {
+  color: #26ff22; /* Changes the color of the input text */
+}
+
+.mat-hint {
+  color: #ff5722; /* Changes the color of the hint */
+}
+
+.mat-form-field-underline .mat-form-field-ripple {
+  background-color: #ff5722; /* Changes the color of the underline */
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: #ff5722; /* Changes the color of the label when focused */
+}
+
+.accordion-button::after {
+  flex-shrink: 0;
+  width: var(--bs-accordion-btn-icon-width);
+  height: var(--bs-accordion-btn-icon-width);
+  margin-right: auto;
+  content: "";
+  background-image: var(--bs-accordion-btn-icon);
+  background-repeat: no-repeat;
+  background-size: var(--bs-accordion-btn-icon-width);
+  transition: var(--bs-accordion-btn-icon-transition);
+}
 #toast-container {
   width: 100%;
   top: 30px;

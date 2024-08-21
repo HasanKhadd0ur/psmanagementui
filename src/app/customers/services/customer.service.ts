@@ -13,24 +13,24 @@ export class CustomerService {
 
   constructor(private http :HttpClient ,private config : ConfigurationService) { }
   
-  public getCustomers():Observable<Result<Customer[]>>{
+  public getCustomers():Observable<Customer[]>{
     
-    return this.http.get<Result<Customer[]>>(this.config.getServerUrl()+ "/Customers");
+    return this.http.get<Customer[]>(this.config.getServerUrl()+ "/Customers");
   }
   
-  public getCustomerById(id : number ):Observable<Result<Customer>>{
+  public getCustomerById(id : number ):Observable<Customer>{
     
-    return this.http.get<Result<Customer>>(this.config.getServerUrl()+ "/Customers/"+id);
+    return this.http.get<Customer>(this.config.getServerUrl()+ "/Customers/"+id);
   }
   
-  public createCustomer(customer :CreateCustomerRequest):Observable<Result<Customer>>{
+  public createCustomer(customer :CreateCustomerRequest):Observable<Customer>{
     
-    return this.http.post<Result<Customer>>(this.config.getServerUrl()+ "/Customers",customer);
+    return this.http.post<Customer>(this.config.getServerUrl()+ "/Customers",customer);
   }
 
-  public updateCustomer(id :number ,customer :Customer):Observable<Result<void>>{
+  public updateCustomer(id :number ,customer :Customer):Observable<void>{
     
-    return this.http.put<Result<void>>(`${this.config.getServerUrl()}/Customers/${id}` ,customer);
+    return this.http.put<void>(`${this.config.getServerUrl()}/Customers/${id}` ,customer);
   }
   
   public deleteCustomer(id: number): Observable<void> {

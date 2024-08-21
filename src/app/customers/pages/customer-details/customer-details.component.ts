@@ -25,15 +25,9 @@ export class CustomerDetailsComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.customerService.getCustomerById(id).subscribe({
       next :(data) => {
-        console.log(data.validationErrors)
-          
-        if(data.isSuccess){
-          this.customer = data.value;
-        }else {
-          this.toastr.error(data.validationErrors[0].errorMessage);
-          // this.router()
-
-        }
+        
+         this.customer = data;
+        
     },
     error : (err)=>{ console.log(err)}
 

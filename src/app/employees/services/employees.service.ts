@@ -24,34 +24,40 @@ export class EmployeesService {
    }
   
   
-  public getEmployeeById(id : number ):Observable<Result<Employee>>{
+  public getEmployeeById(id : number ):Observable<Employee>{
     
-    return this.http.get<Result<Employee>>(this.config.getServerUrl()+ "/Employees/"+id);
+    return this.http.get<Employee>(this.config.getServerUrl()+ "/Employees/"+id);
   }
-  public getCurrentEmployee( ):Observable<Result<Employee>>{
+
+  public getCurrentEmployee( ):Observable<Employee>{
     let id = this.userService.getEmployeeId();
 
     return this.getEmployeeById(id);
   }
   
-  public getAvailableEmployees( ):Observable<Result<Employee[]>>{
+    public getByFilter(email : string  ):Observable<Employee[]>{
+    return this.http.get<Employee[]>(`${this.config.getServerUrl()}/Employees/ByFilter/?email=${email}`);
 
-    //this api endpoint take a pagination , i'll use i later 
-    return this.http.get<Result<Employee[]>>(this.config.getServerUrl + "/Employees/Available");
   }
   
-  public getEmployeeParticipations(id :number ):Observable<Result<EmployeeParticipate[]>>{
+  public getAvailableEmployees( ):Observable<Employee[]>{
 
-    return this.http.get<Result<EmployeeParticipate[]>>(`${this.config.getServerUrl}/Employees/EmployeeParticipations/employeeId=${id}`);
+    //this api endpoint take a pagination , i'll use i later 
+    return this.http.get<Employee[]>(this.config.getServerUrl() + "/Employees/Available");
+  }
+  
+  public getEmployeeParticipations(id :number ):Observable<EmployeeParticipate[]>{
+
+    return this.http.get<EmployeeParticipate[]>(`${this.config.getServerUrl}/Employees/EmployeeParticipations/employeeId=${id}`);
   }
 
-  public getMyParticipation( ):Observable<Result<EmployeeParticipate[]>>{
+  public getMyParticipation( ):Observable<EmployeeParticipate[]>{
 
     let id = this.userService.getEmployeeId();
     return this.getEmployeeParticipations(id);
 
   }
-  public getEmployeeTrackHistory( request: GetEmployeeTrackHistoryRequest):Observable<Result<EmployeeTrack[]>>{
+  public getEmployeeTrackHistory( request: GetEmployeeTrackHistoryRequest):Observable<EmployeeTrack[]>{
     let pagination=''
     if(request.pageSize && request.pageNumber){
        pagination = `&pageSize=${request.pageSize}&pageNumber=${request.pageNumber}`
@@ -60,26 +66,26 @@ export class EmployeesService {
     let query =`employeeId=${request.employeeId}&projectId=${request.projectId}${pagination}`
     return  this
               .http
-              .get<Result<EmployeeTrack[]>>(
+              .get<EmployeeTrack[]>(
                   `${this.config.getServerUrl}/Employees/TrackHistory/?${query}`
                 );
   }
   
-  public getMyTrackHistory(projectId : number):Observable<Result<EmployeeTrack[]>>{
+  public getMyTrackHistory(projectId : number):Observable<EmployeeTrack[]>{
     
     let query =`employeeId=${this.userService.getEmployeeId()}&projectId=${projectId}`
     return  this
               .http
-              .get<Result<EmployeeTrack[]>>(
+              .get<EmployeeTrack[]>(
                   `${this.config.getServerUrl}/Employees/TrackHistory/?${query}`
                 );
   }
 
-  public postEmployeeWorkHours( request: UpdateEmplyeeWorkHours):Observable<Result<void>>{
+  public postEmployeeWorkHours( request: UpdateEmplyeeWorkHours):Observable<void>{
 
     return  this
               .http
-              .post<Result<void>>(
+              .post<void>(
                   `${this.config.getServerUrl}/Employees/UpdateWorkHours/`,
                   request
                 );

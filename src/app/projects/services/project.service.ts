@@ -12,14 +12,14 @@ export class ProjectService {
 
   constructor(private http :HttpClient ,private config : ConfigurationService) { }
   
-  public getByFilter():Observable<Result<Project[]>>{
+  public getByFilter():Observable<Project[]>{
 
-    return this.http.get<Result<Project[]>>(this.config.getServerUrl()+ "/Projects/ByFilter");
+    return this.http.get<Project[]>(this.config.getServerUrl()+ "/Projects/ByFilter");
   
   }
-  public getProjectById(id : number ):Observable<Result<Project>>{
+  public getProjectById(id : number ):Observable<Project>{
     
-    return this.http.get<Result<Project>>(this.config.getServerUrl()+ "/Projects/"+id);
+    return this.http.get<Project>(this.config.getServerUrl()+ "/Projects/"+id);
   }
   
 }

@@ -30,14 +30,10 @@ export class CustomerCreateComponent {
     this.customerService.createCustomer(request)
     .subscribe({
       next : (res)=>{
-        if(res.isSuccess){
-
-          this.toastr.success("تمت إضافة الجهة بنجاح");
-          this.router.navigate(['customers/detail', res.value.id]);
-        }else {
-          this.toastr.error(res.validationErrors[0].errorMessage);
-        }
-
+        
+        this.toastr.success("تمت إضافة الجهة بنجاح");
+        this.router.navigate(['customers/detail', res.id]);
+        
       }
       ,
       error : (err)=>this.toastr.error("An error Occured")

@@ -5,6 +5,8 @@ import { Aggreement } from "../valueObjects/Aggreement"
 import { FinancialFund } from "../valueObjects/FinancialFund"
 import { ProjectInfo } from "../valueObjects/ProjectInfo"
 import { ProposalInfo } from "../valueObjects/proposalInfo"
+import { ProjectClassification } from "../valueObjects/ProjectClassification"
+import { Department } from "./Department"
 import { Step } from "./Step"
 
 export class Project
@@ -13,17 +15,17 @@ export class Project
     proposalInfo : ProposalInfo 
     projectInfo :ProjectInfo
     currentState: string
+    projectClassification :ProjectClassification
     projectAggreement :Aggreement
     teamLeaderId: number
     teamLeader :Employee
     projectManagerId:number
     projectManager: Employee
-    executer: {
-        name :string
-    }
+    executer:Department
     proposerId:number
     proposer:Customer
     steps :Step[]
     employeeParticipates:EmployeeParticipate[]
     financialFund:FinancialFund
 }
+

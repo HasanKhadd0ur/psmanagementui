@@ -1,11 +1,134 @@
-<form [formGroup]="projectForm">
-    <mat-form-field>
-      <input type="text" matInput placeholder="Project Manager" [formControl]="projectManagerControl" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let employee of filteredEmployees | async" [value]="employee.value.personalInfo.firstName">
-          {{ employee.name }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </form>
-  
+<div class="card col-10">
+  <div class="card-body">
+    <h5 class="card-title text-center">طرح مشروع جديد</h5>
+
+    <!-- Multi Columns Form -->
+    <form class="row g-3" [formGroup]="projectForm" (ngSubmit)="onSubmit(request)">
+      <div class="row">
+      <mat-form-field class="col-4"> 
+        <input type="text" placeholder="مدير المشروع" formControlName="projectManager" matInput [matAutocomplete]="autoPM">
+        <mat-autocomplete #autoPM="matAutocomplete" (optionSelected)="onManagerSelected($event.option.value)">
+          <mat-option *ngFor="let manager of filteredManagers | async" [value]="manager">
+            {{ manager.personalInfo | fullname }} , {{manager.email}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    
+      <!-- Team Leader -->
+      <mat-form-field class="col-4">
+        <input type="text" placeholder="رئيس فريق العمل" formControlName="teamLeader" matInput [matAutocomplete]="autoTL">
+        <mat-autocomplete #autoTL="matAutocomplete" (optionSelected)="onLeaderSelected($event.option.value)">
+          <mat-option *ngFor="let leader of filteredLeaders | async" [value]="leader">
+            {{ leader.personalInfo | fullname  }} , {{leader.email}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    
+      <!-- Customer -->
+      <mat-form-field class="col-4">
+        <input type="text" placeholder="الجهة الطارحة" formControlName="customer" matInput [matAutocomplete]="autoCustomer">
+        <mat-autocomplete #autoCustomer="matAutocomplete" (optionSelected)="onCustomerSelected($event.option.value)">
+          <mat-option *ngFor="let customer of filteredCustomers | async" [value]="customer">
+            {{ customer.customerName }} , {{customer.email}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      </div>
+      <hr>
+    <div class="row mb-4" formGroupName="projectInfo">
+
+      <div class="col-4">
+        
+        <mat-form-field class="example-full-width">
+          <mat-label for="name" class="form-label">اسم النشاط</mat-label>
+          <input matInput  formControlName="name" [value]="request.projectInfo.name" placeholder="اسم المشروع" class="form-control" id="name">
+        </mat-form-field>
+      
+      </div>
+    
+      <div class="col-8 ">
+        <label for="description" class="form-label">الوصف</label>
+        <textarea formControlName="description" placeholder="تعريف النشاط " class="form-control"></textarea>
+      </div>
+
+    </div>
+          
+      <div class="row" formGroupName="projectInfo">
+        <div class="col-4">
+          <label for="code" class="form-label">رمز المشروع</label>
+          <input formControlName="code" class="form-control" id="code">
+        </div>
+        <div class="col-4">
+          <label for="endDate" class="form-label">تاريخ النهاية المتوقع</label>
+          <input type="date" formControlName="expectedEndDate" class="form-control" id="endDate">
+        </div>
+        <div class="col-4">
+          <label for="startDate" class="form-label">تاريخ البداية</label>
+          <input type="date" formControlName="startDate" class="form-control" id="startDate">
+        </div>
+      </div>
+    
+      <div class="row " formGroupName="financialFund">
+        <div class="col-4">
+          <label for="source" class="form-label">مصدر التمويل</label>
+          <input formControlName="source" class="form-control" id="source">
+        </div>
+        <div class="col-4">
+          <label for="financialStatus" class="form-label">وضع التمويل</label>
+          <input formControlName="financialStatus" class="form-control" id="financialStatus">
+        </div>
+      </div>
+    
+      <div class="row" formGroupName="projectAggreement">
+        <div class="col-4">
+          <mat-form-field>
+            <mat-label>تاريخ كتاب الموافقة</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          </div>
+        <div class="col-4">
+          <label for="aggreementNumber" class="form-label">رقم كتاب الموافقة</label>
+          <input formControlName="aggreementNumber" class="form-control" id="aggreementNumber">
+        </div>
+      </div>
+    
+      <div class="col-4" formGroupName="executerId">
+        <mat-form-field>
+          <mat-label>الفعالية المنفذة </mat-label>
+          <mat-select>
+            <mat-option value="1">قسم المعلوميات</mat-option>
+            <mat-option value="2">قسم النظم الاكترونية</mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+      </div>
+    
+      <div class="row" formGroupName="projectClassification">
+        <div class="col-4">
+          <label for="projectStatus" class="form-label">وضع النشاط</label>
+          <input formControlName="projectStatus" class="form-control" id="projectStatus">
+        </div>
+        <div class="col-4">
+          <label for="projectNature" class="form-label">طبيعة النشاط</label>
+          <input formControlName="projectNature" class="form-control" id="projectNature">
+        </div>
+        <div class="col-4">
+          <label for="projectType" class="form-label">نوع النشاط</label>
+          <input formControlName="projectType" class="form-control" id="projectType">
+        </div>
+      </div>
+    
+      <hr>
+      <div class="text-center">
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+      
+    </form><!-- End Multi Columns Form -->
+
+  </div>
+</div>

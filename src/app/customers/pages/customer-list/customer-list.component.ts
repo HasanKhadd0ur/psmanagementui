@@ -44,19 +44,13 @@ export class CustomerListComponent implements OnInit {
     this.customerService.getCustomers().subscribe({
       next : (res) =>{ 
         console.log(res);
-        if(res.isSuccess){
-          this.toastr.success('تم تحميل الجهات الطارجة بنجاح');
-          this.customers = res.value; 
-          
-        }else {
-          this.toastr.error(res.errors[0],"error");
-        
-        }
+        this.toastr.success('تم تحميل الجهات الطارجة بنجاح');
+        this.customers = res; 
 
         this.loadingService.hide();
       },
       error: (err)=>{
-        this.toastr.error('Failed to load customers');
+        this.toastr.error('لقد حدث خطاء ما ');
         this.loadingService.hide();
         
       }

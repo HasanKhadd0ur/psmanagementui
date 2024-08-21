@@ -33,11 +33,10 @@ export class ProjectListComponent  implements OnInit{
       .subscribe(
         {
           next: (res)=>{
-            if(res.isSuccess){
-              this.projects = res.value;
+            
+              this.projects = res;
               this.toastr.success("تم تحميل المشاريع بنجاح");
-            }
-
+            
           },
           error: (err)=>{
             this.toastr.error("لقد حدث خظاء ما");

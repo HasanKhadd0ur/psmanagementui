@@ -24,15 +24,9 @@ export class ProjectDetailsComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.projectService.getProjectById(id).subscribe({
       next :(data) => {
-        console.log(data.validationErrors)
-          
-        if(data.isSuccess){
-          this.project = data.value;
-        }else {
-          this.toastr.error(data.validationErrors[0].errorMessage);
-          // this.router()
-
-        }
+        
+          this.project = data;
+        
     },
     error : (err)=>{ console.log(err)}
 
