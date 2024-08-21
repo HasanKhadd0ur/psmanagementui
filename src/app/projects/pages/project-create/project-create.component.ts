@@ -8,6 +8,7 @@ import { Project } from '../../models/responses/project';
 import { Customer } from '../../../customers/models/customer';
 import { CustomerService } from '../../../customers/services/customer.service';
 import { CreateProjectRequest } from '../../models/requests/createProjectRequest';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   selector: 'project-create',
@@ -28,7 +29,8 @@ export class ProjectCreateComponent {
   constructor(
     private fb: FormBuilder,
     private employeeService: EmployeesService,
-    private customersService : CustomerService
+    private customersService : CustomerService,
+    private projectService :ProjectService
   ) {}
 
   ngOnInit(): void {
@@ -55,7 +57,8 @@ export class ProjectCreateComponent {
         aggreementNumber: ['', Validators.required],
       }),
       proposalInfo: this.fb.group({
-        // Add any fields needed here
+        proposingBookNumber :['', Validators.required],
+        proposingBookDate :['', Validators.required]
       }),
       projectClassification: this.fb.group({
         projectStatus: ['', Validators.required],
@@ -113,6 +116,11 @@ export class ProjectCreateComponent {
   }
 
   onSubmit(request : CreateProjectRequest){
-    console.log(request);
+
+    if(this.projectForm.valid){
+      console.log(true)
+    }
+  
+    
   }
 }

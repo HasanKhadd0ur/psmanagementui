@@ -1,6 +1,6 @@
 <div class="card col-10">
   <div class="card-body">
-    <h5 class="card-title text-center">طرح مشروع جديد</h5>
+    <h5 class="card-title text-center"><strong>طرح مشروع جديد</strong></h5>
 
     <!-- Multi Columns Form -->
     <form class="row g-3" [formGroup]="projectForm" (ngSubmit)="onSubmit(request)">
@@ -38,62 +38,86 @@
       <hr>
     <div class="row mb-4" formGroupName="projectInfo">
 
-      <div class="col-4">
-        
-        <mat-form-field class="example-full-width">
-          <mat-label for="name" class="form-label">اسم النشاط</mat-label>
+        <mat-form-field class=" col-4">
+          <mat-label for="name" class="mat-form-field-label ">اسم النشاط</mat-label>
           <input matInput  formControlName="name" [value]="request.projectInfo.name" placeholder="اسم المشروع" class="form-control" id="name">
         </mat-form-field>
       
-      </div>
     
-      <div class="col-8 ">
-        <label for="description" class="form-label">الوصف</label>
-        <textarea formControlName="description" placeholder="تعريف النشاط " class="form-control"></textarea>
-      </div>
-
+        <mat-form-field class="example-full-width col-8">
+          <mat-label  for="description" class="form-label">وصف النشاط</mat-label>
+          <textarea matInput formControlName="description" placeholder="تعريف النشاط " class="form-control"></textarea>
+        </mat-form-field>
+    
     </div>
           
-      <div class="row" formGroupName="projectInfo">
-        <div class="col-4">
-          <label for="code" class="form-label">رمز المشروع</label>
-          <input formControlName="code" class="form-control" id="code">
-        </div>
-        <div class="col-4">
-          <label for="endDate" class="form-label">تاريخ النهاية المتوقع</label>
-          <input type="date" formControlName="expectedEndDate" class="form-control" id="endDate">
-        </div>
-        <div class="col-4">
-          <label for="startDate" class="form-label">تاريخ البداية</label>
-          <input type="date" formControlName="startDate" class="form-control" id="startDate">
-        </div>
+      <div class="row mb-4" formGroupName="projectInfo">
+        <mat-form-field class="col-4">
+          <mat-label for="code" class="form-label">رمز المشروع</mat-label>
+          <input matInput formControlName="code" class="form-control" id="code">
+        </mat-form-field>
+      
+        <mat-form-field class="col-4">
+          <mat-label for="endDate" class="form-label">تاريخ الانتهاء المتوقع</mat-label>
+          <input formControlName="expectedEndDate" class="form-control" id="endDate"  matInput [matDatepicker]="end">
+
+          <mat-datepicker-toggle matIconSuffix [for]="end"></mat-datepicker-toggle>
+          <mat-datepicker #end></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="col-4">
+          <mat-label for="startDate" class="form-label">تاريخ البدء بالمشروع</mat-label>
+          <input formControlName="startDate" class="form-control" id="startDate" matInput [matDatepicker]="start">
+          <mat-datepicker-toggle matIconSuffix [for]="start"></mat-datepicker-toggle>
+          <mat-datepicker #start></mat-datepicker>
+        </mat-form-field>
+
       </div>
     
-      <div class="row " formGroupName="financialFund">
-        <div class="col-4">
-          <label for="source" class="form-label">مصدر التمويل</label>
-          <input formControlName="source" class="form-control" id="source">
-        </div>
-        <div class="col-4">
-          <label for="financialStatus" class="form-label">وضع التمويل</label>
-          <input formControlName="financialStatus" class="form-control" id="financialStatus">
-        </div>
+      <div class="row mb-4" formGroupName="financialFund">
+      
+        
+        <mat-form-field class="col-4">
+          <mat-label  for="source" class="form-label">مصدر التمويل</mat-label>
+          <input formControlName="source" class="form-control" id="source" matInput />
+        </mat-form-field>
+     
+        <mat-form-field class="col-4">
+          <mat-label  for="financialStatus" class="form-label" >وضع التمويل</mat-label>
+          <input formControlName="financialStatus" class="form-control" id="financialStatus" matInput />
+        </mat-form-field>
+     
       </div>
     
       <div class="row" formGroupName="projectAggreement">
         <div class="col-4">
           <mat-form-field>
             <mat-label>تاريخ كتاب الموافقة</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+            <input  formControlName="aggreementDate" class="form-control" id="source" matInput [matDatepicker]="aggreement">
+            <mat-datepicker-toggle matIconSuffix [for]="aggreement"></mat-datepicker-toggle>
+            <mat-datepicker #aggreement></mat-datepicker>
           </mat-form-field>
           </div>
+        <mat-form-field class="col-4">
+          <mat-label  for="aggreementNumber" class="form-label">رقم كتاب الموافقة</mat-label>
+          <input formControlName="aggreementNumber" class="form-control" id="aggreementNumber" matInput/>
+        </mat-form-field>
+     
+      </div>
+      <div class="row" formGroupName="proposalInfo">
         <div class="col-4">
-          <label for="aggreementNumber" class="form-label">رقم كتاب الموافقة</label>
-          <input formControlName="aggreementNumber" class="form-control" id="aggreementNumber">
-        </div>
+          <mat-form-field>
+            <mat-label>تاريخ كتاب الطرح</mat-label>
+            <input  formControlName="proposingBookDate" class="form-control" id="proposingBookDate" matInput [matDatepicker]="proposingBookDate">
+            <mat-datepicker-toggle matIconSuffix [for]="proposingBookDate"></mat-datepicker-toggle>
+            <mat-datepicker #proposingBookDate></mat-datepicker>
+          </mat-form-field>
+          </div>
+        <mat-form-field class="col-4">
+          <mat-label  for="proposingBookNumber" class="form-label">رقم كتاب الطرح</mat-label>
+          <input formControlName="proposingBookNumber" class="form-control" id="proposingBookNumber" matInput/>
+        </mat-form-field>
+     
       </div>
     
       <div class="col-4" formGroupName="executerId">
@@ -107,25 +131,28 @@
         
       </div>
     
-      <div class="row" formGroupName="projectClassification">
-        <div class="col-4">
-          <label for="projectStatus" class="form-label">وضع النشاط</label>
-          <input formControlName="projectStatus" class="form-control" id="projectStatus">
-        </div>
-        <div class="col-4">
-          <label for="projectNature" class="form-label">طبيعة النشاط</label>
-          <input formControlName="projectNature" class="form-control" id="projectNature">
-        </div>
-        <div class="col-4">
-          <label for="projectType" class="form-label">نوع النشاط</label>
-          <input formControlName="projectType" class="form-control" id="projectType">
-        </div>
+      <div class="row mb-4" formGroupName="projectClassification">
+      
+        <mat-form-field class="col-4">
+          <mat-label  for="projectStatus" class="form-label" >وضع النشاط</mat-label>
+          <input formControlName="projectStatus" class="form-control" id="projectStatus" matInput />
+        </mat-form-field>
+     
+        <mat-form-field class="col-4">
+          <mat-label  for="projectNature" class="form-label" >طبيعة النشاط</mat-label>
+          <input formControlName="projectNature" class="form-control" id="projectNature" matInput />
+        </mat-form-field>
+        <mat-form-field class="col-4">
+          <mat-label for="projectType" class="form-label" >وضع النشاط</mat-label>
+          <input formControlName="projectType" class="form-control" id="projectType" matInput />
+        </mat-form-field>
+     
       </div>
     
       <hr>
       <div class="text-center">
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">إضافة</button>
       </div>
       
     </form><!-- End Multi Columns Form -->

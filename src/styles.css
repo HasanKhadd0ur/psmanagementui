@@ -1,24 +1,25 @@
-.mat-form-field {
-  color: #7722ff !important; /* Changes the color of the label */
-  background-color: #012970;
+.custom-field {
+  color: #0003b0;
+  .mat-form-field-label {
+    font-size: 1em;
+    
+  }
+  .mat-input-element {
+    background-color: #012970;
+  }
+  .mat-form-field-underline {
+    background-color: #4caf50; /* Underline color */
+  }
+  .mat-form-field-ripple {
+    background-color: #4caf50; /* Ripple effect color */
+  }
 }
-
-.mat-input-element {
-  color: #26ff22; /* Changes the color of the input text */
+.custom-card {
+  background-color: white;   /* White background for the card */
+  color: black;              /* Black text color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+  border-radius: 8px;        /* Optional: Rounds the corners */
 }
-
-.mat-hint {
-  color: #ff5722; /* Changes the color of the hint */
-}
-
-.mat-form-field-underline .mat-form-field-ripple {
-  background-color: #ff5722; /* Changes the color of the underline */
-}
-
-.mat-form-field.mat-focused .mat-form-field-label {
-  color: #ff5722; /* Changes the color of the label when focused */
-}
-
 .accordion-button::after {
   flex-shrink: 0;
   width: var(--bs-accordion-btn-icon-width);
