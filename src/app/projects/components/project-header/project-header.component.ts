@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ProjectInfo } from '../../models/valueObjects/ProjectInfo';
+import { ProposalInfo } from '../../models/valueObjects/proposalInfo';
+import { Employee } from '../../../employees/models/responses/employee';
 
 @Component({
   selector: 'project-header',
@@ -6,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './project-header.component.css'
 })
 export class ProjectHeaderComponent {
-
+  @Input() projectInfo :ProjectInfo
+  
+  
 }

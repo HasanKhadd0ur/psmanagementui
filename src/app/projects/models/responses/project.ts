@@ -24,6 +24,6 @@ export class Project
     proposerId:number
     proposer:Customer
     steps :Step[]
-    participants:EmployeeParticipate[]
+    employeeParticipates:EmployeeParticipate[]
     financialFund:FinancialFund
 }

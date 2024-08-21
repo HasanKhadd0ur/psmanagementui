@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="project">
     <div class="row justify-content-center">
       <div class="col-12 ">
         <div class="row align-items-center mb-4">
@@ -6,25 +6,17 @@
             <h2 class="h5 page-title"><small class="text-muted text-uppercase">بطاقة معلومات مشروع</small></h2>
           </div>
           <div class="col-auto">
-            <button type="button" class="btn btn-secondary m-1">Print</button>
+            <button type="button" (click)="downloadAsPdf()" class="btn btn-secondary m-1">Print</button>
           </div>
         </div>
-        <div class="card shadow">
+        <div class="card shadow" id="pdfContent">
           <div class="card-body p-5">
-            <div class="row mb-5">
-              <div class="col-10 offset-lg-4 col-lg-4 text-center mb-4">
-                <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto mb-4" alt="...">
-                <h3 class="mb-0 text-uppercase">{{project.projectInfo.name}}</h3>
-                <p> <small>{{project.projectInfo.description}}</small></p>
-                <p class="small text-muted"><small>تاريخ البدء {{project.projectInfo.startDate | date}} <br>تاريخ الانتهاء المتوقع {{project.projectInfo.expectedEndDate| date}}</small></p>
-                
-              </div>
-            </div>
+            <project-header [projectInfo]="project.projectInfo"></project-header>
             <div class="row mb-5">
               <div class="col-md-4">
                 <p class="mb-4">
                   <strong>ذاتية المشروع</strong>
-                  <br /> رئيس فريق العمل: <small>{{project.projectInfo.code}}</small>
+                  <br /> رمز المشروع: <small>{{project.projectInfo.code}}</small>
                   <br /> كتاب الطرح : <small>{{project.proposalInfo.proposingBookNumber}} / {{project.proposalInfo.proposingBookDate | date}}</small> 
                   <br />كتاب الموافقة : <small>{{project.projectAggreement.aggreementNumber}} / {{project.projectAggreement.aggreementDate |date}}</small>
                   <br />التمويل : <small> {{project.financialFund.financialStatus}} / {{project.financialFund.source}} </small>
@@ -36,8 +28,8 @@
                 <p class="mb-4">
                   <strong>المعلومات التنفيذية</strong>
                   <br /> الجهة  المنفذة: <small>{{project.executer.name}}</small>
-                  <br /> رئيس فريق العمل: <small>{{project.teamLeader.personalInfo.firstName}} {{project.teamLeader.personalInfo.lastName}}</small>
-                  <br /> مدير المشروع : <small>{{project.projectManager.personalInfo.firstName}} {{project.projectManager.personalInfo.lastName}}</small>
+                  <br /> رئيس فريق العمل: <small>{{project.teamLeader.personalInfo | fullname}}</small>
+                  <br /> مدير المشروع : <small>{{project.projectManager.personalInfo | fullname}}</small>
                   <br />ينفذ لصالح : <small> {{project.proposer.customerName}} </small>
                   
                 </p>
@@ -51,7 +43,7 @@
                 </p>
               </div>
             </div> <!-- /.row -->
-            <br>
+            <hr>
             <p>مراحل المشروع</p>
             <table class="table table-borderless table-striped">
               <thead>
@@ -80,61 +72,36 @@
                 </tr>
               </tbody>
             </table>
-
+            <hr>
             <p>المشاركين في المشروع</p>
             <table class="table table-borderless table-striped">
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">اسم المشارك</th>
-                  <th scope="col" class="text-left">الرقم الذاتي</th>
-                  <th scope="col" class="text-left">صفة العمل</th>
-                  <th scope="col" class="text-left">الهيئة</th>
-                  <th scope="col" class="text-left">نسبة التفرغ</th>
-                  <th scope="col" class="text-left">المساهمة</th>
+                  <th scope="col" clsss="text-center">الرقم الذاتي</th>
+                  <th scope="col" class="text-center">اسم المشارك</th>
+                  <th scope="col" class="text-center">صفة العمل</th>
+                  <th scope="col" class="text-center">الهيئة</th>
+                  <th scope="col" class="text-center">نسبة التفرغ</th>
+                  <th scope="col" class="text-center">المساهمة</th>
                   
                 </tr>
               </thead>
               <tbody>
-                <!-- <tr  *ngFor="let participant of  project.e " >
+                <tr  *ngFor="let participant of  project.employeeParticipates" >
                   <th scope="row"></th>
-                  <td> {{step.stepInfo.stepName}}
+                  <td class="text-center"> {{participant.employee.hiastId}}
                   </td>
-                  <td class="text-left">{{step.stepInfo.description}}</td>
-                  <td class="text-left">{{step.currentCompletionRatio}}</td>
-                  <td class="text-left">{{step.weight}}</td>
+                  <td class="text-center">{{participant.employee.personalInfo | fullname }}</td>                  <td class="text-center">{{participant.employee.workInfo.workJob}}</td>
+                  <td class="text-center">{{participant.employee.workInfo.workType}}</td>
+                  <td class="text-center">{{participant.partialTimeRatio}}</td>
                   
-                  <td class="text-left">{{step.stepInfo.startDate | date}}</td>
-                  <td class="text-left">{{step.stepInfo.duration}}</td>
-                </tr> -->
+                  <td class="text-center">{{participant.role}}</td>
+                </tr>
               </tbody>
             </table>
 
-            <hr>
-            <div class="row mt-5">
-              <button class="btn btn-primary">لاطلاع على  خطة الانفاق</button>
-              <button class="btn btn-primary">الاطلاع على المرفقات </button>
-              <button class="btn btn-primary">الاطلاع على عمليات المتابعة</button>
-            
-            </div>
-            <div class="row mt-5 d-flex align-items-around">
-              <button class=" btn btn-primary">إضافة مرفقات</button>
-              <button class=" btn btn-primary">إضافة دراسة جدوى </button>
-              <button class=" btn btn-primary">إضافة تصنيف مشروع</button>
-            
-            </div>
-            
-            <div class="row mt-5">
-              <button class="btn btn-primary">إضافة مرحلة</button>
-              <button class="btn btn-primary">إضافة مشارك</button>
-           </div>
-           <div class="row mt-5">
-            <button class="btn btn-primary">إضافة عملية متابعة</button>
-            
-            
-          </div>
-           
-            
+       
             <div class="row mt-5">
               <div class="col-2 text-center">
                 <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto my-4" alt="...">
@@ -182,6 +149,71 @@
           </div> <!-- /.card-body -->
         </div> <!-- /.card -->
       </div> <!-- /.col-12 -->
+
     </div> <!-- .row -->
+    <div class="row justify-content-center">
+      <div class="col-12 ">
+        <div class="row align-items-center mb-4">
+          <div class="col">
+            <h2 class="h5 page-title"><small class="text-muted text-uppercase">إدارة المشروع</small></h2>
+          </div>
+          <div class="col-auto">
+          </div>
+        </div>
+        <div class="card shadow" id="pdfContent">
+          <div class="card-body p-5">
+            <div class="row ">
+              <div class="col-2 text-center">
+                <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto my-4" alt="...">
+              </div>
+              <div class="col-8">
+            
+  
+              </div>  
+              <div class="col-2 text-center">
+                <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto my-4" alt="...">
+              </div>  
+            </div> <!-- /.row -->
+  
+            <hr>
+            <div class="row mt-5">
+              <button class="btn btn-primary">لاطلاع على  خطة الانفاق</button>
+              <button class="btn btn-primary">الاطلاع على المرفقات </button>
+              <button class="btn btn-primary">الاطلاع على عمليات المتابعة</button>
+            
+            </div>
+            <div class="row mt-5 d-flex align-items-around">
+              <button class=" btn btn-primary">إضافة مرفقات</button>
+              <button class=" btn btn-primary">إضافة دراسة جدوى </button>
+              <button class=" btn btn-primary">إضافة تصنيف مشروع</button>
+            
+            </div>
+            
+            <div class="row mt-5">
+              <button class="btn btn-primary">إضافة مرحلة</button>
+              <button class="btn btn-primary">إضافة مشارك</button>
+           </div>
+           <div class="row mt-5">
+            <button class="btn btn-primary">إضافة عملية متابعة</button>
+            
+            
+          </div>
+           <hr>
+            
+            <div class="row mt-5">
+              <div class="col-2 text-center">
+                <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto my-4" alt="...">
+              </div>
+              <div class="col-8">
+            
+              </div>
+              <div class="col-2 text-center">
+                <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto my-4" alt="...">
+              </div>  
+            </div> <!-- /.row -->
+          </div> <!-- /.card-body -->
+        </div> <!-- /.card -->
+      </div> <!-- /.col-12 -->
+      </div>
   </div> <!-- .container-fluid -->
   

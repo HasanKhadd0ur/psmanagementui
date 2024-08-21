@@ -13,7 +13,10 @@ export class UserService {
   getCurrentUser():User{
       return JSON.parse( this.dataStorage.getItem("userDetails"));
   }
-  
+
+  getEmployeeId() :number{
+    return this.getCurrentUser().employeeId;
+  }
   getUserFirstName():string{
       return JSON.parse( this.dataStorage.getItem("userDetails")).firstName;
   }

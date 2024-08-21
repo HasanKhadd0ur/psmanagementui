@@ -1,0 +1,11 @@
+<form [formGroup]="projectForm">
+    <mat-form-field>
+      <input type="text" matInput placeholder="Project Manager" [formControl]="projectManagerControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let employee of filteredEmployees | async" [value]="employee.value.personalInfo.firstName">
+          {{ employee.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+  

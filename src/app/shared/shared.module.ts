@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NavItemComponent } from './componenets/nav-item/nav-item.component';
 import { LoadingSpinnerComponent } from './componenets/loading-spinner/loading-spinner.component';
+import { FullnamePipe } from './pipes/fullName/fullname.pipe';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { LoadingSpinnerComponent } from './componenets/loading-spinner/loading-s
     SidebarComponent,
     LayoutComponent,
     NavItemComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    FullnamePipe
   
   ],
   imports: [
@@ -30,6 +32,7 @@ import { LoadingSpinnerComponent } from './componenets/loading-spinner/loading-s
     FooterComponent,    
     SidebarComponent,
     LayoutComponent,
+    FullnamePipe,
     LoadingSpinnerComponent
   ],schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

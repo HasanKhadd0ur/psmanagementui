@@ -1,12 +1,4 @@
-/**
-* Template Name: NiceAdmin
-* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-* Updated: Apr 20 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
-/* src/styles.css */
 #toast-container {
   width: 100%;
   top: 30px;
@@ -32,7 +24,7 @@
 }
 
 #toast-container .toast-success {
-  background-color: #4caf50;
+  background-color: #2196f3;
 }
 
 #toast-container .toast-error {
@@ -888,3 +880,5 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

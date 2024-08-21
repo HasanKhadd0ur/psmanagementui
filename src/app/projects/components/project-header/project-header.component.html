@@ -1,1 +1,23 @@
-<p>project-header works!</p>
+<div class="row mb-5 d-flex justify-content-start">
+  <div class="col-3 d-none text-left mb-4">
+    
+    <h5 class="mb-0 text-uppercase"><small>الجمهورية العربية السورية</small></h5>
+    <h6>
+      <small>مركز الدراسات والبحوث العلمية </small>
+      <br>
+      <small>المعهد العالي للعلوم التطبيقية والتكنولوجيا</small>
+    </h6>
+     
+ </div>
+
+  <div class="col-6 col-sm-12 text-center mb-4">
+    <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto mb-4" alt="...">
+    
+    <h3 class="mb-0 text-uppercase">{{projectInfo.name}}</h3>
+     <p> <small>{{projectInfo.description}}</small></p>
+    <p class="small text-muted"><small>تاريخ البدء {{projectInfo.startDate | date}} <br>تاريخ الانتهاء المتوقع {{projectInfo.expectedEndDate| date}}</small></p>
+      
+  </div>
+  
+</div>
+<hr>

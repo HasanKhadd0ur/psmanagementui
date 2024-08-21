@@ -26,7 +26,7 @@
           </li>
 
           <li>
-            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+            <a class="dropdown-item d-flex align-items-center" [routerLink]="['/employees/profile']">
               <i class="fe fe-user"></i>
               <span>My Profile</span>
             </a>
@@ -34,27 +34,7 @@
           <li>
             <hr class="dropdown-divider">
           </li>
-
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-              <i class="fe fe-settings"></i>
-              <span>Account Settings</span>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-              <i class="fe fe-help-circle"></i>
-              <span>Need Help?</span>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
+            
           <li>
             <button class="dropdown-item d-flex align-items-center" (click)="logout()">
               <i class="fe fe-log-out"></i>

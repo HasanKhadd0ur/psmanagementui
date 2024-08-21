@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProjectService } from '../../services/project.service';
 import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../core/services/loading/loading-service.service';
 import { Project } from '../../models/responses/project';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   selector: 'project-list',

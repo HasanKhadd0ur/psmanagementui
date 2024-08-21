@@ -4,6 +4,7 @@ import { DataStorageService } from './services/dataStorage/data-storage.service'
 import { AuthenticationService } from './services/authentication/authentication.service';
 import { ConfigurationService } from './services/configuration/configuration.service';
 import { UserService } from './services/authentication/user.service';
+import { PdfDownloaderService } from './services/pdfDownloader/pdf-downloader.service';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { UserService } from './services/authentication/user.service';
     DataStorageService,
     AuthenticationService,
     ConfigurationService,
-    UserService
+    UserService,
+    PdfDownloaderService
   ]
 })
 export class CoreModule { }
