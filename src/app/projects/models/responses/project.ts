@@ -8,7 +8,6 @@ import { ProposalInfo } from "../valueObjects/proposalInfo"
 import { ProjectClassification } from "../valueObjects/ProjectClassification"
 import { Department } from "./Department"
 import { Step } from "./Step"
-
 export class Project
 {
     id:number
