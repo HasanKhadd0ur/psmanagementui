@@ -29,6 +29,7 @@ export class ProjectListComponent  implements OnInit{
 
   loadProjects():void{
 
+    this.loadingService.show()
     this.projectService.getByFilter()
       .subscribe(
         {
@@ -36,10 +37,11 @@ export class ProjectListComponent  implements OnInit{
             
               this.projects = res;
               this.toastr.success("تم تحميل المشاريع بنجاح");
-            
+                this.loadingService.hide()
           },
           error: (err)=>{
             this.toastr.error("لقد حدث خظاء ما");
+            this.loadingService.hide()
           }
         }
       );

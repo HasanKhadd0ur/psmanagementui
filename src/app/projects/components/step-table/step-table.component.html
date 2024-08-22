@@ -1,0 +1,27 @@
+<table class="table table-borderless table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">اسم المرحلة</th>
+        <th scope="col" class="text-left">الوصف</th>
+        <th scope="col" class="text-left">نسبة الانجاز</th>
+        <th scope="col" class="text-left">النسبة التثقيلية</th>
+        <th scope="col" class="text-left">تاريع البدء</th>
+        <th scope="col" class="text-left">مدة التنفيذ</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let step of steps " >
+        <th scope="row"></th>
+        <td> {{step.stepInfo.stepName}}
+        </td>
+        <td class="text-left">{{step.stepInfo.description}}</td>
+        <td class="text-left">{{step.currentCompletionRatio}}</td>
+        <td class="text-left">{{step.weight}}</td>
+        
+        <td class="text-left">{{step.stepInfo.startDate | date}}</td>
+        <td class="text-left">{{step.stepInfo.duration}}</td>
+      </tr>
+    </tbody>
+  </table>

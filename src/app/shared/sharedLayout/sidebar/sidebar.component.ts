@@ -1,5 +1,6 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, Input, input, OnInit } from '@angular/core';
 import { NavItem } from '../../componenets/nav-item/nav-item.component';
+import { UserService } from '../../../core/services/authentication/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,14 +8,14 @@ import { NavItem } from '../../componenets/nav-item/nav-item.component';
   styleUrl: './sidebar.component.css'
 })
 
-export class SidebarComponent {
-  items : NavItem[ ]=[
-    {
-      name: "الصفحة الرئيسية",
-      haschild:false,
-      child:[]
-    }
-
-  ]
+export class SidebarComponent implements OnInit {
+  id : number 
+  
+  constructor(private userService : UserService){}
   @Input() isToggled: Boolean;  
+
+  ngOnInit(): void {
+    this.id= this.userService.getEmployeeId();
+  }
+
 }

@@ -9,6 +9,8 @@ import { Customer } from '../../../customers/models/customer';
 import { CustomerService } from '../../../customers/services/customer.service';
 import { ProjectService } from '../../services/project.service';
 import { CreateProjectRequest } from '../../models/requests/project-requests/createProjectRequest';
+import { ToastrComponentlessModule, ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'project-create',
@@ -30,44 +32,15 @@ export class ProjectCreateComponent {
     private fb: FormBuilder,
     private employeeService: EmployeesService,
     private customersService : CustomerService,
-    private projectService :ProjectService
+    private projectService :ProjectService,
+    private toastr : ToastrService,
+    private router :Router
   ) {}
 
   ngOnInit(): void {
     this.request= new CreateProjectRequest();
-    
-    this.projectForm = this.fb.group({
-      projectManager: [''],
-      teamLeader: [''],
-      customer: [''],
+    this._buildFrom();
 
-      projectInfo: this.fb.group({
-        name: [''],
-        description: [''],
-        code: ['', Validators.required],
-        startDate: ['', Validators.required],
-        expectedEndDate: ['', Validators.required],
-      }),
-      financialFund: this.fb.group({
-        source: ['', Validators.required],
-        financialStatus: ['', Validators.required],
-      }),
-      projectAggreement: this.fb.group({
-        aggreementDate: ['', Validators.required],
-        aggreementNumber: ['', Validators.required],
-      }),
-      proposalInfo: this.fb.group({
-        proposingBookNumber :['', Validators.required],
-        proposingBookDate :['', Validators.required]
-      }),
-      projectClassification: this.fb.group({
-        projectStatus: ['', Validators.required],
-        projectNature: ['', Validators.required],
-        projectType: ['', Validators.required],
-      }),
-      executerId: ['', Validators.required],
-    });
-    console.log(this.request)
     this.projectForm.valueChanges.subscribe(values => {
       this.request = {
         ...this.request, // Preserve other properties
@@ -118,13 +91,64 @@ export class ProjectCreateComponent {
   onSubmit(request : CreateProjectRequest){
 
     console.log(request)
-    
+    debugger
     console.log(this.projectForm.errors)
-    if(this.projectForm.valid){
-      console.log(request);
-      this.projectService.createProject(request);
-    }
+    console.log(this.projectForm.valid)
   
-    
+    if(this.projectForm.valid){ 
+      this.projectService.createProject(request).subscribe({
+
+        next: (data)=>{
+          this.toastr.success("تمت إضافة الجهة بنجاح")
+          this.router.navigate(['/projects/detail/',data])
+
+        }
+        ,
+
+        error:(err)=>{
+          this.toastr.error("لقد حدث خطاء ما")
+        }
+      });
+ 
+    }
+
+  
+      
+  }
+
+  _buildFrom(){
+    this.projectForm = this.fb.group({
+      projectManager: [''],
+      teamLeader: [''],
+      customer: [''],
+
+      projectInfo: this.fb.group({
+        name: ['',Validators.required],
+        description: ['',Validators.required],
+        code: ['', Validators.required],
+        startDate: ['', Validators.required],
+        expectedEndDate: ['', Validators.required],
+      }),
+      financialFund: this.fb.group({
+        source: ['', Validators.required],
+        financialStatus: ['', Validators.required],
+      }),
+      projectAggreement: this.fb.group({
+        aggreementDate: ['', Validators.required],
+        aggreementNumber: ['', Validators.required],
+      }),
+      proposalInfo: this.fb.group({
+        proposingBookNumber :['', Validators.required],
+        proposingBookDate :['', Validators.required]
+      }),
+      projectClassification: this.fb.group({
+        projectStatus: ['', Validators.required],
+        projectNature: ['', Validators.required],
+        projectType: ['', Validators.required],
+      }),
+      executerId: ['', Validators.required],
+    });
+   
+
   }
 }

@@ -39,41 +39,17 @@
                 <p class="mb-4">
                   <strong>معلومات حالة المشروع </strong>
                   <br /> المرحلة التطويرير : <small>{{project.currentState}} </small>
+                  <br />نوع المشروع  : <small>{{project.projectClassification.projectType}} </small>
+                  <br /> طبيعة المشروع : <small>{{project.projectClassification.projectNature}} </small>
                 
                 </p>
               </div>
             </div> <!-- /.row -->
             <hr>
-            <p>مراحل المشروع</p>
-            <table class="table table-borderless table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">اسم المرحلة</th>
-                  <th scope="col" class="text-left">الوصف</th>
-                  <th scope="col" class="text-left">نسبة الانجاز</th>
-                  <th scope="col" class="text-left">النسبة التثقيلية</th>
-                  <th scope="col" class="text-left">تاريع البدء</th>
-                  <th scope="col" class="text-left">مدة التنفيذ</th>
-                  
-                </tr>
-              </thead>
-              <tbody>
-                <tr  *ngFor="let step of  project.steps " >
-                  <th scope="row"></th>
-                  <td> {{step.stepInfo.stepName}}
-                  </td>
-                  <td class="text-left">{{step.stepInfo.description}}</td>
-                  <td class="text-left">{{step.currentCompletionRatio}}</td>
-                  <td class="text-left">{{step.weight}}</td>
-                  
-                  <td class="text-left">{{step.stepInfo.startDate | date}}</td>
-                  <td class="text-left">{{step.stepInfo.duration}}</td>
-                </tr>
-              </tbody>
-            </table>
+            <p><strong>مراحل المشروع</strong></p>
+            <step-table [steps]="project.steps"></step-table>
             <hr>
-            <p>المشاركين في المشروع</p>
+            <p><strong>المشاركين في المشروع</strong></p>
             <table class="table table-borderless table-striped">
               <thead>
                 <tr>
@@ -101,7 +77,7 @@
               </tbody>
             </table>
 
-            <p>خطة الانفاق</p>
+            <p><strong>خطة الانفاق</strong></p>
             <table class="table table-borderless table-striped">
               <thead>
                 <tr>

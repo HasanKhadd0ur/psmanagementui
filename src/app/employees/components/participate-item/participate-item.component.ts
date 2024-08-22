@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { EmployeeParticipate } from '../../models/responses/employeeParticipate';
 
 @Component({
   selector: 'participate-item',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './participate-item.component.css'
 })
 export class ParticipateItemComponent {
+
+  @Input() employeeParticipate :EmployeeParticipate 
+  
+  constructor(){}
+
 
 }

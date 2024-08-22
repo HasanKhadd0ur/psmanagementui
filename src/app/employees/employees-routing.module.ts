@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { Result } from '../core/models/result';
 import { Employee } from './models/responses/employee';
 import { EmployeeProfileComponent } from './pages/employee-profile/employee-profile.component';
-import { EmployeeParticipateComponent } from './pages/employee-participate/employee-participate.component';
+import { EmployeeParticipateComponent } from './components/employee-participate/employee-participate.component';
 import { EmployeeParticipatesComponent } from './pages/employee-participates/employee-participates.component';
 
 const routes: Routes = [
