@@ -8,6 +8,7 @@ import { ProposalInfo } from "../valueObjects/proposalInfo"
 import { ProjectClassification } from "../valueObjects/ProjectClassification"
 import { Department } from "./Department"
 import { Step } from "./Step"
+import { FinancialSpending } from "./FinancialSpending"
 export class Project
 {
     id:number
@@ -24,6 +25,7 @@ export class Project
     proposerId:number
     proposer:Customer
     steps :Step[]
+    financialSpending : FinancialSpending[]
     employeeParticipates:EmployeeParticipate[]
     financialFund:FinancialFund
 }

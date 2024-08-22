@@ -1,6 +1,7 @@
 export interface Attachment {
-    projectId: number;
-    attachmentUrl: string;
-    attachmentDescription: string;
-    attachmentName: string;
+    id  : number 
+    projectId :number 
+    attachmentUrl :string 
+    attachmentName :string
+    attachmentDescription :string
 }

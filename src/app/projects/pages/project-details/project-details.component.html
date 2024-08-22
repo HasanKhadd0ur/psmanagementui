@@ -101,6 +101,35 @@
               </tbody>
             </table>
 
+            <p>خطة الانفاق</p>
+            <table class="table table-borderless table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col" clsss="text-center">نوع الكلفة</th>
+                  <th scope="col" class="text-center">البيان</th>
+                  <th scope="col" class="text-center">الشراء المحلي </th>
+                  <th scope="col" class="text-center">الشراء الخارجي</th>
+                  <th scope="col" class="text-center">نوع القطع</th>
+                  <th scope="col" class="text-center">تاريخ الانفاق  المتوقع</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr  *ngFor="let spend of  project.financialSpending" >
+                  <th scope="row"></th>
+                  <td class="text-center"> {{spend.costType}}
+                  </td>
+                  <td class="text-center">{{spend.description }}</td>               
+                  <td class="text-center">{{spend.localPurchase}}</td>
+                  <td class="text-center">{{spend.externalPurchase.ammount}}</td>
+                  
+                  <td class="text-center">{{spend.externalPurchase.currency}}</td>
+                  <td class="text-center">{{spend.expectedSpendingDate | date}}</td>
+             
+                </tr>
+              </tbody>
+            </table>
        
             <div class="row mt-5">
               <div class="col-2 text-center">
