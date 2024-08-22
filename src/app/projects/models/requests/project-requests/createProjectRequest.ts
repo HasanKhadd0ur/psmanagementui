@@ -1,8 +1,8 @@
-import { Aggreement } from "../valueObjects/Aggreement"
-import { FinancialFund } from "../valueObjects/FinancialFund"
-import { ProjectClassification } from "../valueObjects/ProjectClassification"
-import { ProjectInfo } from "../valueObjects/ProjectInfo"
-import { ProposalInfo } from "../valueObjects/proposalInfo"
+import { Aggreement } from "../../valueObjects/Aggreement"
+import { FinancialFund } from "../../valueObjects/FinancialFund"
+import { ProjectClassification } from "../../valueObjects/ProjectClassification"
+import { ProjectInfo } from "../../valueObjects/ProjectInfo"
+import { ProposalInfo } from "../../valueObjects/proposalInfo"
 
 export class CreateProjectRequest {
     projectInfo :ProjectInfo 

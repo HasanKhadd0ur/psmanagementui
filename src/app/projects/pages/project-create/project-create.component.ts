@@ -7,8 +7,8 @@ import { Result } from '../../../core/models/result';
 import { Project } from '../../models/responses/project';
 import { Customer } from '../../../customers/models/customer';
 import { CustomerService } from '../../../customers/services/customer.service';
-import { CreateProjectRequest } from '../../models/requests/createProjectRequest';
 import { ProjectService } from '../../services/project.service';
+import { CreateProjectRequest } from '../../models/requests/project-requests/createProjectRequest';
 
 @Component({
   selector: 'project-create',
@@ -117,8 +117,12 @@ export class ProjectCreateComponent {
 
   onSubmit(request : CreateProjectRequest){
 
+    console.log(request)
+    
+    console.log(this.projectForm.errors)
     if(this.projectForm.valid){
-      console.log(true)
+      console.log(request);
+      this.projectService.createProject(request);
     }
   
     

@@ -19,6 +19,7 @@ import { ProjectService } from './services/project.service';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
+import { ProjectAttachmentsComponent } from './pages/project-attachments/project-attachments.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {provideNativeDateAdapter} from '@angular/material/core';
     ProjectDetailsComponent,
     StepRowItemComponent,
     ProjectHeaderComponent,
-    ProjectCreateComponent
+    ProjectCreateComponent,
+    ProjectAttachmentsComponent
   ],
   providers: [
     ProjectService,

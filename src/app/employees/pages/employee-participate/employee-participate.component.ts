@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { EmployeeParticipate } from '../../models/responses/employeeParticipate';
 
 @Component({
   selector: 'employee-participate',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class EmployeeParticipateComponent {
 
+  @Input() employeeParticipate :EmployeeParticipate 
+  
+  constructor(){}
+
+  
 }

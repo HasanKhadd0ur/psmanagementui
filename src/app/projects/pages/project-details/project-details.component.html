@@ -139,7 +139,7 @@
             
                 <p class="mb-4">
                   <strong>مدير المشروع </strong>
-                  <br/><small>{{project.projectManager.personalInfo.firstName}}</small>
+                  <br/><small>{{project.projectManager.personalInfo | fullname}}</small>
                     
                   </p>
   
@@ -148,7 +148,7 @@
             
                 <p class="mb-4">
                   <strong>رئيس فريق العمل </strong>
-                  <br/><small>{{project.projectManager.personalInfo.firstName}}</small>
+                  <br/><small>{{project.projectManager.personalInfo | fullname }}</small>
                     
                   </p>
   
@@ -203,32 +203,118 @@
                 <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto my-4" alt="...">
               </div>  
             </div> <!-- /.row -->
-  
-            <hr>
-            <div class="row mt-5">
-              <button class="btn btn-primary">لاطلاع على  خطة الانفاق</button>
-              <button class="btn btn-primary">الاطلاع على المرفقات </button>
-              <button class="btn btn-primary">الاطلاع على عمليات المتابعة</button>
-            
-            </div>
-            <div class="row mt-5 d-flex align-items-around">
-              <button class=" btn btn-primary">إضافة مرفقات</button>
-              <button class=" btn btn-primary">إضافة دراسة جدوى </button>
-              <button class=" btn btn-primary">إضافة تصنيف مشروع</button>
-            
-            </div>
-            
-            <div class="row mt-5">
-              <button class="btn btn-primary">إضافة مرحلة</button>
-              <button class="btn btn-primary">إضافة مشارك</button>
-           </div>
-           <div class="row mt-5">
-            <button class="btn btn-primary">إضافة عملية متابعة</button>
-            
-            
-          </div>
            <hr>
-            
+            <div class="row align-items-center mb-4">
+              <div class="col-auto">
+                <strong>تخطيط المشروع</strong>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 col-lg-4">
+                  <div class="card shadow mb-4">
+                    <div class="card-body file-list">
+                      <div class="d-flex align-items-center">
+                        <div class="circle circle-md bg-secondary">
+                          <span class="fe fe-credit-card fe-16 text-white"></span>
+                        </div>
+                        <div class="flex-fill ml-4 fname">
+                          <strong>إارة خطة الانفاق</strong><br />
+                        </div>
+                        
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+                <div class="col-md-6 col-lg-4">
+                  <div class="card shadow mb-4">
+                    <div class="card-body file-list">
+                      <div class="d-flex align-items-center">
+                        <div class="text-center">
+                          <div class="circle circle-md bg-secondary">
+                            <span class="fe fe-users fe-16 text-white"></span>
+                          </div>
+                        </div>
+                        <div class="flex-fill ml-4 fname">
+                          <strong>إضافة معلومات المشروع</strong><br />
+                        </div>
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+                <div class="col-md-6 col-lg-4">
+                  <div class="card shadow mb-4">
+                    <div class="card-body file-list">
+                      <div class="d-flex align-items-center">
+                        <div class="circle circle-md bg-secondary">
+                          <span class="fe fe-map fe-16 text-white"></span>
+                        </div>
+                        <div class="flex-fill ml-4 fname">
+                          <strong>إدارة الخطة</strong><br />
+                        </div>
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                
+                </div> <!-- .row -->
+      
+            </div>
+
+     <hr>     
+         <div class="row align-items-center mb-4">
+    <div class="col-auto ">
+      <strong>معلومات المشروع</strong>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-lg-4">
+        <div class="card shadow mb-4">
+          <div class="card-body file-list">
+            <div class="d-flex align-items-center">
+              <div class="circle circle-md bg-secondary">
+                <span class="fe fe-credit-card fe-16 text-white"></span>
+              </div>
+              <div class="flex-fill ml-4 fname">
+                <strong>المراحل</strong><br />
+              </div>
+              
+            </div>
+          </div> <!-- .card-body -->
+        </div> <!-- .card -->
+      </div> <!-- .col -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card shadow mb-4">
+          <div class="card-body file-list">
+            <div class="d-flex align-items-center">
+              <div class="text-center">
+                <div class="circle circle-md bg-secondary">
+                  <span class="fe fe-users fe-16 text-white"></span>
+                </div>
+              </div>
+              <div class="flex-fill ml-4 fname">
+                <strong>إضافة المرفقات</strong><br />
+              </div>
+            </div>
+          </div> <!-- .card-body -->
+        </div> <!-- .card -->
+      </div> <!-- .col -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card shadow mb-4">
+          <div class="card-body file-list">
+            <div class="d-flex align-items-center">
+              <div class="circle circle-md bg-secondary">
+                <span class="fe fe-map fe-16 text-white"></span>
+              </div>
+              <div class="flex-fill ml-4 fname">
+                <strong>إدارة المشاركين</strong><br />
+              </div>
+            </div>
+          </div> <!-- .card-body -->
+        </div> <!-- .card -->
+      
+      </div> <!-- .row -->
+
+  </div>
+  
+<hr>         
             <div class="row mt-5">
               <div class="col-2 text-center">
                 <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto my-4" alt="...">

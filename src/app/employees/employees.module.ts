@@ -6,6 +6,7 @@ import { EmployeeProfileComponent } from './pages/employee-profile/employee-prof
 import { EmployeeParticipatesComponent } from './pages/employee-participates/employee-participates.component';
 import { EmployeeParticipateComponent } from './pages/employee-participate/employee-participate.component';
 import { ParticipateItemComponent } from './components/participate-item/participate-item.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ParticipateItemComponent } from './components/participate-item/particip
   ],
   imports: [
     CommonModule,
+    SharedModule,
     EmployeesRoutingModule
   ]
 })

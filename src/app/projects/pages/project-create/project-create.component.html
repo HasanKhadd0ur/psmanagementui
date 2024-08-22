@@ -120,10 +120,10 @@
      
       </div>
     
-      <div class="col-4" formGroupName="executerId">
+      <div class="col-4">
         <mat-form-field>
           <mat-label>الفعالية المنفذة </mat-label>
-          <mat-select>
+          <mat-select formControlName="executerId">
             <mat-option value="1">قسم المعلوميات</mat-option>
             <mat-option value="2">قسم النظم الاكترونية</mat-option>
           </mat-select>
@@ -134,7 +134,7 @@
       <div class="row mb-4" formGroupName="projectClassification">
       
         <mat-form-field class="col-4">
-          <mat-label  for="projectStatus" class="form-label" >وضع النشاط</mat-label>
+          <mat-label  for="projectStatus" class="form-label" >حالة النشاط</mat-label>
           <input formControlName="projectStatus" class="form-control" id="projectStatus" matInput />
         </mat-form-field>
      

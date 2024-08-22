@@ -42,13 +42,13 @@ export class EmployeesService {
   
   public getAvailableEmployees( ):Observable<Employee[]>{
 
-    //this api endpoint take a pagination , i'll use i later 
+    //this api endpoint take a pagination , i'll use it later 
     return this.http.get<Employee[]>(this.config.getServerUrl() + "/Employees/Available");
   }
   
   public getEmployeeParticipations(id :number ):Observable<EmployeeParticipate[]>{
 
-    return this.http.get<EmployeeParticipate[]>(`${this.config.getServerUrl}/Employees/EmployeeParticipations/employeeId=${id}`);
+    return this.http.get<EmployeeParticipate[]>(`${this.config.getServerUrl()}/Employees/EmployeeParticipations/?employeeId=${id}`);
   }
 
   public getMyParticipation( ):Observable<EmployeeParticipate[]>{
