@@ -1,33 +1,33 @@
-<div  *ngIf="customer" class="card col-6 offset-1 mb-3" style="border-radius: .5rem;">
-    <div class="row g-0">
-        <div class="col-md-4 gradient-custom text-center text-black"
-             style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-            <h5>{{customer.customerName}}</h5>
-            <p>{{customer.email}}</p>
-        </div>
-        <div class="col-md-8">
-            <div class="card-body p-4">
-                <h6>Information:</h6>
-                <hr class="mt-0 mb-4">
-                <div class="row pt-1">
-                    
-                    <div class="col-6 mb-3">
-                        <h6>Address</h6>
-                        <p class="text-muted">{{customer.address.city}} - {{customer.address.streetName}}</p>
-                        <p class="text-muted">Street Name : {{customer.address.streetNumber}} </p>
-                    </div>
-
-                    
-                    <div *ngIf="customer.contactInfo.length!=0" class="col-12 mb-3">
-                        <h6>contact Info</h6>
-                        <p *ngFor="let contact of customer.contactInfo" class="text-muted">{{contact.contactType}} - {{contact.contactValue}}</p>
-                    </div>
-                </div>
-                <div class="row pt-1">
-                    
-                    
-                </div>
+<div class="container-fluid" *ngIf="customer">
+    <div class="row justify-content-center">
+      <div class="col-8 offset-2 ">
+        <div class="card shadow">
+          <div class="card-body">
+            <div class="col-6 col-sm-12 text-center mb-4">
+                <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto mb-4" alt="...">
+                
+                <h3 class="mb-0 text-uppercase">{{customer.customerName}}</h3>
+                 <p> <small>{{customer.email}}</small></p>                  
+              </div>
+         
             </div>
-        </div>
-    </div>
-</div>
+            <hr>
+            <div class="row  ml-4">
+                <p><strong>العنوان</strong></p>
+                <p>المدينة {{customer.address.city}}</p>
+                <p>الشارع {{customer.address.streetName}} {{customer.address.streetNumber}}</p>
+                
+                
+            </div>
+            <div class="row mb-4">
+
+                <button class="col-4 offset-1 m-4 btn btn-danger" (click)="onDelete(customer.id)">إزالة</button>
+                <button class="col-4 m-4 btn btn-info" (click)="addContact(customer.id)">إضافة معلومة اتصال</button>
+            
+            </div>
+            
+          </div> <!-- /.card-body -->
+        </div> <!-- /.card -->
+      </div> <!-- /.col-12 -->
+</div> <!-- .row -->
+  

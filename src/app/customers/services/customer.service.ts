@@ -33,7 +33,7 @@ export class CustomerService {
     return this.http.put<void>(`${this.config.getServerUrl()}/Customers/${id}` ,customer);
   }
   
-  public deleteCustomer(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.config.getServerUrl()}/Customers/${id}`);
+  public deleteCustomer(customerId: number): Observable<void> {
+    return this.http.delete<void>(`${this.config.getServerUrl()}/Customers/${customerId}`);
   }
 }

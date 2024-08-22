@@ -33,4 +33,18 @@ export class CustomerDetailsComponent implements OnInit {
 
   });
   }
+  addContact(arg0: number) {
+    throw new Error('Method not implemented.');
+    }
+    
+    onDelete(id: number) {
+      this.customerService.deleteCustomer(id).subscribe({
+        next : (data)=> {
+          this.toastr.success('تم حذف الجهة بنجاح');
+          this.router.navigate(['/customers']);
+        },
+        error: (err)=>this.toastr.error('لقد حدث خطاء ما')
+      });
+    }
+    
 }
