@@ -19,7 +19,7 @@
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
           <li class="dropdown-header">
             <h6>{{fullName}}</h6>
-            <span>موظف</span>
+            <span>{{email}}</span>
           </li>
           <li>
             <hr class="dropdown-divider">
@@ -28,7 +28,7 @@
           <li>
             <a class="dropdown-item d-flex align-items-center" [routerLink]="['/employees/profile']">
               <i class="fe fe-user"></i>
-              <span>My Profile</span>
+              <span>ملفي الشخصي</span>
             </a>
           </li>
           <li>
@@ -38,7 +38,7 @@
           <li>
             <button class="dropdown-item d-flex align-items-center" (click)="logout()">
               <i class="fe fe-log-out"></i>
-              <span>Sign Out</span>
+              <span>تسجيل الخروج</span>
             </button>
           </li>
 

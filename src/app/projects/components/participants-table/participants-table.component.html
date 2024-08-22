@@ -1,0 +1,27 @@
+<p><strong>المشاركين في المشروع</strong></p>
+<table class="table table-borderless table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col" clsss="text-center">الرقم الذاتي</th>
+      <th scope="col" class="text-center">اسم المشارك</th>
+      <th scope="col" class="text-center">صفة العمل</th>
+      <th scope="col" class="text-center">الهيئة</th>
+      <th scope="col" class="text-center">نسبة التفرغ</th>
+      <th scope="col" class="text-center">المساهمة</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let participant of  employeeParticipates" >
+      <th scope="row"></th>
+      <td class="text-center"> {{participant.employee.hiastId}}
+      </td>
+      <td class="text-center">{{participant.employee.personalInfo | fullname }}</td>                  <td class="text-center">{{participant.employee.workInfo.workJob}}</td>
+      <td class="text-center">{{participant.employee.workInfo.workType}}</td>
+      <td class="text-center">{{participant.partialTimeRatio}}</td>
+      
+      <td class="text-center">{{participant.role}}</td>
+    </tr>
+  </tbody>
+</table>

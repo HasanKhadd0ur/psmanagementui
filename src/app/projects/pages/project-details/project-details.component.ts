@@ -14,7 +14,7 @@ export class ProjectDetailsComponent implements OnInit {
   project : Project
   @ViewChild('dataToExport', { static: false }) public dataToExport: ElementRef;
   constructor(
-    private router : Router,
+    public router : Router,
     private route: ActivatedRoute,
     private projectService: ProjectService,
     private toastr: ToastrService,

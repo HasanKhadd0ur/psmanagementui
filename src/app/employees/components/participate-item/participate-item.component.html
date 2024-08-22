@@ -22,7 +22,7 @@
             <span class="text-muted">صفة المساهمة {{employeeParticipate.role}}</span>
           </div>
           <div class="progress" style="height: 2px;">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow=[employeeParticipate.partialTimeRatio] aria-valuemin="0" aria-valuemax="60"></div>
+            <div class="progress-bar" role="progressbar" style="width: 25%" [ariaValueNow]="employeeParticipate.partialTimeRatio" aria-valuemin="0" aria-valuemax="60"></div>
           </div>
         </div>
         <div class="col-auto">

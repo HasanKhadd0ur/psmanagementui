@@ -1,11 +1,44 @@
-<tr>
-    <th scope="row"></th>
-    <td> {{step.stepInfo.stepName}}
-    </td>
-    <td class="text-left">{{step.stepInfo.description}}</td>
-    <td class="text-left">{{step.currentCompletionRatio}}</td>
-    <td class="text-left">{{step.weight}}</td>
-
-    <td class="text-left">{{step.stepInfo.startDate | date}}</td>
-<td class="text-left">{{step.stepInfo.duration}}</td>
-</tr>
+<div class="card shadow mb-4 col-8 offset-2">
+    <div class="card-header py-3">
+      <div class="row align-items-center">
+        <div class="col-auto">
+          <a href="profile-posts.html" class="avatar avatar-md">
+            <img src="./assets/images/users/4.jpg" alt="..." class="avatar-img rounded-circle">
+          </a>
+        </div>
+        <div class="col ml-n2">
+          <strong class="mb-1">{{step.stepInfo.stepName}}</strong><span class=" ml-1"></span>
+          <p class="small text-muted mb-1">{{step.stepInfo.description}}</p>
+        </div>
+        <div class="col-auto">
+        </div>
+      </div>
+    </div>
+    <div class="card-body ">
+      <div class="row align-items-center">
+        <div class="col-8 ">
+          <div class="small mb-2 d-flex">
+            <span class="text-muted flex-fill">نسبة الانجاز {{step.currentCompletionRatio}}</span>
+            <span class="text-muted">الثقل {{step.weight}}</span>
+          
+          </div>
+        </div>
+        <div  class="col-8 ">
+          <div class="small mb-2 d-flex">
+       
+          <span class="text-muted flex-fill">تاريخ البدء  {{step.stepInfo.startDate | date}}</span>
+          
+          <span class="text-muted">المدة   {{step.stepInfo.duration}} </span>
+          
+          </div>
+          
+        <div class="col-auto">
+          <button type="button" class="btn m-2 btn-sm btn-primary">استعراض تارخ  متابعتها </button>
+          <button type="button" class="btn m-2 btn-sm btn-secondary">تعديل المعلومات</button>
+          <button type="button" class="btn m-2 btn-sm btn-danger">إزالة</button>
+       
+        </div>
+        </div>
+      </div>
+    </div> <!-- / .card-body -->
+  </div>

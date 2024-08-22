@@ -1,0 +1,22 @@
+<div class="card shadow mb-4">
+    <div class="card-body text-center">
+      <div class="avatar avatar-lg mt-4">
+        <a href="">
+          <img src="./assets/images/users/4.jpg" alt="..." class="avatar-img rounded-circle">
+        </a>
+      </div>
+      <div class="card-text my-2">
+        <strong class="card-title my-0">{{participant.employee.personalInfo | fullname}}</strong>
+        <p class="small text-muted mb-0">Tristique Ltd</p>
+        <p class="small"><span class="badge badge-light text-muted"> {{participant.employee.workInfo.workType}} {{participant.employee.workInfo.workJob}}</span></p>
+      </div>
+    </div> <!-- ./card-text -->
+    <div class="card-footer">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-auto text-center">
+          <small>
+            <span class="dot dot-lg bg-secondary mr-1"></span> {{participant.role}} </small>
+        </div>
+      </div>
+    </div> <!-- /.card-footer -->
+  </div>

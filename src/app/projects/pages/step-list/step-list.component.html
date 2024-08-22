@@ -1,0 +1,20 @@
+<section  *ngIf="steps" class="row">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row align-items-center my-4">
+                <div class="col">
+                <h2 class="h3 mb-0 page-title">  قائمة مراحل المشروع </h2>
+                </div>
+            <div class="col-auto">
+            <button type="button"  (click)="this.router.navigate(['projects/create'])" class="btn btn-primary"><span class="fe fe-file-plus fe-12 mr-2"></span>إضافة مرحلة </button>
+        </div>
+   </div>
+<hr>
+    <step-row-item class=" offset-2" *ngFor="let step of steps" [step]="step"></step-row-item>
+
+    <div *ngIf="steps.length==0">
+        للأسف هذا المروع لايحوي على أية مراحل
+    </div>
+    </div>
+    </div>
+</section>

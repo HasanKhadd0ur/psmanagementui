@@ -21,6 +21,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { ProjectAttachmentsComponent } from './pages/project-attachments/project-attachments.component';
 import { StepTableComponent } from './components/step-table/step-table.component';
+import { ParticipantsTableComponent } from './components/participants-table/participants-table.component';
+import { FinancialSpendTableComponent } from './components/financial-spend-table/financial-spend-table.component';
+import { ProjectFooterComponent } from './components/project-footer/project-footer.component';
+import { StepListComponent } from './pages/step-list/step-list.component';
+import { ParticipantsListComponent } from './pages/participants-list/participants-list.component';
+import { ParticipantItemComponent } from './components/participant-item/participant-item.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +38,13 @@ import { StepTableComponent } from './components/step-table/step-table.component
     ProjectHeaderComponent,
     ProjectCreateComponent,
     ProjectAttachmentsComponent,
-    StepTableComponent
+    StepTableComponent,
+    ParticipantsTableComponent,
+    FinancialSpendTableComponent,
+    ProjectFooterComponent,
+    StepListComponent,
+    ParticipantsListComponent,
+    ParticipantItemComponent
   ],
   providers: [
     ProjectService,

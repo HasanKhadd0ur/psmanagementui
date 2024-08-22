@@ -49,108 +49,17 @@
             <p><strong>مراحل المشروع</strong></p>
             <step-table [steps]="project.steps"></step-table>
             <hr>
-            <p><strong>المشاركين في المشروع</strong></p>
-            <table class="table table-borderless table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col" clsss="text-center">الرقم الذاتي</th>
-                  <th scope="col" class="text-center">اسم المشارك</th>
-                  <th scope="col" class="text-center">صفة العمل</th>
-                  <th scope="col" class="text-center">الهيئة</th>
-                  <th scope="col" class="text-center">نسبة التفرغ</th>
-                  <th scope="col" class="text-center">المساهمة</th>
-                  
-                </tr>
-              </thead>
-              <tbody>
-                <tr  *ngFor="let participant of  project.employeeParticipates" >
-                  <th scope="row"></th>
-                  <td class="text-center"> {{participant.employee.hiastId}}
-                  </td>
-                  <td class="text-center">{{participant.employee.personalInfo | fullname }}</td>                  <td class="text-center">{{participant.employee.workInfo.workJob}}</td>
-                  <td class="text-center">{{participant.employee.workInfo.workType}}</td>
-                  <td class="text-center">{{participant.partialTimeRatio}}</td>
-                  
-                  <td class="text-center">{{participant.role}}</td>
-                </tr>
-              </tbody>
-            </table>
-
+            <participants-table [employeeParticipates]="project.employeeParticipates"></participants-table>
             <p><strong>خطة الانفاق</strong></p>
-            <table class="table table-borderless table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col" clsss="text-center">نوع الكلفة</th>
-                  <th scope="col" class="text-center">البيان</th>
-                  <th scope="col" class="text-center">الشراء المحلي </th>
-                  <th scope="col" class="text-center">الشراء الخارجي</th>
-                  <th scope="col" class="text-center">نوع القطع</th>
-                  <th scope="col" class="text-center">تاريخ الانفاق  المتوقع</th>
-                  
-                </tr>
-              </thead>
-              <tbody>
-                <tr  *ngFor="let spend of  project.financialSpending" >
-                  <th scope="row"></th>
-                  <td class="text-center"> {{spend.costType}}
-                  </td>
-                  <td class="text-center">{{spend.description }}</td>               
-                  <td class="text-center">{{spend.localPurchase}}</td>
-                  <td class="text-center">{{spend.externalPurchase.ammount}}</td>
-                  
-                  <td class="text-center">{{spend.externalPurchase.currency}}</td>
-                  <td class="text-center">{{spend.expectedSpendingDate | date}}</td>
-             
-                </tr>
-              </tbody>
-            </table>
-       
-            <div class="row mt-5">
-              <div class="col-2 text-center">
-                <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto my-4" alt="...">
-              </div>
-              <div class="col-2">
-            
-                <p class="mb-4">
-                  <strong>مدير المشروع </strong>
-                  <br/><small>{{project.projectManager.personalInfo | fullname}}</small>
-                    
-                  </p>
-  
-              </div>
-              <div class="col-2">
-            
-                <p class="mb-4">
-                  <strong>رئيس فريق العمل </strong>
-                  <br/><small>{{project.projectManager.personalInfo | fullname }}</small>
-                    
-                  </p>
-  
-              </div>
-              <div class="col-2">
-            
-                <p class="mb-4">
-                  <strong>الجهة الطارحة </strong>
-                  <br/><small>{{project.proposer.customerName}}</small>
-                    
-                  </p>
-  
-              </div>
-              <div class="col-2">
-            
-                <p class="mb-4">
-                  <strong>الجهة المنفذة  </strong>
-                  <br/><small>{{project.executer.name}}</small>
-                    
-                  </p>
-  
-              </div>  
-              <div class="col-2 text-center">
-                <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto my-4" alt="...">
-              </div>  
-            </div> <!-- /.row -->
+            <financial-spend-table [financialSpending]="project.financialSpending"></financial-spend-table> 
+      
+            <project-footer [proposer]="project.proposer" 
+                            [executer]="project.executer"
+                            [projectManager]="project.projectManager"
+                            [teamLeader]="project.teamLeader"
+            >
+
+            </project-footer>
           </div> <!-- /.card-body -->
         </div> <!-- /.card -->
       </div> <!-- /.col-12 -->
@@ -241,7 +150,7 @@
       <strong>معلومات المشروع</strong>
     </div>
     <div class="row">
-      <div class="col-md-6 col-lg-4">
+      <div class="col-md-6 col-lg-4" (click)="this.router.navigate(['/projects/steps/',project.id])">
         <div class="card shadow mb-4">
           <div class="card-body file-list">
             <div class="d-flex align-items-center">
@@ -272,7 +181,7 @@
           </div> <!-- .card-body -->
         </div> <!-- .card -->
       </div> <!-- .col -->
-      <div class="col-md-6 col-lg-4">
+      <div class="col-md-6 col-lg-4" (click)="this.router.navigate(['/projects/participants/',project.id])">
         <div class="card shadow mb-4">
           <div class="card-body file-list">
             <div class="d-flex align-items-center">

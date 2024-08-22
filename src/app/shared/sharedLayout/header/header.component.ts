@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   @Input() isToggled :Boolean;
 
   fullName :string
-  
+  email : string
   constructor(
     private router: Router,
     private userService : UserService,
@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+    this.email= this.userService.getCurrentUser().email
     this.fullName= this.userService.getUserFirstName()+"  " + this.userService.getUserLastName();
 
   }

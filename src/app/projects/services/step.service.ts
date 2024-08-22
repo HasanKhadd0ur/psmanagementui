@@ -26,7 +26,7 @@ export class StepService {
   // 
   public getStepsByProject(projectId : number ):Observable<Step[]>{
     
-    return this.http.get<Step[]>(this.config.getServerUrl()+ "/Steps/ByProject/"+projectId);
+    return this.http.get<Step[]>(this.config.getServerUrl()+ "/Steps/ByProject/?projectId="+projectId);
   }
 
   // this method responsible for change the step weight of a step
