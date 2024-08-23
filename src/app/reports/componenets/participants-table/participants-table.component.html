@@ -13,8 +13,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr  *ngFor="let participant of  employeeParticipates" >
-      <th scope="row"></th>
+    <tr  *ngFor="let participant of  employeeParticipates ; index as i " >
+      <th scope="row">{{i+1}}</th>
       <td class="text-center"> {{participant.employee.hiastId}}
       </td>
       <td class="text-center">{{participant.employee.personalInfo | fullname }}</td>                  <td class="text-center">{{participant.employee.workInfo.workJob}}</td>
@@ -23,5 +23,15 @@
       
       <td class="text-center">{{participant.role}}</td>
     </tr>
+    <tr  *ngIf="employeeParticipates.length==0" >
+      <th scope="row"></th>
+      <td class="text-center"> </td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+    </tr>
+    
   </tbody>
 </table>

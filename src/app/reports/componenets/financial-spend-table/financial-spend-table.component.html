@@ -12,8 +12,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr  *ngFor="let spend of  financialSpending" >
-        <th scope="row"></th>
+      <tr  *ngFor="let spend of  financialSpending ;index as i " >
+        <th scope="row">{{i +1 }}</th>
         <td class="text-center"> {{spend.costType}}
         </td>
         <td class="text-center">{{spend.description }}</td>               
@@ -23,6 +23,15 @@
         <td class="text-center">{{spend.externalPurchase.currency}}</td>
         <td class="text-center">{{spend.expectedSpendingDate | date}}</td>
    
+      </tr>
+      <tr  *ngIf="financialSpending.length==0" >
+        <th scope="row"></th>
+        <td class="text-center"> </td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
       </tr>
     </tbody>
   </table>

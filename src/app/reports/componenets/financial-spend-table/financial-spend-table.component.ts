@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FinancialSpending } from '../../models/responses/FinancialSpending';
+import { FinancialSpending } from '../../../projects/models/responses/FinancialSpending';
 
 @Component({
   selector: 'financial-spend-table',

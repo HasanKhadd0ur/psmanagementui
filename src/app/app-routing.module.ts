@@ -44,6 +44,10 @@ export const routes: Routes = [
     , {
       path: 'employees',
       loadChildren: () => import('./employees/employees.module').then(m => m.EmployeesModule)
+    } 
+    , {
+      path: 'reports',
+      loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule)
     }
     
     ]
@@ -58,7 +62,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{ onSameUrlNavigation: 'reload' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

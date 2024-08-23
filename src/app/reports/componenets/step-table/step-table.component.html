@@ -23,5 +23,14 @@
         <td class="text-left">{{step.stepInfo.startDate | date}}</td>
         <td class="text-left">{{step.stepInfo.duration}}</td>
       </tr>
+      <tr  *ngIf="steps.length==0" >
+        <th scope="row"></th>
+        <td class="text-center"> </td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+      </tr>
     </tbody>
   </table>

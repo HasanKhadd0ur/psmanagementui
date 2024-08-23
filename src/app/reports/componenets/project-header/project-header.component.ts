@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ProjectInfo } from '../../models/valueObjects/ProjectInfo';
-import { ProposalInfo } from '../../models/valueObjects/proposalInfo';
+import { ProjectInfo } from '../../../projects/models/valueObjects/ProjectInfo';
+import { ProposalInfo } from '../../../projects/models/valueObjects/proposalInfo';
 import { Employee } from '../../../employees/models/responses/employee';
 
 @Component({

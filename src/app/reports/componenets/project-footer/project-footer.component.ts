@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Customer } from '../../../customers/models/customer';
 import { Employee } from '../../../employees/models/responses/employee';
-import { Department } from '../../models/responses/Department';
+import { Department } from '../../../projects/models/responses/Department';
 
 @Component({
   selector: 'project-footer',

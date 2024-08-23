@@ -1,5 +1,5 @@
 
-<div class="card shadow mb-4">
+<div class="card shadow  mb-4" style="min-height: 200px;">
     <div class="card-body text-center">
       <div class="avatar avatar-lg mt-4">
         <a href="">
@@ -10,6 +10,7 @@
         <strong class="card-title my-0">{{project.projectInfo.name}} </strong>
         <p class="small">{{project.projectInfo.description}}</p>
         <p class="small">ينفذ من قبل {{project.executer.name}}</p>
+        <p class="small">الطور   {{project.currentState  }}</p>
       
         <p class="small text-muted mb-0"> <span class="badge badge-light text-muted"> رمز المشروع {{project.projectInfo.code}} </span>, <span class="badge badge-light text-muted"> تاريخ البدء {{project.projectInfo.startDate | date}} </span></p>
       
@@ -17,13 +18,12 @@
     </div> <!-- ./card-text -->
     <div class="card-footer">
       <div class="row align-items-center justify-content-between">
-        <div class="col-auto">
-          <small>
-            <span class=" mr-1"></span>  </small>
-        </div>
-        <div class="col-auto">
-          <div class="file-action">
-           {{project.currentState}}
+    
+        <div class="col">
+          <div class="file-action d-flex justify-content-around">
+            <a type="button" [routerLink]="['/projects/detail',project.id]" class="btn btn-primary m-1">لوحة التحكم</a>
+            <a type="button" [routerLink]="['/reports/definition',project.id]"  class="btn btn-primary m-1">بطاقة المشروع</a>
+            <!-- [routerLink]="['/projects/detail',project.id]" -->
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Step } from '../../models/responses/Step';
+import { Step } from '../../../projects/models/responses/Step';
 
 @Component({
   selector: 'step-table',

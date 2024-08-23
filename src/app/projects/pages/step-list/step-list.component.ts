@@ -4,6 +4,8 @@ import { ProjectService } from '../../services/project.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { StepService } from '../../services/step.service';
+import { ModalService } from '../../../core/services/modals/modal.service';
+import { AddStepModalComponent } from '../../components/modals/add-step-modal/add-step-modal.component';
 
 @Component({
   selector: 'step-list',
@@ -17,8 +19,8 @@ export class StepListComponent {
     private stepService :StepService,
     private toastr : ToastrService,
     private route: ActivatedRoute,
-    public router :Router
-
+    public router :Router,
+    private modalService: ModalService
   ) {
     
   }
@@ -26,7 +28,9 @@ export class StepListComponent {
     this.loadParticipations();
 
   }
-   loadParticipations(): void{
+
+
+  loadParticipations(): void{
 
     this.stepService.getStepsByProject(this.projectId).subscribe({
       next: (data)=> {
@@ -41,5 +45,13 @@ export class StepListComponent {
       }
     })
 
+  }
+  addStep() {
+    this.modalService.openModal({},AddStepModalComponent).then(result => {
+      if (result) {
+        // Logic to handle the step after it's been added, such as updating the project steps
+        console.log('New Step:', result);
+      }
+    });
   }
 }

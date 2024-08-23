@@ -10,6 +10,7 @@ import { NavItemComponent } from './componenets/nav-item/nav-item.component';
 import { LoadingSpinnerComponent } from './componenets/loading-spinner/loading-spinner.component';
 import { FullnamePipe } from './pipes/fullName/fullname.pipe';
 import { CardItemComponent } from './componenets/card-item/card-item.component';
+import { StateTranslatePipe } from './pipes/stateTranslate/state-translate.pipe';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { CardItemComponent } from './componenets/card-item/card-item.component';
     NavItemComponent,
     LoadingSpinnerComponent,
     FullnamePipe,
+    StateTranslatePipe,
     CardItemComponent
   
   ],
