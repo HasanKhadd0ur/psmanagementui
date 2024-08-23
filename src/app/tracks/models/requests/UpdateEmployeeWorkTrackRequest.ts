@@ -10,3 +10,4 @@ export class UpdateEmployeeWorkTrackRequest {
     employeeWork: EmployeeWork;
     notes: string;
 }
+
