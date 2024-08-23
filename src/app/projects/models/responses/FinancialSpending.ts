@@ -1,7 +1,7 @@
 export class FinancialSpending {
     id: number;
-    expectedSpendingDate: number;
-    costType: number;
+    expectedSpendingDate: Date;
+    costType: string;
     description: string;
     localPurchase: number;
     externalPurchase: {

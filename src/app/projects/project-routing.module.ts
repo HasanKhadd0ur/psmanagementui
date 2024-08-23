@@ -5,6 +5,7 @@ import { ProjectDetailsComponent } from './pages/project-details/project-details
 import { ProjectCreateComponent } from './pages/project-create/project-create.component';
 import { StepListComponent } from './pages/step-list/step-list.component';
 import { ParticipantsListComponent } from './pages/participants-list/participants-list.component';
+import { FinancialSpendingComponent } from './pages/financial-spending/financial-spending.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'detail/:id', component: ProjectDetailsComponent },
   { path: 'create', component: ProjectCreateComponent },
   { path: 'steps/:id', component: StepListComponent },
-  { path: 'participants/:id', component: ParticipantsListComponent }
+  { path: 'participants/:id', component: ParticipantsListComponent },
+  { path: 'spending/:id', component: FinancialSpendingComponent }
   
 
  

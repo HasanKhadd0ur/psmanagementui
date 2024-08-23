@@ -1,0 +1,42 @@
+<div class="card shadow mb-4 col-8 offset-2">
+    <div class="card-header py-3">
+      <div class="row align-items-center">
+        <div class="col-auto">
+          <a href="profile-posts.html" class="avatar avatar-md">
+            <img src="./assets/images/users/4.jpg" alt="..." class="avatar-img rounded-circle">
+          </a>
+        </div>
+        <div class="col ml-n2">
+          <strong class="mb-1">{{item.costType}}</strong><span class=" ml-1"></span>
+          <p class="small text-muted mb-1">{{item.description}}</p>
+        </div>
+        <div class="col-auto">
+        </div>
+      </div>
+    </div>
+    <div class="card-body ">
+      <div class="row align-items-center">
+        <div class="col-8 ">
+          <div class="small mb-2 d-flex">
+            <span class="text-muted flex-fill">الشراء المحلي  {{item.localPurchase}}</span>
+            <span class="text-muted">تاريخ الصرف المتوقع {{item.expectedSpendingDate | date}}</span>
+          
+          </div>
+        </div>
+        <div  class="col-8 ">
+          <div class="small mb-2 d-flex">
+       
+          <span class="text-muted flex-fill">الشراء الخارجي   {{item.externalPurchase.ammount}} {{item.externalPurchase.currency}}</span>
+          
+          
+          </div>
+          
+        <div class="col-auto">
+          <button type="button" (click)="onEdit()" class="btn m-2 btn-sm btn-secondary">تعديل المعلومات</button>
+          <button type="button" (click)="onDelete()"class="btn m-2 btn-sm btn-danger">إزالة</button>
+       
+        </div>
+        </div>
+      </div>
+    </div> <!-- / .card-body -->
+  </div>

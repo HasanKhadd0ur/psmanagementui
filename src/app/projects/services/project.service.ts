@@ -95,7 +95,7 @@ export class ProjectService {
   //
   public addStepToProject(request  : AddProjectStepRequest ):Observable<number>{
     
-    return this.http.post<number>(this.config.getServerUrl()+ "/Projects/AddProjetStep",request);
+    return this.http.post<number>(this.config.getServerUrl()+ "/Projects/AddProjectStep",request);
 
   }
   //#endregion  planning  managment

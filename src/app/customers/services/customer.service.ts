@@ -5,6 +5,7 @@ import { ConfigurationService } from '../../core/services/configuration/configur
 import { Observable } from 'rxjs';
 import { Result } from '../../core/models/result';
 import { CreateCustomerRequest } from '../models/createCustomerRequest';
+import { UpdateCustomerRequest } from '../models/requests/updateCustomerRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -28,9 +29,9 @@ export class CustomerService {
     return this.http.post<Customer>(this.config.getServerUrl()+ "/Customers",customer);
   }
 
-  public updateCustomer(id :number ,customer :Customer):Observable<void>{
+  public updateCustomer(id :number ,request :UpdateCustomerRequest):Observable<void>{
     
-    return this.http.put<void>(`${this.config.getServerUrl()}/Customers/${id}` ,customer);
+    return this.http.put<void>(`${this.config.getServerUrl()}/Customers/${id}` ,request);
   }
   
   public deleteCustomer(customerId: number): Observable<void> {

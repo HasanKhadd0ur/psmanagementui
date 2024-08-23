@@ -1,29 +1,54 @@
-<h1 mat-dialog-title>Add Step</h1>
-<div mat-dialog-content>
-  <form [formGroup]="stepForm">
-    <mat-form-field>
-      <mat-label>Name</mat-label>
-      <input matInput formControlName="name">
-      <mat-error *ngIf="stepForm.get('name')!.hasError('required')">Name is required</mat-error>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Description</mat-label>
-      <textarea matInput formControlName="description"></textarea>
-      <mat-error *ngIf="stepForm.get('description')!.hasError('required')">Description is required</mat-error>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Weight</mat-label>
-      <input matInput type="number" formControlName="weight">
-      <mat-error *ngIf="stepForm.get('weight')!.hasError('required')">Weight is required</mat-error>
-      <mat-error *ngIf="stepForm.get('weight')!.hasError('min') || stepForm.get('weight')!.hasError('max')">
-        Weight must be between 1 and 100
-      </mat-error>
-    </mat-form-field>
-  </form>
+<div class="modal-header">
+  <button type="button" class="btn-close" (click)="onClose()" ></button>
+  <h5 class="modal-title text-center">إضافة  مرحلة جديدة</h5>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button color="primary" (click)="onSubmit()" [disabled]="stepForm.invalid">Add Step</button>
+<div class="modal-body">
+  <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+    <div class="row">
+
+      <div class="mb-3 col-3  offset-1">
+        <label for="stepName" class="form-label">اسم المرحلة</label>
+        <input type="text" name="stepName" id="stepName" class="form-control" [(ngModel)]="request.stepInfo.stepName" required>
+      </div>
+      
+      <div class="mb-3 col-3">
+        <label for="start" class="form-label">تاريخ البدء</label>
+        <input type="date" id="start" class="form-control" [(ngModel)]="request.stepInfo.startDate" name="start" required>
+      </div>
+
+    <div class="mb-3 col-3">
+      <label for="worker" class="form-label">عدد العمال المطلوب</label>
+      <input  id="worker" class="form-control" [(ngModel)]="request.stepInfo.NumberOfWorker" name="worker" required>
+    </div>
+    
+    </div>
+    <div class="row">
+      <div class="mb-3 col-8 offset-1" >
+        <label for="decription" class="form-label">الوصف</label>
+        <textarea col="3" name="worker" id="decription" class="form-control" [(ngModel)]="request.stepInfo.description"  required>
+          </textarea>
+      </div>
+      </div>
+      <div class="row">
+        <div class="mb-3 col-3  offset-1">
+          <label for="completion" class="form-label">نسبة الانجاز</label>
+          <input  id="completion" class="form-control" [(ngModel)]="request.currentCompletionRatio" name="completion" required>
+        </div>
+        
+      <div class="mb-3 col-3">
+        <label for="duration" class="form-label">المدة</label>
+        <input  id="duration" class="form-control" [(ngModel)]="request.stepInfo.duration" name="duration" required>
+      </div>
+
+    <div class="mb-3 col-3">
+      <label for="weight" class="form-label">الثقل</label>
+      <input id="weight" name="weight" class="form-control" [(ngModel)]="request.weight"  required>
+    </div>
+      </div>
+    <div class="row ">
+      <button type="submit" class="btn btn-primary">إضافة</button>
+      <button  class="btn btn-seondary" (click)="onClose()" >إغلاق</button>
+   
+    </div>
+     </form>
 </div>

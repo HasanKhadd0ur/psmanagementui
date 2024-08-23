@@ -29,6 +29,8 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { ProjectsModule } from './projects/projects.module';
 import { ProjectRoutingModule } from './projects/project-routing.module';
 import { ProjectFAQComponent } from './pages/project-faq/project-faq.component';
+import { PsmStartComponent } from './pages/psm-start/psm-start.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { ProjectFAQComponent } from './pages/project-faq/project-faq.component';
     LoginComponent,
     PageNotfoundComponent,
     ProjectFAQComponent,
+    PsmStartComponent,
   
   ],
   imports: [
@@ -57,7 +60,8 @@ import { ProjectFAQComponent } from './pages/project-faq/project-faq.component';
       preventDuplicates: true,
       progressBar: true, // Prevent duplicate toasts
     }),
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   
 ],
   providers: [

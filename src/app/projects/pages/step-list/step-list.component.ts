@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, NgModuleRef } from '@angular/core';
 import { Step } from '../../models/responses/Step';
 import { ProjectService } from '../../services/project.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { StepService } from '../../services/step.service';
-import { ModalService } from '../../../core/services/modals/modal.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddStepModalComponent } from '../../components/modals/add-step-modal/add-step-modal.component';
-
 @Component({
   selector: 'step-list',
   templateUrl: './step-list.component.html',
@@ -14,13 +13,15 @@ import { AddStepModalComponent } from '../../components/modals/add-step-modal/ad
 })
 export class StepListComponent {
   steps : Step[]
+
   projectId = Number(this.route.snapshot.paramMap.get('id'));
+
   constructor(
     private stepService :StepService,
     private toastr : ToastrService,
     private route: ActivatedRoute,
     public router :Router,
-    private modalService: ModalService
+    private modalService: NgbModal
   ) {
     
   }
@@ -46,12 +47,19 @@ export class StepListComponent {
     })
 
   }
-  addStep() {
-    this.modalService.openModal({},AddStepModalComponent).then(result => {
+  openAddModal(): void {
+    const modalRef = this.modalService.open(AddStepModalComponent, { size: 'lg' });
+    modalRef.componentInstance.projectId = this.projectId;
+
+    modalRef.result.then((result) => {
       if (result) {
-        // Logic to handle the step after it's been added, such as updating the project steps
-        console.log('New Step:', result);
+        // Add the new project to the list
+        this.steps.push(result);
+        console.log('Project added:', result);
       }
+    }, (reason) => {
+      // Handle modal dismiss
+      console.log('Modal dismissed with reason:', reason);
     });
   }
 }

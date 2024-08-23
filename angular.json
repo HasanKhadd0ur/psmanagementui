@@ -44,6 +44,7 @@
               }
             ],
           "styles": [
+             "node_modules/bootstrap/dist/css/bootstrap.min.css",
             "@angular/material/prebuilt-themes/azure-blue.css",
             "src/styles.css",
             "src/assets/css/app-light.css",
@@ -51,6 +52,8 @@
             "./node_modules/bootstrap/dist/css/bootstrap.min.css"
           ],
           "scripts": [
+             "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
             "./node_modules/jquery-sparkline/jquery.sparkline.min.js",
           "./node_modules/@popperjs/core/dist/umd/popper.min.js",
           "node_modules/feather-icons/dist/feather.min.js"

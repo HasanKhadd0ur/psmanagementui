@@ -16,15 +16,15 @@ export class UpdateCustomerComponent {
   }
   onSubmit(customer: Customer) {
 
-    this.customerService
-        .updateCustomer(customer.id,customer)
-        .subscribe({
-          next: (res)=>{
-            console.log(res)
-          },
-          error: (error)=> console.log(error)
-        }
-      );
+    // this.customerService
+    //     .updateCustomer(customer.id,customer)
+    //     .subscribe({
+    //       next: (res)=>{
+    //         console.log(res)
+    //       },
+    //       error: (error)=> console.log(error)
+    //     }
+    //   );
 
   }
   

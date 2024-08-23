@@ -7,6 +7,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { CustomerListComponent } from './customers/pages/customer-list/customer-list.component';
 import { PageNotfoundComponent } from './pages/page-notfound/page-notfound.component';
 import { ProjectFAQComponent } from './pages/project-faq/project-faq.component';
+import { PsmStartComponent } from './pages/psm-start/psm-start.component';
 
 export const routes: Routes = [
   
@@ -29,6 +30,11 @@ export const routes: Routes = [
         
       },
       {
+        path: 'Help',
+        component: PsmStartComponent,
+        
+      },
+      {
         path: '',
         component:HomeComponent  ,
         pathMatch: "full"
@@ -40,6 +46,7 @@ export const routes: Routes = [
      , {
       path: 'projects',
       loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule)
+      
     }
     , {
       path: 'employees',

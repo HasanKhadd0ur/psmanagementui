@@ -28,6 +28,8 @@ import { RouterModule } from '@angular/router';
 import { AddStepModalComponent } from './components/modals/add-step-modal/add-step-modal.component';
 import { AddFinancialSpendModalComponent } from './components/modals/add-financial-spend-modal/add-financial-spend-modal.component';
 import { AddAttachmentModalComponent } from './components/modals/add-attachment-modal/add-attachment-modal.component';
+import { FinancialSpendingComponent } from './pages/financial-spending/financial-spending.component';
+import { FinancialItemComponent } from './components/financial-item/financial-item.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { AddAttachmentModalComponent } from './components/modals/add-attachment-
     InfoControllComponent,
     AddStepModalComponent,
     AddFinancialSpendModalComponent,
-    AddAttachmentModalComponent
+    AddAttachmentModalComponent,
+    FinancialSpendingComponent,
+    FinancialItemComponent
   ],
   providers: [
     ProjectService,
