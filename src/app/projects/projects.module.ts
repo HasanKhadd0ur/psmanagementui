@@ -27,6 +27,9 @@ import { ProjectFooterComponent } from './components/project-footer/project-foot
 import { StepListComponent } from './pages/step-list/step-list.component';
 import { ParticipantsListComponent } from './pages/participants-list/participants-list.component';
 import { ParticipantItemComponent } from './components/participant-item/participant-item.component';
+import { PlanControllComponent } from './components/project-controll/plan-controll/plan-controll.component';
+import { TrackControllComponent } from './components/project-controll/track-controll/track-controll.component';
+import { InfoControllComponent } from './components/project-controll/info-controll/info-controll.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { ParticipantItemComponent } from './components/participant-item/particip
     ProjectFooterComponent,
     StepListComponent,
     ParticipantsListComponent,
-    ParticipantItemComponent
+    ParticipantItemComponent,
+    PlanControllComponent,
+    TrackControllComponent,
+    InfoControllComponent
   ],
   providers: [
     ProjectService,

@@ -9,6 +9,7 @@ import { StepTrackComponent } from './components/step-track/step-track.component
 import { EmployeeTrackComponent } from './components/employee-track/employee-track.component';
 import { StepTrackDetailsComponent } from './pages/step-track-details/step-track-details.component';
 import { ProjectTrackHistoryComponent } from './pages/project-track-history/project-track-history.component';
+import { StepTrackHistoryComponent } from './pages/step-track-history/step-track-history.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ProjectTrackHistoryComponent } from './pages/project-track-history/proj
     StepTrackComponent,
     EmployeeTrackComponent,
     StepTrackDetailsComponent,
-    ProjectTrackHistoryComponent
+    ProjectTrackHistoryComponent,
+    StepTrackHistoryComponent
   ],
   imports: [
     CommonModule,

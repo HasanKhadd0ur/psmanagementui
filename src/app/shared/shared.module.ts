@@ -9,6 +9,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NavItemComponent } from './componenets/nav-item/nav-item.component';
 import { LoadingSpinnerComponent } from './componenets/loading-spinner/loading-spinner.component';
 import { FullnamePipe } from './pipes/fullName/fullname.pipe';
+import { CardItemComponent } from './componenets/card-item/card-item.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FullnamePipe } from './pipes/fullName/fullname.pipe';
     LayoutComponent,
     NavItemComponent,
     LoadingSpinnerComponent,
-    FullnamePipe
+    FullnamePipe,
+    CardItemComponent
   
   ],
   imports: [
@@ -33,6 +35,7 @@ import { FullnamePipe } from './pipes/fullName/fullname.pipe';
     SidebarComponent,
     LayoutComponent,
     FullnamePipe,
+    CardItemComponent,
     LoadingSpinnerComponent
   ],schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

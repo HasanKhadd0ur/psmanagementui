@@ -4,7 +4,7 @@ import { ConfigurationService } from '../../core/services/configuration/configur
 import { Project } from '../models/responses/project';
 import { Result } from '../../core/models/result';
 import { Observable } from 'rxjs';
-import { GetProjectsByProjectManagerRequest } from '../models/requests/project-requests/GetProjectsByProjectManagerRequest';
+import { GetProjectsByProjectManagerRequest, GetProjectsByTeamLeaderRequest } from '../models/requests/project-requests/GetProjectsByProjectManagerRequest';
 import { EmployeeParticipate } from '../../employees/models/responses/employeeParticipate';
 import { ChangeProjectTeamLeaderRequest } from '../models/requests/project-requests/ChangeProjectTeamLeaderRequest';
 import { ChangeProjectManagerRequest } from '../models/requests/project-requests/ChangeProjectManagerRequest';
@@ -59,10 +59,17 @@ export class ProjectService {
     let pagination =this.getPagination(request.pageSize,request.pageNumber);
     return this
               .http
-              .get<Project[]>(`
-                ${this.config.getServerUrl()}
-                /Projects/ByProjectManager/?projectManagerId=${request.projectMangerId}${pagination}`);
+              .get<Project[]>(`${this.config.getServerUrl()}/Projects/ByProjectManager/?projectManagerId=${request.projectMangerId}${pagination}`);
   }
+  // this method retreive  the projects by its manager 
+  public getByTeamLeader(request : GetProjectsByTeamLeaderRequest ):Observable<Project[]>{
+    
+    let pagination =this.getPagination(request.pageSize,request.pageNumber);
+    return this
+              .http
+              .get<Project[]>(`${this.config.getServerUrl()}/Projects/ByFilter/?teamLeaderId=${request.teamLeaderrId}${pagination}`);
+  }
+  
   //#endregion  queries
 
   //#region  planning  managment

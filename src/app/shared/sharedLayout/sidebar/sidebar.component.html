@@ -24,7 +24,9 @@
             <a href="components-alerts.html">
               <i class="fe fe-circle"></i><span>اتمام عملية متابعة</span>
             </a>
+
           </li>
+
         </ul>
 
       </li><!-- End Components Nav -->
@@ -33,6 +35,7 @@
           <i class="fe fe-flag"></i><span> عمليات المتابعة</span>
         </a>
       </li>
+
       <li class="nav-heading">التقارير</li>
 
       <li class="nav-item">
@@ -69,6 +72,7 @@
           <i class="fe fe-edit-2"></i><span>إضافة جهة طارحة</span>
         </a>
       </li>
+
       <li class="nav-heading">إدارة المشاريع</li>
 
           <li class="nav-item">
@@ -77,20 +81,37 @@
             </a>
           </li>
           <li class="nav-item">
-            <a [routerLink]="['/projects']" class="nav-link collapsed">
+            <a 
+              [routerLink]="['/projects']"
+              [queryParams]="{ listType: 'all'}"
+               class="nav-link collapsed">
               <i class="bi bi-circle"></i><span>استعراض المشاريع</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link collapsed" href="forms-editors.html">
+            <a 
+            [routerLink]="['/projects']"
+            [queryParams]="{ listType: 'managed'}"  
+              class="nav-link collapsed"
+            >
               <i class="bi bi-circle"></i><span>المشاريع التي أديرها</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link collapsed">
+            <a 
+              [routerLink]="['/projects']"
+              [queryParams]="{ listType: 'leaded'}"
+              class="nav-link collapsed"
+            >
               <i class="bi bi-circle"></i><span>المشاريع التي أرأسها</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link collapsed">
+              <i class="bi bi-circle"></i><span>تخطيط مشروع</span>
+            </a>
+          </li>
+
           <li class="nav-heading">العمل</li>
      
           <li  [routerLink]="['/employees/participates',id]" class="nav-item">
@@ -115,7 +136,14 @@
         <a [routerLink]="['/Project-FAQ']" class="nav-link collapsed" >
           <i class="bi bi-layout-text-window-reverse"></i><span>ملامح المشروع</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        </li>
+      </li>
+
+      <li class="nav-item">
+        <a [routerLink]="['/Help']" class="nav-link collapsed" >
+          <i class="bi bi-layout-text-window-reverse"></i><span>مساعدة</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+      </li>
+
     </ul>
 
   </aside><!-- End Sidebar-->

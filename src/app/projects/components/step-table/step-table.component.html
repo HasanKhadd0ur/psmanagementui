@@ -12,8 +12,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr  *ngFor="let step of steps " >
-        <th scope="row"></th>
+      <tr  *ngFor="let step of steps ; index as i " >
+        <th scope="row">{{i+1}}</th>
         <td> {{step.stepInfo.stepName}}
         </td>
         <td class="text-left">{{step.stepInfo.description}}</td>

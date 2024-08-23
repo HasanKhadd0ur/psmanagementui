@@ -3,3 +3,8 @@ export interface GetProjectsByProjectManagerRequest {
     pageNumber: number | null;
     pageSize: number | null;
 }
+export interface GetProjectsByTeamLeaderRequest {
+    teamLeaderrId: number;
+    pageNumber: number | null;
+    pageSize: number | null;
+}

@@ -1,0 +1,15 @@
+<div class="col-md-6 col-lg-4" [routerLink]="[item.navigate,item.params]">
+    <div class="card shadow mb-4">
+      <div class="card-body file-list">
+        <div class="d-flex align-items-center">
+          <div class="circle circle-md bg-secondary">
+            <span [classList]="['fe', 'fe-16', 'text-white',item.icon]" ></span>
+          </div>
+          <div class="flex-fill ml-4 fname">
+            <strong>{{item.name}}</strong><br />
+          </div>
+        </div>
+      </div> <!-- .card-body -->
+    </div> <!-- .card -->
+  
+  </div> <!-- .row -->

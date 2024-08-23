@@ -4,6 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Project } from '../../models/responses/project';
 import { PdfDownloaderService } from '../../../core/services/pdfDownloader/pdf-downloader.service';
 import { ProjectService } from '../../services/project.service';
+import { icons } from 'feather-icons/generated/feather-icons';
+import { param } from 'jquery';
 
 @Component({
   selector: 'project-details',
@@ -12,7 +14,7 @@ import { ProjectService } from '../../services/project.service';
 })
 export class ProjectDetailsComponent implements OnInit {
   project : Project
-  @ViewChild('dataToExport', { static: false }) public dataToExport: ElementRef;
+
   constructor(
     public router : Router,
     private route: ActivatedRoute,

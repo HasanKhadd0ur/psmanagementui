@@ -10,9 +10,13 @@
         </div>
     </div>
     <hr>
-    <div  class="row">
+    <div *ngIf="projects">
+    <div  class="row" *ngIf="projects.length > 0">
         <project-item class="col-md-4" (click)="this.router.navigate(['projects/detail',project.id])"   *ngFor="let project of projects" [project]="project"></project-item>
     </div>
-    
+    <div  class="row" *ngIf="projects.length == 0">
+            لا يوجد أي مشروع 
     </div>
+    </div>
+</div>
 </div>
