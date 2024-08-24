@@ -14,6 +14,7 @@ import { ParticipantsTableComponent } from './componenets/participants-table/par
 import { ProjectFooterComponent } from './componenets/project-footer/project-footer.component';
 import { StepTableComponent } from './componenets/step-table/step-table.component';
 import { SharedModule } from '../shared/shared.module';
+import { GanttChartComponent } from './componenets/gantt-chart/gantt-chart.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SharedModule } from '../shared/shared.module';
     FinancialSpendTableComponent,
     ProjectFooterComponent,
     ProjectHeaderComponent,
-    ProjectTimeLineComponent
+    ProjectTimeLineComponent,
+    GanttChartComponent
   ],
   imports: [
     CommonModule,

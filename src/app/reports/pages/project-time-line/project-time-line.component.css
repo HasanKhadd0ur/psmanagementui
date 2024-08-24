@@ -1,0 +1,9 @@
+.chart-container {
+    width: 794px; /* Adjust based on A4 size */
+    height: 1123px; /* Adjust based on A4 size */
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    page-break-inside: avoid;
+}

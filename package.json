@@ -27,6 +27,7 @@
     "@ngx-translate/http-loader": "^8.0.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
+    "dhtmlx-gantt": "^8.0.10",
     "dom-to-image": "^2.6.0",
     "feather-icons": "^4.29.2",
     "html2canvas": "^1.4.1",
