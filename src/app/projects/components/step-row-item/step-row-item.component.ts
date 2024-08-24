@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Step } from '../../models/responses/Step';
 
 @Component({
@@ -9,4 +9,9 @@ import { Step } from '../../models/responses/Step';
 export class StepRowItemComponent {
 
   @Input() step :Step
+  @Output() delete = new EventEmitter<void>();
+
+  onDelete() {
+    this.delete.emit();
+  } 
 }

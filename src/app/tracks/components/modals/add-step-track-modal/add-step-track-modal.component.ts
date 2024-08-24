@@ -19,8 +19,9 @@ import { StepService } from '../../../../projects/services/step.service';
 })
 export class AddStepTrackModalComponent {
   @Input() isVisible = false;
-  @Input() steps: Step[] = []; // All steps available for the project
+  steps: Step[] = []; // All steps available for the project
   @Input() trackedSteps: Step[] = []; // Steps that are already tracked
+  @Input() projectId :number 
   @Input() trackId :number
   @Output() addStepTrack = new EventEmitter<AddStepTrackRequest>();
 
@@ -31,6 +32,7 @@ export class AddStepTrackModalComponent {
     private stepService : StepService 
   ) {
     this.stepTrackForm = this.fb.group({
+      id: [],
       stepName: ['', Validators.required],
       executionState: ['', Validators.required],
       trackExecutionRatio: [0, [Validators.required, Validators.min(0), Validators.max(100)]],
@@ -38,36 +40,54 @@ export class AddStepTrackModalComponent {
   }
 
   ngOnInit(): void {
-    this.filteredSteps = this.steps.filter(step => 
-      !this.trackedSteps.some(trackedStep => trackedStep.id === step.id)
-      
-    );
+    this.stepService.getStepsByProject(this.projectId)
+    .subscribe({
+      next: (data)=> {
+
+        console.log(data)
+        this.steps=data 
+        console.log(this.steps)
+        this.filteredSteps = this.steps.filter(step => 
+          !this.trackedSteps.some(trackedStep => trackedStep.id === step.id)
+          
+        );
+    
+      }
+    })
 
   }
 
   search = (text$: Observable<string>) => 
     text$.pipe(
       map(term => term.length < 2 ? [] : 
-        this.filteredSteps.filter(v => v.stepInfo.stepName.toLowerCase().includes(term.toLowerCase())).slice(0, 10))
+        this.filteredSteps.filter(v => v.stepInfo.stepName.toLowerCase().includes(term.toLowerCase())).slice(0, 10).map( e => e.stepInfo.stepName))
     );
 
   onStepSelected(step: Step): void {
-    this.stepTrackForm.patchValue({ stepName: step.stepInfo.stepName });
+
+    this.stepTrackForm.patchValue({ stepName: step.stepInfo?.stepName });
+    //this.stepTrackForm.patchValue({id: step.id});
+
+    
   }
 
   onSubmit(): void {
     if (this.stepTrackForm.valid) {
-      const selectedStep = this.filteredSteps.find(step => step.stepInfo.stepName === this.stepTrackForm.value.stepName);
+      debugger
+
+      const selectedStep = this.filteredSteps.find(step => step.stepInfo.stepName == this.stepTrackForm.value.stepName);
       if (selectedStep) {
         const newStepTrack: AddStepTrackRequest = {
           stepId: selectedStep.id,
           trackId: this.trackId, 
           executionState: this.stepTrackForm.value.executionState,
-          trackDate: new Date(),
+         
           trackExecutionRatio: this.stepTrackForm.value.trackExecutionRatio,
         };
-        this.addStepTrack.emit(newStepTrack);
         this.closeModal();
+        this.addStepTrack.emit(newStepTrack);
+
+
       }
     }
   }

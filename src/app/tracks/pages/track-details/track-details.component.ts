@@ -10,6 +10,9 @@ import { AddStepTrackRequest } from '../../models/requests/AddStepTrackRequest';
 import { error } from 'jquery';
 import { StepService } from '../../../projects/services/step.service';
 import { forkJoin } from 'rxjs';
+import { AddEmployeeTrackRequest } from '../../models/requests/AddEmployeeTrackRequest';
+import { ProjectService } from '../../../projects/services/project.service';
+import { EmployeeParticipate } from '../../../employees/models/responses/employeeParticipate';
 
 @Component({
   selector: 'track-details',
@@ -24,12 +27,14 @@ export class TrackDetailsComponent implements OnInit {
   employeesTracks : EmployeeTrack[] 
   steps: Step[] = []; // Load steps from service or store
   trackedSteps: Step[] = []; // Load already tracked steps
-
+  participants : EmployeeParticipate[]
+  
   constructor(
     private toastr : ToastrService ,
     private route :ActivatedRoute,
     private trackService : TrackService,
-    private stepService : StepService 
+    private stepService : StepService ,
+    private projectService :ProjectService 
   ){}
 
 
@@ -51,12 +56,24 @@ export class TrackDetailsComponent implements OnInit {
       this.track = track;
       this.stepTracks = stepTracks;
       this.employeesTracks = employeesTracks;
-  
+      this.loadParticipants();
       this.loadSteps();
     })
 
   }
 
+  loadParticipants(){
+    this
+    .projectService
+    .getParticipants(this.track.projectId)
+    .subscribe({
+      next: (data)=>{
+
+        this.participants = data
+      }
+
+    });
+  }
   loadSteps(){
     this.stepService
     .getStepsByProject(this.track.projectId)
@@ -99,13 +116,13 @@ export class TrackDetailsComponent implements OnInit {
 
   handleAddStepTrack(stepTrackRequest: AddStepTrackRequest): void {
 
-    stepTrackRequest.trackDate=this.track.trackInfo.trackDate
+   debugger
     this.trackService.addStepTrack(stepTrackRequest).subscribe({
 
       next : (data)=>{
 
           this.loadTheNewStep(data,stepTrackRequest);
-
+          this.toastr.success('تمت إضافة متالعة المرحلة ')
         
       }
       ,
@@ -116,6 +133,9 @@ export class TrackDetailsComponent implements OnInit {
     });
   }
   
+
+
+
   loadTheNewStep(stId :number,request :AddStepTrackRequest ){
     let s = this.steps.find(s => s.id == request.stepId  )
     let st : StepTrack ={
@@ -142,5 +162,42 @@ export class TrackDetailsComponent implements OnInit {
     this.trackedSteps.push(s!);
 
   }
+
+  handleEmployeeTrack(request: AddEmployeeTrackRequest): void {
+
+    debugger
+     this.trackService.addEmployeeTrack(request).subscribe({
+ 
+       next : (data)=>{
+ 
+           this.loadTheNewParticipant(data,request);
+           this.toastr.success('تمت إضافة متالعة المرحلة ')
+         
+       }
+       ,
+       error:(err)=>{
+         this.toastr.error('لقد حدث خطاء ما')
+       }
+ 
+     });
+   }
+   loadTheNewParticipant(empTrackId :number,request :AddEmployeeTrackRequest ){
+    let s = this.participants.find(s => s.employeeId == request.employeeId  )
+    let st : EmployeeTrack ={
+      trackId:this.trackId,
+      trackInfo:this.track.trackInfo,
+      emloyeeId:request.employeeId,
+      employeeWork:request.employeeWork,
+      employeeWorkInfo:request.employeeWorkInfo,
+      employee:s!.employee,
+      notes:request.notes
+    }
+
+
+    this.employeesTracks.push(st)
+    this.participants=this.participants.filter(e => e.employeeId == s?.employeeId) 
+
+
+   }
 
 }

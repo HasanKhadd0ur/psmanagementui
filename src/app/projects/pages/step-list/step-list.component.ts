@@ -6,6 +6,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { StepService } from '../../services/step.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddStepModalComponent } from '../../components/modals/add-step-modal/add-step-modal.component';
+import { Modal } from 'bootstrap';
 @Component({
   selector: 'step-list',
   templateUrl: './step-list.component.html',
@@ -13,7 +14,9 @@ import { AddStepModalComponent } from '../../components/modals/add-step-modal/ad
 })
 export class StepListComponent {
   steps : Step[]
-
+  modalMode: 'edit' | 'delete' = 'edit';
+  modalTitle: string = '';
+  selectedItem : Step;
   projectId = Number(this.route.snapshot.paramMap.get('id'));
 
   constructor(
@@ -63,4 +66,55 @@ export class StepListComponent {
 
     });
   }
+
+
+  openModal(mode: 'edit' | 'delete', item: Step): void {
+    this.modalMode = mode;
+    this.selectedItem = { ...item }; // Clone project to prevent direct mutation
+    console.log(this.selectedItem)
+    if (mode === 'edit') {
+      this.modalTitle = 'تعديل عنصر ';
+    } else if (mode === 'delete') {
+      this.modalTitle = 'حذف عنصر';
+    }
+
+    const modalElement = document.getElementById('stepModal');
+    if (modalElement) {
+      new Modal(modalElement).show(); // Open the modal
+    }
+  }
+
+  delete(): void {
+    
+
+    this.stepService.deleteSep(this.selectedItem.id).subscribe({
+
+      next :()=>{
+        this.steps = this.steps.filter(p => p.id !== this.selectedItem.id);
+        this.toastr.success("تم الحذف بنجاح")
+        this.closeModal();
+        
+      }
+      ,
+      error:(err)=>{
+        this.toastr.error("لقد حدث خطاء ما ")
+      
+        this.closeModal();
+      }
+
+
+    }
+
+  );
+
+
+}
+
+closeModal(): void {
+  const modalElement = document.getElementById('stepModal');
+  if (modalElement) {
+    new Modal(modalElement).hide(); // Close the modal
+  }
+}
+
 }

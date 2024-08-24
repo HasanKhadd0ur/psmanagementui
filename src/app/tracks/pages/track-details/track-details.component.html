@@ -64,8 +64,7 @@
 
               <div class="tab-pane fade profile-edit pt-3 " id="profile-edit" role="tabpanel">
 
-                <button class="btn btn-primary" (click)="showAddStepTrackModal()">متابعة مرحلة</button>
-                <hr>
+                
                   <step-track *ngFor="let stepTrack of stepTracks" [stepTrack]="stepTrack" ></step-track>
                   <div class="row" *ngIf="stepTracks.length ==0 " >
                     لم تقم بمتابعة اية مراحل
@@ -98,14 +97,26 @@
 
       </div>
     </div>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStepTrackModal">
-      Add Step Track
+    <button type="button" class="btn  mr-4 ml-4 btn-primary" data-bs-toggle="modal" data-bs-target="#addStepTrackModal">
+      إضافة متابعة مرحلة
+    </button>
+    <button type="button" class="btn mr-4 ml-4  btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeTrackModal">
+      إضافة متابعة مشارك
     </button>
     
     <add-step-track-modal 
-      [steps]="steps"
+     
+      [trackId]="trackId"
+      [projectId]="track.projectId"
       [trackedSteps]="trackedSteps"
       (addStepTrack)="handleAddStepTrack($event)">
     </add-step-track-modal>
+    <add-employee-track-modal
+     
+      [trackId]="trackId"
+      [projectId]="track.projectId"
+      [trackedParticipants]="employeesTracks"
+      (addEmployeeTrack)="handleEmployeeTrack($event)">
+    </add-employee-track-modal>
 
   </section>
