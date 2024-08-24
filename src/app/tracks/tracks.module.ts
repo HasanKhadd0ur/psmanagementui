@@ -4,30 +4,61 @@ import { CommonModule } from '@angular/common';
 import { TracksRoutingModule } from './tracks-routing.module';
 import { TracksComponent } from './pages/tracks/tracks.component';
 import { TrackDetailsComponent } from './pages/track-details/track-details.component';
-import { TracCreateComponent } from './pages/trac-create/trac-create.component';
 import { StepTrackComponent } from './components/step-track/step-track.component';
 import { EmployeeTrackComponent } from './components/employee-track/employee-track.component';
 import { StepTrackDetailsComponent } from './pages/step-track-details/step-track-details.component';
 import { ProjectTrackHistoryComponent } from './pages/project-track-history/project-track-history.component';
 import { StepTrackHistoryComponent } from './pages/step-track-history/step-track-history.component';
 import { EmployeeTrackHistoryComponent } from './pages/employee-track-history/employee-track-history.component';
+import { TrackCreateComponent } from './pages/track-create/track-create.component';
+import { AddTrackModalComponent } from './components/modals/add-track-modal/add-track-modal.component';
+import { AddStepTrackModalComponent } from './components/modals/add-step-track-modal/add-step-track-modal.component';
+import { AddEmployeeTrackModalComponent } from './components/modals/add-employee-track-modal/add-employee-track-modal.component';
+import { TrackItemComponent } from './components/track-item/track-item.component';
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCommonModule, MatOptionModule, provideNativeDateAdapter } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
   declarations: [
     TracksComponent,
     TrackDetailsComponent,
-    TracCreateComponent,
     StepTrackComponent,
     EmployeeTrackComponent,
     StepTrackDetailsComponent,
     ProjectTrackHistoryComponent,
     StepTrackHistoryComponent,
-    EmployeeTrackHistoryComponent
+    EmployeeTrackHistoryComponent,
+    TrackCreateComponent,
+    AddTrackModalComponent,
+    AddStepTrackModalComponent,
+    AddEmployeeTrackModalComponent,
+    TrackItemComponent
   ],
   imports: [
     CommonModule,
+    MatFormFieldModule,
+    MatCommonModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    RouterModule ,
+    MatInputModule,
+    ReactiveFormsModule ,
+    NgbModule,
+    SharedModule,
+    FormsModule,
     TracksRoutingModule
-  ]
+  ],
+  providers: [    provideNativeDateAdapter()]
 })
 export class TracksModule { }

@@ -70,6 +70,7 @@ export class FinancialSpendingComponent {
     })
 
   }
+
   openModal(mode: 'edit' | 'delete', item: FinancialSpending): void {
     this.modalMode = mode;
     this.selectedItem = { ...item }; // Clone project to prevent direct mutation
@@ -110,7 +111,7 @@ export class FinancialSpendingComponent {
   
   }
 
-  deleteProject(): void {
+  delete(): void {
     let request : RemoveFinancialSpendItemRequest= {
       projectId: this.projectId ,
       id: this.selectedItem.id

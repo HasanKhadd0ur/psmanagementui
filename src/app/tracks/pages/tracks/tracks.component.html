@@ -1,1 +1,48 @@
-<p>tracks works!</p>
+<section  *ngIf="tracks" class="row">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row align-items-center my-4">
+                <div class="col">
+                <h2 class="h3 mb-0 page-title">  قائمة عمليات المتابعة </h2>
+                </div>
+            <div class="col-auto">
+            <button type="button" (click)="openAddModal()" class="btn btn-primary"><span class="fe fe-file-plus fe-12 mr-2"></span>إضافة متابعة </button>
+        </div>
+   </div>
+<hr>
+
+
+    <track-item class=" offset-2" 
+      *ngFor="let track of tracks" 
+      [track]="track"
+      (delete)="openModal('delete', track)"
+      
+    ></track-item>
+
+    <div *ngIf="tracks.length==0">
+        للأسف هذا المروع لايحوي على أية مراحل
+    </div>
+    </div>
+    </div>
+</section>
+
+
+<div class="modal   fade" id="trackModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="modalLabel">{{ modalTitle }}</h5>
+
+        </div>
+        <div class="modal-body">
+          <!-- Delete Confirmation -->
+          <div *ngIf="modalMode === 'delete'">
+            <p>هل أنت متأكد من أنك تريد حذف متابعة  {{ selectedItem.projectInfo.name }} التي حدثت بتاريخ {{selectedItem.trackInfo.trackDate | date}}?</p>
+            <button type="button" class="btn m-4 btn-danger" (click)="deleteTrack()">Delete</button>
+            <button type="button" class="btn m-4 btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

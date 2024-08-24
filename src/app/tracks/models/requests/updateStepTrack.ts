@@ -1,6 +1,6 @@
 export class UpdateStepTrack {
     stepTrackId: number;
-    trackId: numebr;
+    trackId: number;
     stepId: number;
     executionState: String;
     trackDate: Date;

@@ -7,7 +7,7 @@ export class StepTrack {
     trackId  :number 
     stepInfo  :StepInfo
     trackInfo :TrackInfo
-    executionState :number 
+    executionState :string 
     trackExecutionRatio :number 
     oldExecutionRatio : number 
 

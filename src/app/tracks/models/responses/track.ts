@@ -1,3 +1,4 @@
+import { ProjectInfo } from "../../../projects/models/valueObjects/ProjectInfo"
 import { TrackInfo } from "../valueObjects/trackInfo"
 
 export class Track {
@@ -5,4 +6,5 @@ export class Track {
     trackInfo  :TrackInfo
     notes  : string 
     projectId  :number 
+    projectInfo : ProjectInfo
 }

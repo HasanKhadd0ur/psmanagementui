@@ -12,6 +12,7 @@ import { CreateTrackRequest } from '../models/requests/CreateTrackRequest';
 import { GetTracksByProjectRequest } from '../models/requests/GetTracksByProjectRequest';
 import { RemoveTrackRequest } from '../models/requests/RemoveTrackRequest';
 import { UpdateEmployeeWorkTrackRequest } from '../models/requests/UpdateEmployeeWorkTrackRequest';
+import { EmployeeTrack } from '../models/responses/employeeTrack';
 
 @Injectable({
   providedIn: 'root'
@@ -26,9 +27,7 @@ export class TrackService {
     
     return this
               .http
-              .get<Track>(`
-                ${this.config.getServerUrl()}
-                /Tracks/${trackId}}`
+              .get<Track>(`${this.config.getServerUrl()}/Tracks/${trackId}`
               );
   }
   
@@ -38,20 +37,16 @@ export class TrackService {
   
     return this
     .http
-    .get<StepTrack[]>(`
-      ${this.config.getServerUrl()}
-      /Tracks/GetStepsTrack/${trackId}}`
+    .get<StepTrack[]>(`${this.config.getServerUrl()}/Tracks/GetStepsTrack/${trackId}`
     );
   }
 // this method retreive  the employees track  by track id  
   //
-  public getEmployeesTrackById(trackId : number ):Observable<StepTrack[]>{
+  public getEmployeesTrackById(trackId : number ):Observable<EmployeeTrack[]>{
   
     return this
     .http
-    .get<StepTrack[]>(`
-      ${this.config.getServerUrl()}
-      /Tracks/GetEmployeesTrack/${trackId}}`
+    .get<EmployeeTrack[]>(`${this.config.getServerUrl()}/Tracks/GetEmployeesTrack/${trackId}`
     );
   }
   
@@ -63,9 +58,7 @@ export class TrackService {
    
     return this
     .http
-    .get<Track[]>(`
-      ${this.config.getServerUrl()}
-      /Tracks/GetTracksByProject/?projectId=${request.projectId}${pagination}}`
+    .get<Track[]>(`${this.config.getServerUrl()}/Tracks/GetTracksByProject/?projectId=${request.projectId}${pagination}`
     );
   }
 
@@ -75,9 +68,7 @@ export class TrackService {
   
     return this
     .http
-    .post<number>(`
-      ${this.config.getServerUrl()}
-      /Tracks/AddStepTrack/`,request
+    .post<number>(`${this.config.getServerUrl()}/Tracks/AddStepTrack/`,request
     );
   }
 
@@ -88,9 +79,7 @@ export class TrackService {
   
     return this
     .http
-    .post<number>(`
-      ${this.config.getServerUrl()}
-      /Tracks/AddEmployeeTrack/`,request
+    .post<number>(`${this.config.getServerUrl()}/Tracks/AddEmployeeTrack/`,request
     );
   }
 
@@ -101,9 +90,7 @@ export class TrackService {
   
     return this
     .http
-    .post<void>(`
-      ${this.config.getServerUrl()}
-      /Tracks/AddStepTrack/`,request
+    .post<void>(`${this.config.getServerUrl()}/Tracks/AddStepTrack/`,request
     );
   }
 
@@ -113,9 +100,7 @@ export class TrackService {
   
     return this
     .http
-    .post<void>(`
-      ${this.config.getServerUrl()}
-      /Tracks/RemoveTrack/`,request
+    .post<void>(`${this.config.getServerUrl()}/Tracks/RemoveTrack/`,request
     );
   }
 
@@ -125,9 +110,7 @@ export class TrackService {
   
     return this
     .http
-    .post<Track>(`
-      ${this.config.getServerUrl()}
-      /Tracks/AddStepTrack/`,request
+    .post<Track>(`${this.config.getServerUrl()}/Tracks/`,request
     );
   }
 
@@ -137,9 +120,7 @@ export class TrackService {
   
     return this
     .http
-    .put<void>(`
-      ${this.config.getServerUrl()}
-      /Tracks/UpdateEmployeeWorkTrack/`,request
+    .put<void>(`${this.config.getServerUrl()}/Tracks/UpdateEmployeeWorkTrack/`,request
     );
 
   }
@@ -151,9 +132,7 @@ export class TrackService {
   
     return this
     .http
-    .put<void>(`
-      ${this.config.getServerUrl()}
-      /Tracks/UpdateStepTrack/`,request
+    .put<void>(`${this.config.getServerUrl()}/Tracks/UpdateStepTrack/`,request
     );
 
   }

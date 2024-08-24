@@ -1,1 +1,111 @@
-<p>track-details works!</p>
+<section *ngIf="stepTracks && track && employeesTracks&&trackedSteps&&steps" class="section profile">
+    <div class="row">
+      <div class="col-xl-4">
+
+        <div class="card">
+          <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+            <img src="assets/images/users/4.jpg" alt="Profile" class="">
+            <h2>{{track.projectInfo.name}}</h2>
+            <h3>رمز المشروع : {{track.projectInfo.code}}</h3>
+            <div class="social-links mt-2">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-xl-8">
+
+        <div class="card">
+          <div class="card-body pt-3">
+            <!-- Bordered Tabs -->
+            <ul class="nav nav-tabs nav-tabs-bordered" role="tablist">
+
+              <li class="nav-item" role="presentation">
+                <button class="nav-link  pr-2 pl-2 text-center active" data-bs-toggle="tab" data-bs-target="#profile-overview" aria-selected="true" role="tab" tabindex="-1">ملخص </button>
+              </li>
+
+              <li class="nav-item" role="presentation">
+                <button class="nav-link pr-1 pl-1 " data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" role="tab">متابعة المراحل</button>
+              </li>
+
+              <li class="nav-item  pr-1 pl-1" role="presentation">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings" aria-selected="false" tabindex="-1" role="tab">متابعة الموظفين</button>
+              </li>
+
+              <li class="nav-item" role="presentation">
+                <button class="nav-link pr-1 pl-1" data-bs-toggle="tab" data-bs-target="#profile-change-password" aria-selected="false" tabindex="-1" role="tab">التقارير المرتبطة</button>
+              </li>
+
+            </ul>
+            <div class="tab-content pt-2">
+
+              <div class="tab-pane fade profile-overview active show" id="profile-overview" role="tabpanel">
+                <h5 class="card-title">وصف المشروع </h5>
+                <p class="small fst-italic">{{track.projectInfo.description}}</p>
+
+
+                <div class="row">
+                  <div class="col-8 label ">الوضع الراهن {{track.trackInfo.statusDescription}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-8 label ">الملاحظات {{track.notes}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6 label ">تاريخ عملية المتابعة {{track.trackInfo.trackDate | date}}</div>
+                  <button class="col-2 mr-1 btn btn-primary" *ngIf="!track.trackInfo.isCompleted">اكمال المتابعة</button>
+                  
+                  <div class="col-2 btn disabled btn-success ">{{track.trackInfo.isCompleted ? 'مكتملة':'غير مكتملة'}}</div>
+                </div>
+
+              </div>
+
+              <div class="tab-pane fade profile-edit pt-3 " id="profile-edit" role="tabpanel">
+
+                <button class="btn btn-primary" (click)="showAddStepTrackModal()">متابعة مرحلة</button>
+                <hr>
+                  <step-track *ngFor="let stepTrack of stepTracks" [stepTrack]="stepTrack" ></step-track>
+                  <div class="row" *ngIf="stepTracks.length ==0 " >
+                    لم تقم بمتابعة اية مراحل
+                  </div>
+              </div>
+
+              <div class="tab-pane fade pt-3" id="profile-settings" role="tabpanel">
+
+
+                <employee-track *ngFor="let employeeTrack of employeesTracks" [employeeTrack]="employeeTrack" ></employee-track>
+                <div class="row" *ngIf="employeesTracks.length ==0 " >
+               لم تقم بمتابعة اي مشارك
+                </div>
+           
+              </div>
+
+              <div class="tab-pane fade pt-3" id="profile-change-password" role="tabpanel">
+
+                <div class="row" >
+                  <button class="btn btn-primary col-3 offset-1">تقرير انشغالية عاملين </button>
+                  <button class="btn btn-primary col-3 offset-1">تقرير متابعة مراحل  </button>
+           
+                </div>
+              </div>
+
+            </div><!-- End Bordered Tabs -->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStepTrackModal">
+      Add Step Track
+    </button>
+    
+    <add-step-track-modal 
+      [steps]="steps"
+      [trackedSteps]="trackedSteps"
+      (addStepTrack)="handleAddStepTrack($event)">
+    </add-step-track-modal>
+
+  </section>

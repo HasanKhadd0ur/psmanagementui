@@ -86,7 +86,7 @@
           <!-- Delete Confirmation -->
           <div *ngIf="modalMode === 'delete'">
             <p>هل أنت متأكد من أنك تريد حذف عنصر {{ selectedItem.costType }}?</p>
-            <button type="button" class="btn m-4 btn-danger" (click)="deleteProject()">Delete</button>
+            <button type="button" class="btn m-4 btn-danger" (click)="delete()">Delete</button>
             <button type="button" class="btn m-4 btn-secondary" data-bs-dismiss="modal">Cancel</button>
           </div>
         </div>

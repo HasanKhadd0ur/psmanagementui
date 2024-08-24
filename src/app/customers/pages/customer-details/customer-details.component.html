@@ -47,26 +47,29 @@
               <div class="row">
 
                   <div class="mb-3 col-5  offset-1">
-                    <label for="stepName" class="form-label">نوع الكلفة</label>
+                    <label for="stepName" class="form-label">الجهة الطارحة</label>
                     <input type="text" name="stepName" id="stepName" class="form-control" [(ngModel)]="selectedCustomer.customerName" required>
                   </div>
                   
                   <div class="mb-3 col-5">
-                    <label for="expectedSpendingDate" class="form-label">تاريخ الانفاق المتوقع</label>
+                    <label for="expectedSpendingDate" class="form-label">البريد الاكتروني</label>
                     <input type="date" id="expectedSpendingDate" class="form-control" [(ngModel)]="selectedCustomer.email" name="expectedSpendingDate" required>
                   </div>
             
+                  <hr>
+                  العنوان
+                  
                 <div class="mb-3 col-4  offset-1">
-                  <label for="local" class="form-label">الشراء المحلي</label>
+                  <label for="local" class="form-label">المدينة</label>
                   <input  id="local" class="form-control" [(ngModel)]="selectedCustomer.address.city" name="local" required>
                 </div>
                 <div class="mb-3 col-4 ">
-                  <label for="completion" class="form-label">الشراء الخارجي </label>
+                  <label for="completion" class="form-label">اسم الشارع  </label>
                   <input  id="completion" class="form-control" [(ngModel)]="selectedCustomer.address.streetName" name="completion" required>
                 </div>
                 
               <div class="mb-3 col-2">
-                <label for="duration" class="form-label">نوغ القطع</label>
+                <label for="duration" class="form-label">رقم الشارع</label>
                 <input  type="number" id="duration" class="form-control select " [(ngModel)]="selectedCustomer.address.streetNumber" name="duration" required>
               </div>
                 </div>

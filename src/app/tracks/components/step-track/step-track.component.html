@@ -1,1 +1,33 @@
-<p>step-track works!</p>
+<div class="card shadow mb-4 col-9 offset-1">
+    <div class="card-header ">
+      <div class="row align-items-center">
+        
+        <div class="col ml-n2">
+          <strong class="mb-1"> متابعة مرحلة  {{stepTrack.stepInfo.stepName}}</strong><span class=" ml-1"></span>
+          <p class="small text-muted mb-1">وضع التنفيذ {{stepTrack.executionState}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-body ">
+      <div class="row align-items-center">
+        <div class="col-8 ">
+          <div class="small mb-2 d-flex">
+            <span class="text-muted flex-fill">نسبة التنفيذ الحالية  {{stepTrack.trackExecutionRatio + stepTrack.oldExecutionRatio}}</span>
+            <span class="text-muted">نسبة التنفيذ قبل {{stepTrack.oldExecutionRatio}}</span>
+          
+          </div>
+        </div>
+
+        
+        <div  class="col-8 ">
+  
+          
+        <div class="col-auto">
+          <button type="button " class="btn m-2 btn-sm btn-secondary">تاريخ المتابعة</button>
+       
+          <button type="button" class="btn m-2 btn-sm btn-secondary">تعديل</button>
+        </div>
+        </div>
+      </div>
+    </div> <!-- / .card-body -->
+  </div>

@@ -9,6 +9,7 @@ import { CustomerRoutingModule } from './customer-routing.module';
 import { SharedModule } from "../shared/shared.module";
 import { CustomerItemComponent } from './components/customer-item/customer-item.component';
 import { CustomerCreateComponent } from './pages/customer-create/customer-create.component';
+import { AddCustomerModalComponent } from './components/add-customer-modal/add-customer-modal.component';
 
 
 
@@ -18,7 +19,8 @@ import { CustomerCreateComponent } from './pages/customer-create/customer-create
     CustomerDetailsComponent,
     UpdateCustomerComponent,
     CustomerItemComponent,
-    CustomerCreateComponent
+    CustomerCreateComponent,
+    AddCustomerModalComponent
    ],
   imports: [
     CommonModule,

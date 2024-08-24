@@ -1,1 +1,42 @@
-<p>employee-track works!</p>
+<div class="card shadow mb-4 col-9 offset-1">
+    <div class="card-header ">
+      <div class="row align-items-center">
+        
+        <div class="col ml-n2">
+          <strong class="mb-1"> انشغالية العامل  {{employeeTrack.employee.personalInfo | fullname}}</strong><span class=" ml-1"></span>
+          <p class="small text-muted mb-1">الملاحظات  {{employeeTrack.notes}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-body ">
+      <div class="row align-items-center">
+        <div class="col-8 ">
+          <div class="small mb-2 d-flex">
+            <span class="text-muted flex-fill">ساعات العمل المسندة   {{employeeTrack.employeeWork.assignedWorkingHours}}</span>
+            <span class="text-muted ">ساعات العمل الفعلية   {{employeeTrack.employeeWork.workedHours}}</span>
+            <span class="text-muted">نسبة المساهمة في العمل {{employeeTrack.employeeWork.contributingRatio}}</span>
+          
+          </div>
+        </div>
+
+        <div class="col-8 ">
+            <div class="small mb-2 d-flex">
+              <span class="text-muted flex-fill">العمل المسند   {{employeeTrack.employeeWorkInfo.assignedWork}}</span>
+              <span class="text-muted ">تاريخ  انتهائه من العمل المسند  {{employeeTrack.employeeWorkInfo.assignedWorkEnd | date}}</span>
+              <span class="text-muted">العمل المنفذ {{employeeTrack.employeeWorkInfo.performedWork}}</span>
+            
+            </div>
+          </div>
+          
+        <div  class="col-8 ">
+  
+          
+        <div class="col-auto">
+        
+          <button type="button" class="btn m-2 btn-sm btn-secondary">المساهمات</button>
+          <button type="button" class="btn m-2 btn-sm btn-secondary">تعديل</button>
+        </div>
+        </div>
+      </div>
+    </div> <!-- / .card-body -->
+  </div>

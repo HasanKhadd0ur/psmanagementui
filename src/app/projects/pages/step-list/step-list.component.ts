@@ -55,11 +55,12 @@ export class StepListComponent {
       if (result) {
         // Add the new project to the list
         this.steps.push(result);
-        console.log('Project added:', result);
+
       }
     }, (reason) => {
-      // Handle modal dismiss
-      console.log('Modal dismissed with reason:', reason);
+      
+      this.toastr.error("لقد حدث خطاء ما")
+
     });
   }
 }
