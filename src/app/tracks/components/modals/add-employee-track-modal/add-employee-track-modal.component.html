@@ -11,7 +11,13 @@
 
               <div class="mb-3 col-4">
                 <label for="hiastId" class="form-label">الرقم الذاتي لمشارك</label>
-                <input type="text" id="hiastId" formControlName="hiastId" class="form-control" [ngbTypeahead]="search" (selectItem)="onStepSelected($event.item)">
+                <input id="hiastId" formControlName="hiastId" 
+                        class="form-control" 
+                        [ngbTypeahead]="searchEmployees"
+                        (selectItem)="onEmployeeSelected($event)"
+                        [inputFormatter]="employeeFormatter"
+                        [resultFormatter]="employeeFormatter"
+                        (selectItem)="onStepSelected($event.item)">
               </div>
               <input type="number" hidden id="id" formControlName="id" class="form-control" >
               

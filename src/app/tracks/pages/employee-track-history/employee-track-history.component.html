@@ -1,1 +1,26 @@
-<p>employee-track-history works!</p>
+<section  *ngIf="employeeTrackHistory" class="row">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row align-items-center my-4">
+                <div class="col">
+                <h4 class="h4 mb-0 page-title">  قائمة عمليات المتابعة للسيد : {{employee.personalInfo | fullname}} <br>{{projectInfo.name}} </h4>
+                </div>
+            <div class="col-auto">
+            <button type="button"  class="btn btn-secondary"><span class="fe fe-file-plus fe-12 mr-2"></span>تقرير تاريخ متابعة </button>
+        </div>
+   </div>
+<hr>
+<employee-history-item
+*ngFor="let employeeTrack of employeeTrackHistory"
+[empoyeeTrack]="employeeTrack" 
+>
+</employee-history-item>
+
+    <div *ngIf="employeeTrackHistory.length==0">
+  لم تتم متابعة هذا العامل من قبل 
+  </div>
+    </div>
+    </div>
+</section>
+
+

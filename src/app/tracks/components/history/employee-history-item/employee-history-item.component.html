@@ -1,0 +1,40 @@
+<div class="card shadow mb-4 col-9 offset-1">
+    <div class="card-header ">
+      <div class="row align-items-center">
+        
+        <div class="col ml-n2">
+          <strong class="mb-1"> عملية متابعة بتاريخ    {{empoyeeTrack.trackInfo.trackDate | date}}</strong><span class=" ml-1"></span>
+          <p class="small text-muted mb-1">الملاحظات {{empoyeeTrack.notes}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-body ">
+      <div class="row align-items-center">
+        <div class="col-8 ">
+          <div class="small mb-2 d-flex">
+            <span class="text-muted flex-fill">نسبة المساهمة  {{empoyeeTrack.employeeWork.contributingRatio}}</span>
+            <span class="text-muted">الاعمال المسندة {{empoyeeTrack.employeeWorkInfo.performedWork}}</span>
+          
+          </div>
+        </div>
+
+        <div class="col-8 ">
+          <div class="small mb-2 d-flex">
+            <span class="text-muted flex-fill">ساعات العمل المنفذة   {{empoyeeTrack.employeeWork.workedHours}}</span>
+            <span class="text-muted">العمل المنفذ  {{empoyeeTrack.employeeWorkInfo.performedWork}}</span>
+          
+          </div>
+        </div>
+
+        
+        <div  class="col-8 ">
+  
+          
+        <div class="col-auto">
+          <button type="button " [routerLink]="['/tracks/project/',empoyeeTrack.trackId]" class="btn m-2 btn-sm btn-secondary">الاطلاع على عملية المتابعة</button>
+       
+        </div>
+        </div>
+      </div>
+    </div> <!-- / .card-body -->
+  </div>

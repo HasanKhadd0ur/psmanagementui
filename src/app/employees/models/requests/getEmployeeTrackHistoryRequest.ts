@@ -1,6 +1,6 @@
 export class GetEmployeeTrackHistoryRequest {
     employeeId: number;
     projectId: number;
-    pageNumber: number;
-    pageSize: number;
+    pageNumber: number |null;
+    pageSize: number |null;
 }

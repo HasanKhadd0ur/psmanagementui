@@ -6,11 +6,9 @@ import { TracksComponent } from './pages/tracks/tracks.component';
 import { TrackDetailsComponent } from './pages/track-details/track-details.component';
 import { StepTrackComponent } from './components/step-track/step-track.component';
 import { EmployeeTrackComponent } from './components/employee-track/employee-track.component';
-import { StepTrackDetailsComponent } from './pages/step-track-details/step-track-details.component';
 import { ProjectTrackHistoryComponent } from './pages/project-track-history/project-track-history.component';
 import { StepTrackHistoryComponent } from './pages/step-track-history/step-track-history.component';
 import { EmployeeTrackHistoryComponent } from './pages/employee-track-history/employee-track-history.component';
-import { TrackCreateComponent } from './pages/track-create/track-create.component';
 import { AddTrackModalComponent } from './components/modals/add-track-modal/add-track-modal.component';
 import { AddStepTrackModalComponent } from './components/modals/add-step-track-modal/add-step-track-modal.component';
 import { AddEmployeeTrackModalComponent } from './components/modals/add-employee-track-modal/add-employee-track-modal.component';
@@ -25,6 +23,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StepHistoryItemComponent } from './components/history/step-history-item/step-history-item.component';
+import { EmployeeHistoryItemComponent } from './components/history/employee-history-item/employee-history-item.component';
+import { StateTranslatePipe } from '../shared/pipes/stateTranslate/state-translate.pipe';
 
 
 @NgModule({
@@ -33,15 +34,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TrackDetailsComponent,
     StepTrackComponent,
     EmployeeTrackComponent,
-    StepTrackDetailsComponent,
     ProjectTrackHistoryComponent,
     StepTrackHistoryComponent,
     EmployeeTrackHistoryComponent,
-    TrackCreateComponent,
     AddTrackModalComponent,
     AddStepTrackModalComponent,
     AddEmployeeTrackModalComponent,
-    TrackItemComponent
+    TrackItemComponent,
+    StepHistoryItemComponent,
+    EmployeeHistoryItemComponent
   ],
   imports: [
     CommonModule,
@@ -53,7 +54,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatDatepickerModule,
     RouterModule ,
     MatInputModule,
-    ReactiveFormsModule ,
+    ReactiveFormsModule,
     NgbModule,
     SharedModule,
     FormsModule,

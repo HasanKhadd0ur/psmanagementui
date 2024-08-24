@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Modal } from 'bootstrap';
-import { Observable, map } from 'rxjs';
+import { Observable, debounceTime, distinctUntilChanged, map } from 'rxjs';
 import { Step } from '../../../../projects/models/responses/Step';
 import { StepService } from '../../../../projects/services/step.service';
 import { AddStepTrackRequest } from '../../../models/requests/AddStepTrackRequest';
@@ -11,6 +11,7 @@ import { ProjectService } from '../../../../projects/services/project.service';
 import { EmployeeParticipate } from '../../../../employees/models/responses/employeeParticipate';
 import { EmployeeTrack } from '../../../models/responses/employeeTrack';
 import { FullnamePipe } from '../../../../shared/pipes/fullName/fullname.pipe';
+import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'add-employee-track-modal',
@@ -67,12 +68,20 @@ export class AddEmployeeTrackModalComponent {
 
   }
 
-  search = (text$: Observable<string>) => 
+  searchEmployees  = (text$: Observable<string>) => 
     text$.pipe(
-      map(term => term.length < 1 ? [] : 
-        this.filteredParticipants.filter(v => v.hiastId.toString().includes(term.toLowerCase())).slice(0, 10).map( e => e.personalInfo.firstName + "  " + e.personalInfo.lastName))
-    );
-
+      debounceTime(200),
+      distinctUntilChanged(),
+      map((term) =>
+        term.length < 1
+        ? []
+        : this.participants
+            .filter((v) => v.employee.hiastId.toString().toLowerCase().includes(term.toLowerCase()))
+            .slice(0, 10)
+          )
+        )
+      
+        
   onStepSelected(step: Employee): void {
 
     debugger
@@ -82,18 +91,31 @@ export class AddEmployeeTrackModalComponent {
     
   }
 
+  employeeFormatter = (result: any) :string=>   { 
+     
+     if(result.employee == undefined){
+      return ''
+     }
+    return     ` ${result.employee.hiastId} - ${result.employee.personalInfo.firstName } ${result.employee.personalInfo.lastName}`;
+  }
+
+  onEmployeeSelected(event: NgbTypeaheadSelectItemEvent): void {
+    debugger
+    this.stepTrackForm.patchValue({ id: event.item.employeeId });
+  }
+
   onSubmit(): void {
     if (this.stepTrackForm.valid) {
       debugger
 
-      const selectedStep = this.filteredParticipants.find(emp => emp.hiastId == this.stepTrackForm.value.hiastId);
+      const selectedStep = this.filteredParticipants.find(emp => emp.id == this.stepTrackForm.value.id);
       if (selectedStep) {
         const newEmployeeTrack: AddEmployeeTrackRequest = {
           employeeId: selectedStep.id,
           trackId: this.trackId, 
           employeeWork: {
             workedHours: this.stepTrackForm.value.workedHours,
-            assignedWorkingHours: this.stepTrackForm.value.assignedWork,
+            assignedWorkingHours: this.stepTrackForm.value.assignedWorkingHours,
             contributingRatio:this.stepTrackForm.value.contributingRatio
           },
           employeeWorkInfo:{

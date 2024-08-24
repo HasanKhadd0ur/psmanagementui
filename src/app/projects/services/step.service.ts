@@ -17,9 +17,9 @@ export class StepService {
  
   // this method responsible for get a specificef step
   // 
-  public getStepById(stepId : number ):Observable<Step[]>{
+  public getStepById(stepId : number ):Observable<Step>{
     
-    return this.http.get<Step[]>(this.config.getServerUrl()+ "/Steps/"+stepId);
+    return this.http.get<Step>(this.config.getServerUrl()+ "/Steps/"+stepId);
   }
 
   // this method responsible for get the steps of a specified project

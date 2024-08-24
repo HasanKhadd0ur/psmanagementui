@@ -37,6 +37,7 @@ import { StateTranslatePipe } from './pipes/stateTranslate/state-translate.pipe'
     SidebarComponent,
     LayoutComponent,
     FullnamePipe,
+    StateTranslatePipe,
     CardItemComponent,
     LoadingSpinnerComponent
   ],schemas: [CUSTOM_ELEMENTS_SCHEMA]

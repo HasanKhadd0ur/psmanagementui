@@ -67,7 +67,7 @@ export class EmployeesService {
     return  this
               .http
               .get<EmployeeTrack[]>(
-                  `${this.config.getServerUrl}/Employees/TrackHistory/?${query}`
+                  `${this.config.getServerUrl()}/Employees/TrackHistory/?${query}`
                 );
   }
   
