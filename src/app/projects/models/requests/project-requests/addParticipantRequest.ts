@@ -6,3 +6,4 @@ export interface AddParticipantRequest {
     partialTimeRatio: number;
     role: string;
 }
+

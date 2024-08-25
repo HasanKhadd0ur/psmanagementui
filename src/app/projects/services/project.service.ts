@@ -16,6 +16,8 @@ import { RePlanProjectRequest } from '../models/requests/project-requests/RePlan
 import { CreateProjectRequest } from '../models/requests/project-requests/createProjectRequest';
 import { AddAttachmentRequest } from '../models/requests/project-requests/AddAttachmentRequest';
 import { Attachment } from '../models/responses/Attachment';
+import { CompleteProjectRequest } from '../models/requests/project-requests/completeProjectRequest';
+import { ChangeEmployeeParticipationRequest } from '../models/requests/project-requests/ChangeEmployeeParticipationRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -118,7 +120,11 @@ export class ProjectService {
     return this.http.post<void>(this.config.getServerUrl()+ "/Projects/RemoveParticipant",request);
 
   }
+  public changeParticipation(request  : ChangeEmployeeParticipationRequest ):Observable<void>{
+    
+    return this.http.post<void>(this.config.getServerUrl()+ "/Projects/ChangeParticipation",request);
 
+  }
   //tihs method responsible for adda new participant to the project
   //
   public addParticipant(request  : AddParticipantRequest ):Observable<void>{
@@ -157,9 +163,9 @@ export class ProjectService {
 
   //tihs method responsible for changing the state of the project to completed
   //
-  public completeProject(projectId : number  ):Observable<void>{
+  public completeProject(request : CompleteProjectRequest  ):Observable<void>{
     
-    return this.http.post<void>(this.config.getServerUrl()+ "/Projects/CompleteProject/"+projectId,{});
+    return this.http.post<void>(this.config.getServerUrl()+ "/Projects/CompleteProject/",request);
 
   }
 

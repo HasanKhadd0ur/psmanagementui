@@ -30,6 +30,7 @@ import { AddFinancialSpendModalComponent } from './components/modals/add-financi
 import { AddAttachmentModalComponent } from './components/modals/add-attachment-modal/add-attachment-modal.component';
 import { FinancialSpendingComponent } from './pages/financial-spending/financial-spending.component';
 import { FinancialItemComponent } from './components/financial-item/financial-item.component';
+import { ReportControllComponent } from './components/project-controll/report-controll/report-controll.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { FinancialItemComponent } from './components/financial-item/financial-it
     AddFinancialSpendModalComponent,
     AddAttachmentModalComponent,
     FinancialSpendingComponent,
-    FinancialItemComponent
+    FinancialItemComponent,
+    ReportControllComponent
   ],
   providers: [
     ProjectService,

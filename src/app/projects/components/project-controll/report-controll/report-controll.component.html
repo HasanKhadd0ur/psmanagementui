@@ -1,12 +1,12 @@
 <div class="row align-items-center mb-4">
-    <div class=" text-center mb-4">
-      <strong>تخطيط المشروع</strong>
-    
+    <div class=" mb-4 text-center">
+      <strong>تقارير المشروع</strong>
     </div>
-
-
     <div class="row">
-      <div class="col-md-6 col-lg-4" [routerLink]="['/projects/',project.id,'spending']">
+      <div
+        class="col-md-6 col-lg-4"
+        [routerLink]="['/reports/definition/', project.id]"
+      >
         <div class="card shadow mb-4">
           <div class="card-body file-list">
             <div class="d-flex align-items-center">
@@ -14,16 +14,16 @@
                 <span class="fe fe-credit-card fe-16 text-white"></span>
               </div>
               <div class="flex-fill ml-4 fname">
-                <strong>إدارة خطة الانفاق</strong><br />
+                <strong> بطاقة المشروع</strong><br />
               </div>
-              
             </div>
-          </div> <!-- .card-body -->
-        </div> <!-- .card -->
-      </div> <!-- .col -->
-
-
-      <div class="col-md-6 col-lg-4" [routerLink]="['/projects/',project.id,'participants/']">
+          </div>
+          <!-- .card-body -->
+        </div>
+        <!-- .card -->
+      </div>
+      <!-- .col -->
+      <div class="col-md-6 col-lg-4" [routerLink]="['/reports/timeline',project.id]">
         <div class="card shadow mb-4">
           <div class="card-body file-list">
             <div class="d-flex align-items-center">
@@ -33,15 +33,19 @@
                 </div>
               </div>
               <div class="flex-fill ml-4 fname">
-                <strong>إدارة المشاركين </strong><br />
+                <strong>بطاقة الخطة الزمنية</strong><br />
               </div>
             </div>
-          </div> <!-- .card-body -->
-        </div> <!-- .card -->
-      </div> <!-- .col -->
-
-      
-      <div class="col-md-6 col-lg-4" [routerLink]="['/projects/',project.id,'steps']">
+          </div>
+          <!-- .card-body -->
+        </div>
+        <!-- .card -->
+      </div>
+      <!-- .col -->
+      <div
+        class="col-md-6 col-lg-4"
+       
+      >
         <div class="card shadow mb-4">
           <div class="card-body file-list">
             <div class="d-flex align-items-center">
@@ -49,15 +53,31 @@
                 <span class="fe fe-map fe-16 text-white"></span>
               </div>
               <div class="flex-fill ml-4 fname">
-                <strong>إدارة الخطة</strong><br />
+                <strong>بطاقة انجاز</strong><br />
               </div>
             </div>
-          </div> <!-- .card-body -->
-        </div> <!-- .card -->
-      
-      </div> <!-- .row -->
-
-      <div class="col-md-6 col-lg-4" [routerLink]="['/projects/',project.id,'/steps']">
+          </div>
+          <!-- .card-body -->
+        </div>
+        <!-- .card -->
+      </div>
+      <!-- .row -->
+    </div>
+    <div class="col-md-6 col-lg-4" >
+      <div class="card shadow mb-4">
+        <div class="card-body file-list">
+          <div class="d-flex align-items-center">
+            <div class="circle circle-md bg-secondary">
+              <span class="fe fe-map fe-16 text-white"></span>
+            </div>
+            <div class="flex-fill ml-4 fname">
+              <strong>بطاقة انشغالية العاملين</strong><br />
+            </div>
+          </div>
+        </div> <!-- .card-body -->
+      </div> <!-- .card -->
+    </div>
+    <div class="col-md-6 col-lg-4" >
         <div class="card shadow mb-4">
           <div class="card-body file-list">
             <div class="d-flex align-items-center">
@@ -65,12 +85,12 @@
                 <span class="fe fe-map fe-16 text-white"></span>
               </div>
               <div class="flex-fill ml-4 fname">
-                <strong>الانتقال إلى طور التنفيذ</strong><br />
+                <strong>بطاقة متابعة المراحل</strong><br />
               </div>
             </div>
           </div> <!-- .card-body -->
         </div> <!-- .card -->
       </div>
-
-      
+    
   </div>
+  

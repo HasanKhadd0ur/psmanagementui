@@ -18,6 +18,13 @@ export class CustomerService {
     
     return this.http.get<Customer[]>(this.config.getServerUrl()+ "/Customers");
   }
+  public getCustomersByFilter(name : string ):Observable<Customer[]>{
+    
+    return this
+    .http
+    .get<Customer[]>(this.config.getServerUrl()+ "/Customers")
+    ;
+  }
   
   public getCustomerById(id : number ):Observable<Customer>{
     

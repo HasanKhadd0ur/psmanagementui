@@ -4,8 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Project } from '../../models/responses/project';
 import { PdfDownloaderService } from '../../../core/services/pdfDownloader/pdf-downloader.service';
 import { ProjectService } from '../../services/project.service';
-import { icons } from 'feather-icons/generated/feather-icons';
-import { param } from 'jquery';
+
 
 @Component({
   selector: 'project-details',
@@ -22,18 +21,28 @@ export class ProjectDetailsComponent implements OnInit {
     private toastr: ToastrService,
     private pdfDownloader : PdfDownloaderService
     ) {}
-  ngOnInit(): void {
+
+    ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.projectService.getProjectById(id).subscribe({
+
+    this
+    .projectService
+    .getProjectById(id)
+    .subscribe({
       next :(data) => {
         
-          this.project = data;
-        
-    },
-    error : (err)=>{ console.log(err)}
+        this.project = data;
+      },
 
-  });
+      error : (err)=>{ 
+        console.log(err)
+      }
+    
+    });
+
   }
+
+  
   public downloadAsPdf(): void {
     this.pdfDownloader.downloadAsPdf('pdfContent');
   }

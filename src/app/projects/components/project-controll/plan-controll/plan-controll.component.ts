@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Project } from '../../../models/responses/project';
 
 @Component({
   selector: 'plan-controll',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class PlanControllComponent {
 
+  @Input() project : Project 
 }

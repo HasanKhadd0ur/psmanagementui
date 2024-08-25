@@ -9,6 +9,7 @@ import { ProjectClassification } from "../valueObjects/ProjectClassification"
 import { Department } from "./Department"
 import { Step } from "./Step"
 import { FinancialSpending } from "./FinancialSpending"
+import { ProjectType } from "../../../projects-types/models/responses/projectType"
 export class Project
 {
     id:number
@@ -24,6 +25,8 @@ export class Project
     executer:Department
     proposerId:number
     proposer:Customer
+    projectType : ProjectType
+    projectTypeId :number 
     steps :Step[]
     financialSpending : FinancialSpending[]
     employeeParticipates:EmployeeParticipate[]

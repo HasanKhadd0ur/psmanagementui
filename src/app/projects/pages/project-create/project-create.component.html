@@ -1,4 +1,4 @@
-<div class="card col-10">
+<div class="card col-10" *ngIf="types && departments">
   <div class="card-body">
     <h5 class="card-title text-center"><strong>طرح مشروع جديد</strong></h5>
 
@@ -69,11 +69,7 @@
         </mat-form-field>
 
     </div>
-          
-      <!-- <div class="row mb-4" formGroupName="projectInfo">
-      
-      </div> -->
-    
+  
       <div class="row mb-4" formGroupName="financialFund">
       
         
@@ -124,13 +120,21 @@
         <mat-form-field>
           <mat-label>الفعالية المنفذة </mat-label>
           <mat-select formControlName="executerId">
-            <mat-option value="1">قسم المعلوميات</mat-option>
-            <mat-option value="2">قسم النظم الاكترونية</mat-option>
+            <mat-option *ngFor="let department of departments " [value]="department.id">{{department.name}}</mat-option>
           </mat-select>
         </mat-form-field>
         
       </div>
-    
+      <div class="col-4">
+        <mat-form-field>
+          <mat-label for="projectTypeId" class="form-label">نوع النشاط </mat-label>
+          <mat-select    id="projectTypeId" formControlName="projectTypeId">
+            <mat-option  *ngFor="let type of types " [value]="type.id">{{type.typeName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+      </div>
+
       <div class="row mb-4" formGroupName="projectClassification">
       
         <mat-form-field class="col-4">
@@ -141,10 +145,6 @@
         <mat-form-field class="col-4">
           <mat-label  for="projectNature" class="form-label" >طبيعة النشاط</mat-label>
           <input formControlName="projectNature" class="form-control" id="projectNature" matInput />
-        </mat-form-field>
-        <mat-form-field class="col-4">
-          <mat-label for="projectType" class="form-label" >وضع النشاط</mat-label>
-          <input formControlName="projectType" class="form-control" id="projectType" matInput />
         </mat-form-field>
      
       </div>

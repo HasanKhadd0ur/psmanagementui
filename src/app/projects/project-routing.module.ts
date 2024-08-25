@@ -12,9 +12,9 @@ const routes: Routes = [
   {path:'',component :ProjectListComponent},
   { path: 'detail/:id', component: ProjectDetailsComponent },
   { path: 'create', component: ProjectCreateComponent },
-  { path: 'steps/:id', component: StepListComponent },
-  { path: 'participants/:id', component: ParticipantsListComponent },
-  { path: 'spending/:id', component: FinancialSpendingComponent }
+  { path: ':id/steps', component: StepListComponent },
+  { path: ':id/participants', component: ParticipantsListComponent },
+  { path: ':id/spending', component: FinancialSpendingComponent }
   
 
  

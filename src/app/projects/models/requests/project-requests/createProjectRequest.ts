@@ -14,7 +14,7 @@ export class CreateProjectRequest {
     projectManagerId :number
     proposerId :number
     executerId :number
-
+    projectTypeId :number 
     constructor(){
         
         this.projectAggreement= {
@@ -28,8 +28,7 @@ export class CreateProjectRequest {
 
         this.projectClassification = {
             projectNature :'',
-            projectStatus:'',
-            projectType:''
+            projectStatus:''
         }
         this.projectInfo ={
             name :'',

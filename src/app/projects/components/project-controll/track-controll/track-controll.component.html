@@ -1,1 +1,50 @@
-<p>track-controll works!</p>
+<div class="row align-items-center mb-4">
+    <div class=" text-center  mb-4 ">
+      <strong>متابعة المشروع</strong>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-lg-4"  [routerLink]="['/tracks/project/',project.id]">
+        <div class="card shadow mb-4">
+          <div class="card-body file-list">
+            <div class="d-flex align-items-center">
+              <div class="circle circle-md bg-secondary">
+                <span class="fe fe-compass fe-16 text-white"></span>
+              </div>
+              <div class="flex-fill ml-4 fname">
+                <strong>المتابعة</strong><br />
+              </div>
+              
+            </div>
+          </div> <!-- .card-body -->
+        </div> <!-- .card -->
+      </div> 
+      <div class="col-md-6 col-lg-4" >
+        <div class="card shadow mb-4">
+          <div class="card-body file-list">
+            <div class="d-flex align-items-center">
+              <div class="circle circle-md bg-secondary">
+                <span class="fe fe-map fe-16 text-white"></span>
+              </div>
+              <div class="flex-fill ml-4 fname">
+                <strong>إنجاز المشروع</strong><br />
+              </div>
+            </div>
+          </div> <!-- .card-body -->
+        </div> <!-- .card -->
+      </div>
+      <div class="col-md-6 col-lg-4" [routerLink]="['/projects/',project.id,'/steps']">
+        <div class="card shadow mb-4">
+          <div class="card-body file-list">
+            <div class="d-flex align-items-center">
+              <div class="circle circle-md bg-secondary">
+                <span class="fe fe-map fe-16 text-white"></span>
+              </div>
+              <div class="flex-fill ml-4 fname">
+                <strong>العودة إلى مرحلة التخطيط</strong><br />
+              </div>
+            </div>
+          </div> <!-- .card-body -->
+        </div> <!-- .card -->
+      </div>
+  </div>
+  

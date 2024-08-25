@@ -9,6 +9,7 @@ import { EmployeeParticipate } from '../models/responses/employeeParticipate';
 import { GetEmployeeTrackHistoryRequest } from '../models/requests/getEmployeeTrackHistoryRequest';
 import { EmployeeTrack } from '../../tracks/models/responses/employeeTrack';
 import { UpdateEmplyeeWorkHours } from '../models/requests/updateEmployeeWorkHoursRequest';
+import { Department } from '../../projects/models/responses/Department';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,12 @@ export class EmployeesService {
     return this.http.get<Employee>(this.config.getServerUrl()+ "/Employees/"+id);
   }
 
+  public getDepartments( ):Observable<Department[]>{
+    
+    return this.http.get<Department[]>(this.config.getServerUrl()+ "/Employees/GetDepartments/");
+  }
+
+  
   public getCurrentEmployee( ):Observable<Employee>{
     let id = this.userService.getEmployeeId();
 
