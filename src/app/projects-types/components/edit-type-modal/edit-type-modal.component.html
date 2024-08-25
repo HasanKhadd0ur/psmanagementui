@@ -1,0 +1,22 @@
+<form (ngSubmit)="saveType()">
+    <div class="row">
+
+        <div class="mb-3 col-5  offset-1">
+          <label for="stepName" class="form-label">اسم النوع </label>
+          <input type="text" name="stepName" id="stepName" class="form-control" [(ngModel)]="selectedItem.typeName" required>
+        </div>
+        <div class="mb-3 col-5 ">
+          <label for="local" class="form-label">الجهد لهذا النوع من المشاريع</label>
+          <input  id="local" class="form-control" [(ngModel)]="selectedItem.expectedEffort" name="local" required>
+        </div>
+    
+        <div class="mb-3 col-9 offset-1">
+          <label for="typeDescription" class="form-label">وصف هذا النوع</label>
+          <textarea  id="typeDescription" class="form-control" [cols]="3" [(ngModel)]="selectedItem.description" name="typeDescription" required>
+            </textarea>
+
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-success">حفظ</button>
+</form>

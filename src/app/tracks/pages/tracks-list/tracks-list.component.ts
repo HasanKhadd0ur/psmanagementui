@@ -10,11 +10,11 @@ import { Modal } from 'bootstrap';
 import { RemoveTrackRequest } from '../../models/requests/RemoveTrackRequest';
 
 @Component({
-  selector: 'tracks',
-  templateUrl: './tracks.component.html',
-  styleUrl: './tracks.component.css'
+  selector: 'tracks-list',
+  templateUrl: './tracks-list.component.html',
+  styleUrl: './tracks-list.component.css'
 })
-export class TracksComponent implements OnInit{
+export class TracksListComponent implements OnInit{
 
   projectId : number 
   tracks : Track[]

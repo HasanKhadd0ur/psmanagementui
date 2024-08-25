@@ -1,0 +1,46 @@
+<section class="section contact">
+
+    <div class="row gy-4">
+
+
+      <div class="col-xl-6 col offset-3">
+        <div class="card p-4">
+          <form class="php-email-form">
+            <div class="row text-center">
+                <p>
+                  إصافة نوع مشروع
+                </p>
+            </div>
+            <div class="row gy-4">
+
+              <div class="col-12">
+                <input type="text" [(ngModel)]="request.typeName"
+                name="name" class="form-control" placeholder="اسم المشروع" required>
+              </div>
+
+              <div class="col-6 ">
+                <textarea type="tex" [(ngModel)]="request.description" [cols]="4" name="description"
+                 class="form-control" name="description" placeholder="الوصف" minlength="15" required>
+                 </textarea>
+              </div>
+
+              <div class="col-6">
+                <input type="number" [(ngModel)]="request.expectedEffort"
+                class="form-control" name="subject" placeholder="ساعات العمل اللازمة" required  min="0" >
+              </div>
+ 
+ 
+              <div class="col-md-12 text-center">
+ 
+                <button class="btn btn-primary"  (click)="submit(request)">إضافة</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>

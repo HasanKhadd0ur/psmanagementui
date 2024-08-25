@@ -1,0 +1,62 @@
+<div class="container-fluid" *ngIf="type">
+    <div class="row justify-content-center">
+      <div class="col-8 offset-2 ">
+        <div class="card shadow">
+          <div class="card-body">
+            <div class="col-6 col-sm-12 text-center mb-4">
+                <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto mb-4" alt="...">
+                
+                <h3 class="mb-0 text-uppercase">{{type.typeName}}</h3>
+              </div>
+         
+            </div>
+            <hr>
+            <div class="row  ml-4">
+                <p><strong>الوصف</strong></p>
+                <p> {{type.description}}</p>
+                <p>عدد ساعات العمل المتوقعة لهذا النوع من المشاريع {{type.expectedEffort}}</p>
+                
+                
+            </div>
+            <div class="row mb-4">
+
+                <button class="col-3 offset-1 m-4 btn btn-danger" (click)="openModal('delete')">إزالة</button>
+                <button class="col-3 offset-1 m-4 btn btn-primary" (click)="openModal('edit')">تعديل</button>
+                
+            </div>
+            
+          </div> <!-- /.card-body -->
+        </div> <!-- /.card -->
+      </div> <!-- /.col-12 -->
+      <div class="modal   fade" id="typeModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="mr-4 ml-4 btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h5 class="modal-title" id="modalLabel">{{ modalTitle }}</h5>
+      
+            </div>
+            <div class="modal-body">
+              <!-- Edit Form -->
+              <div *ngIf="modalMode === 'edit'">
+               
+              <edit-type-modal
+              [selectedItem]="selectedtype"
+              (submit)="saveType()"
+              >
+                
+              </edit-type-modal>
+              </div>
+              <!-- Delete Confirmation -->
+              <div *ngIf="modalMode === 'delete'">
+                <p>هل أنت متأكد من أنك تريد حذف النوع {{ selectedtype.typeName }} ؟</p>
+                <button type="button" class="btn m-4 btn-danger" (click)="delete()">Delete</button>
+                <button type="button" class="btn m-4 btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .row -->
+
+

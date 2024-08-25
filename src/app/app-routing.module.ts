@@ -47,22 +47,25 @@ export const routes: Routes = [
       path: 'projects',
       loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule)
       
-    }
-    , {
-      path: 'employees',
-      loadChildren: () => import('./employees/employees.module').then(m => m.EmployeesModule)
-    } 
-    , {
-      path: 'reports',
-      loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule)
-    }
-    
-    , {
-      path: 'tracks',
-      loadChildren: () => import('./tracks/tracks.module').then(m => m.TracksModule)
-    }
+      }
+      , {
+        path: 'employees',
+        loadChildren: () => import('./employees/employees.module').then(m => m.EmployeesModule)
+      } 
+      , {
+        path: 'reports',
+        loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule)
+      }
+      
+      , {
+        path: 'tracks',
+        loadChildren: () => import('./tracks/tracks.module').then(m => m.TracksModule)
+      }
+      , {
+        path: 'types',
+        loadChildren: () => import('./projects-types/projects-types.module').then(m => m.ProjectsTypesModule)
+      }
     ]
-
   }
   ,
   {

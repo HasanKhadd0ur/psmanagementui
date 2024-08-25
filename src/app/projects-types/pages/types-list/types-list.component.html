@@ -1,0 +1,55 @@
+<section  *ngIf="types" class="row">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row align-items-center my-4">
+                <div class="col">
+                <h2 class="h3 mb-0 page-title">  قائمة أنواع المشاريع </h2>
+                </div>
+            <div class="col-auto">
+            <button type="button" [routerLink]="['/types/create']" class="btn btn-primary"><span class="fe fe-file-plus fe-12 mr-2"></span>إضافة عنصر </button>
+        </div>
+   </div>
+<hr>
+
+
+  <type-item class=" offset-2" 
+    *ngFor="let item of types" 
+    [item]="item"
+    (edit)="openModal('edit', item)"
+    (delete)="openModal('delete', item)"
+  >
+  </type-item>
+
+  <div *ngIf="types.length==0">
+        للأسف حاليا لايوجد أنواع مشاريع
+    </div>
+    </div>
+    </div>
+</section>
+<div class="modal   fade" id="typeModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="modalLabel">{{ modalTitle }}</h5>
+
+        </div>
+        <div class="modal-body">
+          <!-- Edit Form -->
+          <div *ngIf="modalMode === 'edit'">
+
+            <edit-type-modal 
+              [selectedItem]="selectedItem"
+              (submit)="saveType()"
+            ></edit-type-modal>
+          </div>
+          <!-- Delete Confirmation -->
+          <div *ngIf="modalMode === 'delete'">
+            <p>هل أنت متأكد من أنك تريد حذف عنصر {{ selectedItem.typeName }}?</p>
+            <button type="button" class="btn m-4 btn-danger" (click)="delete()">Delete</button>
+            <button type="button" class="btn m-4 btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

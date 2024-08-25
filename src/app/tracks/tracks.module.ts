@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TracksRoutingModule } from './tracks-routing.module';
-import { TracksComponent } from './pages/tracks/tracks.component';
+import { TracksListComponent } from './pages/tracks-list/tracks-list.component';
 import { TrackDetailsComponent } from './pages/track-details/track-details.component';
 import { StepTrackComponent } from './components/step-track/step-track.component';
 import { EmployeeTrackComponent } from './components/employee-track/employee-track.component';
@@ -26,11 +26,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StepHistoryItemComponent } from './components/history/step-history-item/step-history-item.component';
 import { EmployeeHistoryItemComponent } from './components/history/employee-history-item/employee-history-item.component';
 import { StateTranslatePipe } from '../shared/pipes/stateTranslate/state-translate.pipe';
+import { TracksUncompleteComponent } from './pages/tracks-uncomplete/tracks-uncomplete.component';
 
 
 @NgModule({
   declarations: [
-    TracksComponent,
+    TracksListComponent,
     TrackDetailsComponent,
     StepTrackComponent,
     EmployeeTrackComponent,
@@ -42,7 +43,8 @@ import { StateTranslatePipe } from '../shared/pipes/stateTranslate/state-transla
     AddEmployeeTrackModalComponent,
     TrackItemComponent,
     StepHistoryItemComponent,
-    EmployeeHistoryItemComponent
+    EmployeeHistoryItemComponent,
+    TracksUncompleteComponent
   ],
   imports: [
     CommonModule,
