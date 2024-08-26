@@ -33,6 +33,8 @@ import { FinancialItemComponent } from './components/financial-item/financial-it
 import { ReportControllComponent } from './components/project-controll/report-controll/report-controll.component';
 import { AddParticipantModalComponent } from './components/modals/add-participant-modal/add-participant-modal.component';
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditParticipantModalComponent } from './components/modals/edit-participant-modal/edit-participant-modal.component';
+import { RemoveParticipantModalComponent } from './components/modals/remove-participant-modal/remove-participant-modal.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
     FinancialSpendingComponent,
     FinancialItemComponent,
     ReportControllComponent,
-    AddParticipantModalComponent
+    AddParticipantModalComponent,
+    EditParticipantModalComponent,
+    RemoveParticipantModalComponent
   ],
   providers: [
     ProjectService,

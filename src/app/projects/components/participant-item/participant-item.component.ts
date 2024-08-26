@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EmployeeParticipate } from '../../../employees/models/responses/employeeParticipate';
 
 @Component({
@@ -7,6 +7,16 @@ import { EmployeeParticipate } from '../../../employees/models/responses/employe
   styleUrl: './participant-item.component.css'
 })
 export class ParticipantItemComponent {
-
   @Input() participant : EmployeeParticipate 
+  @Output() selected = new EventEmitter<EmployeeParticipate>()
+  @Output() edit = new EventEmitter<EmployeeParticipate>()
+
+  onSelected() {
+    this.selected.emit(this.participant)
+    }
+  onEdit(){
+    this.edit.emit(this.participant);
+  }
+    
+    
 }

@@ -13,12 +13,18 @@
     </div> <!-- ./card-text -->
     <div class="card-footer">
       <div class="row align-items-center justify-content-between">
-        <div class="col-auto text-center">
+        <div class="col  text-center">
           <small>
-            <button class="btn  mr-4 ml-4 btn-primary">تفاصيل </button>
-            <button class="btn  mr-4 ml-4 btn-danger">إزالة </button>
+            <button (click)="onSelected()" class="btn btn-primary">تفاصيل </button>
           </small>
         </div>
+      
+        <div class="col  text-center">
+          <small>
+            <button [routerLink]="['/projects',participant.projectId,'/history/participationChange',participant.employeeId]" class="btn  btn-secondary">التبدلات</button>
+          </small>
+        </div>
+      
       </div>
     </div> <!-- /.card-footer -->
   </div>

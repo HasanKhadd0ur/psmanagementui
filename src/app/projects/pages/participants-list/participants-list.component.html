@@ -1,31 +1,96 @@
-<section  *ngIf="participants" class="row">
-    <add-participant-modal
+<section *ngIf="participants" class="row">
+  <add-participant-modal
     [projectId]="projectId"
     [paticipants]="participants"
     (participantAdded)="onParticipantAdded()"
-    >
-    
-    </add-participant-modal>
+  >
+  </add-participant-modal>
 
-    
-    <div class="row justify-content-center">
-        <div class="col-12">
-            <div class="row align-items-center my-4">
-                <div class="col">
-                <h2 class="h4 mb-0 page-title">  قائمة المشاركين بالمشروع </h2>
-                </div>
-            <div class="col-auto">
-            <button type="button"  data-bs-toggle="modal" data-bs-target="#addParticipantModal" class="btn btn-primary"><span class="fe fe-file-plus fe-12 mr-2"></span>إضافة مشارك </button>
+  <div class="row justify-content-center" *ngIf="!isDetailMode">
+    <div class="col-12">
+      <div class="row align-items-center my-4">
+        <div class="col">
+          <h2 class="h4 mb-0 page-title">قائمة المشاركين بالمشروع</h2>
         </div>
-   </div>
-<hr>
-   <div class="row">
-    <participant-item class="col-3" *ngFor="let participant of  participants" [participant]="participant"></participant-item>
-    </div>
-    <div *ngIf="participants.length==0">
+        <div class="col-auto">
+          <button
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#addParticipantModal"
+            class="btn btn-primary"
+          >
+            <span class="fe fe-file-plus fe-12 mr-2"></span>إضافة مشارك
+          </button>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <participant-item
+          class="col-3"
+          (selected)="onDetailMode(participant)"
+          *ngFor="let participant of participants"
+          [participant]="participant"
+        ></participant-item>
+      </div>
+      <div *ngIf="participants.length == 0">
         للأسف هذا المشروع لايحوي على أية مشاركين
+      </div>
     </div>
-    </div>
-    </div>
-</section>
+  </div>
 
+  <edit-participant-modal 
+  [participant]="selectedParticipant" 
+  (participantEdited)="onParticipantUpdated()"
+  ></edit-participant-modal>
+ <remove-participant-modal
+ [participant]="selectedParticipant"
+ (participantRemoved)="onParticipantRemoved()"
+ >
+
+ </remove-participant-modal>
+ 
+  <!-- <app-remove-participant-modal [participant]="selectedParticipant" (participantRemoved)="onParticipantRemoved()"></app-remove-participant-modal> -->
+
+  
+  <div class="row" *ngIf="isDetailMode">
+    <div class="card shadow mb-4 col-8 offset-2">
+        <div class="card-header py-3">
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <a href="profile-posts.html" class="avatar avatar-md">
+                <img src="./assets/images/users/4.jpg" alt="..." class="avatar-img rounded-circle">
+              </a>
+            </div>
+            <div class="col ml-n2">
+              <strong class="mb-1">المشارك {{selectedParticipant.employee.personalInfo | fullname}}</strong><span class=" ml-1"></span>
+              <p class="small text-muted mb-1">صفة المساهمة {{selectedParticipant.role}}</p>
+            </div>
+            <div class="col-auto">
+            </div>
+          </div>
+        </div>
+        <div class="card-body ">
+          <div class="row align-items-center">
+            <div class="col-8 ">
+              <div class="small mb-2 d-flex">
+                <span class="text-muted flex-fill">الوظيفة / الهيئة {{selectedParticipant.employee.workInfo.workJob}} / {{selectedParticipant.employee.workInfo.workType}}</span>
+                <span class="text-muted">نسبة التفرغ {{selectedParticipant.partialTimeRatio}}</span>
+              
+              </div>
+            </div>
+            <div  class="col-8 ">
+              <div class="small mb-2 d-flex">
+            </div>
+              
+            <div class="col-auto">
+              <button type="button"  class="btn m-2 btn-sm btn-primary">استعراض تاريخ  تبدلاته </button>
+              <button type="button" data-bs-toggle="modal" data-bs-target="#editParticipantModal"  class="btn m-2 btn-sm btn-secondary">تعديل معلومات المشاركة</button>
+              <button type="button"  data-bs-toggle="modal" data-bs-target="#removeParticipantModal"  class="btn m-2 btn-sm btn-danger">إزالة</button>
+           
+            </div>
+            </div>
+          </div>
+        </div> <!-- / .card-body -->
+      </div>
+  </div>
+</section>

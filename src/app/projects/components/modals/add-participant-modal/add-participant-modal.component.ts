@@ -60,7 +60,7 @@ export class AddParticipantModalComponent {
       )
     );
   
-  formatter = (x: Employee) => x != undefined ?  x.email +" / "+ x.personalInfo.firstName+"  " + x.personalInfo.lastName : "";
+  formatter = (x: Employee) => x != undefined ?  x.email +" / "+ x.personalInfo?.firstName+"  " + x.personalInfo?.lastName : "";
   
   onEmployeeSelected(employee: Employee) {
     debugger

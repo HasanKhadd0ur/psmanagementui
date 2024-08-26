@@ -12,6 +12,10 @@ import { Modal } from 'bootstrap';
 })
 export class ParticipantsListComponent {
   participants : EmployeeParticipate[]
+  selectedParticipant: EmployeeParticipate;
+
+  isDetailMode : boolean =false 
+  
   projectId = Number(this.route.snapshot.paramMap.get('id'));
   constructor(
     private projectService :ProjectService,
@@ -25,6 +29,7 @@ export class ParticipantsListComponent {
   ngOnInit(): void {
     this.loadParticipations();
 
+    this.isDetailMode=false;
   }
 
   onParticipantAdded(){
@@ -32,12 +37,30 @@ export class ParticipantsListComponent {
     this.loadParticipations();
        
   }
+
+  setSelectedParticipant(participant: EmployeeParticipate): void {
+    this.selectedParticipant = participant;
+  }
+
+  onParticipantUpdated(): void {
+    this.closeModal('editParticipantModal')
+    this.loadParticipations();
+  }
+
+  onParticipantRemoved(): void {
+    this.isDetailMode=false ;
+    this.loadParticipations();
+  }
+
    loadParticipations(): void{
 
     this.projectService.getParticipants(this.projectId).subscribe({
       next: (data)=> {
+        if(!this.participants){
+          this.toastr.success("تم تحميل المراحل بنجاح");
+     
+        }
         this.participants= data 
-        this.toastr.success("تم تحميل المراحل بنجاح");
       }
       ,
 
@@ -48,12 +71,18 @@ export class ParticipantsListComponent {
     })
 
   }
+
+  onDetailMode(participant: EmployeeParticipate) {
+    this.selectedParticipant=participant ;
+    this.isDetailMode=true;
+
+  }
+    
+
   closeModal(name :string) {
     const modal = document.getElementById(name);
     if (modal) {
-      // Use Bootstrap 5 JavaScript API to hide modal
-      const bsModal = new Modal(modal);
-      bsModal.hide();
+      (modal as any).modal('hide');
     }
   }  
 }

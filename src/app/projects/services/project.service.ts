@@ -18,6 +18,7 @@ import { AddAttachmentRequest } from '../models/requests/project-requests/AddAtt
 import { Attachment } from '../models/responses/attachment';
 import { CompleteProjectRequest } from '../models/requests/project-requests/completeProjectRequest';
 import { ChangeEmployeeParticipationRequest } from '../models/requests/project-requests/ChangeEmployeeParticipationRequest';
+import { ParticipationChange } from '../models/responses/participationChange';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,12 @@ export class ProjectService {
 
     return this.http.get<Project[]>(this.config.getServerUrl()+ "/Projects/ByFilter");
   
+  }
+  public getParticipationChangeHistory(projectId :number ):Observable<ParticipationChange[]>{
+
+    return this
+    .http
+    .get<ParticipationChange[]>(this.config.getServerUrl()+'/projets/ParticipationChangeHistory/'+projectId)
   }
 
   public getAll(pageSize : number | null , pageNumber :number |null):Observable<Project[]>{
