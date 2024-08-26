@@ -3,4 +3,6 @@ export class ProjectType {
     typeName  :string 
     description :string 
     expectedEffort :number 
+    expectedNumberOfWorker :number 
+   
 }

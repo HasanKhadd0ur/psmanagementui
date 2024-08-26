@@ -3,5 +3,6 @@ export class UpdateTypeRequest{
     typeName :string 
     description :String 
     expectedEffort :number 
+    expectedNumberOfWorker :number;
 }
 

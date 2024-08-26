@@ -15,7 +15,7 @@ import { CancelProjectRequest } from '../models/requests/project-requests/Cancel
 import { RePlanProjectRequest } from '../models/requests/project-requests/RePlanProjectRequest';
 import { CreateProjectRequest } from '../models/requests/project-requests/createProjectRequest';
 import { AddAttachmentRequest } from '../models/requests/project-requests/AddAttachmentRequest';
-import { Attachment } from '../models/responses/Attachment';
+import { Attachment } from '../models/responses/attachment';
 import { CompleteProjectRequest } from '../models/requests/project-requests/completeProjectRequest';
 import { ChangeEmployeeParticipationRequest } from '../models/requests/project-requests/ChangeEmployeeParticipationRequest';
 

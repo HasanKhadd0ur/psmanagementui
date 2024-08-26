@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FinancialSpending } from '../../../models/responses/FinancialSpending';
+import { FinancialSpending } from '../../../models/responses/financialSpending';
 import { CreateFinancialSpendItemRequest } from '../../../models/requests/financial-reuqests/CreateFinancialSpendItemRequest';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';

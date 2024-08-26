@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FinancialSpending } from '../../models/responses/FinancialSpending';
+import { FinancialSpending } from '../../models/responses/financialSpending';
 
 @Component({
   selector: 'financial-item',

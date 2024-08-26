@@ -2,12 +2,12 @@
     <div class="row">
 
         <div class="mb-3 col-5  offset-1">
-          <label for="stepName" class="form-label">اسم النوع </label>
-          <input type="text" name="stepName" id="stepName" class="form-control" [(ngModel)]="selectedItem.typeName" required>
+          <label for="employee" class="form-label">عدد العمال المطلوب لهذا النوع  </label>
+          <input type="number" name="employee" id="employee" class="form-control"[min]="0"  [(ngModel)]="selectedItem.expectedNumberOfWorker" required>
         </div>
         <div class="mb-3 col-5 ">
-          <label for="local" class="form-label">الجهد لهذا النوع من المشاريع</label>
-          <input  id="local" class="form-control" [(ngModel)]="selectedItem.expectedEffort" name="local" required>
+          <label for="efort" class="form-label">الجهد لهذا النوع من المشاريع</label>
+          <input  id="efort" class="form-control" [(ngModel)]="selectedItem.expectedEffort" [min]="0" name="efort" required>
         </div>
     
         <div class="mb-3 col-9 offset-1">

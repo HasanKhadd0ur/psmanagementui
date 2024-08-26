@@ -6,9 +6,9 @@ import { FinancialFund } from "../valueObjects/FinancialFund"
 import { ProjectInfo } from "../valueObjects/ProjectInfo"
 import { ProposalInfo } from "../valueObjects/proposalInfo"
 import { ProjectClassification } from "../valueObjects/ProjectClassification"
-import { Department } from "./Department"
+import { Department } from "./department"
 import { Step } from "./Step"
-import { FinancialSpending } from "./FinancialSpending"
+import { FinancialSpending } from "./financialSpending"
 import { ProjectType } from "../../../projects-types/models/responses/projectType"
 export class Project
 {

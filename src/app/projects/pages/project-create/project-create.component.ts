@@ -10,7 +10,7 @@ import { ProjectService } from '../../services/project.service';
 import { CreateProjectRequest } from '../../models/requests/project-requests/createProjectRequest';
 import { ToastrComponentlessModule, ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { Department } from '../../models/responses/Department';
+import { Department } from '../../models/responses/department';
 import { ProjectType } from '../../../projects-types/models/responses/projectType';
 import { ProjectsTypesService } from '../../../projects-types/services/projects-types.service';
 //#endregion imports

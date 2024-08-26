@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConfigurationService } from '../../core/services/configuration/configuration.service';
-import { FinancialSpending } from '../models/responses/FinancialSpending';
+import { FinancialSpending } from '../models/responses/financialSpending';
 import { Observable } from 'rxjs';
 import { CreateFinancialSpendItemRequest } from '../models/requests/financial-reuqests/CreateFinancialSpendItemRequest';
 import { GetFinancialSpendItemByProjecRequest } from '../models/requests/financial-reuqests/GetFinancialSpendItemByProjectRequest';

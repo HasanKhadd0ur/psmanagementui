@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FinancialSpending } from '../../models/responses/FinancialSpending';
+import { FinancialSpending } from '../../models/responses/financialSpending';
 import { FinancialSpendingService } from '../../services/financial-spending.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';

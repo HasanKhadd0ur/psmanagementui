@@ -9,7 +9,7 @@ import { EmployeeParticipate } from '../models/responses/employeeParticipate';
 import { GetEmployeeTrackHistoryRequest } from '../models/requests/getEmployeeTrackHistoryRequest';
 import { EmployeeTrack } from '../../tracks/models/responses/employeeTrack';
 import { UpdateEmplyeeWorkHours } from '../models/requests/updateEmployeeWorkHoursRequest';
-import { Department } from '../../projects/models/responses/Department';
+import { Department } from '../../projects/models/responses/department';
 
 @Injectable({
   providedIn: 'root'

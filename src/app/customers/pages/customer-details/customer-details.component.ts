@@ -64,7 +64,8 @@ export class CustomerDetailsComponent implements OnInit {
       
       let request : UpdateCustomerRequest ={
         ...this.selectedCustomer,
-        customerId: this.selectedCustomer.id
+        customerId: this.selectedCustomer.id,
+        customerName:this.selectedCustomer.customerName
       }
 
       this.customerService.updateCustomer(this.selectedCustomer.id,request).subscribe({
