@@ -1,4 +1,13 @@
 <section  *ngIf="participants" class="row">
+    <add-participant-modal
+    [projectId]="projectId"
+    [paticipants]="participants"
+    (participantAdded)="onParticipantAdded()"
+    >
+    
+    </add-participant-modal>
+
+    
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="row align-items-center my-4">
@@ -6,7 +15,7 @@
                 <h2 class="h4 mb-0 page-title">  قائمة المشاركين بالمشروع </h2>
                 </div>
             <div class="col-auto">
-            <button type="button"  class="btn btn-primary"><span class="fe fe-file-plus fe-12 mr-2"></span>إضافة مشارك </button>
+            <button type="button"  data-bs-toggle="modal" data-bs-target="#addParticipantModal" class="btn btn-primary"><span class="fe fe-file-plus fe-12 mr-2"></span>إضافة مشارك </button>
         </div>
    </div>
 <hr>
@@ -19,3 +28,4 @@
     </div>
     </div>
 </section>
+

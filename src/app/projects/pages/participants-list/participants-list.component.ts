@@ -3,6 +3,7 @@ import { EmployeeParticipate } from '../../../employees/models/responses/employe
 import { ProjectService } from '../../services/project.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Modal } from 'bootstrap';
 
 @Component({
   selector: 'participants-list',
@@ -25,6 +26,12 @@ export class ParticipantsListComponent {
     this.loadParticipations();
 
   }
+
+  onParticipantAdded(){
+    this.closeModal('addParticipantModal')
+    this.loadParticipations();
+       
+  }
    loadParticipations(): void{
 
     this.projectService.getParticipants(this.projectId).subscribe({
@@ -41,4 +48,12 @@ export class ParticipantsListComponent {
     })
 
   }
+  closeModal(name :string) {
+    const modal = document.getElementById(name);
+    if (modal) {
+      // Use Bootstrap 5 JavaScript API to hide modal
+      const bsModal = new Modal(modal);
+      bsModal.hide();
+    }
+  }  
 }

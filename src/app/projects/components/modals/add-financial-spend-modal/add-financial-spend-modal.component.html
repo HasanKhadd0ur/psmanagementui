@@ -3,7 +3,7 @@
     <h5 class="modal-title text-center">إضافة  عنصر جديد </h5>
   </div>
   <div class="modal-body">
-    <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+    <form #form="ngForm" (ngSubmit)="onSubmit()" #projectForm="ngForm">
       <div class="row">
   
         <div class="mb-3 col-3  offset-1">
@@ -18,7 +18,7 @@
   
       <div class="mb-3 col-3">
         <label for="worker" class="form-label">الكلفة  بالليرة السورية</label>
-        <input  id="worker" class="form-control" [(ngModel)]="request.localPurchase" name="worker" required>
+        <input  type="number" id="worker" class="form-control" [(ngModel)]="request.localPurchase" name="worker" required>
       </div>
       
       </div>
@@ -46,8 +46,8 @@
   
         </div>
       <div class="row ">
-        <button type="submit" class=" col-3 btn btn-primary">إضافة</button>
-        <button  class="btn btn-seondary col-3" (click)="onClose()" >إغلاق</button>
+        <button  [disabled]="form.invalid" type="submit" class="  m-4 col-3 btn btn-primary">إضافة</button>
+        <div  class="btn m-4  btn-secondary col-3" (click)="onClose()" >إغلاق</div>
      
       </div>
        </form>

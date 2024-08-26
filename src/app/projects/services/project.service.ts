@@ -10,7 +10,7 @@ import { ChangeProjectTeamLeaderRequest } from '../models/requests/project-reque
 import { ChangeProjectManagerRequest } from '../models/requests/project-requests/ChangeProjectManagerRequest';
 import { AddProjectStepRequest } from '../models/requests/project-requests/AddProjectStepRequest';
 import { RemoveParticipantRequest } from '../models/requests/project-requests/RemoveParticipant';
-import { AddParticipantRequest } from '../models/requests/project-requests/AddParticipantRequest';
+import { AddParticipantRequest } from '../models/requests/project-requests/addParticipantRequest';
 import { CancelProjectRequest } from '../models/requests/project-requests/CancelProjectRequest';
 import { RePlanProjectRequest } from '../models/requests/project-requests/RePlanProjectRequest';
 import { CreateProjectRequest } from '../models/requests/project-requests/createProjectRequest';

@@ -31,6 +31,8 @@ import { AddAttachmentModalComponent } from './components/modals/add-attachment-
 import { FinancialSpendingComponent } from './pages/financial-spending/financial-spending.component';
 import { FinancialItemComponent } from './components/financial-item/financial-item.component';
 import { ReportControllComponent } from './components/project-controll/report-controll/report-controll.component';
+import { AddParticipantModalComponent } from './components/modals/add-participant-modal/add-participant-modal.component';
+import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import { ReportControllComponent } from './components/project-controll/report-co
     AddAttachmentModalComponent,
     FinancialSpendingComponent,
     FinancialItemComponent,
-    ReportControllComponent
+    ReportControllComponent,
+    AddParticipantModalComponent
   ],
   providers: [
     ProjectService,
@@ -73,7 +76,8 @@ import { ReportControllComponent } from './components/project-controll/report-co
     RouterModule ,
     MatInputModule,
     ReactiveFormsModule ,
-    SharedModule
+    SharedModule,
+    NgbTypeaheadModule
   ]
 })
 export class ProjectsModule { }

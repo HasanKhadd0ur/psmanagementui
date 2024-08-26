@@ -5,7 +5,7 @@
 
       <div class="col-xl-6 col offset-3">
         <div class="card p-4">
-          <form class="php-email-form">
+          <form #form="ngForm"  class="php-email-form">
             <div class="row text-center">
                 <p>
                   إصافة نوع مشروع
@@ -36,7 +36,7 @@
  
               <div class="col-md-12 text-center">
  
-                <button class="btn btn-primary"  (click)="submit(request)">إضافة</button>
+                <button class="btn btn-primary" [disabled]="form.invalid"  (click)="submit(request)">إضافة</button>
               </div>
 
             </div>

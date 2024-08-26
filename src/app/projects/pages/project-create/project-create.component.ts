@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { EmployeesService } from '../../../employees/services/employees.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, map, Observable, startWith, switchMap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, Observable, startWith, switchMap } from 'rxjs';
 import { Employee } from '../../../employees/models/responses/employee';
 import { Customer } from '../../../customers/models/customer';
 import { CustomerService } from '../../../customers/services/customer.service';
