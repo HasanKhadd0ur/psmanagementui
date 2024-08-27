@@ -1,6 +1,6 @@
 
 export class CompleteTrackRequest{
     trackId :number 
-    completionDate :number 
+    completionDate : Date 
     projectId : number 
 }

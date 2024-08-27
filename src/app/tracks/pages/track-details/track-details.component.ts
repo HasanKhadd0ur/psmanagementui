@@ -13,6 +13,8 @@ import { forkJoin } from 'rxjs';
 import { AddEmployeeTrackRequest } from '../../models/requests/AddEmployeeTrackRequest';
 import { ProjectService } from '../../../projects/services/project.service';
 import { EmployeeParticipate } from '../../../employees/models/responses/employeeParticipate';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CompleteTrackModalComponent } from '../../components/modals/complete-track-modal/complete-track-modal.component';
 
 @Component({
   selector: 'track-details',
@@ -34,6 +36,7 @@ export class TrackDetailsComponent implements OnInit {
     private route :ActivatedRoute,
     private trackService : TrackService,
     private stepService : StepService ,
+    private modalService  : NgbModal,
     private projectService :ProjectService 
   ){}
 
@@ -46,6 +49,7 @@ export class TrackDetailsComponent implements OnInit {
 
   loadTrack(){
   
+
     forkJoin({
       track: this.trackService.getByTrackById(this.trackId),
       stepTracks: this.trackService.getStepsTrackById(this.trackId),
@@ -74,6 +78,28 @@ export class TrackDetailsComponent implements OnInit {
 
     });
   }
+  openTrackComplete(){
+    
+    const modalRef = this.modalService.open(CompleteTrackModalComponent);
+    modalRef.componentInstance.track = this.track;
+
+    modalRef.result.then((result) => {
+ 
+      if (result) {
+ 
+        // Add the new project to the list
+ 
+        this.loadTrack();
+        
+      }
+      
+    }, (reason) => {
+     
+    
+    });
+  
+  }
+
   loadSteps(){
     this.stepService
     .getStepsByProject(this.track.projectId)
@@ -116,7 +142,6 @@ export class TrackDetailsComponent implements OnInit {
 
   handleAddStepTrack(stepTrackRequest: AddStepTrackRequest): void {
 
-   debugger
     this.trackService.addStepTrack(stepTrackRequest).subscribe({
 
       next : (data)=>{
