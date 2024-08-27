@@ -1,1 +1,18 @@
-<p>project-replan-modal works!</p>
+
+<div class="modal-header">
+    <h5 class="modal-title" id="moveToplanModalLabel">الانتقال إلى مرحلة التخطيط</h5>
+    <button type="button" class="ml-4 mr-4 btn-close" (click)="onClose()" ></button>
+  </div>
+  <div class="modal-body">
+       <div *ngIf="!canRePlan">
+        للاسف لاتستطيع الانتقال إلى مرحلة التخطيط وأنت في مرحلة {{project.currentState | stateTranslate}}
+    </div>
+  <div  *ngIf="canRePlan">
+      <p>هل أنت متأكد من أنك تريد الانتقال إلى مرحلة التخطيط </p>
+   </div>
+ 
+  </div>    
+       <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="onClose()" >إلغاء</button>
+    <button type="button" [disabled]="!canRePlan" class="btn btn-danger" (click)="onSubmit()">الانتقال</button>
+  </div>

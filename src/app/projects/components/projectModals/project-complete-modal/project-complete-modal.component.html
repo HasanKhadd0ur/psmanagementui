@@ -1,1 +1,46 @@
-<p>project-complete-modal works!</p>
+
+<div class="modal-header">
+    <h5 class="modal-title" id="moveToplanModalLabel">انجاز مشروع</h5>
+    <button type="button" class="ml-4 mr-4 btn-close" (click)="onClose()" ></button>
+  </div>
+  <div class="modal-body">
+  
+  <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+  
+    <div *ngIf="!canComplete">
+        للأسف , لاتستطيع الانتقال إلى مرحلة الانجاز لأن مجموع نسب الانجاز للمراحل ليس مئة,قم بمتابعةالمشروع ومن ثم أعد المحاولة
+    </div>
+  <div  *ngIf="canComplete">
+
+    <div class="row">
+
+        <p>
+            استمارة انجاز مشروع 
+        </p>
+        <div class="mb-3 col-8  offset-1">
+          <label for="stepName" class="form-label">ملاحظات الجهة الطارحة</label>
+          <textarea [cols]="4" type="text" name="stepName" id="stepName" class="form-control" [(ngModel)]="request.customerNotes" required>
+        </textarea>
+        </div>
+        
+        <div class="mb-3 col-3 offset-1 ">
+          <label for="start" class="form-label">تاريخ الاكمال</label>
+          <input type="date" id="start" class="form-control" [(ngModel)]="request.completionDate" name="start" required>
+        </div>
+  
+      <div class="mb-3 col-3">
+        <label for="worker" class="form-label">تقييم الجهة الطارحة </label>
+        <input  id="worker" class="form-control" [(ngModel)]="request.customerRate" name="worker" required>
+      </div>
+      
+      </div>
+      
+  </div>
+      <div class="row ">
+      <button type="submit" [disabled]="projectForm.invalid || !canComplete" class="col m-4 btn btn-primary">انجاز المشروع</button>
+      <button  class="col m-4  btn btn-seondary" (click)="onClose()" >إغلاق</button>
+   
+    </div>
+     </form>
+
+  </div>

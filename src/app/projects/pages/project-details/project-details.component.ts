@@ -7,6 +7,8 @@ import { ProjectService } from '../../services/project.service';
 import { ProjectToprogressModalComponent } from '../../components/projectModals/project-toprogress-modal/project-toprogress-modal.component';
 import { NgModel } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProjectCompleteModalComponent } from '../../components/projectModals/project-complete-modal/project-complete-modal.component';
+import { ProjectReplanModalComponent } from '../../components/projectModals/project-replan-modal/project-replan-modal.component';
 
 
 @Component({
@@ -55,6 +57,50 @@ export class ProjectDetailsComponent implements OnInit {
     });
   
   }
+  openRepan() {
+    const modalRef = this.modalService.open(ProjectReplanModalComponent);
+    modalRef.componentInstance.project = this.project;
+
+    modalRef.result.then((result) => {
+ 
+      if (result) {
+ 
+        // Add the new project to the list
+ 
+        this.loadProject();
+        
+      }
+      
+    }, (reason) => {
+     
+    
+    });
+
+  }
+    
+  
+  openProjectComplete(){
+    
+    const modalRef = this.modalService.open(ProjectCompleteModalComponent);
+    modalRef.componentInstance.project = this.project;
+
+    modalRef.result.then((result) => {
+ 
+      if (result) {
+ 
+        // Add the new project to the list
+ 
+        this.loadProject();
+        
+      }
+      
+    }, (reason) => {
+     
+    
+    });
+  
+  }
+
   public downloadAsPdf(): void {
     this.pdfDownloader.downloadAsPdf('pdfContent');
   }

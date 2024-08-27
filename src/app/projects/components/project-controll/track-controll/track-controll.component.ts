@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Project } from '../../../models/responses/project';
 
 @Component({
@@ -9,4 +9,16 @@ import { Project } from '../../../models/responses/project';
 export class TrackControllComponent {
 
   @Input() project : Project
+  @Output() complete = new EventEmitter();
+  @Output() replan = new EventEmitter();
+  
+
+  onComplete(){
+    this.complete.emit();
+  }
+  onReplan(){
+    
+    this.replan.emit();
+
+  }
 }
