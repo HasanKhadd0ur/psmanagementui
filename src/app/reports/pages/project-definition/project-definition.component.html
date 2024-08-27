@@ -1,72 +1,64 @@
 <div class="container-fluid" *ngIf="project">
-    <div class="row justify-content-center">
-    <div class="col-12 ">
+  <div class="row justify-content-center">
+    <div class="col-12">
       <div class="row align-items-center mb-4">
         <div class="col">
-          <h2 class="h5 page-title"><small class="text-muted text-uppercase">بطاقة معلومات مشروع</small></h2>
+          <h2 class="h5 page-title">
+            <small class="text-muted text-uppercase">بطاقة معلومات مشروع</small>
+          </h2>
         </div>
         <div class="col-auto">
-          <button type="button" (click)="downloadAsPdf()" class="btn mr-1 btn-secondary m-1">طباعة</button>
-          <button type="button" class="btn mr-1 btn-secondary m-1">تقرير متابعة المراحل</button>
-          <button type="button" class="btn mr-1 btn-secondary m-1">تقرير انشغالية</button>
-          <button type="button" [routerLink]="['/reports/timeline/',project.id]" class="btn mr-1 btn-secondary m-1">تقرير خطة زمنية</button>
-         
+          <button
+            type="button"
+            (click)="downloadAsPdf()"
+            class="btn mr-1 btn-secondary m-1"
+          >
+            طباعة
+          </button>
+          <button type="button" class="btn mr-1 btn-secondary m-1">
+            تقرير متابعة المراحل
+          </button>
+          <button type="button" class="btn mr-1 btn-secondary m-1">
+            تقرير انشغالية
+          </button>
+          <button
+            type="button"
+            [routerLink]="['/reports/timeline/', project.id]"
+            class="btn mr-1 btn-secondary m-1"
+          >
+            تقرير خطة زمنية
+          </button>
         </div>
       </div>
+      
       <div class="card shadow" id="pdfContent">
         <div class="card-body p-5">
           <project-header [projectInfo]="project.projectInfo"></project-header>
-          <div class="row mb-5">
-            <div class="col-md-4">
-              <p class="mb-4">
-                <strong>ذاتية المشروع</strong>
-                <br /> رمز المشروع: <small>{{project.projectInfo.code}}</small>
-                <br /> كتاب الطرح : <small>{{project.proposalInfo.proposingBookNumber}} / {{project.proposalInfo.proposingBookDate | date}}</small> 
-                <br />كتاب الموافقة : <small>{{project.projectAggreement.aggreementNumber}} / {{project.projectAggreement.aggreementDate |date}}</small>
-                <br />التمويل : <small> {{project.financialFund.financialStatus}} / {{project.financialFund.source}} </small>
-                
-              </p>
-
-            </div>
-            <div class="col-md-4 text-center">
-              <p class="mb-4">
-                <strong>المعلومات التنفيذية</strong>
-                <br /> الجهة  المنفذة: <small>{{project.executer.name}}</small>
-                <br /> رئيس فريق العمل: <small>{{project.teamLeader.personalInfo | fullname}}</small>
-                <br /> مدير المشروع : <small>{{project.projectManager.personalInfo | fullname}}</small>
-                <br />ينفذ لصالح : <small> {{project.proposer.customerName}} </small>
-                
-              </p>
-
-            </div>
-            <div class="col-md-4">
-              <p class="mb-4">
-                <strong>معلومات حالة المشروع </strong>
-                <br /> المرحلة التطويرير : <small>{{project.currentState | stateTranslate}} </small>
-                <br />نوع المشروع  : <small>{{project.projectType.typeName}} </small>
-                <br /> طبيعة المشروع : <small>{{project.projectClassification.projectNature}} </small>
-              
-              </p>
-            </div>
-          </div> <!-- /.row -->
-          <hr>
+          <project-subjective [project]="project"> </project-subjective>
+          <hr />
           <p><strong>مراحل المشروع</strong></p>
           <step-table [steps]="project.steps"></step-table>
-          <hr>
-          <participants-table [employeeParticipates]="project.employeeParticipates"></participants-table>
+          <hr />
+          <participants-table
+            [employeeParticipates]="project.employeeParticipates"
+          ></participants-table>
           <p><strong>خطة الانفاق</strong></p>
-          <financial-spend-table [financialSpending]="project.financialSpending"></financial-spend-table> 
-    
-          <project-footer [proposer]="project.proposer" 
-                          [executer]="project.executer"
-                          [projectManager]="project.projectManager"
-                          [teamLeader]="project.teamLeader"
+          <financial-spend-table
+            [financialSpending]="project.financialSpending"
+          ></financial-spend-table>
+
+          <project-footer
+            [proposer]="project.proposer"
+            [executer]="project.executer"
+            [projectManager]="project.projectManager"
+            [teamLeader]="project.teamLeader"
           >
-
           </project-footer>
-        </div> <!-- /.card-body -->
-      </div> <!-- /.card -->
-    </div> <!-- /.col-12 -->
-
-</div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col-12 -->
+  </div>
 </div>

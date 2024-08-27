@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { ProjectInfo } from '../../../projects/models/valueObjects/ProjectInfo';
-import { ProposalInfo } from '../../../projects/models/valueObjects/proposalInfo';
-import { Employee } from '../../../employees/models/responses/employee';
+import { ProjectInfo } from '../../../../projects/models/valueObjects/ProjectInfo';
+import { ProposalInfo } from '../../../../projects/models/valueObjects/proposalInfo';
+import { Employee } from '../../../../employees/models/responses/employee';
 
 @Component({
   selector: 'project-header',

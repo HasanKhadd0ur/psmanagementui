@@ -19,6 +19,7 @@ import { Attachment } from '../models/responses/attachment';
 import { CompleteProjectRequest } from '../models/requests/project-requests/completeProjectRequest';
 import { ChangeEmployeeParticipationRequest } from '../models/requests/project-requests/ChangeEmployeeParticipationRequest';
 import { ParticipationChange } from '../models/responses/participationChange';
+import { ProjectCompletion } from '../models/responses/ProjectCompletion';
 
 @Injectable({
   providedIn: 'root'
@@ -62,6 +63,12 @@ export class ProjectService {
     return this.http.get<Project>(this.config.getServerUrl()+ "/Projects/"+id);
   }
 
+  public getProjectCompletion(projectId : number ):Observable<ProjectCompletion>{
+    
+    return this.http.get<ProjectCompletion>(this.config.getServerUrl()+ "/Projects/Completion/"+projectId);
+  }
+
+  
   // this method retreive  the projects by its manager 
   public getByProjectManger(request : GetProjectsByProjectManagerRequest ):Observable<Project[]>{
     

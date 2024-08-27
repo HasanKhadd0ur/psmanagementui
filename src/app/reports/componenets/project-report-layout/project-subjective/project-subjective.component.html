@@ -1,0 +1,33 @@
+<div class="row mb-5">
+    <div class="col-md-4">
+      <p class="mb-4">
+        <strong>ذاتية المشروع</strong>
+        <br /> رمز المشروع: <small>{{project.projectInfo.code}}</small>
+        <br /> كتاب الطرح : <small>{{project.proposalInfo.proposingBookNumber}} / {{project.proposalInfo.proposingBookDate | date}}</small> 
+        <br />كتاب الموافقة : <small>{{project.projectAggreement.aggreementNumber}} / {{project.projectAggreement.aggreementDate |date}}</small>
+        <br />التمويل : <small> {{project.financialFund.financialStatus}} / {{project.financialFund.source}} </small>
+        
+      </p>
+
+    </div>
+    <div class="col-md-4 text-center">
+      <p class="mb-4">
+        <strong>المعلومات التنفيذية</strong>
+        <br /> الجهة  المنفذة: <small>{{project.executer.name}}</small>
+        <br /> رئيس فريق العمل: <small>{{project.teamLeader.personalInfo | fullname}}</small>
+        <br /> مدير المشروع : <small>{{project.projectManager.personalInfo | fullname}}</small>
+        <br />ينفذ لصالح : <small> {{project.proposer.customerName}} </small>
+        
+      </p>
+
+    </div>
+    <div class="col-md-4">
+      <p class="mb-4">
+        <strong>معلومات حالة المشروع </strong>
+        <br /> المرحلة التطويرير : <small>{{project.currentState | stateTranslate}} </small>
+        <br />نوع المشروع  : <small>{{project.projectType.typeName}} </small>
+        <br /> طبيعة المشروع : <small>{{project.projectClassification.projectNature}} </small>
+      
+      </p>
+    </div>
+  </div> <!-- /.row -->

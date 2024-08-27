@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Attachment } from '../../models/responses/attachment';
+import { ConfigurationService } from '../../../core/services/configuration/configuration.service';
 
 @Component({
   selector: 'attahment-item',
@@ -10,6 +11,11 @@ export class AttahmentItemComponent {
   @Input() attachment : Attachment
   @Output() selected = new EventEmitter<Attachment>()
 
+  constructor(
+
+    public config :ConfigurationService
+
+  ){}
   onSelected() {
     this.selected.emit(this.attachment)
   }
