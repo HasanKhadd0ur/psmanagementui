@@ -18,7 +18,7 @@ import { EmployeeTrack } from '../models/responses/employeeTrack';
   providedIn: 'root'
 })
 export class TrackService {
-
+  
   constructor(private http : HttpClient,private config : ConfigurationService) { }
  
   // this method retreive  the track by its id  
@@ -31,6 +31,17 @@ export class TrackService {
               );
   }
   
+  getUnCompletedTrack() : Observable<Track[]> {
+
+
+    return this
+    .http
+    .get<Track[]>
+    (`${this.config.getServerUrl()}/UnCompleted`);
+  }
+
+
+
   // this method retreive  the steps track  by track id  
   //
   public getStepsTrackById(trackId : number ):Observable<StepTrack[]>{

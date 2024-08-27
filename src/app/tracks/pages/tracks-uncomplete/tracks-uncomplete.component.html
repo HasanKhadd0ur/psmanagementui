@@ -1,1 +1,71 @@
-<p>tracks-uncomplete works!</p>
+<section *ngIf="tracks" class="row">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="row align-items-center my-4">
+        <div class="col">
+          <h2 class="h3 mb-0 page-title">قائمة عمليات المتابعة غير المكتملة</h2>
+        </div>
+        <div class="col-auto"></div>
+      </div>
+      <hr />
+
+      <div class="card shadow mb-4 col-8 offset-2" *ngFor="let track of tracks">
+        <div class="card-header py-3">
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <a href="profile-posts.html" class="avatar avatar-md">
+                <img
+                  src="./assets/images/users/4.jpg"
+                  alt="..."
+                  class="avatar-img rounded-circle"
+                />
+              </a>
+            </div>
+            <div class="col ml-n2">
+              <strong class="mb-1">متابعة {{ track.projectInfo.name }}</strong
+              ><span class="ml-1"></span>
+              <p class="small text-muted mb-1">
+                الوضع الراهن {{ track.trackInfo.statusDescription }}
+              </p>
+            </div>
+            <div class="col-auto"></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <div class="small mb-2 d-flex">
+                <span class="text-muted flex-fill"
+                  >الملاحظات {{ track.notes }}</span
+                >
+                <span class="text-muted"
+                  >تاريخ المتابعة {{ track.trackInfo.trackDate | date }}</span
+                >
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="small mb-2 d-flex">
+                <span class="text-muted badge flex-fill"
+                  >{{ track.trackInfo.isCompleted ? "مكتملة" : "غير مكتملة" }}
+                </span>
+              </div>
+
+              <div class="col-auto">
+                <button
+                  type="button"
+                  [routerLink]="['/tracks/detail/', track.id]"
+                  class="btn m-2 btn-sm btn-secondary"
+                >
+                  تفاصيل المتابعة
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / .card-body -->
+      </div>
+
+      <div *ngIf="tracks.length == 0">لا يوجد أي عمليات متابعة غير مكتملة</div>
+    </div>
+  </div>
+</section>

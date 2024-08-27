@@ -11,18 +11,13 @@
       <li class="nav-heading">المتابعة</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" >
           <i class="fe fe-menu"></i><span>إدارة المتابعة</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
-              <i class="fe fe-circle"></i><span>متابعة مشروع</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-alerts.html">
-              <i class="fe fe-circle"></i><span>اتمام عملية متابعة</span>
+            <a [routerLink]="['/tracks/uncompleted']">
+              <i class="fe fe-circle"></i><span>المتابعات غير المكتملة</span>
             </a>
 
           </li>
@@ -31,10 +26,11 @@
 
       </li><!-- End Components Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed " href="components-alerts.html">
+        <a class="nav-link collapsed " [routerLink]="['/tracks']">
           <i class="fe fe-flag"></i><span> عمليات المتابعة</span>
         </a>
       </li>
+
       <li class="nav-heading">أنواع المشاريع</li>
       <li class="nav-item">
         <a  [routerLink]="['/types']" class="nav-link collapsed ">
