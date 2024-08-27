@@ -1,7 +1,6 @@
 import {  NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectItemComponent } from './components/project-item/project-item.component';
-import { AttachmentComponent } from './components/attachment/attachment.component';
 import { ProjectListComponent } from './pages/project-list/project-list.component';
 import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,11 +34,13 @@ import { AddParticipantModalComponent } from './components/modals/add-participan
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditParticipantModalComponent } from './components/modals/edit-participant-modal/edit-participant-modal.component';
 import { RemoveParticipantModalComponent } from './components/modals/remove-participant-modal/remove-participant-modal.component';
+import { ParticipantChangesComponent } from './pages/participant-changes/participant-changes.component';
+import { AttahmentItemComponent } from './components/attahment-item/attahment-item.component';
+import { RemoveAttachmentModalComponent } from './components/modals/remove-attachment-modal/remove-attachment-modal.component';
 
 @NgModule({
   declarations: [
     ProjectItemComponent,
-    AttachmentComponent,
     ProjectListComponent,
     ProjectDetailsComponent,
     StepRowItemComponent,
@@ -59,7 +60,10 @@ import { RemoveParticipantModalComponent } from './components/modals/remove-part
     ReportControllComponent,
     AddParticipantModalComponent,
     EditParticipantModalComponent,
-    RemoveParticipantModalComponent
+    RemoveParticipantModalComponent,
+    ParticipantChangesComponent,
+    AttahmentItemComponent,
+    RemoveAttachmentModalComponent
   ],
   providers: [
     ProjectService,

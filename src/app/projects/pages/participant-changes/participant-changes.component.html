@@ -1,0 +1,88 @@
+<div class="container-fluid " *ngIf="history  && project">
+    <div class="row justify-content-center">
+      <div class="col-12 ">
+        <div class="row align-items-center mb-4">
+          <div class="col">
+            <h2 class="h5 page-title"><small class="text-muted text-uppercase"></small></h2>
+          </div>
+          <div class="col-auto">
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <h2 class="h3 mb-4 page-title">قائمة تبدلات</h2>
+            <div class="row mt-5 align-items-center">
+              <div class="col-md-3 text-center mb-5">
+                <div class="avatar avatar-xl">
+                  <img src="./assets/images/users/4.jpg" alt="..." class="avatar-img ">
+                </div>
+              </div>
+              <div class="col">
+                <div class="row align-items-center">
+                  <div class="col-md-7">
+                    <h4 class="mb-1">{{project.projectInfo.name}}</h4>
+                    <p class="small mb-3"><span class="badge badge-dark">{{project.currentState | stateTranslate}}</span></p>
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <div class="col-md-7">
+                    <p class="text-muted"> قائمة تبدلات أعمال السيد {{participant.personalInfo | fullname }} </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-5 align-items-center">
+            <p>
+              إن السيد <b>{{participant.personalInfo | fullname}}</b> 
+            يعمل حاليا في المشروع بصفة  <b>{{currentParticipation.role}}</b> وبنسبة تفرغ قدرها <b>{{currentParticipation.partialTimeRatio}}</b> ويبين الجدول التالي تبدلات عمله اثناء عمله في المشروع
+            </p>
+            </div>
+            <div class="row mt-5 align-items-center">
+                <table class="table table-borderless table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col"  class=" text-center">#</th>
+                        <th scope="col" class="text-center">تاريخ التبديل</th>
+                        <th scope="col" class="text-center">صفة العمل قبل</th>
+                        <th scope="col" class="text-center">صفة العمل بعد</th>
+                        <th scope="col" class="text-center">نسبة التفرغ قبل </th>
+                        <th scope="col" class="text-center">نسبة التفرغ بعد</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr  *ngFor="let spend of  history ;index as i " >
+                        <td scope="row"  class="text-center">{{i +1 }}</td>
+                        <td class="text-center"> {{spend.changeDate | date}}
+                        </td>
+                        <td class="text-center">{{spend.roleBefore }}</td>               
+                        <td class="text-center">{{spend.roleAfter}}</td>
+                        <td class="text-center">{{spend.partialTimeBefore}}</td>
+                        
+                        <td class="text-center">{{spend.partialTimeAfter}}</td>
+                   
+                      </tr>
+                      <tr  *ngIf="history.length==0" >
+                        <th scope="row"></th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                      </tr>
+                      <tr >
+                        <th scope="row"></th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                
+            </div>
+
+        </div>
+    </div>
+ </div>

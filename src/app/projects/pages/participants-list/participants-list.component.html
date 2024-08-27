@@ -42,7 +42,7 @@
   [participant]="selectedParticipant" 
   (participantEdited)="onParticipantUpdated()"
   ></edit-participant-modal>
- <remove-participant-modal
+ <remove-participant-modal *ngIf="selectedParticipant"
  [participant]="selectedParticipant"
  (participantRemoved)="onParticipantRemoved()"
  >

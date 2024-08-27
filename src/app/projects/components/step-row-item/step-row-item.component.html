@@ -18,8 +18,10 @@
       <div class="row align-items-center">
         <div class="col-8 ">
           <div class="small mb-2 d-flex">
-            <span class="text-muted flex-fill">نسبة الانجاز {{step.currentCompletionRatio}}</span>
-            <span class="text-muted">الثقل {{step.weight}}</span>
+            <span class="text-muted mr-4 ">نسبة الانجاز {{step.currentCompletionRatio}}</span>
+            <span class="text-muted mr-4 ">الثقل {{step.weight}}</span>
+            <span class="text-muted mr-4 ">عدد العمال المطلوب {{step.stepInfo.NumberOfWorker}}</span>
+          
           
           </div>
         </div>
@@ -33,9 +35,11 @@
           </div>
           
         <div class="col-auto">
-          <button type="button" [routerLink]="['/tracks/history/step/',step.id]" class="btn m-2 btn-sm btn-primary">استعراض تاريخ  متابعتها </button>
-          <button type="button" class="btn m-2 btn-sm btn-secondary">تعديل المعلومات</button>
-          <button type="button"  (click)="onDelete()"  class="btn m-2 btn-sm btn-danger">إزالة</button>
+          <button type="button" [routerLink]="['/tracks/history/step/',step.id]" class="btn mr-2 btn-sm btn-primary">استعراض تاريخ  متابعتها </button>
+          <button type="button" class="btn mr-2 btn-sm btn-secondary">تعديل الثقل</button>
+          <button type="button" class="btn mr-2 btn-sm btn-secondary">تعديل المعلومات</button>
+          
+          <button type="button"  (click)="onDelete()"  class="btn mr2 btn-sm btn-danger">إزالة</button>
        
         </div>
         </div>

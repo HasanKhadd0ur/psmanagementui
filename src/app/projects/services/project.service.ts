@@ -44,7 +44,7 @@ export class ProjectService {
 
     return this
     .http
-    .get<ParticipationChange[]>(this.config.getServerUrl()+'/projets/ParticipationChangeHistory/'+projectId)
+    .get<ParticipationChange[]>(this.config.getServerUrl()+'/Projects/ParticipationChangeHistory/'+projectId)
   }
 
   public getAll(pageSize : number | null , pageNumber :number |null):Observable<Project[]>{
@@ -192,14 +192,22 @@ export class ProjectService {
   //
   public addAttachment(request  : AddAttachmentRequest ):Observable<number>{
     
-    return this.http.post<number>(this.config.getServerUrl()+ "/Projects/AddAttachment",request);
+    const formData = new FormData();
+    formData.append('projectId', request.projectId.toString());
+    formData.append('attachmentName', request.attachmentName);
+    formData.append('attachmentDescription', request.attachmentDescription);
+    
+    if (request.file) {
+      formData.append('file', request.file);
+    }
+    return this.http.post<number>(this.config.getServerUrl()+ "/Projects/AddAttachment",formData);
 
   }
   //tihs method responsible for getting the attachments  of a project 
   //
   public getAttachment(projectId : number  ):Observable<Attachment[]>{
     
-    return this.http.get<Attachment[]>(this.config.getServerUrl()+ "/Projects/Attachmetns/"+projectId);
+    return this.http.get<Attachment[]>(this.config.getServerUrl()+ "/Projects/Attachments/?projectId="+projectId);
 
   }
 

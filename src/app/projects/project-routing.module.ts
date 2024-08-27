@@ -6,6 +6,8 @@ import { ProjectCreateComponent } from './pages/project-create/project-create.co
 import { StepListComponent } from './pages/step-list/step-list.component';
 import { ParticipantsListComponent } from './pages/participants-list/participants-list.component';
 import { FinancialSpendingComponent } from './pages/financial-spending/financial-spending.component';
+import { ParticipantChangesComponent } from './pages/participant-changes/participant-changes.component';
+import { ProjectAttachmentsComponent } from './pages/project-attachments/project-attachments.component';
 
 
 const routes: Routes = [
@@ -14,7 +16,10 @@ const routes: Routes = [
   { path: 'create', component: ProjectCreateComponent },
   { path: ':id/steps', component: StepListComponent },
   { path: ':id/participants', component: ParticipantsListComponent },
-  { path: ':id/spending', component: FinancialSpendingComponent }
+  { path: ':id/spending', component: FinancialSpendingComponent },
+  { path: ':id/history/participationChange/:participantId',component:ParticipantChangesComponent},
+  { path: ':id/attachments',component:ProjectAttachmentsComponent}
+  
   
 
  

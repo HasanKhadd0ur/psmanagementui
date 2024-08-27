@@ -1,0 +1,30 @@
+<div class="card shadow mb-4">
+    <div class="card-body text-center">
+      <div class="circle circle-lg bg-light my-4">
+        <span class="fe fe-file-text fe-24 text-success"
+        style="color: #3ad29f !important;"></span>
+      </div>
+
+      <div class="card-text my-2">
+        <strong class="card-title my-0">{{attachment.attachmentName}}</strong>
+        <p class="small text-muted mb-0">{{attachment.attachmentDescription}}</p>
+      </div>
+    </div> <!-- ./card-text -->
+    <div class="card-footer">
+      <div class="row align-items-center justify-content-between">
+        <div class="col  text-center">
+          <small>
+            <a [routerLink]="['/uploads',attachment.attachmentUrl]" class="btn btn-primary">تنزيل </a>
+          </small>
+        </div>
+      
+        <div class="col  text-center">
+          <small>
+            <button         data-bs-toggle="modal"
+            data-bs-target="#removeAttachmentModal" class="btn  btn-secondary">إزالة</button>
+          </small>
+        </div>
+      
+      </div>
+    </div> <!-- /.card-footer -->
+  </div>

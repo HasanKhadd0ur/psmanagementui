@@ -1,0 +1,19 @@
+<!-- remove-participant-modal.component.html -->
+<div class="modal fade" id="removeAttachmentModal" tabindex="-1" aria-labelledby="removeParticipantModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="removeParticipantModalLabel">إزالة مرفق من المشروع</h5>
+          <button type="button" class="ml-4 mr-4 btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>هل أنت متأكد من أنك تريد إزالة المرفق {{attachment.attachmentName}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+          <button type="button" class="btn btn-danger" (click)="onConfirmRemove()">إزالة</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

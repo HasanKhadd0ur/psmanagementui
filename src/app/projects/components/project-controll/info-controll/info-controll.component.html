@@ -24,7 +24,7 @@
     </div>
     <!-- .col -->
     <div class="col-md-6 col-lg-4">
-      <div class="card shadow mb-4">
+      <div class="card shadow mb-4" [routerLink]="['/projects',project.id,'attachments']">
         <div class="card-body file-list">
           <div class="d-flex align-items-center">
             <div class="text-center">
@@ -32,8 +32,9 @@
                 <span class="fe fe-users fe-16 text-white"></span>
               </div>
             </div>
+            
             <div class="flex-fill ml-4 fname">
-              <strong>إضافة المرفقات</strong><br />
+              <strong> المرفقات</strong><br />
             </div>
           </div>
         </div>
@@ -72,6 +73,20 @@
           </div>
           <div class="flex-fill ml-4 fname">
             <strong>تغيير مدير المشروع</strong><br />
+          </div>
+        </div>
+      </div> <!-- .card-body -->
+    </div> <!-- .card -->
+  </div>
+  <div class="col-md-6 col-lg-4" >
+    <div class="card shadow mb-4">
+      <div class="card-body file-list">
+        <div class="d-flex align-items-center">
+          <div class="circle circle-md bg-secondary">
+            <span class="fe fe-map fe-16 text-white"></span>
+          </div>
+          <div class="flex-fill ml-4 fname">
+            <strong>تغيير رئيس الفريق</strong><br />
           </div>
         </div>
       </div> <!-- .card-body -->

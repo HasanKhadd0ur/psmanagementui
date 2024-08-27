@@ -1,1 +1,44 @@
-<p>project-attachments works!</p>
+<section *ngIf="attachments" class="row">
+    <div class="row justify-content-center" >
+      <div class="col-12">
+        <div class="row align-items-center my-4">
+          <div class="col">
+            <h2 class="h4 mb-0 page-title">قائمة مرفقات المشروع</h2>
+          </div>
+          <div class="col-auto">
+            <button
+              type="button"
+              (click)="openAddModal()"
+              data-bs-toggle="modal"
+              data-bs-target="#addِAttachmentModal"
+              class="btn btn-primary"
+            >
+              <span class="fe fe-file-plus fe-12 mr-2"></span>إضافة مرفق
+            </button>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <attahment-item
+            class="col-3"
+
+            *ngFor="let attachment of attachments"
+            (selected)="setSelectedAttachment(attachment)"
+            [attachment]="attachment"
+          ></attahment-item>
+        </div>
+        <div *ngIf="attachments.length == 0">
+          للأسف هذا المشروع لايحوي على أية مرفقات
+        </div>
+      </div>
+    </div>
+  
+    
+   <remove-attachment-modal *ngIf="selectedAtttachment"
+   [attachment]="attachments[0]"
+   (attachmentRemoved)="onAttahmentRemoved()"
+   >
+   </remove-attachment-modal>
+   
+  </section>
+  
