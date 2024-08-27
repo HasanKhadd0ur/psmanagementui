@@ -1,0 +1,18 @@
+
+    <div class="modal-header">
+      <h5 class="modal-title" id="moveToplanModalLabel">الانتقال إلى مرحلة التخطيط</h5>
+      <button type="button" class="ml-4 mr-4 btn-close" (click)="onClose()" ></button>
+    </div>
+    <div class="modal-body">
+         <div *ngIf="canMoveToProgress">
+        للأسف , لاتستطيع الانتقال إلى مرحلة التخطيط لأن مجموع الاوزان للمراحل ليس مئة,قم بالتعديل ومن ثم أعد المحاولة
+    </div>
+    <div  *ngIf="!canMoveToProgress">
+        <p>هل أنت متأكد من أنك تريد الانتقال إلى مرحلة التنفيذ </p>
+     </div>
+   
+    </div>    
+         <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="onClose()" >إلغاء</button>
+      <button type="button" class="btn btn-danger" (click)="onSubmit()">الانتقال</button>
+    </div>

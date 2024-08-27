@@ -7,6 +7,7 @@ import { StepService } from '../../services/step.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddStepModalComponent } from '../../components/modals/add-step-modal/add-step-modal.component';
 import { Modal } from 'bootstrap';
+import { RemoveStepModalComponent } from '../../components/steps/remove-step-modal/remove-step-modal.component';
 @Component({
   selector: 'step-list',
   templateUrl: './step-list.component.html',
@@ -50,6 +51,7 @@ export class StepListComponent {
     })
 
   }
+
   openAddModal(): void {
     const modalRef = this.modalService.open(AddStepModalComponent, { size: 'lg' });
     modalRef.componentInstance.projectId = this.projectId;

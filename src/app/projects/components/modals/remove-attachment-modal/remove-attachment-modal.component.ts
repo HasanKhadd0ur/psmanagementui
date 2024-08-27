@@ -16,7 +16,7 @@ export class RemoveAttachmentModalComponent {
 
   onConfirmRemove() {
 
-
+  
 
   }
 

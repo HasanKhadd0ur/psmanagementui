@@ -6,7 +6,7 @@ import { ProjectDetailsComponent } from './pages/project-details/project-details
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { ProjectRoutingModule } from './project-routing.module';
-import { StepRowItemComponent } from './components/step-row-item/step-row-item.component';
+import { StepRowItemComponent } from './components/steps/step-row-item/step-row-item.component';
 import { ProjectCreateComponent } from './pages/project-create/project-create.component';
 import {  MatCommonModule, MatOption, MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -37,6 +37,10 @@ import { RemoveParticipantModalComponent } from './components/modals/remove-part
 import { ParticipantChangesComponent } from './pages/participant-changes/participant-changes.component';
 import { AttahmentItemComponent } from './components/attahment-item/attahment-item.component';
 import { RemoveAttachmentModalComponent } from './components/modals/remove-attachment-modal/remove-attachment-modal.component';
+import { RemoveStepModalComponent } from './components/steps/remove-step-modal/remove-step-modal.component';
+import { ProjectToprogressModalComponent } from './components/projectModals/project-toprogress-modal/project-toprogress-modal.component';
+import { ProjectCompleteModalComponent } from './components/projectModals/project-complete-modal/project-complete-modal.component';
+import { ProjectReplanModalComponent } from './components/projectModals/project-replan-modal/project-replan-modal.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +67,12 @@ import { RemoveAttachmentModalComponent } from './components/modals/remove-attac
     RemoveParticipantModalComponent,
     ParticipantChangesComponent,
     AttahmentItemComponent,
-    RemoveAttachmentModalComponent
+    RemoveAttachmentModalComponent,
+    AddStepModalComponent,
+    RemoveStepModalComponent,
+    ProjectToprogressModalComponent,
+    ProjectCompleteModalComponent,
+    ProjectReplanModalComponent
   ],
   providers: [
     ProjectService,

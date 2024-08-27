@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Step } from '../../models/responses/Step';
+import { Step } from '../../../models/responses/Step';
 
 @Component({
   selector: 'step-row-item',

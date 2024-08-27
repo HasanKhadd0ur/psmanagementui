@@ -57,7 +57,7 @@
       
       </div> <!-- .row -->
 
-      <div class="col-md-6 col-lg-4" [routerLink]="['/projects/',project.id,'/steps']">
+      <div class="col-md-6 col-lg-4" (click)="onMoveToProgress()">
         <div class="card shadow mb-4">
           <div class="card-body file-list">
             <div class="d-flex align-items-center">
