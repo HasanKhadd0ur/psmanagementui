@@ -10,7 +10,7 @@ export class StateTranslatePipe implements PipeTransform {
     switch (state){
     case "InPlan":
       return "يخطط";
-    case "Complete": 
+    case "Completed": 
       return "مكتمل";
     case "InProgress" :
       return "التنفيذ";

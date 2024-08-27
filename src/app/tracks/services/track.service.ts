@@ -101,7 +101,7 @@ export class TrackService {
   
     return this
     .http
-    .post<void>(`${this.config.getServerUrl()}/Tracks/AddStepTrack/`,request
+    .post<void>(`${this.config.getServerUrl()}/Tracks/CompleteTrack/`,request
     );
   }
 

@@ -55,7 +55,7 @@
 
                 <div class="row">
                   <div class="col-6 label ">تاريخ عملية المتابعة {{track.trackInfo.trackDate | date}}</div>
-                  <button class="col-2 mr-1 btn btn-primary" *ngIf="!track.trackInfo.isCompleted">اكمال المتابعة</button>
+                  <button (click)="openComplete()" class="col-2 mr-1 btn btn-primary" *ngIf="!track.trackInfo.isCompleted">اكمال المتابعة</button>
                   
                   <div class="col-2 btn disabled btn-success ">{{track.trackInfo.isCompleted ? 'مكتملة':'غير مكتملة'}}</div>
                 </div>

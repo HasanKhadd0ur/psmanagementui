@@ -20,6 +20,7 @@ import { CompleteProjectRequest } from '../models/requests/project-requests/comp
 import { ChangeEmployeeParticipationRequest } from '../models/requests/project-requests/ChangeEmployeeParticipationRequest';
 import { ParticipationChange } from '../models/responses/participationChange';
 import { ProjectCompletion } from '../models/responses/ProjectCompletion';
+import { EmployeeContribution } from '../models/responses/employeeContribution';
 
 @Injectable({
   providedIn: 'root'
@@ -86,8 +87,21 @@ export class ProjectService {
               .get<Project[]>(`${this.config.getServerUrl()}/Projects/ByFilter/?teamLeaderId=${request.teamLeaderrId}${pagination}`);
   }
   
+  public getCompletionContribution(projectId : number  ):Observable<EmployeeContribution[]>{
+    
+    return this
+              .http
+              .get<EmployeeContribution[]>(`${this.config.getServerUrl()}/Projects/CompletionContributions/${projectId}`);
+  }
+  
+
+  
+
   //#endregion  queries
 
+
+
+  
   //#region  planning  managment
   
   //tihs method responsible for hanging the team leader 
@@ -215,6 +229,11 @@ export class ProjectService {
   public getAttachment(projectId : number  ):Observable<Attachment[]>{
     
     return this.http.get<Attachment[]>(this.config.getServerUrl()+ "/Projects/Attachments/?projectId="+projectId);
+
+  }
+  public removeAttachment(projectId : number ,attachmentId : number  ):Observable<Attachment[]>{
+    
+    return this.http.get<Attachment[]>(this.config.getServerUrl()+ "/Projects/RemoveAttachment/?projectId="+projectId+"&attachmentId="+attachmentId);
 
   }
 

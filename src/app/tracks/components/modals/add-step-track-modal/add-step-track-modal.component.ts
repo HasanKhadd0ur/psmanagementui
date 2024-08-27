@@ -65,7 +65,7 @@ export class AddStepTrackModalComponent {
 
   onStepSelected(step: Step): void {
 
-    this.stepTrackForm.patchValue({ stepName: step.stepInfo?.stepName });
+    this.stepTrackForm.patchValue({ stepName: step.stepInfo?.stepName  });
     //this.stepTrackForm.patchValue({id: step.id});
 
     

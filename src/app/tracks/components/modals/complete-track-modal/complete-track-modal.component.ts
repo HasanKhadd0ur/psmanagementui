@@ -72,10 +72,11 @@ export class CompleteTrackModalComponent {
   private _setCanMove(){
 
     this
-    .canComplete = this
+    .canComplete =! this
     .track
     .trackInfo
     .isCompleted
+    console.log(this.track)
 
   } 
 

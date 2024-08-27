@@ -1,4 +1,4 @@
-<div class="container-fluid" *ngIf="project">
+<div class="container-fluid" *ngIf="project && contributers ">
     <div class="row justify-content-center">
       <div class="col-12">
         <div class="row align-items-center mb-4">
@@ -35,17 +35,15 @@
             <project-header [projectInfo]="project.projectInfo"></project-header>
             <project-subjective [project]="project"> </project-subjective>
             <hr />
-            <p><strong>مراحل المشروع</strong></p>
-            <step-table [steps]="project.steps"></step-table>
-            <hr />
-            <participants-table
-              [employeeParticipates]="project.employeeParticipates"
-            ></participants-table>
-            <p><strong>خطة الانفاق</strong></p>
-            <financial-spend-table
-              [financialSpending]="project.financialSpending"
-            ></financial-spend-table>
-  
+            <p><strong>مساهمات العاملين بالانجاز</strong></p>
+           
+            <employee-contribution-table
+              [contributers]="contributers"
+            >
+
+            </employee-contribution-table>
+            <hr>
+            
             <project-footer
               [proposer]="project.proposer"
               [executer]="project.executer"

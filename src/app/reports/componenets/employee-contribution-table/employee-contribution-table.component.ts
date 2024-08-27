@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { EmployeeContribution } from '../../../projects/models/responses/employeeContribution';
 
 @Component({
   selector: 'employee-contribution-table',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './employee-contribution-table.component.css'
 })
 export class EmployeeContributionTableComponent {
-
+  @Input() contributers  :EmployeeContribution[] 
 }

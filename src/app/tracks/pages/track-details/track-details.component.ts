@@ -159,6 +159,22 @@ export class TrackDetailsComponent implements OnInit {
   }
   
 
+  openComplete(){
+    const modalRef = this.modalService.open(CompleteTrackModalComponent);
+    modalRef.componentInstance.track = this.track;
+
+
+    modalRef.result.then((result) => {
+      if (result) {
+        // Add the new project to the list
+        this.loadParticipants();
+        
+      }
+    }, (reason) => {
+   
+    });
+  
+  }
 
 
   loadTheNewStep(stId :number,request :AddStepTrackRequest ){
