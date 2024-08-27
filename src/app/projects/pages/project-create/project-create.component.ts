@@ -4,7 +4,7 @@ import { EmployeesService } from '../../../employees/services/employees.service'
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, map, Observable, startWith, switchMap } from 'rxjs';
 import { Employee } from '../../../employees/models/responses/employee';
-import { Customer } from '../../../customers/models/customer';
+import { Customer } from '../../../customers/models/responses/customer';
 import { CustomerService } from '../../../customers/services/customer.service';
 import { ProjectService } from '../../services/project.service';
 import { CreateProjectRequest } from '../../models/requests/project-requests/createProjectRequest';

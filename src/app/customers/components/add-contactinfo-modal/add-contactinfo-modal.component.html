@@ -1,0 +1,49 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="moveToplanModalLabel">إضافة معلومة اتصال</h5>
+  <button
+    type="button"
+    class="ml-4 mr-4 btn-close"
+    (click)="onClose()"
+  ></button>
+</div>
+<div class="modal-body">
+  <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+    <div class="row">
+      <div class="mb-3 col-8 offset-1">
+        <label for="conatatType" class="form-label">طريقة الاتصال</label>
+        <input
+        
+          type="text"
+          name="conatatType"
+          id="conatatType"
+          class="form-control"
+          [(ngModel)]="request.contactType"
+          required
+        />
+      </div>
+
+      <div class="mb-3 col-8 offset-1">
+        <label for="conatatValue" class="form-label">رقم الاتصال </label>
+        <input
+          id="conatatValue"
+          class="form-control"
+          [(ngModel)]="request.contactValue"
+          name="conatatValue"
+          required
+        />
+    </div>
+    </div>
+    <div class="row">
+      <button
+        type="submit"
+        [disabled]="projectForm.invalid"
+        class="col m-4 btn btn-primary"
+      >
+        إضافة
+      </button>
+      <div class="col m-4 btn btn-seondary" (click)="onClose()">
+        إغلاق
+      </div>
+    </div>
+  </form>
+</div>

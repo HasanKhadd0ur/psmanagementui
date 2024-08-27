@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Customer } from '../models/customer';
+import { Customer } from '../models/responses/customer';
 import { HttpClient } from '@angular/common/http';
 import { ConfigurationService } from '../../core/services/configuration/configuration.service';
 import { Observable } from 'rxjs';
 import { Result } from '../../core/models/result';
-import { CreateCustomerRequest } from '../models/createCustomerRequest';
-import { UpdateCustomerRequest } from '../models/requests/updateCustomerRequest';
+import { CreateCustomerRequest } from '../models/requests/createCustomerRequest';
+import { AddContactInfoRequest, RemoveContactInfoRequest, UpdateCustomerRequest } from '../models/requests/updateCustomerRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +35,16 @@ export class CustomerService {
     
     return this.http.post<Customer>(this.config.getServerUrl()+ "/Customers",customer);
   }
+  public addContactInfo(request :AddContactInfoRequest):Observable<void>{
+    
+    return this.http.post<void>(this.config.getServerUrl()+ "/Customers/AddContactInfo",request);
+  }
 
+public removeContactInfo(request :RemoveContactInfoRequest):Observable<void>{
+    
+    return this.http.post<void>(this.config.getServerUrl()+ "/Customers/RemoveContactInfo",request);
+  }
+  
   public updateCustomer(id :number ,request :UpdateCustomerRequest):Observable<void>{
     
     return this.http.put<void>(`${this.config.getServerUrl()}/Customers/${id}` ,request);

@@ -10,6 +10,8 @@ import { SharedModule } from "../shared/shared.module";
 import { CustomerItemComponent } from './components/customer-item/customer-item.component';
 import { CustomerCreateComponent } from './pages/customer-create/customer-create.component';
 import { AddCustomerModalComponent } from './components/add-customer-modal/add-customer-modal.component';
+import { AddContactinfoModalComponent } from './components/add-contactinfo-modal/add-contactinfo-modal.component';
+import { RemoveContactinfoModalComponent } from './components/remove-contactinfo-modal/remove-contactinfo-modal.component';
 
 
 
@@ -20,7 +22,9 @@ import { AddCustomerModalComponent } from './components/add-customer-modal/add-c
     UpdateCustomerComponent,
     CustomerItemComponent,
     CustomerCreateComponent,
-    AddCustomerModalComponent
+    AddCustomerModalComponent,
+    AddContactinfoModalComponent,
+    RemoveContactinfoModalComponent
    ],
   imports: [
     CommonModule,

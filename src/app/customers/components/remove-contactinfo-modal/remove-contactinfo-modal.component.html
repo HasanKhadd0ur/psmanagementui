@@ -1,0 +1,20 @@
+
+<div class="modal-header">
+    <h5 class="modal-title" id="moveToplanModalLabel">حذف معلومة اتصال</h5>
+    <button type="button" class="ml-4 mr-4 btn-close" (click)="onClose()" ></button>
+  </div>
+  <div class="modal-body">
+  
+  <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+    <div class="row">
+        هل أنت متأكد من أنك تريد حذف جهة الاتصال {{contact.contactType}}/{{contact.contactValue}}
+      </div>
+      
+      <div class="row ">
+      <button type="submit" [disabled]="projectForm.invalid " class="col m-4 btn btn-primary">إضافة</button>
+      <button  class="col m-4  btn btn-seondary" (click)="onClose()" >إغلاق</button>
+   
+    </div>
+     </form>
+
+  </div>

@@ -7,8 +7,11 @@ export interface Customer{
         streetNumber : number ,
         streetName : string 
     } 
-    contactInfo :{
-        contactValue :string,
-        contactType :string
-    }[]
+    contactInfo :ContactInfo[]
+}
+export class ContactInfo {
+    id :number 
+    contactValue :string 
+    contactType :string   
+
 }

@@ -16,15 +16,41 @@
                 <p><strong>العنوان</strong></p>
                 <p>المدينة {{customer.address.city}}</p>
                 <p>الشارع {{customer.address.streetName}} {{customer.address.streetNumber}}</p>
+            
                 
-                
+            </div>
+            <div class="row col-8  ">
+              <table class="table offset-2">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>طريقة الاتصال</th>
+                    <th>قيمة الاتصال</th>
+                    <th>تعديل </th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let contact of customer.contactInfo ;index as i ">
+                    <td class="text-center" >{{i +1}}</td>
+                    <td class="text-center">{{contact.contactType}}</td>
+                    <td class="text-center">{{contact.contactValue}}</td>
+                    <td class="text-center"  >
+                      <button class="btn btn-danger" (click)="openRemoveConatact(contact)">
+                        إزالة
+                      </button>
+                    </td>
+                    
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div class="row mb-4">
 
                 <button class="col-3 offset-1 m-4 btn btn-danger" (click)="openModal('delete')">إزالة</button>
                 <button class="col-3 offset-1 m-4 btn btn-primary" (click)="openModal('edit')">تعديل</button>
                 
-                <button class="col-3 m-4 btn btn-primary" (click)="addContact(customer.id)">إضافة معلومة اتصال</button>
+                <button class="col-3 m-4 btn btn-primary" (click)="openAddConatact()">إضافة معلومة اتصال</button>
             
             </div>
             
@@ -34,7 +60,7 @@
 </div> <!-- .row -->
 
 
-<div class="modal   fade" id="customerModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+<div *ngIf="customer" class="modal   fade" id="customerModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">

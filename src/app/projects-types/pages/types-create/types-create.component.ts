@@ -3,7 +3,7 @@ import { CreateNewTypeRequest } from '../../models/requests/createNewTypeRequest
 import { ProjectsTypesService } from '../../services/projects-types.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { CreateCustomerRequest } from '../../../customers/models/createCustomerRequest';
+import { CreateCustomerRequest } from '../../../customers/models/requests/createCustomerRequest';
 
 @Component({
   selector: 'types-create',

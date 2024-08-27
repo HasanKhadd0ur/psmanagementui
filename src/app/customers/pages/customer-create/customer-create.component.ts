@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CreateCustomerRequest } from '../../models/createCustomerRequest';
+import { CreateCustomerRequest } from '../../models/requests/createCustomerRequest';
 import { CustomerService } from '../../services/customer.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';

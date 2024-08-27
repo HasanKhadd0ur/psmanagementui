@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer } from '../../models/customer';
+import { Customer } from '../../models/responses/customer';
 import { CustomerService } from '../../services/customer.service';
 import { CustomerDetailsComponent } from '../customer-details/customer-details.component';
 import { MatDialog } from '@angular/material/dialog';

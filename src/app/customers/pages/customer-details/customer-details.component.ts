@@ -1,11 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Customer } from '../../models/customer';
+import { ContactInfo, Customer } from '../../models/responses/customer';
 import { CustomerService } from '../../services/customer.service';
 import { ActivatedRoute, Router, RouteReuseStrategy } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Modal } from 'bootstrap';
 import { UpdateCustomerComponent } from '../update-customer/update-customer.component';
-import { UpdateCustomerRequest } from '../../models/requests/updateCustomerRequest';
+import { AddContactInfoRequest, UpdateCustomerRequest } from '../../models/requests/updateCustomerRequest';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddContactinfoModalComponent } from '../../components/add-contactinfo-modal/add-contactinfo-modal.component';
+import { RemoveContactinfoModalComponent } from '../../components/remove-contactinfo-modal/remove-contactinfo-modal.component';
 
 @Component({
   selector: 'customer-details',
@@ -17,19 +20,26 @@ export class CustomerDetailsComponent implements OnInit {
   modalMode: 'edit' | 'delete' = 'edit';
   modalTitle: string = '';
 
+  customerId : number 
   customer: Customer ;
   selectedCustomer :Customer ;
   constructor(
     private router : Router,
     private route: ActivatedRoute,
     private customerService: CustomerService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private modalService : NgbModal
   ) {}
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    
-    this.customerService.getCustomerById(id).subscribe({
+    this.customerId = Number(this.route.snapshot.paramMap.get('id'));
+    this.loadCustomer();
+
+  }
+
+  loadCustomer (){
+
+    this.customerService.getCustomerById(this.customerId).subscribe({
       next :(data) => {
         
          this.customer = data;
@@ -40,10 +50,6 @@ export class CustomerDetailsComponent implements OnInit {
 
   });
   }
-  addContact(arg0: number) {
-    throw new Error('Method not implemented.');
-    }
-    
 
     openModal(mode: 'edit' | 'delete'): void {
       this.modalMode = mode;
@@ -108,6 +114,48 @@ export class CustomerDetailsComponent implements OnInit {
       }
     );
   
+    }
+
+    openAddConatact(){
+    
+      const modalRef = this.modalService.open(AddContactinfoModalComponent);
+      modalRef.componentInstance.customer = this.customer;
+
+  
+      modalRef.result.then((result) => {
+   
+        if (result) {
+   
+          this.loadCustomer();
+          
+        }
+        
+      }, (reason) => {
+                 this.loadCustomer();
+      
+      });
+    
+    }
+  
+    openRemoveConatact(conta : ContactInfo){
+    
+      const modalRef = this.modalService.open(RemoveContactinfoModalComponent);
+      modalRef.componentInstance.customer = this.customer;
+      modalRef.componentInstance.contact= conta
+  
+      modalRef.result.then((result) => {
+   
+        if (result) {
+   
+          this.loadCustomer();
+          
+        }
+        
+      }, (reason) => {
+       
+      
+      });
+    
     }
   
     closeModal(): void {

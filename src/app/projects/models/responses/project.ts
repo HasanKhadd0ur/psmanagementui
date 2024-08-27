@@ -1,4 +1,4 @@
-import { Customer } from "../../../customers/models/customer"
+import { Customer } from "../../../customers/models/responses/customer"
 import { Employee } from "../../../employees/models/responses/employee"
 import { EmployeeParticipate } from "../../../employees/models/responses/employeeParticipate"
 import { Aggreement } from "../valueObjects/Aggreement"
