@@ -24,6 +24,7 @@
 
             *ngFor="let attachment of attachments"
             (selected)="setSelectedAttachment(attachment)"
+            (detled)="openDeleteAttachment(attachment)"
             [attachment]="attachment"
           ></attahment-item>
         </div>
@@ -34,11 +35,7 @@
     </div>
   
     
-   <remove-attachment-modal *ngIf="selectedAtttachment"
-   [attachment]="attachments[0]"
-   (attachmentRemoved)="onAttahmentRemoved()"
-   >
-   </remove-attachment-modal>
+
    
   </section>
   

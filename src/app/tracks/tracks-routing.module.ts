@@ -13,7 +13,7 @@ const routes: Routes = [
   {path:'detail/:id',component:TrackDetailsComponent},
   {path:'history/step/:id',component:StepTrackHistoryComponent}  ,
   {path:'project/:projectId/employee/:employeeId',component:EmployeeTrackHistoryComponent},
-  {path:'uncompleted/',component:TracksUncompleteComponent} ,
+  {path:'uncompleted',component:TracksUncompleteComponent} ,
   {path:'',component:TracksListComponent} 
 
 

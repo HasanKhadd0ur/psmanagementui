@@ -49,6 +49,7 @@ export class ParticipantsListComponent {
 
   onParticipantRemoved(): void {
     this.isDetailMode=false ;
+    this.closeModal('removeParticipantModal')
     this.loadParticipations();
   }
 

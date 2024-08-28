@@ -11,6 +11,7 @@ export class AttahmentItemComponent {
   @Input() attachment : Attachment
   @Output() selected = new EventEmitter<Attachment>()
 
+  @Output() detled = new EventEmitter<Attachment>()
   constructor(
 
     public config :ConfigurationService
@@ -20,5 +21,8 @@ export class AttahmentItemComponent {
     this.selected.emit(this.attachment)
   }
 
-
+  onDelete() {
+    this.detled.emit(this.attachment);  
+  }
+    
 }

@@ -43,7 +43,7 @@ export class ProjectCompletionComponent implements OnInit{
           this.toastr.error('المشروع لم ينجز بعد');
           this.router.navigate(['/']);
         }else {
-        //  this.loadCompletion();
+          this.loadCompletion();
           this.loadContributions();
         }
       }

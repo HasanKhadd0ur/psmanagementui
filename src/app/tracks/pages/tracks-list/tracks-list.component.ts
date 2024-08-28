@@ -17,7 +17,7 @@ import { RemoveTrackRequest } from '../../models/requests/RemoveTrackRequest';
 export class TracksListComponent implements OnInit{
   month: Date;
 
-  tracks : Track[]
+  tracks : Track[]|null
 
 
   constructor(
@@ -38,31 +38,55 @@ export class TracksListComponent implements OnInit{
 
   loadTracks(){
 
-    // let request : Gettraks
-    // this.trackService
-    // .ge
-    // .getTrackByProjectId(request)
-    // .subscribe({
+    this.trackService
+    .getTracks()
+    .subscribe({
 
-    //   next : (data)=>{
+      next : (data)=>{
 
-    //     this.toastr.success("تم تحميل عمليات المتابعة بنجاح");
-    //     this.tracks= data;
+        this.toastr.success("تم تحميل عمليات المتابعة بنجاح");
+        this.tracks= data;
 
-    //   }
-    //   ,
-    //   error:(err)=>{
+      }
+      ,
+      error:(err)=>{
 
-    //     this.toastr.error("لقد حدث خطاء ما")
+        this.toastr.error("لقد حدث خطاء ما")
 
-    //   }
+      }
 
-    // });
+    });
 
 
   }
+
   onFilter() {
-    throw new Error('Method not implemented.');
-    }
+  if(this.month){
+
+    this.tracks = null ;
+    this.trackService
+    .getTracks()
+    .subscribe({
+
+      next : (data)=>{
+
+        this.tracks= data;
+        this.tracks=this.tracks!.filter(e =>new Date(e.trackInfo.trackDate).getMonth() == new Date(this.month).getMonth())
+
+      }
+      ,
+      error:(err)=>{
+
+        this.toastr.error("لقد حدث خطاء ما")
+
+      }
+
+    });
+
+
+
+  }
+
+  }
 
 }

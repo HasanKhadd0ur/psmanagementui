@@ -37,7 +37,7 @@ export class TrackService {
     return this
     .http
     .get<Track[]>
-    (`${this.config.getServerUrl()}/UnCompleted`);
+    (`${this.config.getServerUrl()}/Tracks/UnCompleted`);
   }
 
 
@@ -105,6 +105,12 @@ export class TrackService {
     );
   }
 
+  public getTracks():Observable<Track[]>{
+  
+    return this
+    .http
+    .get<Track[]>(`${this.config.getServerUrl()}/Tracks/ByFilter/`);
+  }
   // this method remove a track  
   //
   public removeTrack(request :RemoveTrackRequest ):Observable<void>{

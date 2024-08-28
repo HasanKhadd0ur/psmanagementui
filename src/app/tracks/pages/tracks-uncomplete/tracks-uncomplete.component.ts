@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TrackService } from '../../services/track.service';
 import { Track } from '../../models/responses/track';
 import { ActivatedRoute } from '@angular/router';
+import { Toast } from 'bootstrap';
 
 @Component({
   selector: 'tracks-uncomplete',
@@ -31,5 +32,13 @@ export class TracksUncompleteComponent implements OnInit {
     this
     .trackService
     .getUnCompletedTrack()
+    .subscribe({
+      next :(data)=>{
+        this.tracks=data
+      },
+      error:(err)=>{
+        this.toastrService.error('تعذر تحميل المتابعات غير المكتملة')
+      }
+    })
   }
 }

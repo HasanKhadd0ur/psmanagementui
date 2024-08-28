@@ -231,9 +231,13 @@ export class ProjectService {
     return this.http.get<Attachment[]>(this.config.getServerUrl()+ "/Projects/Attachments/?projectId="+projectId);
 
   }
-  public removeAttachment(projectId : number ,attachmentId : number  ):Observable<Attachment[]>{
+  public removeAttachment(projectId : number ,attachmentId : number  ):Observable<void>{
     
-    return this.http.get<Attachment[]>(this.config.getServerUrl()+ "/Projects/RemoveAttachment/?projectId="+projectId+"&attachmentId="+attachmentId);
+    return this.http.post<void>(this.config.getServerUrl()+ "/Projects/RemoveAttachment/",{
+      'projectId':projectId,
+      'attachmentId':attachmentId
+
+    });
 
   }
 

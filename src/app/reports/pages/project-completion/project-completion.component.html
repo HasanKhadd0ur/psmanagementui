@@ -35,8 +35,10 @@
             <project-header [projectInfo]="project.projectInfo"></project-header>
             <project-subjective [project]="project"> </project-subjective>
             <hr />
-            <p><strong>مساهمات العاملين بالانجاز</strong></p>
-           
+            <p><strong>تقييم الجهة الطارحة</strong>{{completion.customerRate}}</p>
+            <p><strong>ملاحظات الجهة الطارحة</strong>{{completion.customerNotes}}</p>
+            <p><strong>تاريخ الانهاء</strong>{{completion.completionDate | date }}</p>
+            
             <employee-contribution-table
               [contributers]="contributers"
             >
