@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { EmployeesRoutingModule } from './employees-routing.module';
+import { EmployeesRoutingModule } from './routing/employees-routing.module';
 import { EmployeeProfileComponent } from './pages/employee-profile/employee-profile.component';
 import { EmployeeParticipatesComponent } from './pages/employee-participates/employee-participates.component';
 import { EmployeeParticipateComponent } from './components/employee-participate/employee-participate.component';

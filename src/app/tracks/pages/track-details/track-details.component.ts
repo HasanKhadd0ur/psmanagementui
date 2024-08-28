@@ -189,7 +189,7 @@ export class TrackDetailsComponent implements OnInit {
       stepInfo:s?.stepInfo ?? {
         startDate:new Date(),
         stepName :'',
-        NumberOfWorker:0,
+        numberOfWorker:0,
         description:'',
         duration:0,
 

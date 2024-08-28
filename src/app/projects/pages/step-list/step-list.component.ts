@@ -64,7 +64,6 @@ export class StepListComponent {
       }
     }, (reason) => {
       
-      this.toastr.error("لقد حدث خطاء ما")
 
     });
   }

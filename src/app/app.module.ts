@@ -27,7 +27,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CustomerRoutingModule } from './customers/routing/customer-routing.module';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { ProjectsModule } from './projects/projects.module';
-import { ProjectRoutingModule } from './projects/project-routing.module';
+import { ProjectRoutingModule } from './projects/routing/project-routing.module';
 import { ProjectFAQComponent } from './pages/project-faq/project-faq.component';
 import { PsmStartComponent } from './pages/psm-start/psm-start.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';

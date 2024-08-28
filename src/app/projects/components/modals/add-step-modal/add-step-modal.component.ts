@@ -25,7 +25,7 @@ export class AddStepModalComponent implements OnInit {
       stepInfo: {
         startDate:new Date (),
         description :'',
-        NumberOfWorker :0,
+        numberOfWorker :0,
         stepName:'',
         duration:0
       },

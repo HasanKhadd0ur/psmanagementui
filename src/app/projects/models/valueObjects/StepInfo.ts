@@ -4,6 +4,6 @@ export interface StepInfo {
     description: string;
     startDate: Date;
     duration: number;
-    NumberOfWorker : number 
+    numberOfWorker : number 
 }
 

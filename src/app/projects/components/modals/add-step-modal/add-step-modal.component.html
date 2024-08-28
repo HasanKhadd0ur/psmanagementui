@@ -18,7 +18,7 @@
 
     <div class="mb-3 col-3">
       <label for="worker" class="form-label">عدد العمال المطلوب</label>
-      <input  id="worker" class="form-control" [(ngModel)]="request.stepInfo.NumberOfWorker" name="worker" required>
+      <input  id="worker" class="form-control" [(ngModel)]="request.stepInfo.numberOfWorker" name="worker" required>
     </div>
     
     </div>
@@ -36,7 +36,7 @@
         </div>
         
       <div class="mb-3 col-3">
-        <label for="duration" class="form-label">المدة</label>
+        <label for="duration" class="form-label"> المدة (أسبوع)</label>
         <input  id="duration" class="form-control" [(ngModel)]="request.stepInfo.duration" name="duration" required>
       </div>
 
@@ -46,8 +46,8 @@
     </div>
       </div>
     <div class="row ">
-      <button type="submit" class="btn btn-primary">إضافة</button>
-      <button  class="btn btn-seondary" (click)="onClose()" >إغلاق</button>
+      <button type="submit" [disabled]="projectForm.invalid" class="col-5 m-4 btn btn-primary">إضافة</button>
+      <div  class="col-5 m-4 btn btn-secondary" (click)="onClose()" >إغلاق</div>
    
     </div>
      </form>
