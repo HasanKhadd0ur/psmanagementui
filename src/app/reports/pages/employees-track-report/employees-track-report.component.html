@@ -14,8 +14,15 @@
             >
               طباعة
             </button>
+            
             <button
-            [routerLink]="['/reports',projectId,'steptracks',trackId]"    
+            [routerLink]="['/reports/definition',projectId]"    
+            type="button" class="btn mr-1 btn-secondary m-1">
+            بطاقة التعريف 
+                      </button>
+            
+            <button
+            [routerLink]="['/reports/step-tracks',projectId,'track',trackId]"    
             type="button" class="btn mr-1 btn-secondary m-1">
               تقرير متابعة المراحل
             </button>
@@ -40,9 +47,19 @@
             
             <p>
                 <strong>
-                    قائمة متابعة العاملين لعملية المتابعة التي حدثت بتاريخ {{track.trackInfo.trackDate}}
+                    قائمة متابعة العاملين لعملية المتابعة التي حدثت بتاريخ {{track.trackInfo.trackDate | date}}
                 </strong>
             </p>
+            <p>
+              <strong>الوضع الراهن : </strong>{{track.trackInfo.statusDescription}}
+              <br>
+              <strong>وضع عملية المتابعة : </strong>{{track.trackInfo.isCompleted ?  "مكتملة" : "غير مكتملة"}}
+              <br>
+              <strong>الملاحظات : </strong>{{track.notes}}
+              <br>
+              
+          </p>
+          
             <employee-trak-table
             [employeeTrack]="employeesTrack" >
 

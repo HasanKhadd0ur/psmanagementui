@@ -1,0 +1,33 @@
+<table class="table table-borderless table-striped">
+    <thead>
+      <tr>
+        <th scope="col" class="text-left">م</th>
+        <th scope="col" class="text-left">الوضع الراهن</th>
+        <th scope="col" class="text-left">تاريخ المتابعة</th>
+        <th scope="col" class="text-left">الملاحظات</th>
+        <th scope="col" class="text-left">حالة المتابعة</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let track of tracks ; index as i " >
+        <th scope="row">{{i +1 }}</th>
+
+        <td class="text-left"> {{track.trackInfo.statusDescription}}</td>
+        <td class="text-left">{{track.trackInfo.trackDate |date}}</td>
+        <td class="text-left">{{track.notes}}</td>
+        <td class="text-left">{{track.trackInfo.isCompleted ? "مكتملة":"غير مكتملة"}}</td>        
+        
+      </tr>
+      <tr  *ngIf="tracks.length==0" >
+        <th scope="row" class="text-center"></th>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+        <td class="text-center"> </td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+      </tr>
+    </tbody>
+  </table>

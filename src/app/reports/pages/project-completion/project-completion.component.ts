@@ -1,3 +1,4 @@
+//#region  Imports
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../../../projects/models/responses/project';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,6 +7,9 @@ import { ProjectService } from '../../../projects/services/project.service';
 import { ProjectCompletion } from '../../../projects/models/responses/ProjectCompletion';
 import { EmployeeContribution } from '../../../projects/models/responses/employeeContribution';
 import { Track } from '../../../tracks/models/responses/track';
+import { PdfDownloaderService } from '../../../core/services/pdfDownloader/pdf-downloader.service';
+//#endregion  Imports
+
 
 @Component({
   selector: 'project-completion',
@@ -13,21 +17,32 @@ import { Track } from '../../../tracks/models/responses/track';
   styleUrl: './project-completion.component.css'
 })
 export class ProjectCompletionComponent implements OnInit{
+  
+  //#region  Propoerrties
   projectId : number 
   project :Project
   completion : ProjectCompletion
   contributers : EmployeeContribution[]
   tracks : Track[]
   iscalculated :boolean =false 
+  //#endregion  Propoerrties
+  
 
+  //#region  Constructors
   constructor (
 
     private route :ActivatedRoute ,
     private projectService : ProjectService,
     private router :Router,
+    private pdfDownloader : PdfDownloaderService,
     private toastr :ToastrService 
 
   ){}
+
+  //#endregion  Constructors
+ 
+ 
+  //#region  Oninit
 
   ngOnInit(): void {
   
@@ -49,7 +64,10 @@ export class ProjectCompletionComponent implements OnInit{
       }
     });
   }
+  //#endregion  Oninit
 
+  
+  //#region  Loaders
   loadContributions() {
     this
     .projectService
@@ -77,5 +95,9 @@ export class ProjectCompletionComponent implements OnInit{
     });
   }
 
+  public downloadAsPdf(): void {
+    this.pdfDownloader.downloadAsPdf('pdfContent');
+  }
 
+    //#endregion  Loaders
 }

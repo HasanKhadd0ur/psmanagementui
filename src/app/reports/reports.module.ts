@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ReportsRoutingModule } from './reports-routing.module';
+import { ReportsRoutingModule } from './routing/reports-routing.module';
 import { ProjectDefinitionComponent } from './pages/project-definition/project-definition.component';
 import { ProjectCompletionComponent } from './pages/project-completion/project-completion.component';
 import { EmployeesTrackReportComponent } from './pages/employees-track-report/employees-track-report.component';
@@ -19,6 +19,9 @@ import { ProjectSubjectiveComponent } from './componenets/project-report-layout/
 import { EmployeeTrakTableComponent } from './componenets/tracks-components/employee-trak-table/employee-trak-table.component';
 import { StepTrakTableComponent } from './componenets/tracks-components/step-trak-table/step-trak-table.component';
 import { EmployeeContributionTableComponent } from './componenets/employee-contribution-table/employee-contribution-table.component';
+import { TrackRowItemComponent } from './componenets/tracks-components/track-row-item/track-row-item.component';
+import { EmployeeWorkTrackComponent } from './pages/employee-work-track/employee-work-track.component';
+import { ProjectSubjectivUnformalComponent } from './componenets/project-report-layout/project-subjectiv-unformal/project-subjectiv-unformal.component';
 
 
 @NgModule({
@@ -38,7 +41,10 @@ import { EmployeeContributionTableComponent } from './componenets/employee-contr
     ProjectSubjectiveComponent,
     EmployeeTrakTableComponent,
     StepTrakTableComponent,
-    EmployeeContributionTableComponent
+    EmployeeContributionTableComponent,
+    TrackRowItemComponent,
+    EmployeeWorkTrackComponent,
+    ProjectSubjectivUnformalComponent
   ],
   imports: [
     CommonModule,

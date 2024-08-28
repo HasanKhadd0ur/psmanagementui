@@ -1,3 +1,4 @@
+//#region  Imports
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ProjectService } from '../../../projects/services/project.service';
@@ -7,6 +8,7 @@ import { EmployeeTrack } from '../../../tracks/models/responses/employeeTrack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Project } from '../../../projects/models/responses/project';
 import { data } from 'jquery';
+//#endregion  Imports
 
 @Component({
   selector: 'employees-track-report',
@@ -15,13 +17,18 @@ import { data } from 'jquery';
 })
 export class EmployeesTrackReportComponent implements OnInit{
 
+
+  //#region  Propoerties
   trackId :number 
   projectId :number 
   project :Project
   track : Track
   employeesTrack : EmployeeTrack[]
 
-
+  //#endregion  Propoerties
+  
+  
+  //#region  Constructors
   constructor(
 
     private tostrService  :ToastrService ,
@@ -31,6 +38,12 @@ export class EmployeesTrackReportComponent implements OnInit{
     private router : Router
 
   ){}
+
+  //#endregion  Constructors
+
+
+
+  //#region  Oninit
 
   ngOnInit(): void {
     
@@ -42,7 +55,10 @@ export class EmployeesTrackReportComponent implements OnInit{
     this.loadProject()
   }
 
-
+  //#endregion  Oninit
+  
+  
+  //#region  Loaders
   loadProject() {
     this
     .projectService
@@ -67,6 +83,7 @@ export class EmployeesTrackReportComponent implements OnInit{
       }
     });
   }
+
   loadTracks() {
     this
     .trackService
@@ -78,6 +95,6 @@ export class EmployeesTrackReportComponent implements OnInit{
     });
   }
 
-
+  //#endregion  Loaders
 
 }

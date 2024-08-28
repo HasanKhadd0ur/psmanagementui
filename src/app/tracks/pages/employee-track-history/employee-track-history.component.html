@@ -6,7 +6,8 @@
                 <h4 class="h4 mb-0 page-title">  قائمة عمليات المتابعة للسيد : {{employee.personalInfo | fullname}} <br>{{projectInfo.name}} </h4>
                 </div>
             <div class="col-auto">
-            <button type="button"  class="btn btn-secondary"><span class="fe fe-file-plus fe-12 mr-2"></span>تقرير تاريخ متابعة </button>
+            <button type="button" 
+            [routerLink]="['/reports/contributions',projectId,'employee',employeeId]"  class="btn btn-secondary"><span class="fe fe-file-plus fe-12 mr-2"></span>تقرير تاريخ متابعة </button>
         </div>
    </div>
 <hr>

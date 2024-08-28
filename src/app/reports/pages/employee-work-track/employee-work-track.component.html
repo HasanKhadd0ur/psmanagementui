@@ -1,10 +1,10 @@
-<div class="container-fluid" *ngIf="project && tracks ">
+<div class="container-fluid" *ngIf="project && employeesTrack && employeee ">
     <div class="row justify-content-center">
       <div class="col-12">
         <div class="row align-items-center mb-4">
           <div class="col">
             <h2 class="h5 page-title">
-              <small class="text-muted text-uppercase">بطاقة متابعات مشروع</small>
+              <small class="text-muted text-uppercase">بطاقة متابعات مشارك </small>
             </h2>
           </div>
           <div class="col-auto">
@@ -14,36 +14,31 @@
             >
               طباعة
             </button>
-
-            <button *ngIf="project.currentState.toLowerCase()=='completed'" type="button" class="btn mr-1 btn-secondary m-1">
-              تقرير انجاز 
-            </button>
-            <button
-              type="button"
-              [routerLink]="['/reports/timeline/', project.id]"
-              class="btn mr-1 btn-secondary m-1"
-            >
-              تقرير خطة زمنية
-            </button>
           </div>
         </div>
         
         <div class="card shadow" id="pdfContent">
           <div class="card-body p-5">
-            <project-header [projectInfo]="project.projectInfo"></project-header>
-            <project-subjective [project]="project"> </project-subjective>
+           <project-subjectiv-unformal
+           [project]="project"
+           >
+
+           </project-subjectiv-unformal>
             <hr />
             
             <p>
-                <strong>
-                    قائمة عمليات متابعة المشروع 
-                  </strong>
+                 إن السيد <b>{{employeee.personalInfo | fullname}} </b> ذو الرقم الذاتي <b>{{employeee.hiastId}}</b> يعمل في المشروع والجدول المبين أدناه يبين متابعاته في المشروع 
             </p>
+            <div class="row text-secondary" *ngI="employeesTrack.length ==0">
+              لم تتم متابعته من قبل 
+            </div>
 
-            <tracks-table
-              [tracks]="tracks"
-            >
-            </tracks-table>
+            <employee-trak-table
+            *ngIf="employeesTrack.length>0"
+            [employeeTrack]="employeesTrack" >
+
+            </employee-trak-table>
+            
             <hr>
             
             <project-footer

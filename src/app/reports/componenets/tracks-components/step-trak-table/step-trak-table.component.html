@@ -1,1 +1,37 @@
-<p>step-trak-table works!</p>
+<table class="table table-borderless table-striped">
+    <thead>
+      <tr>
+        <th scope="col" class="text-left">#</th>
+        <th scope="col" class="text-left">اسم المرحلة</th>
+        <th scope="col" class="text-left">النسبة التثقيلية</th>
+        <th scope="col" class="text-left">نسبة التنفيذ السابقة</th>
+        <th scope="col" class="text-left">نسبة تنفيذ المتابعة</th>
+        <th scope="col" class="text-left">نسبة التنفيذ الكلية</th>
+        <th scope="col" class="text-left">طبيعة االتنفيذ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let empTrack of stepsTrack ; index as i " >
+        <th scope="row">{{i +1 }}</th>
+        <td> {{empTrack.stepInfo.stepName}}
+        </td>
+        <td class="text-left">{{empTrack.stepWeight}}</td>
+        <td class="text-left">{{empTrack.oldExecutionRatio}}</td>
+        <td class="text-left">{{empTrack.trackExecutionRatio}}</td>
+        <td class="text-left">{{empTrack.oldExecutionRatio + empTrack.trackExecutionRatio}}</td>
+        <td class="text-left">{{empTrack.executionState}}</td>
+
+        
+      </tr>
+      <tr  *ngIf="stepsTrack.length==0" >
+        <th scope="row" class="text-center"></th>
+        <td class="text-center"> </td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+        
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+      </tr>
+    </tbody>
+  </table>

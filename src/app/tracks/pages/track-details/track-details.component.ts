@@ -191,10 +191,11 @@ export class TrackDetailsComponent implements OnInit {
         stepName :'',
         NumberOfWorker:0,
         description:'',
-        duration:0
-      },
-      stepId: s?.id??0
+        duration:0,
 
+      },
+      stepId: s?.id??0,
+      stepWeight:s?.weight ??0
     }
 
 

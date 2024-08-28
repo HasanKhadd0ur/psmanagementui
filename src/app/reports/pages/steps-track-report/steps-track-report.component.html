@@ -1,1 +1,77 @@
-<p>steps-track-report works!</p>
+<div class="container-fluid" *ngIf="project && track && stepsTrack ">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="row align-items-center mb-4">
+          <div class="col">
+            <h2 class="h5 page-title">
+              <small class="text-muted text-uppercase">بطاقة متابعة مراحل</small>
+            </h2>
+          </div>
+          <div class="col-auto">
+            <button
+              type="button"
+              class="btn mr-1 btn-secondary m-1"
+            >
+              طباعة
+            </button>
+            <button
+            [routerLink]="['/reports',projectId,'steptracks',trackId]"    
+            type="button" class="btn mr-1 btn-secondary m-1">
+              تقرير متابعة العمالين
+            </button>
+            <button *ngIf="project.currentState.toLowerCase()=='completed'" type="button" class="btn mr-1 btn-secondary m-1">
+              تقرير انجاز 
+            </button>
+            <button
+              type="button"
+              [routerLink]="['/reports/timeline/', project.id]"
+              class="btn mr-1 btn-secondary m-1"
+            >
+              تقرير خطة زمنية
+            </button>
+          </div>
+        </div>
+        
+        <div class="card shadow" id="pdfContent">
+          <div class="card-body p-5">
+            <project-header [projectInfo]="project.projectInfo"></project-header>
+            <project-subjective [project]="project"> </project-subjective>
+            <hr />
+            
+            <p>
+                <strong>
+                    قائمة متابعة المراحل لعملية المتابعة التي حدثت بتاريخ {{track.trackInfo.trackDate | date}}
+                </strong>
+            </p>
+            <p>
+                <strong>الوضع الراهن : </strong>{{track.trackInfo.statusDescription}}
+                <br>
+                <strong>وضع عملية المتابعة : </strong>{{track.trackInfo.isCompleted ?  "مكتملة" : "غير مكتملة"}}
+                <br>
+                <strong>الملاحظات : </strong>{{track.notes}}
+                <br>
+                
+            </p>
+            
+            <step-trak-table
+            [stepsTrack]="stepsTrack">
+            
+            </step-trak-table>        
+            <hr>
+            
+            <project-footer
+              [proposer]="project.proposer"
+              [executer]="project.executer"
+              [projectManager]="project.projectManager"
+              [teamLeader]="project.teamLeader"
+            >
+            </project-footer>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col-12 -->
+    </div>
+  </div>
+  

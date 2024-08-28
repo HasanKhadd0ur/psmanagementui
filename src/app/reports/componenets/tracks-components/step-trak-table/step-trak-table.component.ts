@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { StepTrack } from '../../../../tracks/models/responses/steptrack';
 
 @Component({
   selector: 'step-trak-table',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class StepTrakTableComponent {
 
+  @Input() stepsTrack :StepTrack[]
 }

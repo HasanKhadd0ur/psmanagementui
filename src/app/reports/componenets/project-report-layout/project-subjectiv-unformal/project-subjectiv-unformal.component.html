@@ -1,0 +1,61 @@
+<div class="row align-items-center mb-4">
+    <div class="col">
+      <h2 class="h5 page-title"><small class="text-muted text-uppercase"></small></h2>
+    </div>
+    <div class="col-auto">
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="row mt-5 align-items-center">
+        <div class="col-md-3 text-center mb-5">
+          <div class="avatar avatar-xl">
+            <img src="./assets/images/users/4.jpg" alt="..." class="avatar-img ">
+          </div>
+        </div>
+        <div class="col">
+          <div class="row align-items-center">
+            <div class="col-md-7">
+              <h4 class="mb-1">{{project.projectInfo.name}}</h4>
+              <p class="small mb-3"><span class="badge badge-dark">{{project.currentState | stateTranslate}}</span></p>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-7">
+              <p class="text-muted"> {{project.projectInfo.description}}</p>
+            </div>
+            <div class="col">
+              <p class="small mb-0 text-muted">تاريخ البدء {{project.projectInfo.startDate | date}}</p>
+              <p class="small mb-0 text-muted">تاريخ الانتهاء المتوقع {{project.projectInfo.expectedEndDate | date}}</p>
+              <p class="small mb-0 text-muted">الرمز {{project.projectInfo.code}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5 align-items-center">
+        <div class="col">
+          <div class="row mb-4">
+            <div class="col">
+              <p class="small mb-0 text-muted">التمويل  {{project.financialFund.financialStatus}} / {{project.financialFund.source}}</p>
+              <p class="small mb-0 text-muted">كتاب الطرح  {{project.proposalInfo.proposingBookDate| date}} / {{project.proposalInfo.proposingBookNumber}}</p>
+              <p class="small mb-0 text-muted">كتاب الموافقة  {{project.projectAggreement.aggreementDate | date}} / {{project.projectAggreement.aggreementNumber}}</p>
+            </div>
+            <div class="col">
+              <p class="small mb-0 text-muted">الجهة الطارحة {{project.proposer.customerName}}</p>
+              <p class="small mb-0 text-muted">مدير المشروع {{project.projectManager.personalInfo |fullname}}</p>
+              <p class="small mb-0 text-muted">رئيس فريق العمل {{project.teamLeader.personalInfo | fullname}}</p>
+            </div>
+            <div class="col">
+              <p class="small mb-0 text-muted">الجهة المنفذة {{project.executer.name}}</p>
+              <p class="small mb-0 text-muted">طبيعة النشاط {{project.projectClassification.projectNature}}</p>
+              <p class="small mb-0 text-muted">النوع {{project.projectType.typeName}}</p>
+            </div>
+          
+          </div>
+          </div>
+      
+          </div>
+      </div>
+
+      
+      

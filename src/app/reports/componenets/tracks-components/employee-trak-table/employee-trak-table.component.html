@@ -3,6 +3,7 @@
       <tr>
         <th scope="col" class="text-left">الرقم الذاتي</th>
         <th scope="col" class="text-left">الاسم والشهرة</th>
+
         <th scope="col" class="text-left">ساعات العمل<br> المسندة</th>
         <th scope="col" class="text-left">ساعات العمل <br>المنفذة</th>
         <th scope="col" class="text-left">نسبة المساهمة</th>
@@ -18,7 +19,6 @@
         <th scope="row">{{empTrack.employee.hiastId}}</th>
         <td> {{empTrack.employee.personalInfo | fullname }}
         </td>
-        <td class="text-left">{{empTrack.employee.workInfo.workType}}</td>
         <td class="text-left">{{empTrack.employeeWork.assignedWorkingHours}}</td>
         <td class="text-left">{{empTrack.employeeWork.workedHours}}</td>
         <td class="text-left">{{empTrack.employeeWork.contributingRatio}}</td>
@@ -34,7 +34,6 @@
         <td class="text-center"></td>
         <td class="text-center"></td>
         <td class="text-center"> </td>
-        <td class="text-center"></td>
         <td class="text-center"></td>
         <td class="text-center"></td>
         <td class="text-center"></td>

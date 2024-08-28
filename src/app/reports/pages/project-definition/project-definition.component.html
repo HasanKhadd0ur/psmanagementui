@@ -17,13 +17,7 @@
           </button>
           
           <button *ngIf="project.currentState.toLocaleLowerCase()=='completed'" [routerLink]="['/reports/completion',project.id]" type="button" class="btn mr-1 btn-secondary m-1">
-       تقرير انجاز    </button>
-          <button type="button" class="btn mr-1 btn-secondary m-1">
-            تقرير متابعة المراحل
-          </button>
-          <button type="button" class="btn mr-1 btn-secondary m-1">
-            تقرير انشغالية
-          </button>
+            تقرير انجاز    </button>
           <button
             type="button"
             [routerLink]="['/reports/timeline/', project.id]"

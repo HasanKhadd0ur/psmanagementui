@@ -10,5 +10,5 @@ export class StepTrack {
     executionState :string 
     trackExecutionRatio :number 
     oldExecutionRatio : number 
-
+    stepWeight : number 
 }
