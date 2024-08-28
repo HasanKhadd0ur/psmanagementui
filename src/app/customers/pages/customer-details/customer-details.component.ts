@@ -17,12 +17,18 @@ import { RemoveContactinfoModalComponent } from '../../components/remove-contact
 })
 
 export class CustomerDetailsComponent implements OnInit {
+ 
+  //#region Properties 
   modalMode: 'edit' | 'delete' = 'edit';
   modalTitle: string = '';
 
   customerId : number 
   customer: Customer ;
   selectedCustomer :Customer ;
+  
+  //#endregion Properties 
+  
+  
   constructor(
     private router : Router,
     private route: ActivatedRoute,
@@ -39,132 +45,167 @@ export class CustomerDetailsComponent implements OnInit {
 
   loadCustomer (){
 
-    this.customerService.getCustomerById(this.customerId).subscribe({
+    this
+    .customerService
+    .getCustomerById(this.customerId)
+    .subscribe({
       next :(data) => {
         
-         this.customer = data;
-     
-         this.selectedCustomer=this.customer;
-    },
-    error : (err)=>{ console.log(err)}
-
-  });
+        this.customer = data;
+        this.selectedCustomer=this.customer;
+      },
+      error : (err)=>{ console.log(err)}
+    });
   }
 
-    openModal(mode: 'edit' | 'delete'): void {
-      this.modalMode = mode;
+  openModal(mode: 'edit' | 'delete'): void {
+    this.modalMode = mode;
       
-      if (mode === 'edit') {
-        this.modalTitle = 'تعديل جهة طارحة ';
-      } else if (mode === 'delete') {
-        this.modalTitle = 'حذف جهة طارحة';
-      }
-  
-      const modalElement = document.getElementById('customerModal');
-      if (modalElement) {
-        new Modal(modalElement).show(); // Open the modal
-      }
+    if (mode === 'edit') {
+      this.modalTitle = 'تعديل جهة طارحة ';
+    } 
+    else if (mode === 'delete') {
+       this.modalTitle = 'حذف جهة طارحة';
     }
   
-    saveCustomer(): void {
+    const modalElement = document.getElementById('customerModal');
+    if (modalElement) {
+      new Modal(modalElement).show(); // Open the modal
+    }
+  
+  }
+  
+  saveCustomer(): void {
       
-      let request : UpdateCustomerRequest ={
-        ...this.selectedCustomer,
-        customerId: this.selectedCustomer.id,
-        customerName:this.selectedCustomer.customerName
+    let request : UpdateCustomerRequest ={
+      ...this.selectedCustomer,
+      customerId: this.selectedCustomer.id,
+      customerName:this.selectedCustomer.customerName
+    }
+
+    this
+    .customerService
+    .updateCustomer(this.selectedCustomer.id,request)
+    .subscribe({
+      next :()=>{
+     
+        this.customer.address=this.selectedCustomer.address ;
+        this.customer.customerName=this.selectedCustomer.customerName;
+        this.customer.email=this.selectedCustomer.email
+        this.closeModal();
+        
+      }
+      ,
+      error:(err)=>{
+
+        this.toastr.error("لقد حدث خطاء ما ")
+        this.closeModal();
+      }
+  
+    })
+    
+  }
+  
+  delete(): void {
+  
+    this
+    .customerService
+    .deleteCustomer(this.customer.id)
+    .subscribe({
+  
+      next :()=>{
+        this.router.navigate(['/customers'])
+        this.closeModal();
+          
+      }
+      ,
+      error:(err)=>{
+      
+        this.toastr.error("لقد حدث خطاء ما ")
+        this.closeModal();
+      }
+  
+  
+    });
+  
+  }
+
+  openAddConatact(){
+    
+    const modalRef = this.modalService.open(AddContactinfoModalComponent);
+    modalRef.componentInstance.customer = this.customer;
+    
+    modalRef
+    .componentInstance
+    .added
+    .subscribe({
+      next : ()=>{
+
+        this.loadCustomer();
+
       }
 
-      this.customerService.updateCustomer(this.selectedCustomer.id,request).subscribe({
-        next :()=>{
-     
-          this.customer.address=this.selectedCustomer.address ;
-          this.customer.customerName=this.selectedCustomer.customerName;
-          this.customer.email=this.selectedCustomer.email
-          this.closeModal();
-        
-        }
-        ,
-        error:(err)=>{
-          this.toastr.error("لقد حدث خطاء ما ")
-        
-          this.closeModal();
-        }
-  
-      })
+    });
     
-    }
   
-    delete(): void {
+    modalRef.result.then(
+      (result) => {
   
-      this.customerService.deleteCustomer(this.customer.id).subscribe({
-  
-        next :()=>{
-          this.router.navigate(['/customers'])
-          this.closeModal();
-          
-        }
-        ,
-        error:(err)=>{
-          this.toastr.error("لقد حدث خطاء ما ")
+      if (result) {
+   
+        this.loadCustomer();
         
-          this.closeModal();
-        }
-  
-  
+      }
+        
+      }
+      , (reason) => {
+
+        this.loadCustomer();
+      
       }
     );
+    
+  }
   
-    }
+  openRemoveConatact(conta : ContactInfo){
+    
+    const modalRef = this.modalService.open(RemoveContactinfoModalComponent);
+    modalRef.componentInstance.customer = this.customer;
+    modalRef.componentInstance.contact= conta
+    
+    modalRef
+    .componentInstance
+    .removed
+    .subscribe({
+      next : ()=>{
 
-    openAddConatact(){
-    
-      const modalRef = this.modalService.open(AddContactinfoModalComponent);
-      modalRef.componentInstance.customer = this.customer;
+        this.loadCustomer();
 
-  
-      modalRef.result.then((result) => {
+      }
+
+    });
+
+    modalRef.result.then((result) => {
    
-        if (result) {
+      if (result) {
    
-          this.loadCustomer();
+        this.loadCustomer();
           
-        }
+      }
         
-      }, (reason) => {
-                 this.loadCustomer();
-      
-      });
-    
-    }
-  
-    openRemoveConatact(conta : ContactInfo){
-    
-      const modalRef = this.modalService.open(RemoveContactinfoModalComponent);
-      modalRef.componentInstance.customer = this.customer;
-      modalRef.componentInstance.contact= conta
-  
-      modalRef.result.then((result) => {
-   
-        if (result) {
-   
-          this.loadCustomer();
-          
-        }
-        
-      }, (reason) => {
+    }, (reason) => {
        
       
-      });
+    });
     
-    }
+  }
   
-    closeModal(): void {
-      const modalElement = document.getElementById('customerModal');
-      if (modalElement) {
-        new Modal(modalElement).hide(); // Close the modal
-      }
+  closeModal(): void {
+    const modalElement = document.getElementById('customerModal');
+    if (modalElement) {
+      new Modal(modalElement).hide(); // Close the modal
     }
-  
+  }
   
      
 }

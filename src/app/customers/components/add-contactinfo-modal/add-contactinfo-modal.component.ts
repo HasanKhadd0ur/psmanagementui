@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Customer } from '../../models/responses/customer';
 import { ToastrService } from 'ngx-toastr';
 import { CustomerService } from '../../services/customer.service';
@@ -13,7 +13,7 @@ import { AddContactInfoRequest } from '../../models/requests/updateCustomerReque
 export class AddContactinfoModalComponent implements OnInit{
 
   @Input() customer :Customer
-
+  @Output() added  = new EventEmitter<void>();
   request =new  AddContactInfoRequest(); 
  
   constructor(
@@ -46,6 +46,7 @@ export class AddContactinfoModalComponent implements OnInit{
     .subscribe({
       next : (data)=>{
        
+        this.added.emit();
         this.onClose()
       },
       error:(err)=>{

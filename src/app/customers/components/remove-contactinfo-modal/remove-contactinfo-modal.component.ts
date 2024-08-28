@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ContactInfo, Customer } from '../../models/responses/customer';
 import { RemoveContactInfoRequest } from '../../models/requests/updateCustomerRequest';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -13,8 +13,8 @@ import { CustomerService } from '../../services/customer.service';
 export class RemoveContactinfoModalComponent {
 
   @Input() contact :ContactInfo
-
   @Input() customer :Customer
+  @Output() removed = new EventEmitter<void>()
 
   request =new  RemoveContactInfoRequest(); 
  
@@ -48,7 +48,8 @@ export class RemoveContactinfoModalComponent {
     .removeContactInfo(this.request)
     .subscribe({
       next : (data)=>{
-       this.onClose();
+        this.removed.emit();
+        this.onClose();
       },
       error:(err)=>{
         this

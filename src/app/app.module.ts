@@ -24,7 +24,7 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { CustomerRoutingModule } from './customers/customer-routing.module';
+import { CustomerRoutingModule } from './customers/routing/customer-routing.module';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { ProjectsModule } from './projects/projects.module';
 import { ProjectRoutingModule } from './projects/project-routing.module';

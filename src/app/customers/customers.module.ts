@@ -5,7 +5,7 @@ import { CustomerService } from './services/customer.service';
 import { FormsModule, NgModel } from '@angular/forms';
 import { CustomerDetailsComponent } from './pages/customer-details/customer-details.component';
 import { UpdateCustomerComponent } from './pages/update-customer/update-customer.component';
-import { CustomerRoutingModule } from './customer-routing.module';
+import { CustomerRoutingModule } from './routing/customer-routing.module';
 import { SharedModule } from "../shared/shared.module";
 import { CustomerItemComponent } from './components/customer-item/customer-item.component';
 import { CustomerCreateComponent } from './pages/customer-create/customer-create.component';
