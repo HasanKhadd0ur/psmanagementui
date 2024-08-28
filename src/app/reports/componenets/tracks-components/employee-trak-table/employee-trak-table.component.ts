@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { EmployeeTrack } from '../../../../tracks/models/responses/employeeTrack';
 
 @Component({
   selector: 'employee-trak-table',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class EmployeeTrakTableComponent {
 
+  @Input() employeeTrack  : EmployeeTrack[]
 }

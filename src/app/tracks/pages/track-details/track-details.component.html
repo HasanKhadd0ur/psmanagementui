@@ -84,8 +84,8 @@
               <div class="tab-pane fade pt-3" id="profile-change-password" role="tabpanel">
 
                 <div class="row" >
-                  <button class="btn btn-primary col-3 offset-1">تقرير انشغالية عاملين </button>
-                  <button class="btn btn-primary col-3 offset-1">تقرير متابعة مراحل  </button>
+                  <button [routerLink]="['/reports/employees-tracks',track.projectId,'track',trackId]" class="btn btn-primary col-3 offset-1">تقرير انشغالية عاملين </button>
+                  <button  [routerLink]="['/reports/steps-tracks',track.projectId,'track',trackId]" class="btn btn-primary col-3 offset-1">تقرير متابعة مراحل  </button>
            
                 </div>
               </div>

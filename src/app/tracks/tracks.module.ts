@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TracksRoutingModule } from './tracks-routing.module';
+import { TracksRoutingModule } from './routing/tracks-routing.module';
 import { TracksListComponent } from './pages/tracks-list/tracks-list.component';
 import { TrackDetailsComponent } from './pages/track-details/track-details.component';
 import { StepTrackComponent } from './components/step-track/step-track.component';
