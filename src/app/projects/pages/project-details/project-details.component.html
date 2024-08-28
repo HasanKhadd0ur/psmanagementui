@@ -79,7 +79,7 @@
           <track-controll
             [project]="project"
             (complete)="openProjectComplete()"
-            (replan)="openRepan()"
+            (replan)="openReplan()"
           >
           </track-controll>
       
@@ -89,6 +89,9 @@
           
           <info-controll
             [project]="project"
+            (changeLeader)="openChangeTeamLeader()"
+            (changeManager)="openChangeProjectManager()"
+            
           >
 
           </info-controll>

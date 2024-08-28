@@ -7,7 +7,7 @@
         class="col-md-6 col-lg-4"
         [routerLink]="['/reports/definition/', project.id]"
       >
-        <div class="card shadow mb-4">
+        <div class="card shadow mb-4" >
           <div class="card-body file-list">
             <div class="d-flex align-items-center">
               <div class="circle circle-md bg-secondary">
@@ -46,7 +46,7 @@
         class="col-md-6 col-lg-4"
        
       >
-        <div class="card shadow mb-4">
+        <div class="card shadow mb-4" [routerLink]="['/reports/completion',project.id]">
           <div class="card-body file-list">
             <div class="d-flex align-items-center">
               <div class="circle circle-md bg-secondary">
@@ -63,7 +63,7 @@
       </div>
       <!-- .row -->
     </div>
-    <div class="col-md-6 col-lg-4" >
+    <div class="col-md-6 col-lg-4"  [routerLink]="['/rerports/history',project.id]">
       <div class="card shadow mb-4">
         <div class="card-body file-list">
           <div class="d-flex align-items-center">
@@ -71,26 +71,10 @@
               <span class="fe fe-map fe-16 text-white"></span>
             </div>
             <div class="flex-fill ml-4 fname">
-              <strong>بطاقة الانشغالية </strong><br />
+              <strong>بطاقة تاريخ متابعة </strong><br />
             </div>
           </div>
         </div> <!-- .card-body -->
       </div> <!-- .card -->
     </div>
-    <div class="col-md-6 col-lg-4" >
-        <div class="card shadow mb-4">
-          <div class="card-body file-list">
-            <div class="d-flex align-items-center">
-              <div class="circle circle-md bg-secondary">
-                <span class="fe fe-map fe-16 text-white"></span>
-              </div>
-              <div class="flex-fill ml-4 fname">
-                <strong>بطاقة متابعة المراحل</strong><br />
-              </div>
-            </div>
-          </div> <!-- .card-body -->
-        </div> <!-- .card -->
-      </div>
     
-  </div>
-  

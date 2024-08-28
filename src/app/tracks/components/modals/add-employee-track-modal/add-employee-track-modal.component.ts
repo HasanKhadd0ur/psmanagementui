@@ -93,7 +93,7 @@ export class AddEmployeeTrackModalComponent {
 
   employeeFormatter = (result: any) :string=>   { 
      
-     if(result.employee == undefined){
+     if(result.employee === undefined){
       return ''
      }
     return     ` ${result.employee.hiastId} - ${result.employee.personalInfo.firstName } ${result.employee.personalInfo.lastName}`;

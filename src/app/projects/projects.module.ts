@@ -41,6 +41,8 @@ import { RemoveStepModalComponent } from './components/steps/remove-step-modal/r
 import { ProjectToprogressModalComponent } from './components/projectModals/project-toprogress-modal/project-toprogress-modal.component';
 import { ProjectCompleteModalComponent } from './components/projectModals/project-complete-modal/project-complete-modal.component';
 import { ProjectReplanModalComponent } from './components/projectModals/project-replan-modal/project-replan-modal.component';
+import { ChangeManagerModalComponent } from './components/projectModals/change-manager-modal/change-manager-modal.component';
+import { ChangeLeaderModalComponent } from './components/projectModals/change-leader-modal/change-leader-modal.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { ProjectReplanModalComponent } from './components/projectModals/project-
     RemoveStepModalComponent,
     ProjectToprogressModalComponent,
     ProjectCompleteModalComponent,
-    ProjectReplanModalComponent
+    ProjectReplanModalComponent,
+    ChangeManagerModalComponent,
+    ChangeLeaderModalComponent
   ],
   providers: [
     ProjectService,

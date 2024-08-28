@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="addEmployeeTrackModalLable">تغيير مدير المشروع</h5>
+    <button type="button" class="mr-4 ml-4 btn-close" (click)="onClose()"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      <div class="row ">
+
+
+        <div class="mb-3 col-8 offset-2 ">
+          <label for="hiastIdM" class="form-label">الرقم الذاتي للمدير للجديد</label>
+          <input id="hiastIdM" formControlName="employee" 
+                  class="form-control" 
+                  [ngbTypeahead]="searchEmployees"
+                  [inputFormatter]="employeeFormatter"
+                  [resultFormatter]="employeeFormatter"
+                  (selectItem)="onStepSelected($event.item)">
+        </div>
+        
+        
+        </div>
+        <div class="row ">
+
+
+            <div class="mb-3 col-8 offset-2 ">
+              <label class="form-label">المدير القديم </label>
+              <label  class="form-label">{{project.projectManager.personalInfo | fullname }} ,{{project.projectManager.email }} </label>
+            
+            </div>
+            
+            </div>
+            
+        <button type="submit" class="btn mr-4 ml-4 btn-primary" [disabled]="!employeeForm.valid">تغيير </button>
+      <button  data-bs-dismiss="modal" aria-label="Close" class=" mr-4 ml-4 btn btn-primary" >إلغاء</button>
+    
+    </form>
+  </div>

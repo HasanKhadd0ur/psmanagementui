@@ -9,6 +9,8 @@ import { NgModel } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectCompleteModalComponent } from '../../components/projectModals/project-complete-modal/project-complete-modal.component';
 import { ProjectReplanModalComponent } from '../../components/projectModals/project-replan-modal/project-replan-modal.component';
+import { ChangeManagerModalComponent } from '../../components/projectModals/change-manager-modal/change-manager-modal.component';
+import { ChangeLeaderModalComponent } from '../../components/projectModals/change-leader-modal/change-leader-modal.component';
 
 
 @Component({
@@ -44,20 +46,49 @@ export class ProjectDetailsComponent implements OnInit {
     modalRef.result.then((result) => {
  
       if (result) {
- 
-        // Add the new project to the list
- 
+
         this.loadProject();
         
       }
       
-    }, (reason) => {
-     
-    
-    });
-  
+    })
   }
-  openRepan() {
+
+  openChangeProjectManager(){
+    
+    const modalRef = this.modalService.open(ChangeManagerModalComponent);
+    modalRef.componentInstance.project = this.project;
+
+    modalRef.result.then((result) => {
+ 
+      if (result) {
+
+        this.loadProject();
+        
+      }
+      
+    })
+  }
+
+
+  openChangeTeamLeader(){
+    
+    const modalRef = this.modalService.open(ChangeLeaderModalComponent);
+    modalRef.componentInstance.project = this.project;
+
+    modalRef.result.then((result) => {
+ 
+      if (result) {
+
+        this.loadProject();
+        
+      }
+      
+    })
+  }
+
+
+  openReplan() {
     const modalRef = this.modalService.open(ProjectReplanModalComponent);
     modalRef.componentInstance.project = this.project;
 
@@ -88,8 +119,6 @@ export class ProjectDetailsComponent implements OnInit {
  
       if (result) {
  
-        // Add the new project to the list
- 
         this.loadProject();
         
       }
@@ -101,10 +130,7 @@ export class ProjectDetailsComponent implements OnInit {
   
   }
 
-  public downloadAsPdf(): void {
-    this.pdfDownloader.downloadAsPdf('pdfContent');
-  }
- 
+
   loadProject(){
     this
     .projectService
@@ -122,4 +148,8 @@ export class ProjectDetailsComponent implements OnInit {
     });
 
   }
+  public downloadAsPdf(): void {
+    this.pdfDownloader.downloadAsPdf('pdfContent');
+  }
+ 
 }

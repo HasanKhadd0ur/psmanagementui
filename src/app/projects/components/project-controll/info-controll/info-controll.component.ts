@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Project } from '../../../models/responses/project';
 
 @Component({
@@ -7,5 +7,16 @@ import { Project } from '../../../models/responses/project';
   styleUrl: './info-controll.component.css'
 })
 export class InfoControllComponent {
-@Input() project : Project
+  @Input() project : Project
+  @Output() changeLeader = new EventEmitter<void>()
+  @Output() changeManager = new EventEmitter<void>()
+
+
+  onChangeManger(){
+    this.changeManager.emit();
+  }
+  onChangeLeader(){
+    this.changeLeader.emit();
+  }
+  
 }

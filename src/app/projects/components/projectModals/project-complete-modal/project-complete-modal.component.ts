@@ -30,6 +30,7 @@ export class ProjectCompleteModalComponent {
     
     
   }
+  
   onClose() {
     this.activeModal.close();
   }
