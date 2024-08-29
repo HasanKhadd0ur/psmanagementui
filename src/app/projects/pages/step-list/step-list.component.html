@@ -17,6 +17,8 @@
     *ngFor="let step of steps" 
     [step]="step"
     (delete)="openModal('delete', step)"
+    (changeWeight)="openChangeWeightModal(step)"
+    (edit)="openEditModal(step)"
     ></step-row-item>
 
     <div *ngIf="steps.length==0">
@@ -37,53 +39,6 @@
 
         </div>
         <div class="modal-body">
-          <!-- Edit Form -->
-          <!-- <div *ngIf="modalMode === 'edit'">
-            <form (ngSubmit)="saveProject()">
-                <div class="row">
-  
-                    <div class="mb-3 col-5  offset-1">
-                      <label for="stepName" class="form-label">نوع الكلفة</label>
-                      <input type="text" name="stepName" id="stepName" class="form-control" [(ngModel)]="selectedItem.costType" required>
-                    </div>
-                    
-                    <div class="mb-3 col-5">
-                      <label for="expectedSpendingDate" class="form-label">تاريخ الانفاق المتوقع</label>
-                      <input type="date" id="expectedSpendingDate" class="form-control" [(ngModel)]="selectedItem.expectedSpendingDate" name="expectedSpendingDate" required>
-                    </div>
-              
-                  <div class="mb-3 col-4  offset-1">
-                    <label for="local" class="form-label">الشراء المحلي</label>
-                    <input  id="local" class="form-control" [(ngModel)]="selectedItem.localPurchase" name="local" required>
-                  </div>
-                  <div class="mb-3 col-4 ">
-                    <label for="completion" class="form-label">الشراء الخارجي </label>
-                    <input  id="completion" class="form-control" [(ngModel)]="selectedItem.externalPurchase.ammount" name="completion" required>
-                  </div>
-                  
-                <div class="mb-3 col-2">
-                  <label for="duration" class="form-label">نوغ القطع</label>
-                  <select  id="duration" class="form-control select " [(ngModel)]="selectedItem.externalPurchase.currency" name="duration" required>
-                    <option value="USA">USA</option>  
-                    <option value="EUR">EUR</option>  
-                  </select>
-                </div>
-                  </div>
-                  <div class="row">
-                    <div class="mb-3 col-10 offset-1 " >
-                      <label for="decription" class="form-label">البيان</label>
-                      <textarea col="3" name="worker" id="decription" class="form-control" [(ngModel)]="selectedItem.description"  required>
-                        </textarea>
-                    </div>
-                    </div>
-                    <div class="row">
-
-              
-
-                </div>
-                <button type="submit" class="btn btn-success">حفظ</button>
-            </form>
-          </div> -->
           <!-- Delete Confirmation -->
           <div *ngIf="modalMode === 'delete'">
             <p>هل أنت متأكد من أنك تريد حذف المرحلة {{ selectedItem.stepInfo.stepName }}?</p>

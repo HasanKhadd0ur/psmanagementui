@@ -10,8 +10,18 @@ export class StepRowItemComponent {
 
   @Input() step :Step
   @Output() delete = new EventEmitter<void>();
-
+  @Output() edit = new EventEmitter<Step>();
+  @Output() changeWeight = new EventEmitter<Step>();
+  
   onDelete() {
     this.delete.emit();
   } 
+
+  onChangeWeight(){
+    this.changeWeight.emit(this.step);
+  }
+
+  onEdit(){
+    this.edit.emit(this.step);
+  }
 }

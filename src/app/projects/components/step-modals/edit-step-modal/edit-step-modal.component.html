@@ -1,0 +1,49 @@
+<div class="modal-header">
+    <button type="button" class="btn-close" (click)="onClose()" ></button>
+    <h5 class="modal-title text-center">تعديل مرحلة</h5>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+      <div class="row">
+  
+        <div class="mb-3 col-4  offset-1">
+          <label for="stepName" class="form-label">اسم المرحلة</label>
+          <input disabled="true" type="text" name="stepName" id="stepName" class="form-control" [(ngModel)]="request.stepInfo.stepName" required>
+        </div>
+        
+        <div class="mb-3 col-4">
+          <label for="start" class="form-label">تاريخ البدء</label>
+          <input type="date" disabled="true"  id="start" class="form-control" [(ngModel)]="request.stepInfo.startDate" name="start" required>
+        </div>
+  
+
+      
+      </div>
+      <div class="row">
+        <div class="mb-3 col-4 offset-1">
+            <label for="worker" class="form-label">عدد العمال المطلوب</label>
+            <input  id="worker" class="form-control" [(ngModel)]="request.stepInfo.numberOfWorker" name="worker" required>
+          </div>
+        
+          <div class="mb-3 col-3">
+            <label for="duration" class="form-label"> المدة (أسبوع)</label>
+            <input  id="duration" class="form-control" [(ngModel)]="request.stepInfo.duration" name="duration" required>
+          </div>
+          <div class="mb-3 col-8 offset-1" >
+          <label for="decription" class="form-label">الوصف</label>
+          <textarea col="3" name="decription" id="decription" class="form-control" [(ngModel)]="request.stepInfo.description"  required>
+            </textarea>
+        </div>
+        </div>
+        <div class="row">
+          
+  
+        </div>
+      <div class="row ">
+        <button type="submit" [disabled]="projectForm.invalid" class="col-5 m-4 btn btn-primary">إضافة</button>
+        <div  class="col-5 m-4 btn btn-secondary" (click)="onClose()" >إغلاق</div>
+     
+      </div>
+       </form>
+  </div>
+  

@@ -5,7 +5,7 @@ import { ProjectListComponent } from './pages/project-list/project-list.componen
 import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
-import { ProjectRoutingModule } from './project-routing.module';
+import { ProjectRoutingModule } from './routing/project-routing.module';
 import { StepRowItemComponent } from './components/steps/step-row-item/step-row-item.component';
 import { ProjectCreateComponent } from './pages/project-create/project-create.component';
 import {  MatCommonModule, MatOption, MatOptionModule } from '@angular/material/core';
@@ -43,6 +43,8 @@ import { ProjectCompleteModalComponent } from './components/projectModals/projec
 import { ProjectReplanModalComponent } from './components/projectModals/project-replan-modal/project-replan-modal.component';
 import { ChangeManagerModalComponent } from './components/projectModals/change-manager-modal/change-manager-modal.component';
 import { ChangeLeaderModalComponent } from './components/projectModals/change-leader-modal/change-leader-modal.component';
+import { EditStepModalComponent } from './components/step-modals/edit-step-modal/edit-step-modal.component';
+import { EditWeightModalComponent } from './components/step-modals/edit-weight-modal/edit-weight-modal.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,9 @@ import { ChangeLeaderModalComponent } from './components/projectModals/change-le
     ProjectCompleteModalComponent,
     ProjectReplanModalComponent,
     ChangeManagerModalComponent,
-    ChangeLeaderModalComponent
+    ChangeLeaderModalComponent,
+    EditStepModalComponent,
+    EditWeightModalComponent
   ],
   providers: [
     ProjectService,

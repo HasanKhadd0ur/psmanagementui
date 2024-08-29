@@ -7,6 +7,7 @@ import { ChangeStepWeightRequest } from '../models/requests/step-requests/change
 import { GetStepTrackHistoryRequest } from '../models/requests/step-requests/GetStepTrackHistoryRequest';
 import { StepTrack } from '../../tracks/models/responses/steptrack';
 import { UpdateCompletionRatioRequest } from '../models/requests/step-requests/UpdateCompletionRatioRequest';
+import { ChangeStepInfoRequest } from '../models/requests/step-requests/changeStepInfoRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +50,11 @@ export class StepService {
     return this.http.put<void>(`${this.config.getServerUrl()}/Steps/ChangeCompletionRatio/?stepId=${request.stepId}`,request);
   }
   
+  // this method responsible for change the step Info 
+  public changeStepInfo(request : ChangeStepInfoRequest ):Observable<void>{
+    return this.http.put<void>(`${this.config.getServerUrl()}/Steps/UpdateStepInfo/`,request);
+  }
+
   // this method responsible for delet the step
   // 
   public deleteSep(stepId : number  ):Observable<void>{

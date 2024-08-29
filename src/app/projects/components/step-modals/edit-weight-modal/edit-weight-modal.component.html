@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <button type="button" class="btn-close" (click)="onClose()" ></button>
+    <h5 class="modal-title text-center">تعديل ثقل مرحلة</h5>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+      <div class="row">
+  
+        <div class="mb-3 col-4  offset-1">
+          <label for="stepName" class="form-label">اسم المرحلة</label>
+          <input disabled="true" type="text" name="stepName" id="stepName" class="form-control" [(ngModel)]="stepInfo.stepName" >
+        </div>
+        
+        <div class="mb-3 col-4">
+          <label for="start" class="form-label">المدة </label>
+          <input  disabled="true"  id="start" class="form-control" [(ngModel)]="stepInfo.duration" name="start" >
+        </div>
+  
+
+      
+      </div>
+      <div class="row">
+        <div class="mb-3 col-4 offset-1">
+            <label for="oweight" class="form-label">الثقل القديم </label>
+            <input disabled="true" id="oweight" class="form-control" [(ngModel)]="weight" name="oweight" >
+          </div>
+        <div class="mb-3 col-4 " >
+            <label for="weight" class="form-label">الثقل الجديد </label>
+            <input  id="weight" class="form-control" [(ngModel)]="request.weight" name="weight" required>
+        </div>
+        </div>
+        <div class="row">
+          
+        </div>
+      <div class="row ">
+        <button type="submit" [disabled]="projectForm.invalid" class="col-4 m-4 btn btn-primary">إضافة</button>
+        <div  class="col-4 m-4 btn btn-secondary" (click)="onClose()" >إغلاق</div>
+     
+      </div>
+       </form>
+  </div>
+  

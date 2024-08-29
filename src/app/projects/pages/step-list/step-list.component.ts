@@ -8,6 +8,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddStepModalComponent } from '../../components/modals/add-step-modal/add-step-modal.component';
 import { Modal } from 'bootstrap';
 import { RemoveStepModalComponent } from '../../components/steps/remove-step-modal/remove-step-modal.component';
+import { EditStepModalComponent } from '../../components/step-modals/edit-step-modal/edit-step-modal.component';
+import { EditWeightModalComponent } from '../../components/step-modals/edit-weight-modal/edit-weight-modal.component';
+import { ChangeStepInfoRequest } from '../../models/requests/step-requests/changeStepInfoRequest';
 @Component({
   selector: 'step-list',
   templateUrl: './step-list.component.html',
@@ -60,7 +63,7 @@ export class StepListComponent {
       if (result) {
         // Add the new project to the list
         this.steps.push(result);
-
+        
       }
     }, (reason) => {
       
@@ -68,6 +71,40 @@ export class StepListComponent {
     });
   }
 
+  openChangeWeightModal(step :Step): void {
+    const modalRef = this.modalService.open(EditWeightModalComponent);
+    modalRef.componentInstance.weight = step.weight;
+    modalRef.componentInstance.stepInfo = step.stepInfo;
+    modalRef.componentInstance.stepId = step.id;
+
+    modalRef.result.then((result) => {
+      if (result) {
+        // Add the new project to the list
+        step.weight=result.weight  
+      }
+    }, (reason) => {
+      
+
+    });
+  }
+  openEditModal(step : Step): void {
+
+    const modalRef = this.modalService.open(EditStepModalComponent ,{size:'lg'});
+    modalRef.componentInstance.stepInfo = step.stepInfo;
+    modalRef.componentInstance.stepId = step.id;
+
+    modalRef.result.then((result) => {
+      if (result) {
+        // Add the new project to the list
+        
+        step.stepInfo={...result.stepInfo};
+
+      }
+    }, (reason) => {
+      
+
+    });
+  }
 
   openModal(mode: 'edit' | 'delete', item: Step): void {
     this.modalMode = mode;
