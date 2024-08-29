@@ -28,6 +28,8 @@ import { EmployeeHistoryItemComponent } from './components/history/employee-hist
 import { StateTranslatePipe } from '../shared/pipes/stateTranslate/state-translate.pipe';
 import { TracksUncompleteComponent } from './pages/tracks-uncomplete/tracks-uncomplete.component';
 import { CompleteTrackModalComponent } from './components/modals/complete-track-modal/complete-track-modal.component';
+import { UpdateWorkModalComponent } from './components/modals/update-work-modal/update-work-modal.component';
+import { UpdateStepTrackModalComponent } from './components/modals/update-step-track-modal/update-step-track-modal.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { CompleteTrackModalComponent } from './components/modals/complete-track-
     StepHistoryItemComponent,
     EmployeeHistoryItemComponent,
     TracksUncompleteComponent,
-    CompleteTrackModalComponent
+    CompleteTrackModalComponent,
+    UpdateWorkModalComponent,
+    UpdateStepTrackModalComponent
   ],
   imports: [
     CommonModule,

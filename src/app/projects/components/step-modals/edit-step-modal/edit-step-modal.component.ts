@@ -54,7 +54,7 @@ export class EditStepModalComponent {
     })
   }
 
-  onClose():void {
+  onClose( ):void {
     this.activeModal.close();
   }
 

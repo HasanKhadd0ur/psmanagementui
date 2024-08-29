@@ -29,7 +29,8 @@ export class AddStepTrackModalComponent {
   filteredSteps: Step[] = [];
 
   constructor(private fb: FormBuilder,
-    private stepService : StepService 
+    private stepService : StepService ,
+    private toastr :ToastrService
   ) {
     this.stepTrackForm = this.fb.group({
       id: [],
@@ -65,7 +66,7 @@ export class AddStepTrackModalComponent {
 
   onStepSelected(step: Step): void {
 
-    this.stepTrackForm.patchValue({ stepName: step.stepInfo?.stepName  });
+    this.stepTrackForm.patchValue({ stepName: step.stepInfo?.stepName });
     //this.stepTrackForm.patchValue({id: step.id});
 
     
@@ -77,6 +78,12 @@ export class AddStepTrackModalComponent {
 
       const selectedStep = this.filteredSteps.find(step => step.stepInfo.stepName == this.stepTrackForm.value.stepName);
       if (selectedStep) {
+        if(selectedStep.currentCompletionRatio + this.stepTrackForm.value.trackExecutionRatio > 100){
+          this.toastr.error('نسبة التنفيذ غير صحيحة ')
+
+          return ;
+        }
+     
         const newStepTrack: AddStepTrackRequest = {
           stepId: selectedStep.id,
           trackId: this.trackId, 

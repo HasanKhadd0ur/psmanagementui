@@ -9,7 +9,7 @@
 <div class="modal-body">
   <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
     <div *ngIf="!canComplete" class="row text-primary">
-      عذراَ, لاتتسطيع أكمال عملية متابعة هي بالأصل مكتملة
+      {{errorMessage}}
     </div>
 
     <div *ngIf="canComplete">
@@ -23,9 +23,9 @@
       >
         اكمال المتابعة
       </button>
-      <button class="col m-4 btn btn-seondary" (click)="onClose()">
+      <div class="col m-4 btn btn-seondary" (click)="onClose()">
         إغلاق
-      </button>
+      </div>
     </div>
   </form>
 </div>

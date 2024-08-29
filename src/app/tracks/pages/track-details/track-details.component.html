@@ -55,7 +55,7 @@
 
                 <div class="row">
                   <div class="col-6 label ">تاريخ عملية المتابعة {{track.trackInfo.trackDate | date}}</div>
-                  <button (click)="openComplete()" class="col-2 mr-1 btn btn-primary" *ngIf="!track.trackInfo.isCompleted">اكمال المتابعة</button>
+                  <button [disabled]="!canComplete" (click)="openComplete()" class="col-2 mr-1 btn btn-primary" *ngIf="!track.trackInfo.isCompleted">اكمال المتابعة</button>
                   
                   <div class="col-2 btn disabled btn-success ">{{track.trackInfo.isCompleted ? 'مكتملة':'غير مكتملة'}}</div>
                 </div>
@@ -74,7 +74,11 @@
               <div class="tab-pane fade pt-3" id="profile-settings" role="tabpanel">
 
 
-                <employee-track *ngFor="let employeeTrack of employeesTracks" [employeeTrack]="employeeTrack" ></employee-track>
+                <employee-track
+                 *ngFor="let employeeTrack of employeesTracks"
+                 [employeeTrack]="employeeTrack" 
+                 [projectId]="track.projectId"
+                 ></employee-track>
                 <div class="row" *ngIf="employeesTracks.length ==0 " >
                لم تقم بمتابعة اي مشارك
                 </div>
@@ -97,10 +101,10 @@
 
       </div>
     </div>
-    <button type="button" class="btn  mr-4 ml-4 btn-primary" data-bs-toggle="modal" data-bs-target="#addStepTrackModal">
+    <button  [disabled]="track.trackInfo.isCompleted" type="button" class="btn  mr-4 ml-4 btn-primary" data-bs-toggle="modal" data-bs-target="#addStepTrackModal">
       إضافة متابعة مرحلة
     </button>
-    <button type="button" class="btn mr-4 ml-4  btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeTrackModal">
+    <button   [disabled]="track.trackInfo.isCompleted" type="button" class="btn mr-4 ml-4  btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeTrackModal">
       إضافة متابعة مشارك
     </button>
     

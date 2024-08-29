@@ -25,6 +25,7 @@ export class TrackDetailsComponent implements OnInit {
   isAddStepTrackModalVisible = false;
   trackId : number
   track : Track 
+  canComplete=false
   stepTracks :StepTrack[] 
   employeesTracks : EmployeeTrack[] 
   steps: Step[] = []; // Load steps from service or store
@@ -45,6 +46,7 @@ export class TrackDetailsComponent implements OnInit {
     this.trackId=Number(this.route.snapshot.paramMap.get('id'));
     this.loadTrack();
 
+
   }
 
   loadTrack(){
@@ -61,6 +63,7 @@ export class TrackDetailsComponent implements OnInit {
       this.stepTracks = stepTracks;
       this.employeesTracks = employeesTracks;
       this.loadParticipants();
+      this._canComplete();
       this.loadSteps();
     })
 
@@ -78,21 +81,19 @@ export class TrackDetailsComponent implements OnInit {
 
     });
   }
+
   openTrackComplete(){
     
     const modalRef = this.modalService.open(CompleteTrackModalComponent);
     modalRef.componentInstance.track = this.track;
+    modalRef.componentInstance.employeeTrack=this.employeesTracks
 
     modalRef.result.then((result) => {
- 
-      if (result) {
- 
-        // Add the new project to the list
- 
+      if(result){
+
         this.loadTrack();
-        
+
       }
-      
     }, (reason) => {
      
     
@@ -198,7 +199,7 @@ export class TrackDetailsComponent implements OnInit {
       stepWeight:s?.weight ??0
     }
 
-
+    this._canComplete();
     this.stepTracks.push(st)
     this.steps=this.steps.filter(e => e.id == s?.id) 
     this.trackedSteps.push(s!);
@@ -214,7 +215,7 @@ export class TrackDetailsComponent implements OnInit {
  
            this.loadTheNewParticipant(data,request);
            this.toastr.success('تمت إضافة متالعة المرحلة ')
-         
+           this._canComplete(); 
        }
        ,
        error:(err)=>{
@@ -228,13 +229,14 @@ export class TrackDetailsComponent implements OnInit {
     let st : EmployeeTrack ={
       trackId:this.trackId,
       trackInfo:this.track.trackInfo,
-      emloyeeId:request.employeeId,
+      employeeId:request.employeeId,
       employeeWork:request.employeeWork,
       employeeWorkInfo:request.employeeWorkInfo,
       employee:s!.employee,
       notes:request.notes
     }
 
+    this._canComplete();
 
     this.employeesTracks.push(st)
     this.participants=this.participants.filter(e => e.employeeId == s?.employeeId) 
@@ -242,4 +244,12 @@ export class TrackDetailsComponent implements OnInit {
 
    }
 
-}
+
+   private _canComplete (){
+    let contribution =0 ;
+    this
+    .employeesTracks
+    .forEach(e => contribution+=e.employeeWork.contributingRatio);
+    this.canComplete= 100 == contribution 
+    }
+ }

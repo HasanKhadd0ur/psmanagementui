@@ -33,8 +33,8 @@
           
         <div class="col-auto">
         
-          <button type="button" class="btn m-2 btn-sm btn-secondary">المساهمات</button>
-          <button type="button" class="btn m-2 btn-sm btn-secondary">تعديل</button>
+          <button type="button" [routerLink]="['/tracks/project',projectId,'employee',employeeTrack.employeeId]"  class="btn m-2 btn-sm btn-secondary">المتابعات</button>
+          <button type="button"  *ngIf="!employeeTrack.trackInfo.isCompleted" (click)="openEditModal()" class="btn m-2 btn-sm btn-secondary">تعديل</button>
         </div>
         </div>
       </div>

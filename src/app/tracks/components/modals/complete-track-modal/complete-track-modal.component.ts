@@ -4,6 +4,8 @@ import { CompleteTrackRequest } from '../../../models/requests/completeTrakReque
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { TrackService } from '../../../services/track.service';
+import { Employee } from '../../../../employees/models/responses/employee';
+import { EmployeeTrack } from '../../../models/responses/employeeTrack';
 
 @Component({
   selector: 'complete-track-modal',
@@ -13,6 +15,8 @@ import { TrackService } from '../../../services/track.service';
 export class CompleteTrackModalComponent {
   @Input() track : Track 
 
+  @Input() employeeTrack : EmployeeTrack[]
+  errorMessage =''
   request = new CompleteTrackRequest();
 
   canComplete : boolean
@@ -25,7 +29,8 @@ export class CompleteTrackModalComponent {
 
   ngOnInit(): void {
     
-
+    console.log(this.employeeTrack)
+    
     this._setCanMove();
 
   }
@@ -58,6 +63,8 @@ export class CompleteTrackModalComponent {
         .toastr
         .success('تم اكمال المتابعة بنجاح');
       
+        this.activeModal.close(true)
+      
       },
       error:(err)=>{
         this
@@ -76,6 +83,29 @@ export class CompleteTrackModalComponent {
     .track
     .trackInfo
     .isCompleted
+
+    if(!this.canComplete){
+      this.errorMessage='عذرا لاتستطيع اكمال عملية متابعة مكتملة بالفعل'
+    }
+
+    debugger
+    let contribution =0;
+
+    if(this.employeeTrack){
+    this
+    .employeeTrack
+    .forEach(e => contribution+=e.employeeWork.contributingRatio)
+    }
+    if(contribution!=100){
+      this.errorMessage='عذرا يجب أن يكون مجموع مساهمات العاملين مئة'
+    }
+
+    // this.canComplete = contribution == 100
+    
+    
+
+
+
     console.log(this.track)
 
   } 

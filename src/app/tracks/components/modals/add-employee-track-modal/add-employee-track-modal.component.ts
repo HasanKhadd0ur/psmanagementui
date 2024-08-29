@@ -59,7 +59,7 @@ export class AddEmployeeTrackModalComponent {
         this.participants=data 
 
         this.filteredParticipants = this.participants.filter(track=> 
-          !this.trackedParticipants.some(participate => participate.emloyeeId ===track.employeeId )
+          !this.trackedParticipants.some(participate => participate.employeeId ===track.employeeId )
           
         ).map(e => e.employee);
     

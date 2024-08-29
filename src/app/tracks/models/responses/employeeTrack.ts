@@ -4,7 +4,7 @@ import { EmployeeWorkInfo } from "../valueObjects/EmployeeWorkInfo"
 import { TrackInfo } from "../valueObjects/trackInfo"
 
 export class EmployeeTrack {
-    emloyeeId :number 
+    employeeId :number 
     trackId :number
     employee : Employee
     trackInfo :TrackInfo

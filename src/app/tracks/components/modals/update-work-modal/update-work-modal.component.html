@@ -1,0 +1,58 @@
+      <div class="modal-header">
+          <h5 class="modal-title"  >تعديل متابعة مشارك</h5>
+          <button type="button" class="mr-4 ml-4 btn-close" (click)="onClose()"></button>
+        </div>
+        <div class="modal-body">
+          <form  (ngSubmit)="onSubmit()"#projectForm="ngForm">
+            <div class="row ">
+
+              <div class="mb-3 col-4">
+                <label for="hiastId" class="form-label">المشارك</label>
+                <label>{{employee.personalInfo | fullname}}</label>
+              </div>
+              
+              <div class="mb-3 col-6">
+                <label for="notes" class="form-label">الملاحظات</label>
+                <input type="text" id="notes" [(ngModel)]="request.notes" class="form-control">
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="mb-3 col-4">
+                <label for="assignedWork" class="form-label">العمل المسند</label>
+                <input id="assignedWork" [(ngModel)]="request.employeeWorkInfo.assignedWork"  class="form-control" >
+              </div>
+  
+              <div class="mb-3 col-4">
+                <label for="performedWork" class="form-label">العمل المنجز</label>
+                <input   id="performedWork"   formControlName="performedWork" [(ngModel)]="request.employeeWorkInfo.performedWork" class="form-control" >
+              </div>
+
+                <div class="mb-3  col-4">
+                  <label for="assignedWorkEnd" class="form-label">تاريخ تنفيذ العمل المسند</label>
+                  <input type="date" id="assignedWorkEnd"  formControlName="assignedWorkEnd" [(ngModel)]="request.employeeWorkInfo.assignedWorkEnd" class="form-control" >
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="mb-3  col-4">
+                <label for="assignedWorkingHours" class="form-label">ساعات العمل المسندة </label>
+                <input type="number" id="assignedWorkingHours" formControlName="contributingR"  [(ngModel)]="request.employeeWork.assignedWorkingHours" class="form-control" >
+              </div>
+              <div class="mb-3  col-4">
+                <label for="workedHours" class="form-label">ساعات العمل الفعلية</label>
+                <input type="number" id="workedHours"  [(ngModel)]="request.employeeWork.workedHours" formControlName="workedHours" class="form-control" >
+              </div>
+              <div class="mb-3  col-4">
+                <label for="contributingRatio" class="form-label">نسبة المساهمة في العمل</label>
+                <input type="number" id="contributingRatio"  [(ngModel)]="request.employeeWork.contributingRatio" formControlName="contributingRatio" class="form-control" >
+              </div>
+              
+            </div>
+              
+              <button type="submit" class="btn mr-4 ml-4 btn-primary"[disabled]="projectForm.invalid" >إضافة</button>
+            <div (click)="onClose()" class=" mr-4 ml-4 btn btn-primary" >إلغاء</div>
+          
+          </form>
+        </div>
+    
