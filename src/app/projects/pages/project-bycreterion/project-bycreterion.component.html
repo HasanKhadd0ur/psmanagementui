@@ -1,0 +1,23 @@
+
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="row align-items-center my-4">
+            <div class="col">
+            <h2 class="h3 mb-0 page-title">  قائمة  المشاريع </h2>
+            </div>
+        <div class="col-auto">
+            <button type="button"  (click)="this.router.navigate(['projects/create'])" class="btn btn-primary"><span class="fe fe-file-plus fe-12 mr-2"></span>طرح مشروع</button>
+        </div>
+
+    </div>
+    <hr>
+    <div *ngIf="projects">
+    <div  class="row" *ngIf="projects.length > 0">
+        <project-item class="col-4"     *ngFor="let project of projects" [project]="project"></project-item>
+    </div>
+    <div  class="row" *ngIf="projects.length == 0">
+            لا يوجد أي مشروع 
+    </div>
+    </div>
+</div>
+</div>

@@ -1,128 +1,123 @@
-  <!-- ======= Sidebar ======= -->
-  <aside dir="rtl" id="sidebar" class="sidebar" [class.toggled]="isToggled">
+<!-- ======= Sidebar ======= -->
+<aside dir="rtl" id="sidebar" class="sidebar" [class.toggled]="isToggled">
+  <ul class="sidebar-nav" id="sidebar-nav">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/']">
+        <i class="fe fe-grid"></i>
+        <span>الصفحة الرئيسية</span>
+      </a>
+    </li>
+    <!-- End Dashboard Nav -->
+    <li class="nav-heading" *ngIf="hasRole(alroles.SCIENTIFIC_DEPUTY)">
+      المتابعة
+    </li>
 
-    <ul class="sidebar-nav" id="sidebar-nav">
+    <li class="nav-item" *ngIf="hasRole(alroles.SCIENTIFIC_DEPUTY)">
+      <a class="nav-link collapsed" [routerLink]="['/tracks/uncompleted']">
+        <i class="fe fe-airplay"></i><span>المتابعات غير المكتملة</span>
+      </a>
+    </li>
+    <!-- End Components Nav -->
+    <li class="nav-item" *ngIf="hasRole(alroles.SCIENTIFIC_DEPUTY)">
+      <a class="nav-link collapsed" [routerLink]="['/tracks']">
+        <i class="fe fe-flag"></i><span> عمليات المتابعة</span>
+      </a>
+    </li>
 
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/']">
-          <i class="fe fe-grid"></i>
-          <span>الصفحة الرئيسية</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
-      <li class="nav-heading">المتابعة</li>
+    <li class="nav-heading">أنواع المشاريع</li>
+    <li class="nav-item">
+      <a [routerLink]="['/types']" class="nav-link collapsed">
+        <i class="fe fe-map"></i><span> استعراض أنواع المشاريع</span>
+      </a>
+    </li>
+    <li class="nav-item" *ngIf="hasRole('Planner')">
+      <a [routerLink]="['/types/create']" class="nav-link collapsed">
+        <i class="fe fe-edit-2"></i><span>إضافة نوع جديد</span>
+      </a>
+    </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" 
-         [routerLink]="['/tracks/uncompleted']"
-         >
-            <i class="fe fe-airplay"></i><span>المتابعات غير المكتملة</span>
-          </a>
+    <li class="nav-heading">الجهات الطارحة</li>
+    <li class="nav-item">
+      <a [routerLink]="['customers']" class="nav-link collapsed">
+        <i class="fe fe-map"></i><span> استعراض الجهات الطارحة</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        *ngIf="hasRole('Planner')"
+        [routerLink]="['/customers/create']"
+        class="nav-link collapsed"
+      >
+        <i class="fe fe-edit-2"></i><span>إضافة جهة طارحة</span>
+      </a>
+    </li>
 
-      </li><!-- End Components Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed " [routerLink]="['/tracks']">
-          <i class="fe fe-flag"></i><span> عمليات المتابعة</span>
-        </a>
-      </li>
+    <li class="nav-heading">إدارة المشاريع</li>
 
-      <li class="nav-heading">أنواع المشاريع</li>
-      <li class="nav-item">
-        <a  [routerLink]="['/types']" class="nav-link collapsed ">
-          <i class="fe fe-map"></i><span> استعراض أنواع المشاريع</span>
-        </a>
-      </li>
-      <li class="nav-item" 
+    <li class="nav-item"       *ngIf="hasRole(alroles.SCIENTIFIC_DEPUTY)">
 
-      *ngIf="hasRole('Planner')"
+      <a [routerLink]="['/projects/create']" class="nav-link collapsed">
+        <i class="bi fe-plus"></i><span>طرح مشروع</span>
+      </a>
+    </li>
+    <li class="nav-item" *ngIf="hasRole(alroles.SCIENTIFIC_DEPUTY)">
+      <a
+        [routerLink]="['/projects']"
+        [queryParams]="{ listType: 'all' }"
+        class="nav-link collapsed"
+      >
+        <i class="bi bi-circle"></i><span>استعراض المشاريع</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        [routerLink]="['/byCriterion']"
+        [queryParams]="{ listType: 'managed' }"
+        class="nav-link collapsed"
+      >
+        <i class="bi bi-circle"></i><span>المشاريع التي أديرها</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        [routerLink]="['/byCriterion']"
+        [queryParams]="{ listType: 'leaded' }"
+        class="nav-link collapsed"
+      >
+        <i class="bi bi-circle"></i><span>المشاريع التي أرأسها</span>
+      </a>
+    </li>
 
-        >
-        <a [routerLink]="['/types/create']" class="nav-link collapsed " 
-        
-        >
-          <i class="fe fe-edit-2"></i><span>إضافة نوع جديد</span>
-        </a>
-      </li>
+    <li class="nav-heading">العمل</li>
 
-      <li class="nav-heading">الجهات الطارحة</li>
-      <li class="nav-item">
-        <a  [routerLink]="['customers']" class="nav-link collapsed ">
-          <i class="fe fe-map"></i><span> استعراض الجهات الطارحة</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a
-          *ngIf="hasRole('Planner')"
-        [routerLink]="['/customers/create']" class="nav-link collapsed " >
-          <i class="fe fe-edit-2"></i><span>إضافة جهة طارحة</span>
-        </a>
-      </li>
+    <li [routerLink]="['/employees/participates', id]" class="nav-item">
+      <a class="nav-link collapsed">
+        <i class="bi bi-layout-text-window-reverse"></i
+        ><span>استعراض مساهماتي</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
 
-      <li class="nav-heading">إدارة المشاريع</li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" [routerLink]="['/employees/profile']">
+        <i class="bi bi-layout-text-window-reverse"></i><span>ملفي الشخصي</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
 
-          <li class="nav-item">
-            <a [routerLink]="['/projects/create']" class="nav-link collapsed" >
-              <i class="bi fe-plus"></i><span>طرح مشروع</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a 
-              [routerLink]="['/projects']"
-              [queryParams]="{ listType: 'all'}"
-               class="nav-link collapsed">
-              <i class="bi bi-circle"></i><span>استعراض المشاريع</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a 
-            [routerLink]="['/projects']"
-            [queryParams]="{ listType: 'managed'}"  
-              class="nav-link collapsed"
-            >
-              <i class="bi bi-circle"></i><span>المشاريع التي أديرها</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a 
-              [routerLink]="['/projects']"
-              [queryParams]="{ listType: 'leaded'}"
-              class="nav-link collapsed"
-            >
-              <i class="bi bi-circle"></i><span>المشاريع التي أرأسها</span>
-            </a>
-          </li>
+    <li class="nav-heading">متفرقات</li>
+    <li class="nav-item">
+      <a [routerLink]="['/Project-FAQ']" class="nav-link collapsed">
+        <i class="bi bi-layout-text-window-reverse"></i
+        ><span>ملامح المشروع</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
 
-          <li class="nav-heading">العمل</li>
-     
-          <li  [routerLink]="['/employees/participates',id]" class="nav-item">
-     
-            <a class="nav-link collapsed" >
-     
-              <i class="bi bi-layout-text-window-reverse"></i><span>استعراض مساهماتي</span><i class="bi bi-chevron-down ms-auto"></i>
-     
-            </a>
-          </li>
-
-          
-      <li class="nav-item">
-        <a class="nav-link collapsed" [routerLink]="['/employees/profile']">
-          <i class="bi bi-layout-text-window-reverse"></i><span>ملفي الشخصي</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-
-      </li>
-      
-      <li class="nav-heading">متفرقات</li>
-      <li class="nav-item">
-        <a [routerLink]="['/Project-FAQ']" class="nav-link collapsed" >
-          <i class="bi bi-layout-text-window-reverse"></i><span>ملامح المشروع</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a [routerLink]="['/Help']" class="nav-link collapsed" >
-          <i class="bi bi-layout-text-window-reverse"></i><span>مساعدة</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-      </li>
-
-    </ul>
-
-  </aside><!-- End Sidebar-->
+    <li class="nav-item">
+      <a [routerLink]="['/Help']" class="nav-link collapsed">
+        <i class="bi bi-layout-text-window-reverse"></i><span>مساعدة</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
+  </ul>
+</aside>
+<!-- End Sidebar-->

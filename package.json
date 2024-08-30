@@ -39,6 +39,7 @@
     "material": "^0.9.15",
     "moment": "^2.30.1",
     "ngx-cookie-service": "^18.0.0",
+    "ngx-gantt": "^0.3.5",
     "ngx-pagination": "^6.0.3",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",

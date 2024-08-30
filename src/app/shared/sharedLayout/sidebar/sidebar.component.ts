@@ -2,6 +2,7 @@ import { Component, Input, input, OnInit } from '@angular/core';
 import { NavItem } from '../../componenets/nav-item/nav-item.component';
 import { UserService } from '../../../core/services/authentication/user.service';
 import { lastValueFrom } from 'rxjs';
+import { ROLES } from '../../../core/constants/roles';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,7 +13,7 @@ import { lastValueFrom } from 'rxjs';
 export class SidebarComponent implements OnInit {
   id : number 
  
-
+  alroles =ROLES
 
   roles :string[]
   

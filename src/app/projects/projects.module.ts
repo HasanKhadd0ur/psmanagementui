@@ -45,6 +45,7 @@ import { ChangeManagerModalComponent } from './components/projectModals/change-m
 import { ChangeLeaderModalComponent } from './components/projectModals/change-leader-modal/change-leader-modal.component';
 import { EditStepModalComponent } from './components/step-modals/edit-step-modal/edit-step-modal.component';
 import { EditWeightModalComponent } from './components/step-modals/edit-weight-modal/edit-weight-modal.component';
+import { ProjectBycreterionComponent } from './pages/project-bycreterion/project-bycreterion.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { EditWeightModalComponent } from './components/step-modals/edit-weight-m
     ChangeManagerModalComponent,
     ChangeLeaderModalComponent,
     EditStepModalComponent,
-    EditWeightModalComponent
+    EditWeightModalComponent,
+    ProjectBycreterionComponent
   ],
   providers: [
     ProjectService,

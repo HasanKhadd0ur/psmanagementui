@@ -8,20 +8,21 @@ import { ProjectCreateComponent } from '../pages/project-create/project-create.c
 import { ProjectDetailsComponent } from '../pages/project-details/project-details.component';
 import { ProjectListComponent } from '../pages/project-list/project-list.component';
 import { StepListComponent } from '../pages/step-list/step-list.component';
+import { RoleGuard } from '../../core/guards/role.guard';
+import { ROLES } from '../../core/constants/roles';
+import { ProjectBycreterionComponent } from '../pages/project-bycreterion/project-bycreterion.component';
 
 
 const routes: Routes = [
-  {path:'',component :ProjectListComponent},
+  {path:'',component :ProjectListComponent,canActivate:[RoleGuard] ,  data: { roles: [ROLES.SCIENTIFIC_DEPUTY] }},
   { path: 'detail/:id', component: ProjectDetailsComponent },
-  { path: 'create', component: ProjectCreateComponent },
+  { path: 'create', component: ProjectCreateComponent ,canActivate:[RoleGuard] ,  data: { roles: [ROLES.SCIENTIFIC_DEPUTY] }},
   { path: ':id/steps', component: StepListComponent },
   { path: ':id/participants', component: ParticipantsListComponent },
   { path: ':id/spending', component: FinancialSpendingComponent },
   { path: ':id/history/participationChange/:participantId',component:ParticipantChangesComponent},
-  { path: ':id/attachments',component:ProjectAttachmentsComponent}
-  
-  
-
+  { path: ':id/attachments',component:ProjectAttachmentsComponent},
+  { path: 'byCriterion',component:ProjectBycreterionComponent}
  
 ];
 

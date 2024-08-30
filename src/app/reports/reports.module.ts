@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { GanttModule } from 'ngx-gantt';
 import { ReportsRoutingModule } from './routing/reports-routing.module';
 import { ProjectDefinitionComponent } from './pages/project-definition/project-definition.component';
 import { ProjectCompletionComponent } from './pages/project-completion/project-completion.component';
