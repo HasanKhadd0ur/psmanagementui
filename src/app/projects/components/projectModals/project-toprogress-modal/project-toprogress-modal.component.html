@@ -5,8 +5,9 @@
     </div>
     <div class="modal-body">
          <div *ngIf="!canMoveToProgress">
-        للأسف , لاتستطيع الانتقال إلى مرحلة التخطيط لأن مجموع الاوزان للمراحل ليس مئة,قم بالتعديل ومن ثم أعد المحاولة
-    </div>
+    
+          {{errMessage}}
+        </div>
     <div  *ngIf="canMoveToProgress">
         <p>هل أنت متأكد من أنك تريد الانتقال إلى مرحلة التنفيذ </p>
      </div>

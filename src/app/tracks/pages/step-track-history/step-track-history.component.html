@@ -6,7 +6,7 @@
                 <h3 class="h3 mb-0 page-title">  قائمة عمليات المتابعة للمرحلة : {{step.stepInfo.stepName}} </h3>
                 </div>
             <div class="col-auto">
-            <button type="button"  class="btn btn-secondary"><span class="fe fe-file-plus fe-12 mr-2"></span>تقرير تاريخ متابعة </button>
+            <button type="button"     [routerLink]="['/reports/history',step.projectId,'step',step.id]"   class="btn btn-secondary"><span class="fe fe-file-plus fe-12 mr-2"></span>تقرير تاريخ متابعة </button>
         </div>
    </div>
 <hr>

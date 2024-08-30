@@ -1,20 +1,22 @@
-<div class="container-fluid" *ngIf="project && contributers ">
+<div class="container-fluid" *ngIf="project &&step&& stepsTrack ">
     <div class="row justify-content-center">
       <div class="col-12">
         <div class="row align-items-center mb-4">
           <div class="col">
             <h2 class="h5 page-title">
-              <small class="text-muted text-uppercase">بطاقة انجاز مشروع</small>
+              <small class="text-muted text-uppercase">تاريخ متابعة مرحلة</small>
             </h2>
           </div>
           <div class="col-auto">
             <button
               type="button"
-              
-            (click)="downloadAsPdf()"
               class="btn mr-1 btn-secondary m-1"
             >
               طباعة
+            </button>
+
+            <button *ngIf="project.currentState.toLowerCase()=='completed'" type="button" class="btn mr-1 btn-secondary m-1">
+              تقرير انجاز 
             </button>
             <button
               type="button"
@@ -31,15 +33,17 @@
             <project-header [projectInfo]="project.projectInfo"></project-header>
             <project-subjective [project]="project"> </project-subjective>
             <hr />
-            <p><strong>تقييم الجهة الطارحة :</strong>{{completion.customerRate}}</p>
-            <p><strong>ملاحظات الجهة الطارحة :</strong>{{completion.customerNotes}}</p>
-            <p><strong>تاريخ الانهاء :</strong>{{completion.completionDate | date }}</p>
             
-            <employee-contribution-table
-              [contributers]="contributers"
-            >
-
-            </employee-contribution-table>
+            <p>
+                <strong>
+            قائمة تاريخ متابعة {{step.stepInfo.stepName}} 
+                </strong>
+            </p>
+            
+            <step-trak-table
+            [stepsTrack]="stepsTrack">
+            
+            </step-trak-table>        
             <hr>
             
             <project-footer

@@ -6,14 +6,16 @@ import { StepTrackHistoryComponent } from '../pages/step-track-history/step-trac
 import { TrackDetailsComponent } from '../pages/track-details/track-details.component';
 import { TracksListComponent } from '../pages/tracks-list/tracks-list.component';
 import { TracksUncompleteComponent } from '../pages/tracks-uncomplete/tracks-uncomplete.component';
+import { ROLES } from '../../core/constants/roles';
+import { RoleGuard } from '../../core/guards/role.guard';
 const routes: Routes = [
 
   {path:'project/:id',component:ProjectTrackHistoryComponent},
   {path:'detail/:id',component:TrackDetailsComponent},
   {path:'history/step/:id',component:StepTrackHistoryComponent}  ,
   {path:'project/:projectId/employee/:employeeId',component:EmployeeTrackHistoryComponent},
-  {path:'uncompleted',component:TracksUncompleteComponent} ,
-  {path:'',component:TracksListComponent} 
+  {path:'uncompleted',component:TracksUncompleteComponent,canActivate:[RoleGuard] ,  data: { roles: [ROLES.SCIENTIFIC_DEPUTY] }} ,
+  {path:'',component:TracksListComponent,canActivate:[RoleGuard] ,  data: { roles: [ROLES.SCIENTIFIC_DEPUTY] }} 
 
 
 ];

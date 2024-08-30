@@ -22,12 +22,14 @@
             <!-- Bordered Tabs -->
             <ul class="nav nav-tabs nav-tabs-bordered" role="tablist">
 
-              <li class="nav-item" role="presentation">
-                <button class="nav-link  pr-2 pl-2 text-center active" data-bs-toggle="tab" data-bs-target="#profile-overview" aria-selected="true" role="tab" tabindex="-1">ملخص </button>
+              <li class="nav-item  pr-1 pl-1" role="presentation">
+                <button class="nav-link   text-center active" 
+            
+                data-bs-toggle="tab" data-bs-target="#profile-overview" aria-selected="true" role="tab" tabindex="-1">  ملخص   </button>
               </li>
 
               <li class="nav-item" role="presentation">
-                <button class="nav-link pr-1 pl-1 " data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" role="tab">متابعة المراحل</button>
+                <button class="nav-link " data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" role="tab">متابعة المراحل</button>
               </li>
 
               <li class="nav-item  pr-1 pl-1" role="presentation">
@@ -65,8 +67,11 @@
               <div class="tab-pane fade profile-edit pt-3 " id="profile-edit" role="tabpanel">
 
                 
-                  <step-track *ngFor="let stepTrack of stepTracks" [stepTrack]="stepTrack" ></step-track>
-                  <div class="row" *ngIf="stepTracks.length ==0 " >
+                  <step-track *ngFor="let stepTrack of stepTracks"
+                  [projectId]="track.projectId"
+                  
+                  [stepTrack]="stepTrack" ></step-track>
+                  <div class="offset-2 text-center text-secondary" *ngIf="stepTracks.length ==0 " >
                     لم تقم بمتابعة اية مراحل
                   </div>
               </div>
@@ -79,7 +84,7 @@
                  [employeeTrack]="employeeTrack" 
                  [projectId]="track.projectId"
                  ></employee-track>
-                <div class="row" *ngIf="employeesTracks.length ==0 " >
+                <div class="offset-2 text-center text-secondary " *ngIf="employeesTracks.length ==0 " >
                لم تقم بمتابعة اي مشارك
                 </div>
            

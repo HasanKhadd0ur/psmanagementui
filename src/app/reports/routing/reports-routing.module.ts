@@ -8,6 +8,7 @@ import { ProjectTimeLineComponent } from '../pages/project-time-line/project-tim
 import { ProjectTrackHistoryComponent } from '../pages/project-track-history/project-track-history.component';
 import { StepsTrackReportComponent } from '../pages/steps-track-report/steps-track-report.component';
 import { EmployeeWorkTrackComponent } from '../pages/employee-work-track/employee-work-track.component';
+import { StepTrackReportComponent } from '../pages/step-track-report/step-track-report.component';
 
 const routes: Routes = [
   {path: 'definition/:id',component:ProjectDefinitionComponent},
@@ -16,7 +17,10 @@ const routes: Routes = [
   {path: 'employees-tracks/:projectId/track/:id',component:EmployeesTrackReportComponent} ,
   {path: 'steps-tracks/:projectId/track/:id',component:StepsTrackReportComponent}, 
   {path: 'history/:projectId',component:ProjectTrackHistoryComponent} ,
-  {path: 'contributions/:projectId/employee/:employeeId',component:EmployeeWorkTrackComponent} 
+  {path: 'contributions/:projectId/employee/:employeeId',component:EmployeeWorkTrackComponent} ,
+  {path: 'history/:projectId/step/:stepId',component:StepTrackReportComponent} 
+  
+
   
 ];
 

@@ -13,6 +13,8 @@ export class ProjectToprogressModalComponent implements OnInit {
 
   @Input() project : Project 
 
+  errMessage =''
+
   canMoveToProgress : boolean
   constructor(
     private projectServie : ProjectService ,
@@ -62,7 +64,13 @@ export class ProjectToprogressModalComponent implements OnInit {
     
     this
     .canMoveToProgress = total == 100 ?  true : false 
-  
+   if(!this.canMoveToProgress){
+    this.errMessage='للأسف , لاتستطيع الانتقال إلى مرحلة التخطيط لأن مجموع الاوزان للمراحل ليس مئة,قم بالتعديل ومن ثم أعد المحاولة'
+   }
+
+   if(this.project.currentState.toLocaleLowerCase()!= 'inplan'){
+    this.errMessage= 'لاتستطيع الانتقال إلى طور التنفيذ مالم تكن في طور التخطيط'
+   }
   } 
 
 }

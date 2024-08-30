@@ -22,6 +22,7 @@ import { EmployeeContributionTableComponent } from './componenets/employee-contr
 import { TrackRowItemComponent } from './componenets/tracks-components/track-row-item/track-row-item.component';
 import { EmployeeWorkTrackComponent } from './pages/employee-work-track/employee-work-track.component';
 import { ProjectSubjectivUnformalComponent } from './componenets/project-report-layout/project-subjectiv-unformal/project-subjectiv-unformal.component';
+import { StepTrackReportComponent } from './pages/step-track-report/step-track-report.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ProjectSubjectivUnformalComponent } from './componenets/project-report-
     EmployeeContributionTableComponent,
     TrackRowItemComponent,
     EmployeeWorkTrackComponent,
-    ProjectSubjectivUnformalComponent
+    ProjectSubjectivUnformalComponent,
+    StepTrackReportComponent
   ],
   imports: [
     CommonModule,

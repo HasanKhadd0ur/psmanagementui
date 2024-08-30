@@ -8,5 +8,6 @@ import { StepTrack } from '../../models/responses/steptrack';
 })
 export class StepTrackComponent {
 
+  @Input() projectId : number 
   @Input() stepTrack :StepTrack
 }

@@ -33,7 +33,7 @@
           
         <div class="col-auto">
           <button type="button" [routerLink]="['/tracks/detail/',track.id]" class="btn m-2 btn-sm btn-secondary">تفاصيل المتابعة</button>
-          <button type="button" (click)="onDelete()"class="btn m-2 btn-sm btn-danger">إزالة</button>
+          <button type="button" *ngIf="!track.trackInfo.isCompleted" (click)="onDelete()"class="btn m-2 btn-sm btn-danger">إزالة</button>
        
         </div>
         </div>

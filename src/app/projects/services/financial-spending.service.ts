@@ -32,7 +32,7 @@ export class FinancialSpendingService {
   }
 
   public delete(request : RemoveFinancialSpendItemRequest ):Observable<any>{
-    return this.http.delete(`${this.config.getServerUrl()}/FinancialSpends/ByProject/${request.id}?id=${request.id}&projectId=${request.projectId}`);
+    return this.http.delete(`${this.config.getServerUrl()}/FinancialSpends/${request.id}?id=${request.id}&projectId=${request.projectId}`);
   }
 
 
