@@ -2,10 +2,15 @@ import { Component, Input } from '@angular/core';
 
 export interface NavItem {
   name : string ,
-  child : NavItem []| null,
-  haschild:boolean
-
+  isCollapsed:boolean
+  requiredRole  : string ,
+  icon : string ,
+  isBar :boolean,
+  queryParams: string
+  routing : string 
 }
+
+
 @Component({
   selector: 'nav-item',
   templateUrl: './nav-item.component.html',
