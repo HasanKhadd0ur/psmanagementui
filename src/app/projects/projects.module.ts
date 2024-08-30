@@ -31,7 +31,7 @@ import { FinancialSpendingComponent } from './pages/financial-spending/financial
 import { FinancialItemComponent } from './components/financial-item/financial-item.component';
 import { ReportControllComponent } from './components/project-controll/report-controll/report-controll.component';
 import { AddParticipantModalComponent } from './components/modals/add-participant-modal/add-participant-modal.component';
-import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditParticipantModalComponent } from './components/modals/edit-participant-modal/edit-participant-modal.component';
 import { RemoveParticipantModalComponent } from './components/modals/remove-participant-modal/remove-participant-modal.component';
 import { ParticipantChangesComponent } from './pages/participant-changes/participant-changes.component';
@@ -91,6 +91,7 @@ import { EditWeightModalComponent } from './components/step-modals/edit-weight-m
   ],
   imports: [
     CommonModule,
+    NgbModule,
     FormsModule,
     MatFormFieldModule,
     MatCommonModule,

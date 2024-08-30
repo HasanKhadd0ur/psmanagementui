@@ -1,9 +1,7 @@
-<div class="modal fade" id="addParticipantModal" tabindex="-1" aria-labelledby="addParticipantModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
+
+<div class="modal-header">
         <h5 class="modal-title" id="addParticipantModalLabel">إضافة مشارك في المشروع</h5>
-        <button type="button" class="mr-4 ml-4 btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="mr-4 ml-4 btn-close"  (click)="onClose()" ></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="addParticipantForm" (ngSubmit)="onSubmit()">
@@ -30,9 +28,9 @@
             <label for="role" class="form-label">صفة المساهمة</label>
             <input type="text" id="role" formControlName="role" class="form-control" required />
           </div>
-          <button type="submit" class="col-4 offset-2 btn btn-success" [disabled]="!addParticipantForm.valid">إضافة المشارك</button>
+          <button type="submit" class="col-4 m-4 offset-2 btn btn-primary" [disabled]="!addParticipantForm.valid">إضافة المشارك</button>
+       
+          <div class="col-4  m-4 btn btn-secondary"  (click)="onClose()" >إلغاء</div>
         </form>
       </div>
-    </div>
-  </div>
-</div>
+   

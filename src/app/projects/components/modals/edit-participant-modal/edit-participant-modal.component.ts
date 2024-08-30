@@ -3,6 +3,7 @@ import { EmployeeParticipate } from '../../../../employees/models/responses/empl
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProjectService } from '../../../services/project.service';
 import { ChangeEmployeeParticipationRequest } from '../../../models/requests/project-requests/ChangeEmployeeParticipationRequest';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'edit-participant-modal',
@@ -15,7 +16,11 @@ export class EditParticipantModalComponent {
 
   editParticipantForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private projectService: ProjectService) {
+  constructor(
+    private fb: FormBuilder,
+     private projectService: ProjectService,
+    private activeModal : NgbModal
+  ) {
     this.editParticipantForm = this.fb.group({
       role: ['', Validators.required],
       partialTimeRatio: [0, [Validators.required, Validators.min(0)]],
@@ -50,9 +55,6 @@ export class EditParticipantModalComponent {
   }
 
   closeModal() {
-    const modal = document.getElementById('editParticipantModal');
-    if (modal) {
-      (modal as any).modal('hide');
-    }
+    this.activeModal.dismissAll();
   }
 }

@@ -1,10 +1,10 @@
 <section *ngIf="participants" class="row">
-  <add-participant-modal
+  <!-- <add-participant-modal
     [projectId]="projectId"
     [paticipants]="participants"
     (participantAdded)="onParticipantAdded()"
   >
-  </add-participant-modal>
+  </add-participant-modal> -->
 
   <div class="row justify-content-center" *ngIf="!isDetailMode">
     <div class="col-12">
@@ -15,9 +15,8 @@
         <div class="col-auto">
           <button
             type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#addParticipantModal"
             class="btn btn-primary"
+            (click)="openAddModal()"
           >
             <span class="fe fe-file-plus fe-12 mr-2"></span>إضافة مشارك
           </button>
@@ -78,16 +77,13 @@
               
               </div>
             </div>
-            <div  class="col-8 ">
-              <div class="small mb-2 d-flex">
-            </div>
               
-            <div class="col-auto">
+            <div class="col-10">
               <button type="button"  class="btn m-2 btn-sm btn-primary">استعراض تاريخ  تبدلاته </button>
               <button type="button" data-bs-toggle="modal" data-bs-target="#editParticipantModal"  class="btn m-2 btn-sm btn-secondary">تعديل معلومات المشاركة</button>
               <button type="button"  data-bs-toggle="modal" data-bs-target="#removeParticipantModal"  class="btn m-2 btn-sm btn-danger">إزالة</button>
-           
-            </div>
+              <button type="button" [routerLink]="['/reports/contributions',selectedParticipant.projectId,'employee',selectedParticipant.employeeId]" class="btn  btn-sm btn-secondary">المساهمات</button>
+              
             </div>
           </div>
         </div> <!-- / .card-body -->

@@ -4,6 +4,10 @@ import { ProjectService } from '../../services/project.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Modal } from 'bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddParticipantModalComponent } from '../../components/modals/add-participant-modal/add-participant-modal.component';
+import { ModalService } from '../../../core/services/modals/modal.service';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'participants-list',
@@ -21,6 +25,7 @@ export class ParticipantsListComponent {
     private projectService :ProjectService,
     private toastr : ToastrService,
     private route: ActivatedRoute,
+    private activeModal : NgbModal,
     public router :Router
 
   ) {
@@ -33,7 +38,7 @@ export class ParticipantsListComponent {
   }
 
   onParticipantAdded(){
-    this.closeModal('addParticipantModal')
+    this.activeModal.dismissAll();
     this.loadParticipations();
        
   }
@@ -43,13 +48,14 @@ export class ParticipantsListComponent {
   }
 
   onParticipantUpdated(): void {
-    this.closeModal('editParticipantModal')
+    this.activeModal.dismissAll();
     this.loadParticipations();
   }
 
   onParticipantRemoved(): void {
+  //  this.closeModal('removeParticipantModal')
+    this.activeModal.dismissAll();
     this.isDetailMode=false ;
-    this.closeModal('removeParticipantModal')
     this.loadParticipations();
   }
 
@@ -78,12 +84,35 @@ export class ParticipantsListComponent {
     this.isDetailMode=true;
 
   }
-    
+  openAddModal(): void {
+
+    const modalRef = this.activeModal.open(AddParticipantModalComponent );
+    modalRef.componentInstance.projectId =this.projectId;
+    modalRef.componentInstance.paticipants = this.participants;
+    modalRef.componentInstance.participantAdded
+    .subscribe({
+
+      next: ()=>{
+
+        this.activeModal.dismissAll();
+        this.loadParticipations();
+      }
+    });
+    modalRef.result.then((result) => {
+      if (result) {
+        // Add the new project to the list
+        
+        this.loadParticipations();
+
+      }
+    }, (reason) => {
+      
+
+    });
+  }
 
   closeModal(name :string) {
-    const modal = document.getElementById(name);
-    if (modal) {
-      (modal as any).modal('hide');
-    }
+    this.activeModal.dismissAll();
+    
   }  
 }

@@ -5,8 +5,6 @@ import { AuthenticationService } from './services/authentication/authentication.
 import { ConfigurationService } from './services/configuration/configuration.service';
 import { UserService } from './services/authentication/user.service';
 import { PdfDownloaderService } from './services/pdfDownloader/pdf-downloader.service';
-
-
 @NgModule({
   declarations: [],
   imports: [

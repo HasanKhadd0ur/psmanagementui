@@ -8,6 +8,7 @@ import { Modal } from 'bootstrap';
 import { EmployeeParticipate } from '../../../../employees/models/responses/employeeParticipate';
 import { ProjectService } from '../../../services/project.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'add-participant-modal',
@@ -28,7 +29,8 @@ export class AddParticipantModalComponent {
     private fb: FormBuilder,
     private employeeService: EmployeesService,
     private projectService : ProjectService,
-    private toastr :ToastrService
+    private toastr :ToastrService,
+    private activeModal: NgbActiveModal
 
 
   ) {
@@ -60,7 +62,8 @@ export class AddParticipantModalComponent {
       )
     );
   
-  formatter = (x: Employee) => x != undefined ?  x.email +" / "+ x.personalInfo?.firstName+"  " + x.personalInfo?.lastName : "";
+  formatter = (x: Employee) => {
+    return  x != undefined && x.personalInfo != undefined  ?  x.email +" / "+ x.personalInfo!.firstName+"  " + x.personalInfo!.lastName : ""};
   
   onEmployeeSelected(employee: Employee) {
     debugger
@@ -74,6 +77,8 @@ export class AddParticipantModalComponent {
     const existingEmails = new Set(this.paticipants.map(p => p.employeeId));
     return employees.filter(employee => !existingEmails.has(employee.id));
   }
+
+
   onSubmit() {
     if (this.addParticipantForm.valid) {
 
@@ -94,6 +99,7 @@ export class AddParticipantModalComponent {
         next : ()=>{
 
           this.participantAdded.emit(participantData);
+          this.activeModal.close();
        
 
         }
@@ -106,13 +112,8 @@ export class AddParticipantModalComponent {
 
     }
   }
+  onClose():void {
+    this.activeModal.close();
+  }
 
-  closeModal() {
-    const modal = document.getElementById('addParticipantModal');
-    if (modal) {
-      // Use Bootstrap 5 JavaScript API to hide modal
-      const bsModal = new Modal(modal);
-      bsModal.hide();
-    }
-  }  
 }

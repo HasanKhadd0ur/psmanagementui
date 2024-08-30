@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
   logout() {
 
     this.toastr.info("بانتظارك في المرة القادمة");
-    this.auth.logou();
+    this.auth.logout();
     this.router.navigate(['/login']);
     }
     
