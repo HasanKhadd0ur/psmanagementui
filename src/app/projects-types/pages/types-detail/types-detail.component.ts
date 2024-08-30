@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Modal } from 'bootstrap';
 import { UpdateTypeRequest } from '../../models/requests/updateProjectTypeRequest';
+import { UserService } from '../../../core/services/authentication/user.service';
+import { ROLES } from '../../../core/constants/roles';
 
 @Component({
   selector: 'types-detail',
@@ -23,7 +25,8 @@ export class TypesDetailComponent implements OnInit{
     private typeService : ProjectsTypesService,
     private route : ActivatedRoute,
     private toastr : ToastrService,
-    private router : Router
+    private router : Router,
+    private userService :UserService
 
   ){}
   ngOnInit(): void {
@@ -112,6 +115,10 @@ export class TypesDetailComponent implements OnInit{
       new Modal(modalElement).hide(); // Close the modal
     }
   }
+  canEdit(): boolean {
+    return this.userService.hasRole(ROLES.PROJECTS_PLANNER);
+  }
+
 
 
 }

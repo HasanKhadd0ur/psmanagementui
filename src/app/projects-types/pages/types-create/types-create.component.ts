@@ -4,6 +4,8 @@ import { ProjectsTypesService } from '../../services/projects-types.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { CreateCustomerRequest } from '../../../customers/models/requests/createCustomerRequest';
+import { UserService } from '../../../core/services/authentication/user.service';
+import { ROLES } from '../../../core/constants/roles';
 
 @Component({
   selector: 'types-create',
@@ -16,7 +18,7 @@ export class TypesCreateComponent {
     private typeService :ProjectsTypesService,
     private toastr : ToastrService,
     private router : Router
-  ){}
+    ){}
   
   submit(request : CreateNewTypeRequest){
     this.typeService.addType(request)

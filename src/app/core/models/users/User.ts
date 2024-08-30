@@ -3,7 +3,7 @@ export interface User {
     userName: string
     firstName :string 
     lastName :string,
-    roles :string[] 
+    roles : {name : string ,id :number }[] 
     email: string;
   }
   

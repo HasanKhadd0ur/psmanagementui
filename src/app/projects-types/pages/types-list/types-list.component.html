@@ -6,7 +6,7 @@
                 <h2 class="h3 mb-0 page-title">  قائمة أنواع المشاريع </h2>
                 </div>
             <div class="col-auto">
-            <button type="button" [routerLink]="['/types/create']" class="btn btn-primary"><span class="fe fe-file-plus fe-12 mr-2"></span>إضافة عنصر </button>
+            <button   [disabled]="!canEdit()"  type="button" [routerLink]="['/types/create']" class="btn btn-primary"><span class="fe fe-file-plus fe-12 mr-2"></span>إضافة عنصر </button>
         </div>
    </div>
 <hr>

@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit {
   @Input() isToggled: Boolean;  
 
   ngOnInit(): void {
-    this.roles=this.userService.getCurrentUser().roles
+    this.roles=this.userService.getCurrentUser().roles.map(e => e.name)
     this.id= this.userService.getEmployeeId();
   }
 

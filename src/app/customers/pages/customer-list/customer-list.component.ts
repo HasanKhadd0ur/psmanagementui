@@ -8,13 +8,18 @@ import { config } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { LoadingService } from '../../../core/services/loading/loading-service.service';
+import { UserService } from '../../../core/services/authentication/user.service';
+import { ROLES } from '../../../core/constants/roles';
 
 @Component({
   selector: 'customer-list',
   templateUrl: './customer-list.component.html',
   styleUrl: './customer-list.component.css'
 })
+
 export class CustomerListComponent implements OnInit {
+
+
   customers :Customer[]=[]
   isCreate = false
   loading = true
@@ -26,7 +31,8 @@ export class CustomerListComponent implements OnInit {
     private customerService : CustomerService,
     private toastr: ToastrService,
     public router: Router,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private userService :UserService
   ) {
 
   }
@@ -61,6 +67,12 @@ export class CustomerListComponent implements OnInit {
   toggle():void{
     this.isCreate = ! this.isCreate
   }
+
+
+  canEditCustomer(): boolean {
+    return this.userService.hasRole(ROLES.CUSTOMERS_PLANER);
+  }
+
   pageChanged(event: number): void {
     this.currentPage = event;
   }

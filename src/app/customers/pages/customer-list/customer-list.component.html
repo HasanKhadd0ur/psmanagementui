@@ -6,7 +6,7 @@
                 <h2 class="h3 mb-0 page-title">الجهات الطارحة</h2>
                 </div>
             <div class="col-auto">
-                <button type="button"  (click)="this.router.navigate(['customers/create'])" class="btn btn-primary"><span class="fe fe-file-plus fe-12 mr-2"></span>إضافة جهة جديدة</button>
+                <button type="button"   [disabled]="!canEditCustomer()"  (click)="this.router.navigate(['customers/create'])" class="btn btn-primary"><span class="fe fe-file-plus fe-12 mr-2"></span>إضافة جهة جديدة</button>
             </div>
         </div>
         <div  class="row">

@@ -21,8 +21,8 @@
             </div>
             <div class="row mb-4">
 
-                <button class="col-3 offset-1 m-4 btn btn-danger" (click)="openModal('delete')">إزالة</button>
-                <button class="col-3 offset-1 m-4 btn btn-primary" (click)="openModal('edit')">تعديل</button>
+                <button   [disabled]="!canEdit()"  class="col-3 offset-1 m-4 btn btn-danger" (click)="openModal('delete')">إزالة</button>
+                <button  [disabled]="!canEdit()" class="col-3 offset-1 m-4 btn btn-primary" (click)="openModal('edit')">تعديل</button>
                 
             </div>
             

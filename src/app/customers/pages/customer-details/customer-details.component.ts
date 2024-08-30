@@ -9,6 +9,8 @@ import { AddContactInfoRequest, UpdateCustomerRequest } from '../../models/reque
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddContactinfoModalComponent } from '../../components/add-contactinfo-modal/add-contactinfo-modal.component';
 import { RemoveContactinfoModalComponent } from '../../components/remove-contactinfo-modal/remove-contactinfo-modal.component';
+import { UserService } from '../../../core/services/authentication/user.service';
+import { ROLES } from '../../../core/constants/roles';
 
 @Component({
   selector: 'customer-details',
@@ -34,13 +36,18 @@ export class CustomerDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private customerService: CustomerService,
     private toastr: ToastrService,
-    private modalService : NgbModal
+    private modalService : NgbModal,
+    public userService : UserService
   ) {}
 
   ngOnInit(): void {
     this.customerId = Number(this.route.snapshot.paramMap.get('id'));
     this.loadCustomer();
 
+  }
+
+  canEditCustomer(): boolean {
+    return this.userService.hasRole(ROLES.CUSTOMERS_PLANER);
   }
 
   loadCustomer (){

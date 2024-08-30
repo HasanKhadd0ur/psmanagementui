@@ -77,7 +77,6 @@ export class AuthenticationService {
   getToken(): string | null {
     return this.cookieService.get('token');
   }
-
   //#endregion  Authentication 
 
 

@@ -50,7 +50,9 @@
         </a>
       </li>
       <li class="nav-item">
-        <a [routerLink]="['/customers/create']" class="nav-link collapsed " >
+        <a
+          *ngIf="hasRole('Planner')"
+        [routerLink]="['/customers/create']" class="nav-link collapsed " >
           <i class="fe fe-edit-2"></i><span>إضافة جهة طارحة</span>
         </a>
       </li>

@@ -36,7 +36,9 @@
                     <td class="text-center">{{contact.contactType}}</td>
                     <td class="text-center">{{contact.contactValue}}</td>
                     <td class="text-center"  >
-                      <button class="btn btn-danger" (click)="openRemoveConatact(contact)">
+                      <button class="btn btn-danger"
+                        [disabled]="!canEditCustomer()"
+                       (click)="openRemoveConatact(contact)">
                         إزالة
                       </button>
                     </td>
@@ -45,12 +47,12 @@
                 </tbody>
               </table>
             </div>
-            <div class="row mb-4">
+            <div *ngIf="canEditCustomer()" class="row mb-4">
 
-                <button class="col-3 offset-1 m-4 btn btn-danger" (click)="openModal('delete')">إزالة</button>
+                <button  class="col-3 offset-1 m-4 btn btn-danger" (click)="openModal('delete')">إزالة</button>
                 <button class="col-3 offset-1 m-4 btn btn-primary" (click)="openModal('edit')">تعديل</button>
                 
-                <button class="col-3 m-4 btn btn-primary" (click)="openAddConatact()">إضافة معلومة اتصال</button>
+                <button  class="col-3 m-4 btn btn-primary" (click)="openAddConatact()">إضافة معلومة اتصال</button>
             
             </div>
             

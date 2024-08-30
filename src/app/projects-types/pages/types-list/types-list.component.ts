@@ -6,6 +6,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Modal } from 'bootstrap';
 import { ProjectType } from '../../models/responses/projectType';
 import { UpdateTypeRequest } from '../../models/requests/updateProjectTypeRequest';
+import { ROLES } from '../../../core/constants/roles';
+import { UserService } from '../../../core/services/authentication/user.service';
 
 @Component({
   selector: 'types-list',
@@ -24,7 +26,9 @@ export class TypesListComponent {
     private toastr : ToastrService,
     private route: ActivatedRoute,
     public router :Router,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private userService :UserService
+
   ) {
     
   }
@@ -122,6 +126,10 @@ export class TypesListComponent {
     if (modalElement) {
       new Modal(modalElement).hide(); // Close the modal
     }
+  }
+
+  canEdit(): boolean {
+    return this.userService.hasRole(ROLES.PROJECTS_PLANNER);
   }
 
 
