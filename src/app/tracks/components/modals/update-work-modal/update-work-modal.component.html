@@ -25,32 +25,32 @@
   
               <div class="mb-3 col-4">
                 <label for="performedWork" class="form-label">العمل المنجز</label>
-                <input   id="performedWork"   formControlName="performedWork" [(ngModel)]="request.employeeWorkInfo.performedWork" class="form-control" >
+                <input   id="performedWork"   name="performedWork" [(ngModel)]="request.employeeWorkInfo.performedWork" class="form-control" >
               </div>
 
                 <div class="mb-3  col-4">
                   <label for="assignedWorkEnd" class="form-label">تاريخ تنفيذ العمل المسند</label>
-                  <input type="date" id="assignedWorkEnd"  formControlName="assignedWorkEnd" [(ngModel)]="request.employeeWorkInfo.assignedWorkEnd" class="form-control" >
+                  <input type="date" id="assignedWorkEnd"  name="assignedWorkEnd" [(ngModel)]="request.employeeWorkInfo.assignedWorkEnd" class="form-control" >
                 </div>
             </div>
 
             <div class="row">
               <div class="mb-3  col-4">
                 <label for="assignedWorkingHours" class="form-label">ساعات العمل المسندة </label>
-                <input type="number" id="assignedWorkingHours" formControlName="contributingR"  [(ngModel)]="request.employeeWork.assignedWorkingHours" class="form-control" >
+                <input type="number" id="assignedWorkingHours" name="contributingR"  [(ngModel)]="request.employeeWork.assignedWorkingHours" class="form-control" >
               </div>
               <div class="mb-3  col-4">
                 <label for="workedHours" class="form-label">ساعات العمل الفعلية</label>
-                <input type="number" id="workedHours"  [(ngModel)]="request.employeeWork.workedHours" formControlName="workedHours" class="form-control" >
+                <input type="number" id="workedHours"  [(ngModel)]="request.employeeWork.workedHours" name="workedHours" class="form-control" >
               </div>
               <div class="mb-3  col-4">
                 <label for="contributingRatio" class="form-label">نسبة المساهمة في العمل</label>
-                <input type="number" id="contributingRatio"  [(ngModel)]="request.employeeWork.contributingRatio" formControlName="contributingRatio" class="form-control" >
+                <input type="number" id="contributingRatio"  [(ngModel)]="request.employeeWork.contributingRatio" name="contributingRatio" class="form-control" >
               </div>
               
             </div>
               
-              <button type="submit" class="btn mr-4 ml-4 btn-primary"[disabled]="projectForm.invalid" >إضافة</button>
+              <button type="submit" class="btn mr-4 ml-4 btn-primary"[disabled]="projectForm.invalid" >تعديل</button>
             <div (click)="onClose()" class=" mr-4 ml-4 btn btn-primary" >إلغاء</div>
           
           </form>

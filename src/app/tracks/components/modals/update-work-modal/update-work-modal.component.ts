@@ -43,6 +43,7 @@ export class UpdateWorkModalComponent implements OnInit {
 
   onSubmit(){
 
+    debugger;
     this
     .trackService
     .updateEmployeeWorkTrack(this.request)

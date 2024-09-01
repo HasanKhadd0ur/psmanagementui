@@ -5,3 +5,8 @@ export interface Attachment {
     attachmentName :string
     attachmentDescription :string
 }
+export interface AttachmentFile {
+    file : File
+    attachmentName :string
+    attachmentDescription :string
+}

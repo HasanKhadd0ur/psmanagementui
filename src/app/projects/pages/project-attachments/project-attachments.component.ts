@@ -47,7 +47,7 @@ export class ProjectAttachmentsComponent implements OnInit{
           this.toastr.success('تم تحميل المرفقات بنجاح')
       
         }
-        this.attachments=data
+        this.attachments=[...data]
       }
       ,
       error:(err)=>{
@@ -69,8 +69,7 @@ export class ProjectAttachmentsComponent implements OnInit{
 
     modalRef.result.then((result) => {
       if (result) {
-        // Add the new project to the list
-        this.loadAttachment();
+        this.attachments=this.attachments.filter(e => e.id!= attachment.id)
         
       }
     }, (reason) => {
@@ -84,16 +83,8 @@ export class ProjectAttachmentsComponent implements OnInit{
     const modalRef = this.modalService.open(AddAttachmentModalComponent);
     modalRef.componentInstance.projectId = this.projectId;
 
-    modalRef.componentInstance.itemAdded.subscribe(
-      {
-        next : ()=>{
-          this.loadAttachment()
-
-        }
-      }
-    );
-
     modalRef.result.then((result) => {
+      debugger
       if (result) {
         // Add the new project to the list
         this.loadAttachment();

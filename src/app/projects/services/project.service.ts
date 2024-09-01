@@ -1,3 +1,4 @@
+//#region Imports
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConfigurationService } from '../../core/services/configuration/configuration.service';
@@ -15,13 +16,13 @@ import { CancelProjectRequest } from '../models/requests/project-requests/Cancel
 import { RePlanProjectRequest } from '../models/requests/project-requests/RePlanProjectRequest';
 import { CreateProjectRequest } from '../models/requests/project-requests/createProjectRequest';
 import { AddAttachmentRequest } from '../models/requests/project-requests/AddAttachmentRequest';
-import { Attachment } from '../models/responses/attachment';
+import { Attachment, AttachmentFile } from '../models/responses/attachment';
 import { CompleteProjectRequest } from '../models/requests/project-requests/completeProjectRequest';
 import { ChangeEmployeeParticipationRequest } from '../models/requests/project-requests/ChangeEmployeeParticipationRequest';
 import { ParticipationChange } from '../models/responses/participationChange';
 import { ProjectCompletion } from '../models/responses/ProjectCompletion';
 import { EmployeeContribution } from '../models/responses/employeeContribution';
-
+//#endregion Imports
 @Injectable({
   providedIn: 'root'
 })
@@ -222,6 +223,17 @@ export class ProjectService {
       formData.append('file', request.file);
     }
     return this.http.post<number>(this.config.getServerUrl()+ "/Projects/AddAttachment",formData);
+
+  }
+
+  public getAttacmenfFile(attachmentId :number,url :string ):Observable<File>{
+
+    return this.http.get<File>(`${this.config.getServerUrl()}/Projects/Attachment/`, {
+      params: { attachmentId: attachmentId.toString(), fileUrl: url },
+      responseType: 'blob' as 'json'  // Specify responseType as 'blob'
+    });
+  
+
 
   }
   //tihs method responsible for getting the attachments  of a project 

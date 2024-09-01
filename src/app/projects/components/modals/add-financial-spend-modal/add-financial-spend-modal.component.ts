@@ -33,8 +33,8 @@ export class AddFinancialSpendModalComponent {
     };
   }
   onSubmit(): void {
-    // Emit the project data or handle it as needed
-    console.log('Project data submitted:', this.request);
+    
+    
     this.financialService.addSpendItem(this.request).subscribe({
   
       next: (data)=>{

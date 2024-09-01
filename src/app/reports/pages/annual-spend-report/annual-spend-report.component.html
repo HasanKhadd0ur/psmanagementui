@@ -1,0 +1,84 @@
+<div class="container-fluid" *ngIf="project">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="row align-items-center mb-4">
+          <div class="col">
+            <h2 class="h5 page-title">
+              <small class="text-muted text-uppercase">بطاقة معلومات مشروع</small>
+            </h2>
+          </div>
+          <div class="col-auto">
+            <button
+              type="button"
+              (click)="downloadAsPdf()"
+              class="btn mr-1 btn-secondary m-1"
+            >
+              طباعة
+            </button>
+            
+            <button *ngIf="project.currentState.toLocaleLowerCase()=='completed'" [routerLink]="['/reports/completion',project.id]" type="button" class="btn mr-1 btn-secondary m-1">
+              تقرير انجاز    </button>
+            <button
+              type="button"
+              [routerLink]="['/reports/timeline/', project.id]"
+              class="btn mr-1 btn-secondary m-1"
+            >
+              تقرير خطة زمنية
+            </button>
+          </div>
+        </div>
+        
+        <div class="card shadow" id="pdfContent">
+          <div class="card-body p-5">
+            <project-header [projectInfo]="project.projectInfo"></project-header>
+            <project-subjective [project]="project"> </project-subjective>
+            <hr />
+            <p><strong>خطة الإنفاق السنوية</strong></p>
+            <table class="table table-borderless table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col" clsss="text-center">العام</th>
+                  <th scope="col" class="text-center">الشراء المحلي </th>
+                  <th scope="col" class="text-center">الشراء الخارجي</th>
+                  <th scope="col" class="text-center">نوع القطع</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr  *ngFor="let spend of  this.spend ;index as i " >
+                  <th scope="row">{{i +1 }}</th>
+                  <td class="text-center"> {{spend.expectedSpendingDate | date  }}
+                  </td>
+                  <td class="text-center">{{spend.localPurchase}}</td>
+                  <td class="text-center">{{spend.externalPurchase.ammount}}</td>
+                  
+                  <td class="text-center">{{spend.externalPurchase.currency}}</td>
+             
+                </tr>
+                <tr  *ngIf="spend.length==0" >
+                  <th scope="row"></th>
+                  <td class="text-center"> </td>
+                  <td class="text-center"></td>
+                  <td class="text-center"></td>
+                  <td class="text-center"></td>
+                </tr>
+              </tbody>
+            </table>
+          
+            <project-footer
+              [proposer]="project.proposer"
+              [executer]="project.executer"
+              [projectManager]="project.projectManager"
+              [teamLeader]="project.teamLeader"
+            >
+            </project-footer>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col-12 -->
+    </div>
+  </div>
+  

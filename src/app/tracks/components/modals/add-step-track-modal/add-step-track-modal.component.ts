@@ -31,16 +31,16 @@ export class AddStepTrackModalComponent {
   constructor(private fb: FormBuilder,
     private stepService : StepService ,
     private toastr :ToastrService
-  ) {
+   ) {}
+
+  ngOnInit(): void {
     this.stepTrackForm = this.fb.group({
       id: [],
       stepName: ['', Validators.required],
       executionState: ['', Validators.required],
       trackExecutionRatio: [0, [Validators.required, Validators.min(0), Validators.max(100)]],
     });
-  }
-
-  ngOnInit(): void {
+ 
     this.stepService.getStepsByProject(this.projectId)
     .subscribe({
       next: (data)=> {

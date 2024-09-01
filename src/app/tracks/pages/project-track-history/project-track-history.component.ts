@@ -54,7 +54,7 @@ export class ProjectTrackHistoryComponent {
       next : (data)=>{
 
         this.toastr.success("تم تحميل عمليات المتابعة بنجاح");
-        this.tracks= data;
+        this.tracks= data.sort((e1,e2)=> Number(e1.trackInfo.trackDate > e2.trackInfo.trackDate));
 
       }
       ,
@@ -102,7 +102,7 @@ export class ProjectTrackHistoryComponent {
 
   deleteTrack(): void {
     let request : RemoveTrackRequest= {
-      trackId: this.projectId ,
+      trackId: this.selectedItem.id ,
     } 
 
     this.trackService.removeTrack(request).subscribe({

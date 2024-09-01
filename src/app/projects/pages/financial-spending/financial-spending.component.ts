@@ -56,6 +56,7 @@ export class FinancialSpendingComponent {
       pageNumber: null ,
       pageSize: null
     }
+
     this.financialService.getSpendByProject(request).subscribe({
       next: (data)=> {
         this.spends= data 
@@ -139,10 +140,7 @@ export class FinancialSpendingComponent {
   }
 
   closeModal(): void {
-    const modalElement = document.getElementById('projectModal');
-    if (modalElement) {
-      new Modal(modalElement).hide(); // Close the modal
-    }
+    this.modalService.dismissAll();
   }
 
 
@@ -152,9 +150,8 @@ export class FinancialSpendingComponent {
 
     modalRef.result.then((result) => {
       if (result) {
-        // Add the new project to the list
+
         this.spends.push(result);
-        console.log('Project added:', result);
       }
     }, (reason) => {
       // Handle modal dismiss

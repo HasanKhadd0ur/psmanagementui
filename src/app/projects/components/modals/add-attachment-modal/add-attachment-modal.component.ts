@@ -26,8 +26,8 @@ export class AddAttachmentModalComponent {
 
   ngOnInit(): void {
     this.item ={
-      attachmentName:'اسم المرفق',
-      attachmentDescription:'وصف المرفق',
+      attachmentName:'',
+      attachmentDescription:'',
       file:null,
       projectId:this.projectId
     }
@@ -45,8 +45,7 @@ export class AddAttachmentModalComponent {
   
       next: (data)=>{
 
-        this.itemAdded.emit();
-        this.activeModal.close(data); // Close modal and pass data
+        this.activeModal.close(true); // Close modal and pass data
   
       },
       error: (err )=> this.toastr.error("لقد حدث خطاء ما")

@@ -23,6 +23,7 @@ import { TrackRowItemComponent } from './componenets/tracks-components/track-row
 import { EmployeeWorkTrackComponent } from './pages/employee-work-track/employee-work-track.component';
 import { ProjectSubjectivUnformalComponent } from './componenets/project-report-layout/project-subjectiv-unformal/project-subjectiv-unformal.component';
 import { StepTrackReportComponent } from './pages/step-track-report/step-track-report.component';
+import { AnnualSpendReportComponent } from './pages/annual-spend-report/annual-spend-report.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { StepTrackReportComponent } from './pages/step-track-report/step-track-r
     TrackRowItemComponent,
     EmployeeWorkTrackComponent,
     ProjectSubjectivUnformalComponent,
-    StepTrackReportComponent
+    StepTrackReportComponent,
+    AnnualSpendReportComponent
   ],
   imports: [
     CommonModule,

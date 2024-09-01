@@ -28,6 +28,7 @@ export class RemoveAttachmentModalComponent {
     .subscribe({
       next : ()=>{
         this.attachmentRemoved.emit();
+        this.activeModal.close(true)
 
       },
       error:(err)=>{

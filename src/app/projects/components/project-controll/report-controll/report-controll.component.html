@@ -41,6 +41,7 @@
         </div>
         <!-- .card -->
       </div>
+
       <!-- .col -->
       <div
         class="col-md-6 col-lg-4"
@@ -77,4 +78,21 @@
         </div> <!-- .card-body -->
       </div> <!-- .card -->
     </div>
-    
+    <div class="col-md-6 col-lg-4" [routerLink]="['/reports/spends/',project.id]">
+      <div class="card shadow mb-4">
+        <div class="card-body file-list">
+          <div class="d-flex align-items-center">
+            <div class="text-center">
+              <div class="circle circle-md bg-secondary">
+                <span class="fe fe-users fe-16 text-white"></span>
+              </div>
+            </div>
+            <div class="flex-fill ml-4 fname">
+              <strong>خطة الإنفاق السنوية</strong><br />
+            </div>
+          </div>
+        </div>
+        <!-- .card-body -->
+      </div>
+      <!-- .card -->
+    </div>
