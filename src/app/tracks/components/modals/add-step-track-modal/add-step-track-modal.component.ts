@@ -18,6 +18,7 @@ import { StepService } from '../../../../projects/services/step.service';
   styleUrl: './add-step-track-modal.component.css'
 })
 export class AddStepTrackModalComponent {
+
   @Input() isVisible = false;
   steps: Step[] = []; // All steps available for the project
   @Input() trackedSteps: Step[] = []; // Steps that are already tracked
@@ -30,13 +31,16 @@ export class AddStepTrackModalComponent {
 
   constructor(private fb: FormBuilder,
     private stepService : StepService ,
-    private toastr :ToastrService
+    private trackService : TrackService,
+    private toastr :ToastrService,
+    private activeModal :NgbActiveModal
    ) {}
 
   ngOnInit(): void {
     this.stepTrackForm = this.fb.group({
       id: [],
       stepName: ['', Validators.required],
+      stepName1: [''],
       executionState: ['', Validators.required],
       trackExecutionRatio: [0, [Validators.required, Validators.min(0), Validators.max(100)]],
     });
@@ -61,12 +65,14 @@ export class AddStepTrackModalComponent {
   search = (text$: Observable<string>) => 
     text$.pipe(
       map(term => term.length < 2 ? [] : 
-        this.filteredSteps.filter(v => v.stepInfo.stepName.toLowerCase().includes(term.toLowerCase())).slice(0, 10).map( e => e.stepInfo.stepName))
+        this.filteredSteps.filter(v => v.stepInfo.stepName.toLowerCase().includes(term.toLowerCase())).slice(0, 10).map( e =>{ this.stepTrackForm.patchValue({ id: e.id });return e.stepInfo.stepName +" % "+ e.currentCompletionRatio}))
     );
 
   onStepSelected(step: Step): void {
 
-    this.stepTrackForm.patchValue({ stepName: step.stepInfo?.stepName });
+
+    debugger
+   // this.stepTrackForm.patchValue({ stepName1: step.stepInfo?.stepName });
     //this.stepTrackForm.patchValue({id: step.id});
 
     
@@ -75,8 +81,7 @@ export class AddStepTrackModalComponent {
   onSubmit(): void {
     if (this.stepTrackForm.valid) {
       debugger
-
-      const selectedStep = this.filteredSteps.find(step => step.stepInfo.stepName == this.stepTrackForm.value.stepName);
+      const selectedStep = this.filteredSteps.find(step => step.id == this.stepTrackForm.value.id);
       if (selectedStep) {
         if(selectedStep.currentCompletionRatio + this.stepTrackForm.value.trackExecutionRatio > 100){
           this.toastr.error('نسبة التنفيذ غير صحيحة ')
@@ -86,24 +91,30 @@ export class AddStepTrackModalComponent {
      
         const newStepTrack: AddStepTrackRequest = {
           stepId: selectedStep.id,
-          trackId: this.trackId, 
-          executionState: this.stepTrackForm.value.executionState,
-         
+          trackId: this.trackId,
+          executionState: this.stepTrackForm.value.executionState,         
           trackExecutionRatio: this.stepTrackForm.value.trackExecutionRatio,
         };
-        this.closeModal();
-        this.addStepTrack.emit(newStepTrack);
+        this
+        .trackService
+        .addStepTrack(newStepTrack)
+        .subscribe({
+          next:()=>{
 
+            this.activeModal.close({data : newStepTrack.stepId,request:newStepTrack})
+          },
+          error:(err)=>{
+            this.toastr.error('لقد حدث خطاء')
+            this.activeModal.close();
+          }
+        })
+        
 
       }
     }
   }
 
   closeModal(): void {
-    const modal = document.getElementById('addStepTrackModal');
-    if (modal) {
-      const bootstrapModal = new Modal(modal);
-      bootstrapModal.hide();
-    }
+    this.activeModal.close();
   }  
 }

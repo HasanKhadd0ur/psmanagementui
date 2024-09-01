@@ -7,7 +7,7 @@ import { EmployeeTrack } from '../../models/responses/employeeTrack';
 import { ActivatedRoute } from '@angular/router';
 import { Step } from '../../../projects/models/responses/Step';
 import { AddStepTrackRequest } from '../../models/requests/AddStepTrackRequest';
-import { error } from 'jquery';
+import { data, error } from 'jquery';
 import { StepService } from '../../../projects/services/step.service';
 import { forkJoin } from 'rxjs';
 import { AddEmployeeTrackRequest } from '../../models/requests/AddEmployeeTrackRequest';
@@ -15,6 +15,11 @@ import { ProjectService } from '../../../projects/services/project.service';
 import { EmployeeParticipate } from '../../../employees/models/responses/employeeParticipate';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CompleteTrackModalComponent } from '../../components/modals/complete-track-modal/complete-track-modal.component';
+import { AddStepModalComponent } from '../../../projects/components/modals/add-step-modal/add-step-modal.component';
+import { AddStepTrackModalComponent } from '../../components/modals/add-step-track-modal/add-step-track-modal.component';
+import { AddEmployeeTrackModalComponent } from '../../components/modals/add-employee-track-modal/add-employee-track-modal.component';
+import { UpdateStepTrack } from '../../models/requests/UpdateStepTrack';
+import { UpdateStepTrackModalComponent } from '../../components/modals/update-step-track-modal/update-step-track-modal.component';
 
 @Component({
   selector: 'track-details',
@@ -82,6 +87,77 @@ export class TrackDetailsComponent implements OnInit {
     });
   }
 
+
+  openAddStepTrack(){
+
+    const modalRef = this.modalService.open(AddStepTrackModalComponent);
+    modalRef.componentInstance.trackId=this.trackId
+    modalRef.componentInstance.projectId=this.track.projectId
+    modalRef.componentInstance.trackedSteps=this.trackedSteps
+    modalRef.result.then((result :{data : number ,request : AddStepTrackRequest}) => {
+      if(result){
+
+        this.handleAddStepTrack(result.data,result.request);
+        
+
+      }
+    }, (reason) => {
+     
+    
+    });
+  
+  }
+  openeditStepTrack(st : StepTrack){
+
+    const modalRef = this.modalService.open(UpdateStepTrackModalComponent);
+    modalRef.componentInstance.trackId=this.trackId
+    modalRef.componentInstance.projectId=this.track.projectId
+    modalRef.componentInstance.stepTrack=st
+    modalRef.componentInstance.track=this.track
+    
+    modalRef.result.then((result :{data : number ,request : UpdateStepTrack}) => {
+      if(result){
+
+        this.stepTracks.forEach((e)=>{
+          if(e.stepId == result.data){
+              e.executionState=result.request.executionState
+              e.trackExecutionRatio=result.request.trackExecutionRatio
+          }
+        })
+        this.stepTracks=[...this.stepTracks]
+
+      }
+    }, (reason) => {
+     
+    
+    });
+  
+  }
+
+  openEmployeeTrack(){
+
+    const modalRef = this.modalService.open(AddEmployeeTrackModalComponent,{size:'lg'});
+
+    modalRef.componentInstance.trackedParticipants=this.employeesTracks
+    modalRef.componentInstance.projectId=this.track.projectId
+    modalRef.componentInstance.trackId=this.track.id
+    
+    modalRef.componentInstance.trackedSteps=this.trackedSteps
+    modalRef.result.then((result : {data : number ,request : AddEmployeeTrackRequest}) => {
+      if(result){
+
+        this.handleEmployeeTrack(result.data,result.request);
+        
+
+      }
+    }, (reason) => {
+     
+    
+    });
+  
+  }
+
+  
   openTrackComplete(){
     
     const modalRef = this.modalService.open(CompleteTrackModalComponent);
@@ -141,23 +217,11 @@ export class TrackDetailsComponent implements OnInit {
     this.isAddStepTrackModalVisible = false;
   }
 
-  handleAddStepTrack(stepTrackRequest: AddStepTrackRequest): void {
-
-    this.trackService.addStepTrack(stepTrackRequest).subscribe({
-
-      next : (data)=>{
+  handleAddStepTrack(data :number ,stepTrackRequest: AddStepTrackRequest): void {
 
           this.loadTheNewStep(data,stepTrackRequest);
-          this.toastr.success('تمت إضافة متالعة المرحلة ')
         
-      }
-      ,
-      error:(err)=>{
-        this.toastr.error('لقد حدث خطاء ما')
-      }
-
-    });
-  }
+ }
   
 
   openComplete(){
@@ -168,7 +232,7 @@ export class TrackDetailsComponent implements OnInit {
     modalRef.result.then((result) => {
       if (result) {
         // Add the new project to the list
-        this.loadParticipants();
+        this.loadTrack();
         
       }
     }, (reason) => {
@@ -206,23 +270,13 @@ export class TrackDetailsComponent implements OnInit {
 
   }
 
-  handleEmployeeTrack(request: AddEmployeeTrackRequest): void {
+  handleEmployeeTrack(data :number,request: AddEmployeeTrackRequest): void {
 
-    debugger
-     this.trackService.addEmployeeTrack(request).subscribe({
- 
-       next : (data)=>{
- 
-           this.loadTheNewParticipant(data,request);
-           this.toastr.success('تمت إضافة متالعة المرحلة ')
+
+      this.loadTheNewParticipant(data,request);
+
            this._canComplete(); 
-       }
-       ,
-       error:(err)=>{
-         this.toastr.error('لقد حدث خطاء ما')
-       }
- 
-     });
+       
    }
    loadTheNewParticipant(empTrackId :number,request :AddEmployeeTrackRequest ){
     let s = this.participants.find(s => s.employeeId == request.employeeId  )

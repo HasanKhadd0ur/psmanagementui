@@ -57,7 +57,7 @@
     <li class="nav-item"       *ngIf="hasRole(alroles.SCIENTIFIC_DEPUTY)">
 
       <a [routerLink]="['/projects/create']" class="nav-link collapsed">
-        <i class="bi fe-plus"></i><span>طرح مشروع</span>
+        <i class="fe fe-plus"></i><span>طرح مشروع</span>
       </a>
     </li>
     <li class="nav-item" *ngIf="hasRole(alroles.SCIENTIFIC_DEPUTY)">
@@ -66,7 +66,7 @@
         [queryParams]="{ listType: 'all' }"
         class="nav-link collapsed"
       >
-        <i class="bi bi-circle"></i><span>استعراض المشاريع</span>
+        <i class="fe fe-clipboard"></i><span>استعراض المشاريع</span>
       </a>
     </li>
     <li class="nav-item">
@@ -75,7 +75,7 @@
         [queryParams]="{ listType: 'managed' }"
         class="nav-link collapsed"
       >
-        <i class="bi bi-circle"></i><span>المشاريع التي أديرها</span>
+        <i class="fe  fe-briefcase"></i><span>المشاريع التي أديرها</span>
       </a>
     </li>
     <li class="nav-item">
@@ -84,7 +84,7 @@
         [queryParams]="{ listType: 'leaded' }"
         class="nav-link collapsed"
       >
-        <i class="bi bi-circle"></i><span>المشاريع التي أرأسها</span>
+        <i class=" fe fe-briefcase"></i><span>المشاريع التي أرأسها</span>
       </a>
     </li>
 
@@ -92,30 +92,30 @@
 
     <li [routerLink]="['/employees/participates', id]" class="nav-item">
       <a class="nav-link collapsed">
-        <i class="bi bi-layout-text-window-reverse"></i
-        ><span>استعراض مساهماتي</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="fe fe-folder"></i
+        ><span>استعراض مساهماتي</span>
       </a>
     </li>
 
     <li class="nav-item">
       <a class="nav-link collapsed" [routerLink]="['/employees/profile']">
-        <i class="bi bi-layout-text-window-reverse"></i><span>ملفي الشخصي</span
-        ><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="fe fe-compass"></i><span>ملفي الشخصي</span
+       >
       </a>
     </li>
 
     <li class="nav-heading">متفرقات</li>
     <li class="nav-item">
       <a [routerLink]="['/Project-FAQ']" class="nav-link collapsed">
-        <i class="bi bi-layout-text-window-reverse"></i
-        ><span>ملامح المشروع</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="fe fe-target"></i
+        ><span>ملامح المشروع</span>
       </a>
     </li>
 
     <li class="nav-item">
       <a [routerLink]="['/Help']" class="nav-link collapsed">
-        <i class="bi bi-layout-text-window-reverse"></i><span>مساعدة</span
-        ><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="fe fe-codepen"></i><span>مساعدة</span
+        >
       </a>
     </li>
   </ul>

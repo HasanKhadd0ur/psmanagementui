@@ -1,17 +1,17 @@
-<div class="modal  fade" id="addStepTrackModal" tabindex="-1" aria-labelledby="addStepTrackModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
+<div class="modal-header">
         <h5 class="modal-title" id="addStepTrackModalLabel">إضافة متابعة مرحلة</h5>
-        <button type="button" class="  mr-4 ml-4 btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="  mr-4 ml-4 btn-close" (click)="closeModal()"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="stepTrackForm" (ngSubmit)="onSubmit()">
           <div class="mb-3">
             <label for="stepName" class="form-label">اسم المرحلة</label>
-            <input type="text" id="stepName" formControlName="stepName" class="form-control" [ngbTypeahead]="search" (selectItem)="onStepSelected($event.item)">
+            <input type="text" id="stepName" formControlName="stepName" class="form-control"
+            [ngbTypeahead]="search" (selectItem)="onStepSelected($event.item)">
           </div>
           <input type="number" hidden id="id" formControlName="id" class="form-control" >
+          
+          <input type="number" hidden id="iddsfdsf" formControlName="stepName1" class="form-control" >
           
           <div class="mb-3">
             <label for="executionState" class="form-label">طبيعية التنفيذ</label>
@@ -23,10 +23,8 @@
             <input type="number" id="trackExecutionRatio" formControlName="trackExecutionRatio" class="form-control" min="0" max="100">
           </div>
           <button type="submit" class="btn  mr-4 ml-4 btn-primary" [disabled]="!stepTrackForm.valid">إضافة</button>
-          <button data-bs-dismiss="modal" aria-label="Close"  class="btn  mr-4 ml-4 btn-primary" >إلغاء</button>
+          <button (click)="closeModal()" class="btn  mr-4 ml-4 btn-primary" >إلغاء</button>
         
         </form>
       </div>
-    </div>
-  </div>
-</div>
+ 

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { StepTrack } from '../../models/responses/steptrack';
 
 @Component({
@@ -10,4 +10,10 @@ export class StepTrackComponent {
 
   @Input() projectId : number 
   @Input() stepTrack :StepTrack
+  @Output() edit = new EventEmitter<StepTrack>();
+
+  onEdit(){
+
+    this.edit.emit(this.stepTrack);
+  }
 }

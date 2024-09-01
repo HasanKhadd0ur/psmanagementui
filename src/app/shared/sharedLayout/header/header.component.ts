@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../../core/services/authentication/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../../../core/services/authentication/authentication.service';
+import { ConfigurationService } from '../../../core/services/configuration/configuration.service';
 
 @Component({
   selector: 'app-header',
@@ -16,6 +17,7 @@ export class HeaderComponent implements OnInit {
 
   @Input() isToggled :Boolean;
 
+  appName =ConfigurationService.AppName
   fullName :string
   email : string
   constructor(

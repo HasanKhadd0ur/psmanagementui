@@ -2,7 +2,7 @@ export class UpdateStepTrack {
     stepTrackId: number;
     trackId: number;
     stepId: number;
-    executionState: String;
+    executionState: string;
     trackDate: Date;
     trackExecutionRatio: number;
 }

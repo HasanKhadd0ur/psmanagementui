@@ -29,7 +29,7 @@
           <div class="d-flex align-items-center">
             <div class="text-center">
               <div class="circle circle-md bg-secondary">
-                <span class="fe fe-users fe-16 text-white"></span>
+                <span class="fe fe-paperclip fe-16 text-white"></span>
               </div>
             </div>
             
@@ -66,11 +66,15 @@
   </div>
   
   
-  <div class="col-md-6 col-lg-4"  (click)="onChangeManger()">
+  <div class="col-md-6 col-lg-4"
+    (click)="onChangeManger()"
+    *ngIf="canSee()"
+    >
+    
     <div class="card shadow mb-4">
       <div class="card-body file-list">
         <div class="d-flex align-items-center">
-          <div class="circle circle-md bg-secondary">
+          <div class="circle circle-md bg-danger">
             <span class="fe fe-map fe-16 text-white"></span>
           </div>
           <div class="flex-fill ml-4 fname">
@@ -81,11 +85,14 @@
     </div> <!-- .card -->
   </div>
 
-  <div class="col-md-6 col-lg-4" (click)="onChangeLeader()">
+  <div class="col-md-6 col-lg-4" 
+    *ngIf="canSee()"
+
+    (click)="onChangeLeader()">
     <div class="card shadow mb-4">
       <div class="card-body file-list">
         <div class="d-flex align-items-center">
-          <div class="circle circle-md bg-secondary">
+          <div class="circle circle-md bg-danger  ">
             <span class="fe fe-map fe-16 text-white"></span>
           </div>
           <div class="flex-fill ml-4 fname">

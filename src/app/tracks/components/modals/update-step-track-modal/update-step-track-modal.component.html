@@ -1,1 +1,30 @@
-<p>update-step-track-modal works!</p>
+<div class="modal-header">
+    <h5 class="modal-title" id="addStepTrackModalLabel">إضافة متابعة مرحلة</h5>
+    <button type="button" class="  mr-4 ml-4 btn-close" (click)="closeModal()"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="stepTrackForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="stepName" class="form-label">اسم المرحلة</label>
+        <input type="text" id="stepName" formControlName="stepName" class="form-control"
+        [disabled]="true"
+          >
+      </div>
+      <input type="number" hidden id="id" formControlName="id" class="form-control" >
+      
+      <input type="number" hidden id="iddsfdsf" formControlName="stepName1" class="form-control" >
+      
+      <div class="mb-3">
+        <label for="executionState" class="form-label">طبيعية التنفيذ</label>
+        <input type="text" id="executionState" formControlName="executionState" class="form-control">
+      </div>
+      
+      <div class="mb-3">
+        <label for="trackExecutionRatio" class="form-label">نسبة التنفيذ خلال المتابعة</label>
+        <input type="number" id="trackExecutionRatio" formControlName="trackExecutionRatio" class="form-control" min="0" max="100">
+      </div>
+      <button type="submit" class="btn  mr-4 ml-4 btn-primary" [disabled]="!stepTrackForm.valid">تعديل</button>
+      <button (click)="closeModal()" class="btn  mr-4 ml-4 btn-primary" >إلغاء</button>
+    
+    </form>
+  </div>

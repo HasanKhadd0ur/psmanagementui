@@ -11,7 +11,8 @@ import { ProjectService } from '../../../../projects/services/project.service';
 import { EmployeeParticipate } from '../../../../employees/models/responses/employeeParticipate';
 import { EmployeeTrack } from '../../../models/responses/employeeTrack';
 import { FullnamePipe } from '../../../../shared/pipes/fullName/fullname.pipe';
-import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
+import { TrackService } from '../../../services/track.service';
 
 @Component({
   selector: 'add-employee-track-modal',
@@ -19,7 +20,7 @@ import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './add-employee-track-modal.component.css'
 })
 export class AddEmployeeTrackModalComponent {
-  @Input() isVisible = false;
+  
   participants: EmployeeParticipate[] = []; // All steps available for the project
   @Input() trackedParticipants: EmployeeTrack[] = []; // Steps that are already tracked
   @Input() projectId :number 
@@ -30,8 +31,11 @@ export class AddEmployeeTrackModalComponent {
 
   filteredParticipants: Employee[] = [];
 
-  constructor(private fb: FormBuilder,
-    private projectService : ProjectService 
+  constructor(
+    private fb: FormBuilder,
+    private projectService : ProjectService ,
+    private activeModal : NgbActiveModal,
+    private trackService :TrackService
   ) {
     this.stepTrackForm = this.fb.group({
       id: [],
@@ -128,9 +132,21 @@ export class AddEmployeeTrackModalComponent {
 
         };
 
+        this
+        .trackService
+        .addEmployeeTrack(newEmployeeTrack)
+        .subscribe({
 
-        this.closeModal();
-        this.addEmployeeTrack.emit(newEmployeeTrack);
+          next:(data)=>{
+
+            this.activeModal.close({data:data ,request:newEmployeeTrack})
+          },
+          error:(e)=>{
+            this.activeModal.close();
+          }
+
+
+        })
 
 
       }
@@ -138,11 +154,8 @@ export class AddEmployeeTrackModalComponent {
   }
 
   closeModal(): void {
-    const modal = document.getElementById('addEmployeeTrackModal');
-    if (modal) {
-      const bootstrapModal = new Modal(modal);
-      bootstrapModal.hide();
-    }
+    
+    this.activeModal.close();
   }  
 
 

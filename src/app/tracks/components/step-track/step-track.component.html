@@ -24,7 +24,7 @@
           
         <div class="col-auto">
           <button type="button "[routerLink]="['/track/history/step',stepTrack.stepId]" class="btn m-2 btn-sm btn-secondary">تاريخ المتابعة</button>
-          <button type="button" class="btn m-2 btn-sm btn-secondary">تعديل</button>
+          <button type="button" (click)="onEdit()" class="btn m-2 btn-sm btn-secondary">تعديل</button>
         </div>
         </div>
       </div>

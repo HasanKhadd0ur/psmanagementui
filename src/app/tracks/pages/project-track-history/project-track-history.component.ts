@@ -54,8 +54,7 @@ export class ProjectTrackHistoryComponent {
       next : (data)=>{
 
         this.toastr.success("تم تحميل عمليات المتابعة بنجاح");
-        this.tracks= data.sort((e1,e2)=> Number(e1.trackInfo.trackDate > e2.trackInfo.trackDate));
-
+        this.tracks= data.reverse()
       }
       ,
       error:(err)=>{
@@ -76,7 +75,9 @@ export class ProjectTrackHistoryComponent {
     modalRef.result.then((result) => {
       if (result) {
 
-        this.tracks.push(result);
+        let t =[result];
+        t.push(...this.tracks);
+         this.tracks=t;
         this.toastr.success("تمت الإضافة بنجاح")
       }
     }, (reason) => {
@@ -127,10 +128,7 @@ export class ProjectTrackHistoryComponent {
   }
 
   closeModal(): void {
-    const modalElement = document.getElementById('trackModal');
-    if (modalElement) {
-      new Modal(modalElement).hide(); // Close the modal
-    }
+    this.modalService.dismissAll()
   }
 
 }

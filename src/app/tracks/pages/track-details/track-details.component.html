@@ -69,7 +69,7 @@
                 
                   <step-track *ngFor="let stepTrack of stepTracks"
                   [projectId]="track.projectId"
-                  
+                  (edit)="openeditStepTrack(stepTrack)"
                   [stepTrack]="stepTrack" ></step-track>
                   <div class="offset-2 text-center text-secondary" *ngIf="stepTracks.length ==0 " >
                     لم تقم بمتابعة اية مراحل
@@ -106,26 +106,26 @@
 
       </div>
     </div>
-    <button  [disabled]="track.trackInfo.isCompleted" type="button" class="btn  mr-4 ml-4 btn-primary" data-bs-toggle="modal" data-bs-target="#addStepTrackModal">
+    <button  [disabled]="track.trackInfo.isCompleted" type="button" class="btn  mr-4 ml-4 btn-primary" (click)="openAddStepTrack()">
       إضافة متابعة مرحلة
     </button>
-    <button   [disabled]="track.trackInfo.isCompleted" type="button" class="btn mr-4 ml-4  btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeTrackModal">
+    <button   [disabled]="track.trackInfo.isCompleted" type="button" class="btn mr-4 ml-4  btn-primary"(click)="openEmployeeTrack()">
       إضافة متابعة مشارك
     </button>
     
-    <add-step-track-modal 
+    <!-- <add-step-track-modal 
      
       [trackId]="trackId"
       [projectId]="track.projectId"
-      [trackedSteps]="trackedSteps"
+      []="trackedSteps"
       (addStepTrack)="handleAddStepTrack($event)">
-    </add-step-track-modal>
-    <add-employee-track-modal
+    </add-step-track-modal> -->
+    <!-- <add-employee-track-modal
      
       [trackId]="trackId"
       [projectId]="track.projectId"
       [trackedParticipants]="employeesTracks"
       (addEmployeeTrack)="handleEmployeeTrack($event)">
-    </add-employee-track-modal>
+    </add-employee-track-modal> -->
 
   </section>

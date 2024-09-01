@@ -1,9 +1,6 @@
-<div class="modal modal-md fade" id="addEmployeeTrackModal" tabindex="-1" aria-labelledby="addEmployeeTrackModalLable" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
+ <div class="modal-header">
           <h5 class="modal-title" id="addEmployeeTrackModalLable">إضافة متابعة مشارك</h5>
-          <button type="button" class="mr-4 ml-4 btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="mr-4 ml-4 btn-close" (click)="closeModal()"></button>
         </div>
         <div class="modal-body">
           <form [formGroup]="stepTrackForm" (ngSubmit)="onSubmit()">
@@ -21,13 +18,7 @@
               </div>
               <input type="number" hidden id="id" formControlName="id" class="form-control" >
               
-              <div class="mb-3 col-6">
-                <label for="notes" class="form-label">الملاحظات</label>
-                <input type="text" id="notes" formControlName="notes" class="form-control">
-              </div>
-            </div>
-            <div class="row">
-
+            
               <div class="mb-3 col-4">
                 <label for="assignedWork" class="form-label">العمل المسند</label>
                 <input id="assignedWork" formControlName="assignedWork" class="form-control" >
@@ -38,6 +29,15 @@
                 <input   id="performedWork" formControlName="performedWork" class="form-control" >
               </div>
 
+            </div>
+            <div class="row">
+              <div class="mb-3 col-8">
+                <label for="notes" class="form-label">الملاحظات</label>
+                <textarea
+                cols="4"
+                type="text" id="notes" formControlName="notes" class="form-control">
+                  </textarea>
+              </div>
                 <div class="mb-3  col-4">
                   <label for="assignedWorkEnd" class="form-label">تاريخ تنفيذ العمل المسند</label>
                   <input type="date" id="assignedWorkEnd" formControlName="assignedWorkEnd" class="form-control" >
@@ -61,11 +61,8 @@
             </div>
               
               <button type="submit" class="btn mr-4 ml-4 btn-primary" [disabled]="!stepTrackForm.valid">إضافة</button>
-            <div  data-bs-dismiss="modal" aria-label="Close" class=" mr-4 ml-4 btn btn-primary" >إلغاء</div>
+            <div  (click)="closeModal()" class=" mr-4 ml-4 btn btn-primary" >إلغاء</div>
           
           </form>
         </div>
-      </div>
-    </div>
-  </div>
-  
+     
