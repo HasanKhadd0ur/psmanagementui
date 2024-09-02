@@ -1,5 +1,7 @@
 <div>
-    <app-header [isToggled]="isToggled"></app-header>
+    <app-header 
+    (toggled)="toggleSidebar()"
+    [isToggled]="isToggled"></app-header>
 
     <div id="main" class="main">
         <router-outlet></router-outlet>

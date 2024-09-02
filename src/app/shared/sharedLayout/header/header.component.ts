@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, input, OnInit, Output } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../../core/services/authentication/user.service';
 import { ToastrService } from 'ngx-toastr';
@@ -16,7 +16,7 @@ import { ConfigurationService } from '../../../core/services/configuration/confi
 export class HeaderComponent implements OnInit {
 
   @Input() isToggled :Boolean;
-
+  @Output() toggled =new EventEmitter<Boolean>()
   appName =ConfigurationService.AppName
   fullName :string
   email : string
@@ -34,8 +34,10 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleSidebar() {
+
     console.log(this.isToggled)
     this.isToggled = !this.isToggled;
+    this.toggled.emit(this.isToggled);
   }
 
   logout() {
