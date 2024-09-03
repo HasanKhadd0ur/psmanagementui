@@ -8,6 +8,7 @@ import { CustomerListComponent } from './customers/pages/customer-list/customer-
 import { PageNotfoundComponent } from './pages/page-notfound/page-notfound.component';
 import { ProjectFAQComponent } from './pages/project-faq/project-faq.component';
 import { PsmStartComponent } from './pages/psm-start/psm-start.component';
+import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 
 export const routes: Routes = [
   
@@ -32,6 +33,11 @@ export const routes: Routes = [
       {
         path: 'Help',
         component: PsmStartComponent,
+        
+      },
+      {
+        path: 'forbiden',
+        component: AccessDeniedComponent,
         
       },
       {
@@ -64,14 +70,14 @@ export const routes: Routes = [
       , {
         path: 'types',
         loadChildren: () => import('./projects-types/projects-types.module').then(m => m.ProjectsTypesModule)
+      }  ,
+      {
+        path: '**',
+        component:PageNotfoundComponent  
       }
     ]
   }
-  ,
-  {
-    path: '**',
-    component:PageNotfoundComponent  
-  }
+
 
 ];
 

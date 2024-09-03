@@ -68,7 +68,8 @@
           <hr>
 
           <plan-controll 
-            [project]="project"
+           *ngIf="project.currentState.toLocaleLowerCase()=='inplan'"
+          [project]="project"
             (toProgress)="openMoveToProgressModal()"
           >
 
@@ -77,7 +78,8 @@
           <hr>
 
           <track-controll
-            [project]="project"
+          *ngIf="project.currentState.toLocaleLowerCase()=='inprogress'"
+          [project]="project"
             (complete)="openProjectComplete()"
             (replan)="openReplan()"
           >
@@ -91,7 +93,6 @@
             [project]="project"
             (changeLeader)="openChangeTeamLeader()"
             (changeManager)="openChangeProjectManager()"
-            
           >
 
           </info-controll>

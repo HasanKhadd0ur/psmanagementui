@@ -11,6 +11,8 @@ import { ProjectCompleteModalComponent } from '../../components/projectModals/pr
 import { ProjectReplanModalComponent } from '../../components/projectModals/project-replan-modal/project-replan-modal.component';
 import { ChangeManagerModalComponent } from '../../components/projectModals/change-manager-modal/change-manager-modal.component';
 import { ChangeLeaderModalComponent } from '../../components/projectModals/change-leader-modal/change-leader-modal.component';
+import { UserService } from '../../../core/services/authentication/user.service';
+import { ROLES } from '../../../core/constants/roles';
 
 
 @Component({
@@ -28,6 +30,7 @@ export class ProjectDetailsComponent implements OnInit {
     private projectService: ProjectService,
     private toastr: ToastrService,
     private modalService :NgbModal ,
+    private userService :UserService,
     private pdfDownloader : PdfDownloaderService
     ) {}
 
@@ -137,8 +140,21 @@ export class ProjectDetailsComponent implements OnInit {
     .getProjectById(this.projectId)
     .subscribe({
       next :(data) => {
-        
-        this.project = data;
+      
+        if(
+            data.projectManager.id == this.userService.getEmployeeId()
+          ||data.teamLeader.id== this.userService.getEmployeeId()
+          ||this.userService.hasRole(ROLES.SCIENTIFIC_DEPUTY)   ){
+
+          this.project = data;
+      
+        }else{
+
+          this.toastr.error('ليس مخولا لك الولوج إلى هذه الصفحة')
+          this.router.navigate(['/forbiden'])
+          
+
+        } 
       },
 
       error : (err)=>{ 

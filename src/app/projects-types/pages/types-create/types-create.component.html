@@ -7,27 +7,27 @@
         <div class="card p-4">
           <form #form="ngForm"  class="php-email-form">
             <div class="row text-center">
-                <p>
-                  إصافة نوع مشروع
-                </p>
+                <h4 class="text-center text-primary ">
+                  إصافة نوع مشروع جديد
+                </h4>
             </div>
             <div class="row gy-4">
 
-              <div class="col-12">
+              <div class="col-6">
                 <input type="text" [(ngModel)]="request.typeName"
                 name="typeName" class="form-control" placeholder="اسم المشروع" required>
               </div>
-
-              <div class="col-6 ">
+              <div class="col-6">
+                <input type="number" [(ngModel)]="request.expectedEffort"
+                class="form-control" name="expectedNumberOfWorker" placeholder="ساعات العمل اللازمة" required  min="0" >
+              </div>
+              <div class="col-12 ">
                 <textarea type="tex" [(ngModel)]="request.description" [cols]="4" name="description"
                  class="form-control" name="requestdescription" placeholder="الوصف" minlength="15" required>
                  </textarea>
               </div>
 
-              <div class="col-6">
-                <input type="number" [(ngModel)]="request.expectedEffort"
-                class="form-control" name="expectedNumberOfWorker" placeholder="ساعات العمل اللازمة" required  min="0" >
-              </div>
+
               <div class="col-6">
                 <input type="number" [(ngModel)]="request.expectedNumberOfWorker"
                 class="form-control" name="expectedNumberOfWorker" placeholder="عدد العمال المتوقع" required  min="0" >
@@ -36,7 +36,8 @@
  
               <div class="col-md-12 text-center">
  
-                <button class="btn btn-primary" [disabled]="form.invalid"  (click)="submit(request)">إضافة</button>
+                <button class="btn m-4 btn-success" [disabled]="form.invalid"  (click)="submit(request)">إضافة</button>
+                <button class="btn m-4 btn-secondary" [routerLink]="['/types']">قائمة أنواع المشاريع</button>
               </div>
 
             </div>

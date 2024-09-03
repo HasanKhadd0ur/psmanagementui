@@ -1,8 +1,8 @@
 export const ROLES = {
     ADMIN: 'Admin',
-    PROJECTS_PLANNER: 'Planner',
-    CUSTOMERS_PLANER:'Planner',
-    SCIENTIFIC_DEPUTY: 'Employee',
-    EMPLOYEE :'Employee',
+    PROJECTS_PLANNER: "Projects-Planner",
+    CUSTOMERS_PLANER: "Customer-Planner",
+    SCIENTIFIC_DEPUTY: 'Scientific-Deputy',
+    EMPLOYEE :"Employee",
     USER: 'User',
   } as const;

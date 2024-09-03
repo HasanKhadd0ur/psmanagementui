@@ -47,7 +47,7 @@ export class ProjectsTypesService {
     return this
     .http
     .delete<void>
-    (this.config.getServerUrl()+ "/ProjectsTypes"+typeId);
+    (this.config.getServerUrl()+ "/ProjectsTypes/"+typeId);
   
   }
 

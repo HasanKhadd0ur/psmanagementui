@@ -31,6 +31,7 @@ import { ProjectRoutingModule } from './projects/routing/project-routing.module'
 import { ProjectFAQComponent } from './pages/project-faq/project-faq.component';
 import { PsmStartComponent } from './pages/psm-start/psm-start.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PageNotfoundComponent,
     ProjectFAQComponent,
     PsmStartComponent,
+    AccessDeniedComponent,
   
   ],
   imports: [
