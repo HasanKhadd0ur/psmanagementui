@@ -3,10 +3,10 @@
     (toggled)="toggleSidebar()"
     [isToggled]="isToggled"></app-header>
 
-    <div id="main" class="main">
+    <div id="main"  class="main"  [class.maine]="isToggled">
         <router-outlet></router-outlet>
     </div>
     <app-sidebar [isToggled]="isToggled"></app-sidebar>        
-    <app-footer></app-footer>
+    <app-footer [class.maine]="isToggled"></app-footer>
   
 </div>
