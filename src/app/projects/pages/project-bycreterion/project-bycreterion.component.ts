@@ -6,6 +6,9 @@ import { LoadingService } from '../../../core/services/loading/loading-service.s
 import { GetProjectsByProjectManagerRequest, GetProjectsByTeamLeaderRequest } from '../../models/requests/project-requests/GetProjectsByProjectManagerRequest';
 import { Project } from '../../models/responses/project';
 import { ProjectService } from '../../services/project.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FilterModalComponent } from '../../components/filter-modal/filter-modal.component';
+import { GetProjecByFilterRequest } from '../../models/requests/project-requests/getProjectAttachmentsRequest';
 
 @Component({
   selector: 'project-bycreterion',
@@ -15,12 +18,13 @@ import { ProjectService } from '../../services/project.service';
 export class ProjectBycreterionComponent {
 
   listType : string 
-  
+  request :GetProjecByFilterRequest
   projects : Project[]
   constructor(
     private projectService : ProjectService,
     private toastr: ToastrService,
     public router: Router,
+    private modalService :NgbModal,
     private route :ActivatedRoute,
     private userService : UserService,
     private loadingService: LoadingService
@@ -111,5 +115,51 @@ export class ProjectBycreterionComponent {
   
 
    }
+
+   handleByFilter() {
+
+    this
+    .projectService
+    .getByRequestFilter(this.request)
+    .subscribe(
+      {
+        next: (res)=>{
+          
+            this.projects = res;
+            this.loadingService.hide()
+        },
+        error: (err)=>{
+          this.toastr.error("لقد حدث خظاء ما");
+          this.loadingService.hide()
+        }
+      }
+    );
+   }
+   
+
+
+   openFilter() {
+
+        
+    const modalRef = this.modalService.open(FilterModalComponent);
+ 
+    modalRef.result.then(
+      (data :GetProjecByFilterRequest) => {
+ 
+      if (data ) {
+ 
+        this.request=data;
+        this.loadProjects();
+        
+      }
+      
+    },
+     (reason) => {
+     
+    
+   });
+   }    
+
+ 
 
 }
