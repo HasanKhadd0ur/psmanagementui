@@ -1,0 +1,49 @@
+<div class="modal-header">
+    <button type="button" class="btn-close" (click)="onClose()" ></button>
+    <h5 class="modal-title text-center">فلترة المشاريع </h5>
+  </div>
+  <div class="modal-body">
+    <form #form="ngForm" (ngSubmit)="onSubmit()" #projectForm="ngForm">
+      <div class="row">
+  
+        <div class="mb-3 col-12 ">
+          <label for="stepName" class="form-label">اسم رئيس فريق العمل</label>
+          <input type="text" name="tem" id="tem" class="form-control" [(ngModel)]="request.teamLeaderName" >
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="mb-3 ">
+          <label for="fgdg" class="form-label">اسم الجهة الطارحة</label>
+          <input type="fgdg" id="fgdg" class="form-control" [(ngModel)]="request.proposerName" name="start" >
+        </div>
+  
+        </div>
+        <div class="row">
+
+      <div class="mb-3 col-12">
+        <label for="worrker" class="form-label">اسم المشروع</label>
+        <input  id="worrker" class="form-control" [(ngModel)]="request.projectName" name="worker" >
+      </div>
+      
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-12">
+            <label for="duration" class="form-label">القسم المنفذ</label>
+            <select  id="duration" class="form-control select " [(ngModel)]="request.departmentName" name="duration" >
+            <option *ngFor="let dept of departments" [value]="dept.name">{{dept.name}}</option>  
+            
+          </select>
+          </div>
+  
+        
+          </div>
+          <div class="row ">
+        <button  [disabled]="form.invalid" type="submit" class="  m-4 col-3 btn btn-primary">بحث</button>
+        <div  class="btn m-4  btn-secondary col-3" (click)="onClose()" >إغلاق</div>
+     
+      </div>
+       </form>
+  </div>
+  

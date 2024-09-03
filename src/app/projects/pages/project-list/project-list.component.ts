@@ -6,6 +6,9 @@ import { Project } from '../../models/responses/project';
 import { ProjectService } from '../../services/project.service';
 import { GetProjectsByProjectManagerRequest, GetProjectsByTeamLeaderRequest } from '../../models/requests/project-requests/GetProjectsByProjectManagerRequest';
 import { UserService } from '../../../core/services/authentication/user.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FilterModalComponent } from '../../components/filter-modal/filter-modal.component';
+import { GetProjecByFilterRequest } from '../../models/requests/project-requests/getProjectAttachmentsRequest';
 
 @Component({
   selector: 'project-list',
@@ -15,7 +18,7 @@ import { UserService } from '../../../core/services/authentication/user.service'
 export class ProjectListComponent  implements OnInit{
 
   projects : Project[]
-
+  request :GetProjecByFilterRequest
 
   constructor(
     private projectService : ProjectService,
@@ -23,6 +26,7 @@ export class ProjectListComponent  implements OnInit{
     public router: Router,
     private route :ActivatedRoute,
     private userService : UserService,
+    private modalService :NgbModal,
     private loadingService: LoadingService
   ) {
 
@@ -36,8 +40,15 @@ export class ProjectListComponent  implements OnInit{
   loadProjects():void{
 
     this.loadingService.show()
-    this.handelAll()
+    if(this.request){
+
+      this.handleByFilter();
+    }else {
+
+
+      this.handelAll()
    
+    }
   }
 
   handelAll() {
@@ -58,7 +69,51 @@ export class ProjectListComponent  implements OnInit{
     );
    }
    
-  
+
+
+   handleByFilter() {
+
+    this
+    .projectService
+    .getByRequestFilter(this.request)
+    .subscribe(
+      {
+        next: (res)=>{
+          
+            this.projects = res;
+            this.loadingService.hide()
+        },
+        error: (err)=>{
+          this.toastr.error("لقد حدث خظاء ما");
+          this.loadingService.hide()
+        }
+      }
+    );
+   }
+   
+
+
+   openFilter() {
+
+        
+    const modalRef = this.modalService.open(FilterModalComponent);
+ 
+    modalRef.result.then(
+      (data :GetProjecByFilterRequest) => {
+ 
+      if (data ) {
+ 
+        this.request=data;
+        this.loadProjects();
+        
+      }
+      
+    },
+     (reason) => {
+     
+    
+   });
+   }    
 
    
 }

@@ -22,6 +22,7 @@ import { ChangeEmployeeParticipationRequest } from '../models/requests/project-r
 import { ParticipationChange } from '../models/responses/participationChange';
 import { ProjectCompletion } from '../models/responses/ProjectCompletion';
 import { EmployeeContribution } from '../models/responses/employeeContribution';
+import { GetProjecByFilterRequest } from '../models/requests/project-requests/getProjectAttachmentsRequest';
 //#endregion Imports
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,13 @@ export class ProjectService {
     return this.http.get<Project[]>(this.config.getServerUrl()+ "/Projects/ByFilter");
   
   }
+
+  public getByRequestFilter(request : GetProjecByFilterRequest):Observable<Project[]>{
+
+    return this.http.get<Project[]>(this.config.getServerUrl()+ "/Projects/ByFilter",{params:{...request}});
+  
+  }
+  
   public getParticipationChangeHistory(projectId :number ):Observable<ParticipationChange[]>{
 
     return this
