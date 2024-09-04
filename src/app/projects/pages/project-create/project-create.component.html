@@ -1,9 +1,23 @@
 <div class="card col-10" *ngIf="types && departments">
   <div class="card-body">
-    <h5 class="card-title text-center"><strong>طرح مشروع جديد</strong></h5>
 
-    <!-- Multi Columns Form -->
-    <form class="row g-3" [formGroup]="projectForm" (ngSubmit)="onSubmit(request)">
+    <div class="row ">
+      <div  class="col-2 text-center">
+        <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto my-4" alt="...">
+      </div>
+   
+    <div  class="col-8 text-center">
+      
+      <h5 class="card-title text-center"><strong>طرح مشروع جديد</strong></h5>
+    </div>
+  
+    <div  class="col-2 text-center">
+      <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto my-4" alt="...">
+    </div>
+  </div> <!-- /.row -->
+  <hr>
+  <!-- Multi Columns Form -->
+    <form class="row mt-4 g-3" [formGroup]="projectForm" (ngSubmit)="onSubmit(request)">
       <div class="row">
       <mat-form-field class="col-4"> 
         <input type="text" placeholder="مدير المشروع" formControlName="projectManager" matInput [matAutocomplete]="autoPM">
@@ -38,16 +52,17 @@
       <hr>
     <div class="row mb-4" formGroupName="projectInfo">
 
+      
+    
+        <mat-form-field class="example-full-width col-12">
+          <mat-label  for="description" class="form-label">وصف النشاط</mat-label>
+          <textarea [cols]="5" matInput formControlName="description" placeholder="تعريف النشاط " class="form-control"></textarea>
+        </mat-form-field>
         <mat-form-field class=" col-4">
           <mat-label for="name" class="mat-form-field-label ">اسم النشاط</mat-label>
           <input matInput  formControlName="name" [value]="request.projectInfo.name" placeholder="اسم المشروع" class="form-control" id="name">
         </mat-form-field>
       
-    
-        <mat-form-field class="example-full-width col-8">
-          <mat-label  for="description" class="form-label">وصف النشاط</mat-label>
-          <textarea matInput formControlName="description" placeholder="تعريف النشاط " class="form-control"></textarea>
-        </mat-form-field>
         <mat-form-field class="col-4">
           <mat-label for="code" class="form-label">رمز المشروع</mat-label>
           <input matInput formControlName="code" class="form-control" id="code">
@@ -70,91 +85,97 @@
 
     </div>
   
-      <div class="row mb-4" formGroupName="financialFund">
+      <div class=" col-6 mb-4" formGroupName="financialFund">
       
         
-        <mat-form-field class="col-4">
+        <mat-form-field class="col-6">
           <mat-label  for="source" class="form-label">مصدر التمويل</mat-label>
           <input formControlName="source" class="form-control" id="source" matInput />
         </mat-form-field>
      
-        <mat-form-field class="col-4">
+        <mat-form-field class="col-6">
           <mat-label  for="financialStatus" class="form-label" >وضع التمويل</mat-label>
           <input formControlName="financialStatus" class="form-control" id="financialStatus" matInput />
         </mat-form-field>
      
       </div>
     
-      <div class="row" formGroupName="projectAggreement">
-        <div class="col-4">
-          <mat-form-field>
+      <div class="col-6" formGroupName="projectAggreement">
+          <mat-form-field  class="col-6">
             <mat-label>تاريخ كتاب الموافقة</mat-label>
             <input  formControlName="aggreementDate" class="form-control" id="source" matInput [matDatepicker]="aggreement">
             <mat-datepicker-toggle matIconSuffix [for]="aggreement"></mat-datepicker-toggle>
             <mat-datepicker #aggreement></mat-datepicker>
           </mat-form-field>
-          </div>
-        <mat-form-field class="col-4">
+        
+          <mat-form-field class="col-6">
           <mat-label  for="aggreementNumber" class="form-label">رقم كتاب الموافقة</mat-label>
           <input formControlName="aggreementNumber" class="form-control" id="aggreementNumber" matInput/>
         </mat-form-field>
      
       </div>
-      <div class="row" formGroupName="proposalInfo">
-        <div class="col-4">
-          <mat-form-field>
+      <div class="col-6" formGroupName="proposalInfo">
+         <mat-form-field class="col-6">
             <mat-label>تاريخ كتاب الطرح</mat-label>
             <input  formControlName="proposingBookDate" class="form-control" id="proposingBookDate" matInput [matDatepicker]="proposingBookDate">
             <mat-datepicker-toggle matIconSuffix [for]="proposingBookDate"></mat-datepicker-toggle>
             <mat-datepicker #proposingBookDate></mat-datepicker>
           </mat-form-field>
-          </div>
-        <mat-form-field class="col-4">
+        <mat-form-field class="col-6">
           <mat-label  for="proposingBookNumber" class="form-label">رقم كتاب الطرح</mat-label>
           <input formControlName="proposingBookNumber" class="form-control" id="proposingBookNumber" matInput/>
         </mat-form-field>
      
       </div>
-    
-      <div class="col-4">
-        <mat-form-field>
+      <div class="col-6" formGroupName="projectClassification">
+      
+        <mat-form-field class="col-6">
+          <mat-label  for="projectStatus" class="form-label" >حالة النشاط</mat-label>
+          <input formControlName="projectStatus" class="form-control" id="projectStatus" matInput />
+        </mat-form-field>
+     
+        <mat-form-field class="col-6">
+          <mat-label  for="projectNature" class="form-label" >طبيعة النشاط</mat-label>
+          <input formControlName="projectNature" class="form-control" id="projectNature" matInput />
+        </mat-form-field>
+     
+      </div>
+      <div class="col-6" >
+      
+      <mat-form-field class="col-6 ">
           <mat-label>الفعالية المنفذة </mat-label>
           <mat-select formControlName="executerId">
             <mat-option *ngFor="let department of departments " [value]="department.id">{{department.name}}</mat-option>
           </mat-select>
         </mat-form-field>
-        
-      </div>
-      <div class="col-4">
-        <mat-form-field>
+        <mat-form-field class="col-6 ">
           <mat-label for="projectTypeId" class="form-label">نوع النشاط </mat-label>
           <mat-select    id="projectTypeId" formControlName="projectTypeId">
             <mat-option  *ngFor="let type of types " [value]="type.id">{{type.typeName}}</mat-option>
           </mat-select>
         </mat-form-field>
         
-      </div>
+</div>
 
-      <div class="row mb-4" formGroupName="projectClassification">
-      
-        <mat-form-field class="col-4">
-          <mat-label  for="projectStatus" class="form-label" >حالة النشاط</mat-label>
-          <input formControlName="projectStatus" class="form-control" id="projectStatus" matInput />
-        </mat-form-field>
-     
-        <mat-form-field class="col-4">
-          <mat-label  for="projectNature" class="form-label" >طبيعة النشاط</mat-label>
-          <input formControlName="projectNature" class="form-control" id="projectNature" matInput />
-        </mat-form-field>
-     
-      </div>
-    
       <hr>
-      <div class="text-center">
+      <div class="row">
+        <div  class="col-2 text-center">
+          <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto my-4" alt="...">
+        </div>
 
-        <button type="submit" class="btn btn-primary">إضافة</button>
-      </div>
-      
+        <div  class="col-8 text-center">
+    
+
+            <button type="submit" class="btn m-4 btn-primary">إضافة</button>
+            <button type="submit" [routerLink]="['/types']" class="btn m-4 btn-secondary">  أنواع المشاريع</button>
+
+            <button type="submit" [routerLink]="['/']" class="btn m-4 btn-secondary"> الصفحة الرئيسية</button>
+            </div>
+        <div  class="col-2 text-center">
+          <img src="/assets/images/users/4.jpg" class="navbar-brand-img brand-sm mx-auto my-4" alt="...">
+        </div>
+      </div> <!-- /.row -->
+              
     </form><!-- End Multi Columns Form -->
 
   </div>

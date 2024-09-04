@@ -1,0 +1,29 @@
+
+<div class="modal-header">
+    <h5 class="modal-title" id="moveToplanModalLabel">انجاز مشروع</h5>
+    <button type="button" class="ml-4 mr-4 btn-close" (click)="onClose()" ></button>
+  </div>
+  <div class="modal-body">
+  
+  <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+  
+    <div *ngIf="!canComplete">
+   {{msg}}
+ </div>
+  <div  *ngIf="canComplete">
+
+    <p class="text-center">
+        <strong>
+            هل تريد حقاً إلغاء مشروع {{project.currentState | stateTranslate}}
+        </strong>
+    </p>
+      
+  </div>
+      <div class="row ">
+      <button type="submit" [disabled]="projectForm.invalid || !canComplete" class="col m-4 btn btn-primary">انجاز المشروع</button>
+      <button  class="col m-4  btn btn-seondary" (click)="onClose()" >إغلاق</button>
+   
+    </div>
+     </form>
+
+  </div>

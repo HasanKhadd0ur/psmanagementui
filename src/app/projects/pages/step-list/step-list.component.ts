@@ -155,4 +155,8 @@ closeModal(): void {
   }
 }
 
+canSee(){
+
+}
+
 }

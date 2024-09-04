@@ -47,6 +47,7 @@ import { EditStepModalComponent } from './components/step-modals/edit-step-modal
 import { EditWeightModalComponent } from './components/step-modals/edit-weight-modal/edit-weight-modal.component';
 import { ProjectBycreterionComponent } from './pages/project-bycreterion/project-bycreterion.component';
 import { FilterModalComponent } from './components/filter-modal/filter-modal.component';
+import { CancelProjectComponent } from './components/cancel-project/cancel-project.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { FilterModalComponent } from './components/filter-modal/filter-modal.com
     EditStepModalComponent,
     EditWeightModalComponent,
     ProjectBycreterionComponent,
-    FilterModalComponent
+    FilterModalComponent,
+    CancelProjectComponent
   ],
   providers: [
     ProjectService,

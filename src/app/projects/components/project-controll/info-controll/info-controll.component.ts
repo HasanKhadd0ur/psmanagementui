@@ -12,6 +12,7 @@ export class InfoControllComponent {
 
   @Input() project : Project
   @Output() changeLeader = new EventEmitter<void>()
+  @Output() cancel = new EventEmitter<void>()
   @Output() changeManager = new EventEmitter<void>()
 
   constructor(
@@ -28,5 +29,8 @@ export class InfoControllComponent {
 
     return this.userService.hasRole(ROLES.SCIENTIFIC_DEPUTY)
   }
-      
+  onCancel() {
+    this.cancel.emit()
+    }
+          
 }

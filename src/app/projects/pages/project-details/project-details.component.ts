@@ -13,6 +13,7 @@ import { ChangeManagerModalComponent } from '../../components/projectModals/chan
 import { ChangeLeaderModalComponent } from '../../components/projectModals/change-leader-modal/change-leader-modal.component';
 import { UserService } from '../../../core/services/authentication/user.service';
 import { ROLES } from '../../../core/constants/roles';
+import { CancelProjectComponent } from '../../components/cancel-project/cancel-project.component';
 
 
 @Component({
@@ -133,6 +134,28 @@ export class ProjectDetailsComponent implements OnInit {
   
   }
 
+  openCancelComplete(){
+    
+    const modalRef = this.modalService.open(CancelProjectComponent);
+    modalRef.componentInstance.project = this.project;
+
+    modalRef.result.then((result) => {
+ 
+      if (result) {
+ 
+        this
+        .router
+        .navigate(['/'])
+      
+        
+      }
+      
+    }, (reason) => {
+     
+    
+    });
+  
+  }
 
   loadProject(){
     this
@@ -146,7 +169,7 @@ export class ProjectDetailsComponent implements OnInit {
           ||data.teamLeader.id== this.userService.getEmployeeId()
           ||this.userService.hasRole(ROLES.SCIENTIFIC_DEPUTY)   ){
 
-          this.project = data;
+          this.project = {...data};
       
         }else{
 

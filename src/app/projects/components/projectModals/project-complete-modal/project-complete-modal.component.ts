@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { Project } from '../../../models/responses/project';
@@ -10,7 +10,7 @@ import { CompleteProjectRequest } from '../../../models/requests/project-request
   templateUrl: './project-complete-modal.component.html',
   styleUrl: './project-complete-modal.component.css'
 })
-export class ProjectCompleteModalComponent {
+export class ProjectCompleteModalComponent implements OnInit {
   @Input() project : Project 
 
   request = new CompleteProjectRequest();
