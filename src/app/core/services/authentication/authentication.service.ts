@@ -88,5 +88,4 @@ export class AuthenticationService {
   }
   //#endregion  Logout
 
-
 }

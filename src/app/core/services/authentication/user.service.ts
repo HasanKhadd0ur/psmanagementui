@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DataStorageService } from '../dataStorage/data-storage.service';
 import { User } from '../../models/users/User';
+import { ROLES } from '../../constants/roles';
 
 @Injectable({
   providedIn: 'root'
@@ -43,4 +44,13 @@ export class UserService {
     .length !=0; 
   }
   
+  //#region  authority
+
+  public isAuthorizedAsSeflOrDeputy( employeeId  : number ){
+    return this.hasRole(ROLES.SCIENTIFIC_DEPUTY)|| this.getEmployeeId() == employeeId;
+  }
+
+  //#endregion  authority
+  
+
 }

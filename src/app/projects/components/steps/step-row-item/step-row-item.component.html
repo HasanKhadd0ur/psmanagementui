@@ -36,10 +36,10 @@
           
         <div class="col-auto">
           <button type="button" [routerLink]="['/tracks/history/step/',step.id]" class="btn mr-2 btn-sm btn-primary">استعراض تاريخ  متابعتها </button>
-          <button type="button"(click)="onChangeWeight()"  class="btn mr-2 btn-sm btn-secondary">تعديل الثقل</button>
-          <button type="button" (click)="onEdit()"  class="btn mr-2 btn-sm btn-secondary">تعديل المعلومات</button>
+          <button type="button"  *ngIf="canSee" (click)="onChangeWeight()"  class="btn mr-2 btn-sm btn-secondary">تعديل الثقل</button>
+          <button type="button"  *ngIf="canSee" (click)="onEdit()"  class="btn mr-2 btn-sm btn-secondary">تعديل المعلومات</button>
           
-          <button type="button"  (click)="onDelete()"  class="btn mr2 btn-sm btn-danger">إزالة</button>
+          <button type="button"  *ngIf="canSee" (click)="onDelete()"  class="btn mr2 btn-sm btn-danger">إزالة</button>
        
         </div>
         </div>

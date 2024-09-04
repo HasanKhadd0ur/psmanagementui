@@ -3,10 +3,11 @@ import { Project } from '../../models/responses/project';
 import { Employee } from '../../../employees/models/responses/employee';
 import { ParticipationChange } from '../../models/responses/participationChange';
 import { ProjectService } from '../../services/project.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EmployeesService } from '../../../employees/services/employees.service';
 import { EmployeeParticipate } from '../../../employees/models/responses/employeeParticipate';
+import { UserService } from '../../../core/services/authentication/user.service';
 
 @Component({
   selector: 'participant-changes',
@@ -25,6 +26,8 @@ export class ParticipantChangesComponent  implements OnInit{
     private projectService :ProjectService,
     private employeeServie :EmployeesService,
     private route :ActivatedRoute,
+    private userService : UserService,
+    private router :Router,
     private toastr :ToastrService
   ){}
 
@@ -35,7 +38,7 @@ export class ParticipantChangesComponent  implements OnInit{
     
     this
     .participantId = Number(this.route.snapshot.paramMap.get('participantId'));
-    
+ 
     this
     .employeeServie
     .getEmployeeById(this.participantId)
@@ -50,9 +53,24 @@ export class ParticipantChangesComponent  implements OnInit{
     .getProjectById(this.projectId)
     .subscribe({
       next:(data)=>{
-        this.project=data
-        this.currentParticipation=this.project.employeeParticipates.filter(e => e.employeeId == this.participantId)[0]
-      }
+ 
+        if(this.userService.isAuthorizedAsSeflOrDeputy(this.participantId)||data.projectManagerId == this.userService.getEmployeeId()){
+
+          this.project=data
+                
+          this
+          .toastr
+          .success('لقد تم تحميل تاريخ التبدلات بنجاح');
+  
+          this.currentParticipation=this.project.employeeParticipates.filter(e => e.employeeId == this.participantId)[0]
+          
+
+        }else {
+          this.toastr.error('ليس لديك صلاحيات الولوج إلى هذه الصفحة')
+          this.router.navigate(['/forbiden'])
+        }
+    
+         }
     });
 
         
@@ -64,10 +82,6 @@ export class ParticipantChangesComponent  implements OnInit{
       next: (data)=>{
         this
         .history=data.filter(e=> e.employeeId==this.participantId);
-        
-        this
-        .toastr
-        .success('لقد تم تحميل تاريخ التبدلات بنجاح');
 
       },
       error:(err)=>{

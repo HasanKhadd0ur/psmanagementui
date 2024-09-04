@@ -8,6 +8,9 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddParticipantModalComponent } from '../../components/modals/add-participant-modal/add-participant-modal.component';
 import { ModalService } from '../../../core/services/modals/modal.service';
 import { NgModel } from '@angular/forms';
+import { RemoveParticipantModalComponent } from '../../components/modals/remove-participant-modal/remove-participant-modal.component';
+import { EditParticipantModalComponent } from '../../components/modals/edit-participant-modal/edit-participant-modal.component';
+import { ChangeEmployeeParticipationRequest } from '../../models/requests/project-requests/ChangeEmployeeParticipationRequest';
 
 @Component({
   selector: 'participants-list',
@@ -26,7 +29,8 @@ export class ParticipantsListComponent {
     private toastr : ToastrService,
     private route: ActivatedRoute,
     private activeModal : NgbModal,
-    public router :Router
+    public router :Router,
+    private modalService :NgbModal
 
   ) {
     
@@ -48,7 +52,7 @@ export class ParticipantsListComponent {
   }
 
   onParticipantUpdated(): void {
-    this.activeModal.dismissAll();
+
     this.loadParticipations();
   }
 
@@ -77,6 +81,49 @@ export class ParticipantsListComponent {
       }
     })
 
+  }
+
+  
+  openDeleteModal(): void {
+
+    const modalRef = this.modalService.open(RemoveParticipantModalComponent);
+    modalRef.componentInstance.participant = this.selectedParticipant;
+    
+
+    modalRef.result.then((result) => {
+      if (result) {
+        // Add the new project to the list
+          this.isDetailMode=false ;
+          this.participants=this.participants.filter(w => w.employeeId == this.selectedParticipant.employeeId)
+                  
+
+      }
+    }, (reason) => {
+      
+
+    });
+  }
+openUpdateModal(): void {
+
+    const modalRef = this.modalService.open(EditParticipantModalComponent);
+    modalRef.componentInstance.participant = this.selectedParticipant;
+    
+
+    modalRef.result.then((result : ChangeEmployeeParticipationRequest) => {
+      if (result ) {
+
+        let part= this.participants.find(w => w.employeeId == this.selectedParticipant.employeeId)
+                 
+        part!.partialTimeRatio=result.partialTimeRation;
+        part!.role=result.role;
+        
+        
+
+      }
+    }, (reason) => {
+      
+
+    });
   }
 
   onDetailMode(participant: EmployeeParticipate) {

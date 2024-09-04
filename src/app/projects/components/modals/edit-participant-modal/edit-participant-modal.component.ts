@@ -19,7 +19,7 @@ export class EditParticipantModalComponent {
   constructor(
     private fb: FormBuilder,
      private projectService: ProjectService,
-    private activeModal : NgbModal
+    private activeModal :NgbActiveModal
   ) {
     this.editParticipantForm = this.fb.group({
       role: ['', Validators.required],
@@ -49,12 +49,13 @@ export class EditParticipantModalComponent {
       .changeParticipation(request)
       .subscribe(() => {
         this.participantEdited.emit();
-        this.closeModal();
+        this.activeModal.close(request);
+
       });
     }
   }
 
   closeModal() {
-    this.activeModal.dismissAll();
+    this.activeModal.close();
   }
 }

@@ -11,6 +11,7 @@ import { RemoveStepModalComponent } from '../../components/steps/remove-step-mod
 import { EditStepModalComponent } from '../../components/step-modals/edit-step-modal/edit-step-modal.component';
 import { EditWeightModalComponent } from '../../components/step-modals/edit-weight-modal/edit-weight-modal.component';
 import { ChangeStepInfoRequest } from '../../models/requests/step-requests/changeStepInfoRequest';
+import { Project } from '../../models/responses/project';
 @Component({
   selector: 'step-list',
   templateUrl: './step-list.component.html',
@@ -18,6 +19,7 @@ import { ChangeStepInfoRequest } from '../../models/requests/step-requests/chang
 })
 export class StepListComponent {
   steps : Step[]
+  project : Project
   modalMode: 'edit' | 'delete' = 'edit';
   modalTitle: string = '';
   selectedItem : Step;
@@ -28,6 +30,7 @@ export class StepListComponent {
     private toastr : ToastrService,
     private route: ActivatedRoute,
     public router :Router,
+    private projectService : ProjectService,
     private modalService: NgbModal
   ) {
     
@@ -40,9 +43,10 @@ export class StepListComponent {
 
   loadParticipations(): void{
 
-    this.stepService.getStepsByProject(this.projectId).subscribe({
+    this.projectService.getProjectById(this.projectId).subscribe({
       next: (data)=> {
-        this.steps= data 
+        this.steps= data.steps
+        this.project=data;
         this.toastr.success("تم تحميل المراحل بنجاح");
       }
       ,
@@ -88,6 +92,7 @@ export class StepListComponent {
 
     });
   }
+
   openEditModal(step : Step): void {
 
     const modalRef = this.modalService.open(EditStepModalComponent ,{size:'lg'});
@@ -107,6 +112,26 @@ export class StepListComponent {
     });
   }
 
+  
+  openDelteModal(step : Step): void {
+
+    const modalRef = this.modalService.open(RemoveStepModalComponent);
+    modalRef.componentInstance.step = step;
+    
+    modalRef.result.then((result ) => {
+      if (result) {
+        // Add the new project to the list
+        
+        this.delete(step.id)
+
+      }
+    }, (reason) => {
+      
+
+    });
+  }
+
+
   openModal(mode: 'edit' | 'delete', item: Step): void {
     this.modalMode = mode;
     this.selectedItem = { ...item }; // Clone project to prevent direct mutation
@@ -123,29 +148,11 @@ export class StepListComponent {
     }
   }
 
-  delete(): void {
+  delete(id :number ): void {
     
-
-    this.stepService.deleteSep(this.selectedItem.id).subscribe({
-
-      next :()=>{
-        this.steps = this.steps.filter(p => p.id !== this.selectedItem.id);
+        this.steps = this.steps.filter(p => p.id !== id);
         this.toastr.success("تم الحذف بنجاح")
-        this.closeModal();
-        
-      }
-      ,
-      error:(err)=>{
-        this.toastr.error("لقد حدث خطاء ما ")
-      
-        this.closeModal();
-      }
-
-
-    }
-
-  );
-
+    
 
 }
 
@@ -157,7 +164,7 @@ closeModal(): void {
 }
 
 canSee(){
-
+  return this.project.currentState.toLocaleLowerCase()=='inplan'
 }
 
 }

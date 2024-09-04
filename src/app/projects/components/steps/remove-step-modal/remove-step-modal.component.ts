@@ -3,6 +3,7 @@ import { Step } from '../../../models/responses/Step';
 import { ProjectService } from '../../../services/project.service';
 import { StepService } from '../../../services/step.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'remove-step-modal',
@@ -15,6 +16,7 @@ export class RemoveStepModalComponent {
 
   constructor(
     private stepService: StepService,
+    private activeModal :NgbActiveModal,
     private toastr : ToastrService) {}
 
   onConfirmRemove() {
@@ -25,8 +27,8 @@ export class RemoveStepModalComponent {
     .subscribe({
       next: ()=>{
 
-        this.stepRemoved.emit();
-
+        this.activeModal.close(this.step.id);
+        
       },
       error: (err)=>{
         this
@@ -38,5 +40,9 @@ export class RemoveStepModalComponent {
     });
 
 
+  }
+
+  onClose(){
+    this.activeModal.close();
   }
 }

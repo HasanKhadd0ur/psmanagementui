@@ -9,6 +9,7 @@ import { Step } from '../../../models/responses/Step';
 export class StepRowItemComponent {
 
   @Input() step :Step
+  @Input() canSee :boolean
   @Output() delete = new EventEmitter<void>();
   @Output() edit = new EventEmitter<Step>();
   @Output() changeWeight = new EventEmitter<Step>();

@@ -37,16 +37,13 @@
     </div>
   </div>
 
-  <edit-participant-modal 
-  [participant]="selectedParticipant" 
-  (participantEdited)="onParticipantUpdated()"
-  ></edit-participant-modal>
- <remove-participant-modal *ngIf="selectedParticipant"
+  
+ <!-- <remove-participant-modal *ngIf="selectedParticipant"
  [participant]="selectedParticipant"
  (participantRemoved)="onParticipantRemoved()"
- >
-
- </remove-participant-modal>
+ > -->
+<!-- 
+ </remove-participant-modal> -->
  
   <!-- <app-remove-participant-modal [participant]="selectedParticipant" (participantRemoved)="onParticipantRemoved()"></app-remove-participant-modal> -->
 
@@ -80,8 +77,8 @@
               
             <div class="col-10">
               <button type="button"  class="btn m-2 btn-sm btn-primary">استعراض تاريخ  تبدلاته </button>
-              <button type="button" data-bs-toggle="modal" data-bs-target="#editParticipantModal"  class="btn m-2 btn-sm btn-secondary">تعديل معلومات المشاركة</button>
-              <button type="button"  data-bs-toggle="modal" data-bs-target="#removeParticipantModal"  class="btn m-2 btn-sm btn-danger">إزالة</button>
+              <button type="button" (click)="onParticipantUpdated()"  class="btn m-2 btn-sm btn-secondary">تعديل معلومات المشاركة</button>
+              <button type="button" (click)="openDeleteModal()" class="btn m-2 btn-sm btn-danger">إزالة</button>
               <button type="button" [routerLink]="['/reports/contributions',selectedParticipant.projectId,'employee',selectedParticipant.employeeId]" class="btn  btn-sm btn-secondary">المساهمات</button>
               
             </div>

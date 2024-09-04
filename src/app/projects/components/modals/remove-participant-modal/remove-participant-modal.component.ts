@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EmployeeParticipate } from '../../../../employees/models/responses/employeeParticipate';
 import { ProjectService } from '../../../services/project.service';
 import { RemoveParticipantRequest } from '../../../models/requests/project-requests/RemoveParticipant';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'remove-participant-modal',
@@ -12,7 +13,9 @@ export class RemoveParticipantModalComponent {
   @Input() participant: EmployeeParticipate;
   @Output() participantRemoved = new EventEmitter<void>();
 
-  constructor(private projectService: ProjectService) {}
+  constructor(private projectService: ProjectService,
+    private activeModal : NgbActiveModal
+  ) {}
 
   onConfirmRemove() {
     let request :RemoveParticipantRequest= {
@@ -23,7 +26,7 @@ export class RemoveParticipantModalComponent {
     this.projectService
     .removeParticipant(request)
     .subscribe(() => {
-      this.participantRemoved.emit();
+      this.activeModal.close(this.participant.employeeId);
       
     });
   }

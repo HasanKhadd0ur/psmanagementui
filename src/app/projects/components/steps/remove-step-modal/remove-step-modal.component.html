@@ -1,1 +1,13 @@
-<p>remove-step-modal works!</p>
+<div class="modal-header">
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <h5 class="modal-title" id="modalLabel">حذف مرحلة </h5>
+
+  </div>
+  <div class="modal-body">
+
+      <p
+        class="text-center text-danger p-10"
+      >هل أنت متأكد من أنك تريد حذف المرحلة {{ step.stepInfo.stepName }}?</p>
+      <button type="button" class="btn m-4 btn-danger" (click)="onConfirmRemove()">حذف</button>
+      <button type="button" class="btn m-4 btn-secondary" (click)="onClose()">إلغاء</button>
+  </div>
