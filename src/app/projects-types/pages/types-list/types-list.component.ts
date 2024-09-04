@@ -8,6 +8,8 @@ import { ProjectType } from '../../models/responses/projectType';
 import { UpdateTypeRequest } from '../../models/requests/updateProjectTypeRequest';
 import { ROLES } from '../../../core/constants/roles';
 import { UserService } from '../../../core/services/authentication/user.service';
+import { RemoveTyoeModalComponent } from '../../components/remove-tyoe-modal/remove-tyoe-modal.component';
+import { EditTypeModalComponent } from '../../components/edit-type-modal/edit-type-modal.component';
 
 @Component({
   selector: 'types-list',
@@ -54,6 +56,47 @@ export class TypesListComponent {
     })
 
   }
+
+  openDeleteModal(item : ProjectType): void {
+    const modalRef = this.modalService.open(RemoveTyoeModalComponent);
+    
+    modalRef.componentInstance.selectedItem = item;
+
+    modalRef.result.then((result : number ) => {
+      if (result) {
+
+        this.types=this.types.filter(e => e.id == item.id)
+
+      }
+    }, (reason) => {
+
+    });
+  }
+
+  openEditModal(item : ProjectType): void {
+    const modalRef = this.modalService.open(EditTypeModalComponent);
+    
+    modalRef.componentInstance.selectedItem = item;
+
+    modalRef.result.then((result : UpdateTypeRequest ) => {
+      if (result) {
+
+        let sp = this.types.find(e => e.id == item.id);
+       sp!.description=result.description
+       sp!.expectedEffort=result.expectedEffort
+       sp!.expectedNumberOfWorker=result.expectedNumberOfWorker
+       sp!.typeName=result.typeName
+       
+       
+
+      }
+    }, (reason) => {
+
+    });
+  }
+
+
+
 
   openModal(mode: 'edit' | 'delete', item: ProjectType): void {
     this.modalMode = mode;

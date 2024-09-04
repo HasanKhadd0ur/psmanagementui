@@ -1,7 +1,7 @@
 export class UpdateTypeRequest{
     id :number 
     typeName :string 
-    description :String 
+    description :string 
     expectedEffort :number 
     expectedNumberOfWorker :number;
 }

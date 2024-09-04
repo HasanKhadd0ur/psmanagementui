@@ -7,6 +7,9 @@ import { Modal } from 'bootstrap';
 import { UpdateTypeRequest } from '../../models/requests/updateProjectTypeRequest';
 import { UserService } from '../../../core/services/authentication/user.service';
 import { ROLES } from '../../../core/constants/roles';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RemoveTyoeModalComponent } from '../../components/remove-tyoe-modal/remove-tyoe-modal.component';
+import { EditTypeModalComponent } from '../../components/edit-type-modal/edit-type-modal.component';
 
 @Component({
   selector: 'types-detail',
@@ -26,6 +29,7 @@ export class TypesDetailComponent implements OnInit{
     private route : ActivatedRoute,
     private toastr : ToastrService,
     private router : Router,
+    private modalService :NgbModal,
     private userService :UserService
 
   ){}
@@ -61,6 +65,46 @@ export class TypesDetailComponent implements OnInit{
       new Modal(modalElement).show(); // Open the modal
     }
   }
+
+  openDeleteModal(item : ProjectType): void {
+    const modalRef = this.modalService.open(RemoveTyoeModalComponent);
+    
+    modalRef.componentInstance.selectedItem = this.type;
+
+    modalRef.result.then((result : number ) => {
+      if (result) {
+
+        this.router.navigate(['/types'])
+      }
+    }, (reason) => {
+
+    });
+  }
+
+  openEditModal(item : ProjectType): void {
+    const modalRef = this.modalService.open(EditTypeModalComponent);
+    
+    modalRef.componentInstance.selectedItem = item;
+
+    modalRef.result.then((result : UpdateTypeRequest ) => {
+      if (result) {
+
+        let sp = this.type;
+        
+       sp!.description=result.description
+       sp!.expectedEffort=result.expectedEffort
+       sp!.expectedNumberOfWorker=result.expectedNumberOfWorker
+       sp!.typeName=result.typeName
+       
+       
+
+      }
+    }, (reason) => {
+
+    });
+  }
+
+
 
   saveType(): void {
     

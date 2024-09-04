@@ -15,13 +15,18 @@
   <type-item class=" offset-2" 
     *ngFor="let item of types" 
     [item]="item"
-    (edit)="openModal('edit', item)"
-    (delete)="openModal('delete', item)"
+    (edit)="openEditModal(item)"
+    (delete)="openDeleteModal(item)"
   >
   </type-item>
 
-  <div *ngIf="types.length==0">
-        للأسف حاليا لايوجد أنواع مشاريع
+  <div *ngIf="types.length==0" class="text-center text-primary">
+    <strong>
+
+         للأسف حاليا لايوجد أنواع مشاريع
+    
+    
+        </strong>
     </div>
     </div>
     </div>
