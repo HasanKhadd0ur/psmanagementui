@@ -48,6 +48,8 @@ import { EditWeightModalComponent } from './components/step-modals/edit-weight-m
 import { ProjectBycreterionComponent } from './pages/project-bycreterion/project-bycreterion.component';
 import { FilterModalComponent } from './components/filter-modal/filter-modal.component';
 import { CancelProjectComponent } from './components/cancel-project/cancel-project.component';
+import { EditFinancialModalComponent } from './components/edit-financial-modal/edit-financial-modal.component';
+import { RemoveFinancialModalComponent } from './components/remove-financial-modal/remove-financial-modal.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +88,9 @@ import { CancelProjectComponent } from './components/cancel-project/cancel-proje
     EditWeightModalComponent,
     ProjectBycreterionComponent,
     FilterModalComponent,
-    CancelProjectComponent
+    CancelProjectComponent,
+    EditFinancialModalComponent,
+    RemoveFinancialModalComponent
   ],
   providers: [
     ProjectService,

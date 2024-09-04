@@ -11,6 +11,8 @@ import { AddFinancialSpendModalComponent } from '../../components/modals/add-fin
 import { UpdateFinancialSpendItemRequest } from '../../models/requests/financial-reuqests/UpdateFinancialSpendItemRequest';
 import { RemoveFinancialSpendItemRequest } from '../../models/requests/financial-reuqests/RemoveFinancialSpendItemRequest';
 import { Modal } from 'bootstrap';
+import { EditFinancialModalComponent } from '../../components/edit-financial-modal/edit-financial-modal.component';
+import { RemoveFinancialModalComponent } from '../../components/remove-financial-modal/remove-financial-modal.component';
 
 @Component({
   selector: 'financial-spending',
@@ -158,5 +160,44 @@ export class FinancialSpendingComponent {
       console.log('Modal dismissed with reason:', reason);
     });
   }
+
+  
+
+  openEditModal(item : FinancialSpending): void {
+    const modalRef = this.modalService.open(EditFinancialModalComponent);
+    modalRef.componentInstance.projectId = this.projectId;
+    modalRef.componentInstance.selectedItem = item;
+
+    modalRef.result.then((result :UpdateFinancialSpendItemRequest) => {
+      if (result) {
+
+        let sp = this.spends.find(e => e.id == item.id);
+        sp={...item};
+
+
+
+      }
+    }, (reason) => {
+
+    });
+  }
+
+  openDeleteModal(item : FinancialSpending): void {
+    const modalRef = this.modalService.open(RemoveFinancialModalComponent);
+    modalRef.componentInstance.projectId = this.projectId;
+    modalRef.componentInstance.selectedItem = item;
+
+    modalRef.result.then((result : number ) => {
+      if (result) {
+
+        let sp = this.spends.filter(e => e.id != item.id);
+        
+
+      }
+    }, (reason) => {
+
+    });
+  }
+
 
 }

@@ -39,7 +39,7 @@ export class FinancialSpendingService {
 
   public updateSpendItem(request : UpdateFinancialSpendItemRequest ):Observable<FinancialSpending>{
     
-    return this.http.put<FinancialSpending>(this.config.getServerUrl()+ "/FinancialSpends/",request);
+    return this.http.put<FinancialSpending>(this.config.getServerUrl()+ "/FinancialSpends/"+request.id,request);
   }
 
 

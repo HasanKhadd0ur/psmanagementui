@@ -8,6 +8,7 @@ import { TypesCreateComponent } from './pages/types-create/types-create.componen
 import { EditTypeModalComponent } from './components/edit-type-modal/edit-type-modal.component';
 import { FormsModule } from '@angular/forms';
 import { TypesDetailComponent } from './pages/types-detail/types-detail.component';
+import { RemoveTyoeModalComponent } from './components/remove-tyoe-modal/remove-tyoe-modal.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { TypesDetailComponent } from './pages/types-detail/types-detail.componen
     TypesListComponent,
     TypesCreateComponent,
     EditTypeModalComponent,
-    TypesDetailComponent
+    TypesDetailComponent,
+    RemoveTyoeModalComponent
   ],
   imports: [
     CommonModule,

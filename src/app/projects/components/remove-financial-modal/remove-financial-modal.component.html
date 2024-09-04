@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <h5 class="modal-title" id="modalLabel">حذف عنصر إنفاق</h5>
+
+  </div>
+  <div class="modal-body">
+ 
+    <!-- Delete Confirmation -->
+    <div>
+      <p class="text-center text-danger">هل أنت متأكد من أنك تريد حذف عنصر {{ selectedItem.costType }}?</p>
+      <button type="button" class="btn m-4 btn-danger" (click)="saveItem()">إزالة</button>
+      <button type="button" class="btn btn-secondary" (click)="close()">إلغاء</button>
+    </div>
+  

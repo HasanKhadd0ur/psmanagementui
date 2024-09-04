@@ -1,0 +1,11 @@
+    <div class="modal-header">
+          <button type="button" class="btn-close" (click)="close()"></button>
+      
+          <h5 class="modal-title" id="modalLabel">حذف نوع مشروع </h5>
+      
+        </div>
+        <div class="modal-body">
+            <p>هل أنت متأكد من أنك تريد حذف عنصر {{ item.typeName }}?</p>
+            <button type="button" class="col-4 m-4  btn  btn-danger" (click)="remove()">إزالة</button>
+            <button type="button" class="btn col-4 my-4  btn-secondary" (click)="close()">إلغاء</button>
+        </div>

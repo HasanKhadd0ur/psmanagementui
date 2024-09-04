@@ -15,14 +15,19 @@
   <financial-item class=" offset-2" 
     *ngFor="let item of spends" 
     [item]="item"
-    (edit)="openModal('edit', item)"
-    (delete)="openModal('delete', item)"
+    (edit)="openEditModal(item)"
+    (delete)="openDeleteModal(item)"
   >
   
   </financial-item>
 
-    <div *ngIf="spends.length==0">
+    <div *ngIf="spends.length==0" class="text-center text-primary">
+      <strong>
+
         للأسف هذا المشروع لايحوي على خطة انفاق
+    
+      </strong>
+    
     </div>
     </div>
     </div>
