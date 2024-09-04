@@ -32,7 +32,7 @@
           </div> <!-- .card-body -->
         </div> <!-- .card -->
       </div>
-      <div class="col-md-6 col-lg-4" (click)="onReplan()">
+      <div class="col-md-6 col-lg-4" *ngIf="canSee()" (click)="onReplan()">
         <div class="card shadow mb-4">
           <div class="card-body file-list">
             <div class="d-flex align-items-center">

@@ -80,7 +80,8 @@ export class StepListComponent {
     modalRef.result.then((result) => {
       if (result) {
         // Add the new project to the list
-        step.weight=result.weight  
+        step.weight=result  
+        this.selectedItem={...step}
       }
     }, (reason) => {
       

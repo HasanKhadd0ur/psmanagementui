@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Project } from '../../../models/responses/project';
+import { UserService } from '../../../../core/services/authentication/user.service';
+import { ROLES } from '../../../../core/constants/roles';
 
 @Component({
   selector: 'track-controll',
@@ -13,6 +15,11 @@ export class TrackControllComponent {
   @Output() replan = new EventEmitter();
   
 
+  constructor(
+
+    private userService :UserService
+
+  ){}
   onComplete(){
     this.complete.emit();
   }
@@ -21,4 +28,10 @@ export class TrackControllComponent {
     this.replan.emit();
 
   }
+
+  canSee(): boolean {
+
+    return this.userService.hasRole(ROLES.SCIENTIFIC_DEPUTY)
+  }
+
 }
