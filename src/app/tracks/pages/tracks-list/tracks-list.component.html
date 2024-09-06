@@ -49,8 +49,9 @@
           </div>
           
         <div class="col-auto">
-          <button type="button" [routerLink]="['/tracks/detail/',track.id]" class="btn m-2 btn-sm btn-secondary">تفاصيل المتابعة</button>
-       
+          <button [routerLink]="['/reports/employees-tracks',track.projectId,'track',track.id]" class="btn  m-4 btn-primary col-3 offset-1">تقرير انشغالية عاملين </button>
+          <button  [routerLink]="['/reports/steps-tracks',track.projectId,'track',track.id]" class="btn m-4 btn-primary col-3 offset-1">تقرير متابعة مراحل  </button>
+   
         </div>
         </div>
       </div>

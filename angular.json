@@ -50,16 +50,19 @@
             "src/assets/css/app-light.css",
             "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
             "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-            "node_modules/dhtmlx-gantt/codebase/dhtmlxgantt.css"
+            "./node_modules/dhtmlx-gantt/codebase/dhtmlxgantt.css",
+            "./node_modules/primeng/resources/themes/saga-blue/theme.css",  
+            "./node_modules/primeng/resources/primeng.min.css",
+            "./node_modules/primeicons/primeicons.css",
+            "./node_modules/primeflex/primeflex.css" 
           ],
           "scripts": [
              "node_modules/@popperjs/core/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
             "./node_modules/jquery-sparkline/jquery.sparkline.min.js",
           "./node_modules/@popperjs/core/dist/umd/popper.min.js",
-          "node_modules/feather-icons/dist/feather.min.js",
-          "node_modules/dhtmlx-gantt/codebase/dhtmlxgantt.js"
-          
+          "./node_modules/feather-icons/dist/feather.min.js",
+          "./node_modules/dhtmlx-gantt/codebase/dhtmlxgantt.js"
           ]
           },
           "configurations": {
@@ -88,6 +91,11 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+
+          "options": {
+            "host": "psm.hiast.edu.sy",
+            "port": 80
+          },
           "configurations": {
             "production": {
               "buildTarget": "PSManagementUI:build:production"

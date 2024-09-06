@@ -46,7 +46,7 @@ export class EditStepModalComponent {
 
       next: (data)=>{
       
-        this.activeModal.close(this.stepInfo); // Close modal and pass data
+        this.activeModal.close(this.request); // Close modal and pass data
   
       },
       error: (err )=> this.toastr.error("لقد حدث خطاء ما")

@@ -1,5 +1,6 @@
 import {  NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TimelineModule } from 'primeng/timeline';
 import { ProjectItemComponent } from './components/project-item/project-item.component';
 import { ProjectListComponent } from './pages/project-list/project-list.component';
 import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
@@ -13,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { ProjectService } from './services/project.service';
+import { SkeletonModule } from 'primeng/skeleton';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
@@ -50,7 +52,9 @@ import { FilterModalComponent } from './components/filter-modal/filter-modal.com
 import { CancelProjectComponent } from './components/cancel-project/cancel-project.component';
 import { EditFinancialModalComponent } from './components/edit-financial-modal/edit-financial-modal.component';
 import { RemoveFinancialModalComponent } from './components/remove-financial-modal/remove-financial-modal.component';
-
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { ProgressBarModule } from 'primeng/progressbar';
 @NgModule({
   declarations: [
     ProjectItemComponent,
@@ -101,18 +105,23 @@ import { RemoveFinancialModalComponent } from './components/remove-financial-mod
   ],
   imports: [
     CommonModule,
+    CardModule,
+    ButtonModule,
     NgbModule,
     FormsModule,
     MatFormFieldModule,
     MatCommonModule,
+    ProgressBarModule,
     MatSelectModule,
     MatOptionModule,
     MatAutocompleteModule,
     MatDatepickerModule,
     RouterModule ,
     MatInputModule,
+    TimelineModule,
     ReactiveFormsModule ,
     SharedModule,
+    SkeletonModule,
     NgbTypeaheadModule
   ]
 })

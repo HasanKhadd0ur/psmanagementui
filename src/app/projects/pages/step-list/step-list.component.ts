@@ -18,6 +18,8 @@ import { Project } from '../../models/responses/project';
   styleUrl: './step-list.component.css'
 })
 export class StepListComponent {
+
+  isToggled=true
   steps : Step[]
   project : Project
   modalMode: 'edit' | 'delete' = 'edit';
@@ -99,10 +101,9 @@ export class StepListComponent {
     modalRef.componentInstance.stepInfo = step.stepInfo;
     modalRef.componentInstance.stepId = step.id;
 
-    modalRef.result.then((result) => {
+    modalRef.result.then((result : ChangeStepInfoRequest) => {
       if (result) {
         // Add the new project to the list
-        
         step.stepInfo={...result.stepInfo};
 
       }
@@ -166,5 +167,8 @@ closeModal(): void {
 canSee(){
   return this.project.currentState.toLocaleLowerCase()=='inplan'
 }
-
+toggle() {
+  this.isToggled=!this.isToggled
+}
+  
 }

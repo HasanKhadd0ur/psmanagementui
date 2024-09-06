@@ -65,7 +65,7 @@
             
           </div>
           
-          <hr>
+          <hr            *ngIf="project.currentState.toLocaleLowerCase()=='inplan'">
 
           <plan-controll 
            *ngIf="project.currentState.toLocaleLowerCase()=='inplan'"
@@ -75,7 +75,9 @@
 
           </plan-controll>
        
-          <hr>
+          <hr
+          *ngIf="project.currentState.toLocaleLowerCase()=='inprogress'"
+          >
 
           <track-controll
           *ngIf="project.currentState.toLocaleLowerCase()=='inprogress'"

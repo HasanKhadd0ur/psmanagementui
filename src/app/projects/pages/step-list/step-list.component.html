@@ -6,12 +6,24 @@
                 <h2 class="h3 mb-0 page-title">  قائمة مراحل المشروع </h2>
                 </div>
             <div class="col-auto">
-            <button type="button" *ngIf="canSee()" (click)="openAddModal()" class="btn btn-primary"><span class="fe fe-file-plus fe-12 mr-2"></span>إضافة مرحلة </button>
+
+                <div class="circle circle-md "
+                    [class.bg-secondary]="isToggled"
+                    [class.bg-primary]="!isToggled"
+                    
+                >
+                    <span class="fe fe-credit-card fe-16 text-white"
+                     (click)="toggle()"></span>
+                  </div>
+                  
+            <button type="button" *ngIf="canSee()" (click)="openAddModal()" class="btn m-4 btn-primary"><span class="fe fe-file-plus fe-12 mr-2"></span>إضافة مرحلة </button>
         </div>
    </div>
 <hr>
 
 
+<div 
+*ngIf="isToggled">
     <step-row-item 
     class=" offset-2" 
     *ngFor="let step of steps" 
@@ -21,6 +33,36 @@
     (changeWeight)="openChangeWeightModal(step)"
     (edit)="openEditModal(step)"
     ></step-row-item>
+</div>
+
+
+
+      <p-timeline *ngIf="!isToggled" [value]="steps" align="alternate" styleClass="customized-timeline">
+          <ng-template pTemplate="marker" let-event>
+              <span 
+                  class="flex w-2rem h-2rem align-items-center justify-content-center text-white border-circle z-1 shadow-1" 
+                  [style]="{ 'background-color' :'#9C27B0' }">
+                      <i [class]="'fe fe-clipboard'"></i>
+              </span>
+          </ng-template>
+          <ng-template pTemplate="content" let-event>
+              <p-card [header]="event.stepInfo.stepName" [subheader]="(event.stepInfo.startDate | date) ??'' ">
+                
+                  <p class="">
+                    
+                    {{event.stepInfo.description}} 
+                        </p>
+                  <p>
+
+                    <strong class="mb-4">الثقل
+                        {{event.weight}}
+                    </strong>
+
+                    <p-progressBar [value]="event.currentCompletionRatio" />
+                   </p>
+              </p-card>
+          </ng-template>
+      </p-timeline>
 
     <div *ngIf="steps.length==0">
       <p class="tect-center">
@@ -35,3 +77,33 @@
     </div>
     </div>
 </section>
+
+<div class="card shadow mb-4 col-8 offset-2" *ngIf="!steps">
+    <div class="card-header py-3">
+        <div class="row align-items-center">
+          <div class="col-auto">
+          <p-skeleton shape="circle" size="4rem" styleClass="mr-2" />
+          </div>
+          <div class="col ml-n2">
+            <p-skeleton width="20%" styleClass="mb-2" />
+            <p-skeleton width="30%" styleClass="mb-2" />
+          </div>
+        </div>
+      </div>
+      <div class="card-body ">
+        <div class="row align-items-center">
+          <div class="col-8 ">
+
+                <p-skeleton width="80%" styleClass="mb-2" />
+                <p-skeleton width="50%" styleClass="mb-2" />
+                <p-skeleton width="70%" styleClass="mb-2" />
+            
+          </div>
+          <div  class="col-8 ">
+         
+                <p-skeleton width="70%" styleClass="mb-2" />  
+
+          </div>
+        </div>
+    </div>
+</div>
