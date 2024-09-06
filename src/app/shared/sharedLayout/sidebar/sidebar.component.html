@@ -30,7 +30,7 @@
         <i class="fe fe-map"></i><span> استعراض أنواع المشاريع</span>
       </a>
     </li>
-    <li class="nav-item" *ngIf="hasRole('Planner')">
+    <li class="nav-item" *ngIf="hasRole(alroles.PROJECTS_PLANNER)">
       <a [routerLink]="['/types/create']" class="nav-link collapsed">
         <i class="fe fe-edit-2"></i><span>إضافة نوع جديد</span>
       </a>
@@ -44,7 +44,7 @@
     </li>
     <li class="nav-item">
       <a
-        *ngIf="hasRole('Planner')"
+        *ngIf="hasRole(alroles.CUSTOMERS_PLANER)"
         [routerLink]="['/customers/create']"
         class="nav-link collapsed"
       >

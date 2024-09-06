@@ -8,6 +8,7 @@ import { catchError, Observable, tap, throwError } from 'rxjs';
 import { ConfigurationService } from '../configuration/configuration.service';
 import { DataStorageService } from '../dataStorage/data-storage.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 //#endregion  Imports
 
@@ -22,7 +23,8 @@ export class AuthenticationService {
     private http : HttpClient,
     private config : ConfigurationService,
     private dataStorage : DataStorageService,
-    private cookieService :CookieService 
+    private cookieService :CookieService ,
+    private router : Router
   
   ) { }
   //#endregion  Consrtuctor
@@ -86,6 +88,7 @@ export class AuthenticationService {
   logout(){
     this.cookieService.delete('token');
     this.dataStorage.removeItem("userDetails");
+    this.router.navigate([''])
   }
   //#endregion  Logout
 

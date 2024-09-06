@@ -76,8 +76,8 @@
             </div>
               
             <div class="col-10">
-              <button type="button"  class="btn m-2 btn-sm btn-primary">استعراض تاريخ  تبدلاته </button>
-              <button type="button" (click)="onParticipantUpdated()"  class="btn m-2 btn-sm btn-secondary">تعديل معلومات المشاركة</button>
+              <button type="button"   [routerLink]="['/projects',projectId,'history','participationChange',selectedParticipant.employeeId]"class="btn m-2 btn-sm btn-primary">استعراض تاريخ  تبدلاته </button>
+              <button type="button" (click)="openUpdateModal()"  class="btn m-2 btn-sm btn-secondary">تعديل معلومات المشاركة</button>
               <button type="button" (click)="openDeleteModal()" class="btn m-2 btn-sm btn-danger">إزالة</button>
               <button type="button" [routerLink]="['/reports/contributions',selectedParticipant.projectId,'employee',selectedParticipant.employeeId]" class="btn  btn-sm btn-secondary">المساهمات</button>
               

@@ -265,7 +265,7 @@ export class TrackDetailsComponent implements OnInit {
 
     this._canComplete();
     this.stepTracks.push(st)
-    this.steps=this.steps.filter(e => e.id == s?.id) 
+    this.steps=this.steps.filter(e => e.id == s!.id) 
     this.trackedSteps.push(s!);
 
   }

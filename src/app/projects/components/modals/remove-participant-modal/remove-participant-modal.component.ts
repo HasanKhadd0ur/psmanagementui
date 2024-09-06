@@ -30,5 +30,8 @@ export class RemoveParticipantModalComponent {
       
     });
   }
+close (){
+  this.activeModal.close();
+}
 
 }

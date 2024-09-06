@@ -94,7 +94,7 @@ export class ParticipantsListComponent {
       if (result) {
         // Add the new project to the list
           this.isDetailMode=false ;
-          this.participants=this.participants.filter(w => w.employeeId == this.selectedParticipant.employeeId)
+          this.participants=this.participants.filter(w => w.employeeId != this.selectedParticipant.employeeId)
                   
 
       }
@@ -115,6 +115,8 @@ openUpdateModal(): void {
         let part= this.participants.find(w => w.employeeId == this.selectedParticipant.employeeId)
                  
         part!.partialTimeRatio=result.partialTimeRation;
+        this.selectedParticipant.partialTimeRatio=result.partialTimeRation
+        this.selectedParticipant.role=result.role
         part!.role=result.role;
         
         

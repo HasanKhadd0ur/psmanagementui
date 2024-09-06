@@ -210,7 +210,7 @@ export class ProjectCreateComponent {
         
         next: (data)=>{
           this.toastr.success("تمت إضافة الجهة بنجاح")
-          this.router.navigate(['/projects/detail/',data])
+          this.router.navigate(['/projects/detail/'+data.id])
         },
 
         error:(err)=>{

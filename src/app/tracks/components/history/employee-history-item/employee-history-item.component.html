@@ -31,7 +31,7 @@
   
           
         <div class="col-auto">
-          <button type="button " [routerLink]="['/tracks/project/',empoyeeTrack.trackId]" class="btn m-2 btn-sm btn-secondary">الاطلاع على عملية المتابعة</button>
+          <button type="button " *ngIf="canSee()" [routerLink]="['/tracks/project/',empoyeeTrack.trackId]" class="btn m-2 btn-sm btn-secondary">الاطلاع على عملية المتابعة</button>
        
         </div>
         </div>

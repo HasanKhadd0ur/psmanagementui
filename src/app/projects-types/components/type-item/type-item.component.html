@@ -36,8 +36,8 @@
           </div>
           
         <div class="col-auto">
-          <button type="button" (click)="onEdit()" class="btn m-2 btn-sm btn-secondary">تعديل المعلومات</button>
-          <button type="button" (click)="onDelete()"class="btn m-2 btn-sm btn-danger">إزالة</button>
+          <button type="button"  [disabled]="canSee()" (click)="onEdit()" class="btn m-2 btn-sm btn-secondary">تعديل المعلومات</button>
+          <button type="button"  [disabled]="canSee()" (click)="onDelete()"class="btn m-2 btn-sm btn-danger">إزالة</button>
        
         </div>
         </div>
