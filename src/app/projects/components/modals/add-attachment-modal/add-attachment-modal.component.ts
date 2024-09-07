@@ -13,6 +13,8 @@ import { ProjectService } from '../../../services/project.service';
 })
 export class AddAttachmentModalComponent {
   @Input() projectId :number 
+  uploadedFiles: any[] = [];
+  totalSize=0
   @Output() itemAdded= new EventEmitter<void>();
 
   item  : AddAttachmentRequest 
@@ -53,13 +55,43 @@ export class AddAttachmentModalComponent {
     })
   }
 
-  onFileSelected(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files?.length) {
-      this.selectedFile = input.files[0];
+
+  // Method to handle file selection
+  onFileSelected(event: any): void {
+    const files = event.files;
+    this.totalSize = files.reduce((acc: number, file: File) => acc + file.size, 0);
+    if (files.length > 0) {
+      this.selectedFile = files[0]; // Set the selected file
     }
   }
-  onClose():void {
+
+  // Method to handle file upload
+  onTemplatedUpload(event: { files: File[] }): void {
+    if (!this.selectedFile) {
+      return;
+    }
+  }
+
+  choose(event: any, chooseCallback: Function): void {
+    chooseCallback();
+  }
+
+  uploadEvent(uploadCallback: Function): void {
+    uploadCallback();
+  }
+
+  onRemoveTemplatingFile(event: any, file: any, removeFileCallback: Function, index: number): void {
+    removeFileCallback(index);
+  }
+  // File size formatting helper
+  formatSize(bytes: number): string {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  } 
+    onClose():void {
     this.activeModal.close();
   }
 

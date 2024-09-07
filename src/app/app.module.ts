@@ -32,6 +32,8 @@ import { ProjectFAQComponent } from './pages/project-faq/project-faq.component';
 import { PsmStartComponent } from './pages/psm-start/psm-start.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
+import { ScrollTopModule } from 'primeng/scrolltop';
+
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { AccessDeniedComponent } from './pages/access-denied/access-denied.compo
     CoreModule,
     CustomersModule,
     SharedModule,
+    ScrollTopModule,
     NgxPaginationModule,
     BrowserAnimationsModule, // Required for toast animations
     ToastrModule.forRoot({
@@ -61,7 +64,7 @@ import { AccessDeniedComponent } from './pages/access-denied/access-denied.compo
       timeOut: 3000, // Toast timeout
       preventDuplicates: true,
       progressBar: true, // Prevent duplicate toasts
-    }),
+   }),
     HttpClientModule,
     NgbModule
   

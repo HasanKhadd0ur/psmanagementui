@@ -18,7 +18,7 @@
         />
       </div>
 
-      <div class="mb-3 col-8 offset-1">
+      <div class="mb-3 col-7 ">
         <label for="attachmentDescription" class="form-label">الوصف</label>
         <textarea
           [cols]="4"
@@ -36,9 +36,30 @@
         (change)="onFileSelected($event)"
         [(ngModel)]="item.file"  required />
       </div>
+      
+        <p-fileUpload 
+        class="col-10  offset-1"
+        [customUpload]="true"
+        (uploadHandler)="onFileSelected($event)"
+        [multiple]="false"
+        
+        maxFileSize="1000000"
+        chooseLabel=" اختر ملف "
+        uploadLabel=" تحميل "
+        cancelLabel=" إلغاء "
+        >
+                <ng-template pTemplate="content">
+                    <ul *ngIf="uploadedFiles.length">
+                        <li *ngFor="let file of uploadedFiles">
+                            {{ file.name }} - {{ file.size }} bytes
+                        </li>
+                    </ul>
+                </ng-template>
+        </p-fileUpload>
 
-    </div>
-    <div class="row">
+      </div>
+
+      <div class="row">
       <button
         [disabled]="form.invalid"
         type="submit"

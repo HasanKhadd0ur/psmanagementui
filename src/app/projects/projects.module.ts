@@ -1,5 +1,6 @@
 import {  NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FileUploadModule } from 'primeng/fileupload';
 import { TimelineModule } from 'primeng/timeline';
 import { ProjectItemComponent } from './components/project-item/project-item.component';
 import { ProjectListComponent } from './pages/project-list/project-list.component';
@@ -54,6 +55,9 @@ import { EditFinancialModalComponent } from './components/edit-financial-modal/e
 import { RemoveFinancialModalComponent } from './components/remove-financial-modal/remove-financial-modal.component';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+
+import { BadgeModule } from 'primeng/badge';
+
 import { ProgressBarModule } from 'primeng/progressbar';
 @NgModule({
   declarations: [
@@ -122,6 +126,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
     ReactiveFormsModule ,
     SharedModule,
     SkeletonModule,
+    FileUploadModule,
+    BadgeModule,
     NgbTypeaheadModule
   ]
 })

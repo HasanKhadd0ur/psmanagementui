@@ -31,6 +31,7 @@
   background-size: var(--bs-accordion-btn-icon-width);
   transition: var(--bs-accordion-btn-icon-transition);
 }
+
 #toast-container {
   width: 100%;
   top: 30px;
@@ -74,6 +75,39 @@
 #toast-container .toast-progress {
   background-color: rgba(255, 255, 255, 0.7);
 }
+
+
+/* Override Toastr Styles to Look Like PrimeNG Toast */
+.toast {
+  background: var(--surface-card); /* Matches PrimeNG's background */
+  border: 1px solid var(--surface-border); /* Matches PrimeNG's border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-radius: 4px; /* Rounded corners */
+  color: var(--text-color); /* Matches PrimeNG's text color */
+  font-family: 'Arial', sans-serif; /* Matches PrimeNG's font */
+  margin-bottom: 1rem;
+  padding: 1rem;
+  width: 300px; /* PrimeNG's default width */
+}
+.toast-message {
+  display: flex;
+  align-items: center;
+}
+
+.toast-message .toast-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.toast-message .toast-body {
+  margin: 0;
+}
+
+.toast-close-button {
+  color: var(--text-color-secondary); /* Matches PrimeNG's close button color */
+}
+
+
 
 /*--------------------------------------------------------------
 # General

@@ -35,8 +35,9 @@ import { SkeletonModule } from 'primeng/skeleton';
   ],
   imports: [
     CommonModule,  
-    RouterModule 
-  ],
+    RouterModule ,
+    SkeletonModule
+    ],
   exports:[
     HeaderComponent,
     FooterComponent,    
@@ -45,7 +46,7 @@ import { SkeletonModule } from 'primeng/skeleton';
     FullnamePipe,
     StateTranslatePipe,
     CardItemComponent,
-    SkeletonModule,
+    CardSkeletonComponent,
     ProgressBarModule,
     LoadingSpinnerComponent
   ],schemas: [CUSTOM_ELEMENTS_SCHEMA]
