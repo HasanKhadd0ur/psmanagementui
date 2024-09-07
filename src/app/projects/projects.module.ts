@@ -57,8 +57,10 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 
 import { BadgeModule } from 'primeng/badge';
+import { ChartModule } from 'primeng/chart';
 
 import { ProgressBarModule } from 'primeng/progressbar';
+import { PlanWeightChartComponent } from './components/plan-weight-chart/plan-weight-chart.component';
 @NgModule({
   declarations: [
     ProjectItemComponent,
@@ -98,7 +100,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
     FilterModalComponent,
     CancelProjectComponent,
     EditFinancialModalComponent,
-    RemoveFinancialModalComponent
+    RemoveFinancialModalComponent,
+    PlanWeightChartComponent
   ],
   providers: [
     ProjectService,
@@ -128,6 +131,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
     SkeletonModule,
     FileUploadModule,
     BadgeModule,
+    ChartModule,
     NgbTypeaheadModule
   ]
 })

@@ -6,7 +6,7 @@
 
 
     <div class="row">
-      <div class="col-md-6 col-lg-4" [routerLink]="['/projects/',project.id,'spending']">
+      <div class="col-md-6 col-lg-4" *ngIf="canSee()" [routerLink]="['/projects/',project.id,'spending']">
         <div class="card shadow mb-4">
           <div class="card-body file-list">
             <div class="d-flex align-items-center">
@@ -23,7 +23,7 @@
       </div> <!-- .col -->
 
 
-      <div class="col-md-6 col-lg-4" [routerLink]="['/projects/',project.id,'participants']">
+      <div class="col-md-6 col-lg-4" *ngIf="canSee()" [routerLink]="['/projects/',project.id,'participants']">
         <div class="card shadow mb-4">
           <div class="card-body file-list">
             <div class="d-flex align-items-center">
@@ -41,7 +41,7 @@
       </div> <!-- .col -->
 
       
-      <div class="col-md-6 col-lg-4" [routerLink]="['/projects/',project.id,'steps']">
+      <div class="col-md-6 col-lg-4" *ngIf="canSee()" [routerLink]="['/projects/',project.id,'steps']">
         <div class="card shadow mb-4">
           <div class="card-body file-list">
             <div class="d-flex align-items-center">
@@ -57,7 +57,7 @@
       
       </div> <!-- .row -->
 
-      <div class="col-md-6 col-lg-4" *ngIf="canSee()" (click)="onMoveToProgress()">
+      <div class="col-md-6 col-lg-4" *ngIf="canEdit()" (click)="onMoveToProgress()">
         <div class="card shadow mb-4">
           <div class="card-body file-list">
             <div class="d-flex align-items-center">

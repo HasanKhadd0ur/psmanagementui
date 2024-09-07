@@ -21,9 +21,15 @@ export class PlanControllComponent {
     this.toProgress.emit();
   }
 
-  canSee(): boolean {
+  canEdit(): boolean {
 
     return this.userService.hasRole(ROLES.SCIENTIFIC_DEPUTY)
   }
+  canSee(): boolean {
 
+    return this.project.projectManagerId== this.userService.getEmployeeId()
+    ||
+    this.project.teamLeaderId== this.userService.getEmployeeId();
+    
+  }
 }

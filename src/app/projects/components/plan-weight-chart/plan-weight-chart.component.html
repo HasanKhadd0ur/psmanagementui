@@ -1,0 +1,35 @@
+<div class="row align-items-center mb-4">
+    <div class=" mb-4 text-center">
+      <strong>مخططات توضيحية</strong>
+    </div>
+
+  </div>
+
+
+    <div class="card p-4 col-8 offset-2" >
+<div class=" card-header mb-4 text-center">
+      <strong> توزع نسب أوزان المراحل</strong>
+    </div>
+
+    
+<p-chart type="pie" [data]="pieChartData" [options]="pieChartOptions" 
+/>
+
+</div>
+
+
+<div class="card p-4 col-8 offset-2" >
+<div class=" card-header mb-4 text-center">
+      <strong>  نسب إنجاز المراحل</strong>
+    </div>
+    
+    <p-chart type="bar" [data]="barChartData" [options]="barChartOptions" 
+    />
+    
+    </div>
+    
+    
+        
+
+
+    
