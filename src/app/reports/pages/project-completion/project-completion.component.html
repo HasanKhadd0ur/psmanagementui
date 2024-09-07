@@ -1,4 +1,4 @@
-<div class="container-fluid" *ngIf="project && contributers ">
+<div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-12">
         <div class="row align-items-center mb-4">
@@ -26,7 +26,7 @@
           </div>
         </div>
         
-        <div class="card shadow" id="pdfContent">
+        <div class="card shadow" id="pdfContent"  *ngIf="project && contributers ">
           <div class="card-body p-5">
             <project-header [projectInfo]="project.projectInfo"></project-header>
             <project-subjective [project]="project"> </project-subjective>
@@ -52,6 +52,11 @@
           </div>
           <!-- /.card-body -->
         </div>
+        
+        <card-skeleton  *ngIf="!(project && contributers)">
+
+        </card-skeleton>
+        
         <!-- /.card -->
       </div>
       <!-- /.col-12 -->

@@ -28,7 +28,7 @@
         </div>
       </div>
       
-      <div class="card shadow" id="pdfContent">
+      <div class="card shadow" id="pdfContent" *ngIf="project">
         <div class="card-body p-5">
           <project-header [projectInfo]="project.projectInfo"></project-header>
           <project-subjective [project]="project"> </project-subjective>
@@ -54,6 +54,11 @@
         </div>
         <!-- /.card-body -->
       </div>
+      
+      <card-skeleton *ngIf="!project">
+
+      </card-skeleton>
+      
       <!-- /.card -->
     </div>
     <!-- /.col-12 -->

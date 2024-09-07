@@ -45,7 +45,7 @@ export class TracksListComponent implements OnInit{
       next : (data)=>{
 
         this.toastr.success("تم تحميل عمليات المتابعة بنجاح");
-        this.tracks= data;
+        this.tracks= data.sort((e ,p ) => Number(new Date(e.trackInfo.trackDate).getTimezoneOffset() - new Date (p.trackInfo.trackDate).getTimezoneOffset()));
 
       }
       ,

@@ -17,9 +17,12 @@
         </div>
       </div>
       <hr />
-      <item-skeleton class="col-3" *ngIf="!participants">
+      <div class="row"*ngIf="!participants">
 
-      </item-skeleton>
+        <item-skeleton class="col-3" >
+
+        </item-skeleton>
+      </div>
       
       <div class="row" *ngIf="participants" >
         <participant-item
@@ -57,8 +60,8 @@
           <div class="row align-items-center">
             <div class="col-8 ">
               <div class="small mb-2 d-flex">
-                <span class="text-muted flex-fill">الوظيفة / الهيئة {{selectedParticipant.employee.workInfo.workJob}} / {{selectedParticipant.employee.workInfo.workType}}</span>
-                <span class="text-muted">نسبة التفرغ {{selectedParticipant.partialTimeRatio}}</span>
+                <span class="text-muted flex-fill">الوظيفة / الهيئة : {{selectedParticipant.employee.workInfo.workJob}} / {{selectedParticipant.employee.workInfo.workType}}</span>
+                <span class="text-muted">نسبة التفرغ : {{selectedParticipant.partialTimeRatio}}</span>
               
               </div>
             </div>

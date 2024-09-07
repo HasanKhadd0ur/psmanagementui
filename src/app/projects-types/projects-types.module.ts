@@ -9,6 +9,7 @@ import { EditTypeModalComponent } from './components/edit-type-modal/edit-type-m
 import { FormsModule } from '@angular/forms';
 import { TypesDetailComponent } from './pages/types-detail/types-detail.component';
 import { RemoveTyoeModalComponent } from './components/remove-tyoe-modal/remove-tyoe-modal.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { RemoveTyoeModalComponent } from './components/remove-tyoe-modal/remove-
   imports: [
     CommonModule,
     FormsModule,
+    SharedModule,
     ProjectsTypesRoutingModule
   ]
 })

@@ -47,7 +47,7 @@ export class AddAttachmentModalComponent {
   
       next: (data)=>{
 
-        this.activeModal.close(true); // Close modal and pass data
+        this.activeModal.close(this.item); // Close modal and pass data
   
       },
       error: (err )=> this.toastr.error("لقد حدث خطاء ما")

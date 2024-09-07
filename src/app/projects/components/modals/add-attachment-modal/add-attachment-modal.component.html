@@ -5,7 +5,7 @@
 <div class="modal-body">
   <form #form="ngForm" (ngSubmit)="onSubmit()" #projectForm="ngForm">
     <div class="row">
-      <div class="mb-3 col-3 offset-1">
+      <div class="mb-3 col-4 offset-1">
         <label for="attachmentName" class="form-label">اسم المرفق</label>
         <input
           type="text"
@@ -18,7 +18,7 @@
         />
       </div>
 
-      <div class="mb-3 col-7 ">
+      <div class="mb-3 col-7 offset-1 ">
         <label for="attachmentDescription" class="form-label">الوصف</label>
         <textarea
           [cols]="4"
@@ -31,12 +31,12 @@
         >
         </textarea>
       </div>
-      <div class="col-8 offset-1">
+      <!-- <div class="col-8 offset-1">
         <input type="file" name="file" 
         (change)="onFileSelected($event)"
         [(ngModel)]="item.file"  required />
       </div>
-      
+       -->
         <p-fileUpload 
         class="col-10  offset-1"
         [customUpload]="true"

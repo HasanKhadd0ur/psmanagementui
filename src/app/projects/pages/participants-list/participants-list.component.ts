@@ -11,6 +11,7 @@ import { NgModel } from '@angular/forms';
 import { RemoveParticipantModalComponent } from '../../components/modals/remove-participant-modal/remove-participant-modal.component';
 import { EditParticipantModalComponent } from '../../components/modals/edit-participant-modal/edit-participant-modal.component';
 import { ChangeEmployeeParticipationRequest } from '../../models/requests/project-requests/ChangeEmployeeParticipationRequest';
+import { UserService } from '../../../core/services/authentication/user.service';
 
 @Component({
   selector: 'participants-list',
@@ -30,7 +31,8 @@ export class ParticipantsListComponent {
     private route: ActivatedRoute,
     private activeModal : NgbModal,
     public router :Router,
-    private modalService :NgbModal
+    private modalService :NgbModal,
+    private userService : UserService 
 
   ) {
     
@@ -159,6 +161,7 @@ openUpdateModal(): void {
 
     });
   }
+
 
   closeModal(name :string) {
     this.activeModal.dismissAll();

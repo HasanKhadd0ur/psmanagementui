@@ -9,7 +9,15 @@
                 <button type="button"   [disabled]="!canEditCustomer()"  (click)="this.router.navigate(['customers/create'])" class="btn btn-primary"><span class="fe fe-file-plus fe-12 mr-2"></span>إضافة جهة جديدة</button>
             </div>
         </div>
-        <div  class="row">
+        <div class="row" *ngIf="!customers" >
+
+            <item-skeleton class="col-4 offset-1">
+
+            </item-skeleton>
+        </div>
+
+        
+        <div  class="row" *ngIf="customers">
             <customer-item (click)="this.router.navigate(['customers/detail', cust.id])" *ngFor="let cust of customers" class="col-md-3" [customer]="cust"></customer-item>
         </div>
         

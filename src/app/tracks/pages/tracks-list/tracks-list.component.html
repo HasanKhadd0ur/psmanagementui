@@ -1,72 +1,108 @@
-<section  *ngIf="tracks" class="row">
-    <div class="row justify-content-center">
-        <div class="col-12">
-            <div class="row align-items-center my-4">
-                <div class="col">
-                <h2 class="h3 mb-0 page-title">  قائمة عمليات المتابعة </h2>
+<section class="row">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="row align-items-center my-4">
+        <div class="col">
+          <h2 class="h3 mb-0 page-title">قائمة عمليات المتابعة</h2>
+        </div>
+        <div class="col-4">
+          <div class="row">
+            <input
+              class=" form-control  mr-2 col-8"
+              type="month"
+              [(ngModel)]="month"
+              placeholder="اختر شهر"
+            />
+            <button class="btn  btn-primary col" (click)="onFilter()">
+              حسب الشهر
+            </button>
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <div class="row" *ngIf="!tracks">
+        <item-skeleton class="col-4"> </item-skeleton>
+      </div>
+      <div *ngIf="tracks">
+        <div
+          class="card shadow mb-4 col-8 offset-2"
+          *ngFor="let track of tracks"
+        >
+          <div class="card-header py-3">
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <a href="profile-posts.html" class="avatar avatar-md">
+                  <img
+                    src="./assets/images/users/4.jpg"
+                    alt="..."
+                    class="avatar-img rounded-circle"
+                  />
+                </a>
+              </div>
+              <div class="col ml-n2">
+                <strong class="mb-1">متابعة {{ track.projectInfo.name }}</strong
+                ><span class="ml-1"></span>
+                <p class="small text-muted mb-1">
+                  الوضع الراهن {{ track.trackInfo.statusDescription }}
+                </p>
+              </div>
+              <div class="col-auto"></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <div class="small mb-2 d-flex">
+                  <span class="text-muted flex-fill"
+                    >الملاحظات {{ track.notes }}</span
+                  >
+                  <span class="text-muted"
+                    >تاريخ المتابعة {{ track.trackInfo.trackDate | date }}</span
+                  >
                 </div>
-            <div class="col-4">
-              <div class="row">
+              </div>
+              <div class="col-8">
+                <div class="small mb-2 d-flex">
+                  <span class="text-muted badge flex-fill"
+                    >{{ track.trackInfo.isCompleted ? "مكتملة" : "غير مكتملة" }}
+                  </span>
+                </div>
 
-                <input  class="mb-2 form-control col-8 "  type="month" [(ngModel)]="month" placeholder="اختر شهر" /> 
-                <button class="btn btn-primary col " (click)="onFilter()">حسب الشهر </button>
-             
-              </div></div>
-   </div>
-<hr>
+                <div class="row">
+                  <button
+                    [routerLink]="[
+                      '/reports/employees-tracks',
+                      track.projectId,
+                      'track',
+                      track.id
+                    ]"
+                    class="btn m-4 btn-secondary col-5"
+                  >
+                    تقرير انشغالية عاملين
+                  </button>
+                  <button
+                    [routerLink]="[
+                      '/reports/steps-tracks',
+                      track.projectId,
+                      'track',
+                      track.id
+                    ]"
+                    class="btn m-4 btn-secondary col-4"
+                  >
+                    تقرير متابعة مراحل
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- / .card-body -->
+        </div>
 
-<div class="card shadow mb-4 col-8 offset-2" *ngFor="let track of tracks">
-    <div class="card-header py-3">
-      <div class="row align-items-center">
-        <div class="col-auto">
-          <a href="profile-posts.html" class="avatar avatar-md">
-            <img src="./assets/images/users/4.jpg" alt="..." class="avatar-img rounded-circle">
-          </a>
-        </div>
-        <div class="col ml-n2">
-          <strong class="mb-1">متابعة {{track.projectInfo.name}}</strong><span class=" ml-1"></span>
-          <p class="small text-muted mb-1">الوضع الراهن {{track.trackInfo.statusDescription}}</p>
-        </div>
-        <div class="col-auto">
+        <div *ngIf="tracks.length == 0" class="text-center text-primary">
+          <strong> للأسف لايحوي على أية متابعات </strong>
         </div>
       </div>
     </div>
-    <div class="card-body ">
-      <div class="row align-items-center">
-        <div class="col-8 ">
-          <div class="small mb-2 d-flex">
-            <span class="text-muted flex-fill">الملاحظات  {{track.notes}}</span>
-            <span class="text-muted">تاريخ المتابعة {{track.trackInfo.trackDate| date}}</span>
-          
-          </div>
-        </div>
-        <div  class="col-8 ">
-          <div class="small mb-2 d-flex">
-       
-          <span class="text-muted badge flex-fill">{{track.trackInfo.isCompleted ? 'مكتملة':'غير مكتملة'}} </span>
-          
-          
-          </div>
-          
-        <div class="col-auto">
-          <button [routerLink]="['/reports/employees-tracks',track.projectId,'track',track.id]" class="btn  m-4 btn-primary col-3 offset-1">تقرير انشغالية عاملين </button>
-          <button  [routerLink]="['/reports/steps-tracks',track.projectId,'track',track.id]" class="btn m-4 btn-primary col-3 offset-1">تقرير متابعة مراحل  </button>
-   
-        </div>
-        </div>
-      </div>
-    </div> <!-- / .card-body -->
   </div>
-
-    <div *ngIf="tracks.length==0" class="text-center text-primary">
-      <strong>
-          للأسف لايحوي على أية متابعات
-    
-    
-        </strong>
-      
-        </div>
-    </div>
-    </div>
 </section>
-
