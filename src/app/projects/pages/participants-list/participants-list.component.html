@@ -1,12 +1,6 @@
-<section *ngIf="participants" class="row">
-  <!-- <add-participant-modal
-    [projectId]="projectId"
-    [paticipants]="participants"
-    (participantAdded)="onParticipantAdded()"
-  >
-  </add-participant-modal> -->
 
-  <div class="row justify-content-center" *ngIf="!isDetailMode">
+<section class="row">
+ <div class="row justify-content-center" *ngIf="!isDetailMode">
     <div class="col-12">
       <div class="row align-items-center my-4">
         <div class="col">
@@ -23,7 +17,11 @@
         </div>
       </div>
       <hr />
-      <div class="row">
+      <item-skeleton class="col-3" *ngIf="!participants">
+
+      </item-skeleton>
+      
+      <div class="row" *ngIf="participants" >
         <participant-item
           class="col-3"
           (selected)="onDetailMode(participant)"
@@ -31,21 +29,11 @@
           [participant]="participant"
         ></participant-item>
       </div>
-      <div *ngIf="participants.length == 0">
+      <div *ngIf="participants.length == 0 && participants">
         للأسف هذا المشروع لايحوي على أية مشاركين
       </div>
     </div>
   </div>
-
-  
- <!-- <remove-participant-modal *ngIf="selectedParticipant"
- [participant]="selectedParticipant"
- (participantRemoved)="onParticipantRemoved()"
- > -->
-<!-- 
- </remove-participant-modal> -->
- 
-  <!-- <app-remove-participant-modal [participant]="selectedParticipant" (participantRemoved)="onParticipantRemoved()"></app-remove-participant-modal> -->
 
   
   <div class="row" *ngIf="isDetailMode">

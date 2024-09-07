@@ -15,6 +15,7 @@ import { CardSkeletonComponent } from './componenets/card-skeleton/card-skeleton
 import { KnobModule } from 'primeng/knob';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { SkeletonModule } from 'primeng/skeleton';
+import { ItemSkeletonComponent } from './componenets/item-skeleton/item-skeleton.component';
 
 
 
@@ -30,7 +31,8 @@ import { SkeletonModule } from 'primeng/skeleton';
     FullnamePipe,
     StateTranslatePipe,
     CardItemComponent,
-    CardSkeletonComponent
+    CardSkeletonComponent,
+    ItemSkeletonComponent
   
   ],
   imports: [
@@ -39,6 +41,7 @@ import { SkeletonModule } from 'primeng/skeleton';
     SkeletonModule
     ],
   exports:[
+    ItemSkeletonComponent,
     HeaderComponent,
     FooterComponent,    
     SidebarComponent,

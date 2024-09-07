@@ -13,6 +13,9 @@
 
     </div>
     <hr>
+    <item-skeleton *ngIf="projects">
+
+    </item-skeleton>
     <div *ngIf="projects">
     <div  class="row" *ngIf="projects.length > 0">
         <project-item class="col  col-4 "     *ngFor="let project of projects" [project]="project"></project-item>
