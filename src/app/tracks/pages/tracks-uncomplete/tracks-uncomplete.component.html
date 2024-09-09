@@ -1,4 +1,4 @@
-<section *ngIf="tracks" class="row">
+<section  class="row">
   <div class="row justify-content-center">
     <div class="col-12">
       <div class="row align-items-center my-4">
@@ -9,7 +9,12 @@
       </div>
       <hr />
 
-      <div class="card shadow mb-4 col-8 offset-2" *ngFor="let track of tracks">
+      <card-skeleton *ngIf="!tracks">
+        
+      </card-skeleton>
+      
+      <div *ngIf="tracks">
+              <div class="card shadow mb-4 col-8 offset-2" *ngFor="let track of tracks">
         <div class="card-header py-3">
           <div class="row align-items-center">
             <div class="col-auto">
@@ -67,5 +72,7 @@
 
       <div *ngIf="tracks.length == 0">لا يوجد أي عمليات متابعة غير مكتملة</div>
     </div>
+  </div>
+
   </div>
 </section>

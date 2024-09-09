@@ -47,7 +47,7 @@ export class StepListComponent {
 
     this.projectService.getProjectById(this.projectId).subscribe({
       next: (data)=> {
-        this.steps= data.steps
+        this.steps= data.steps.sort( (e,p)=> Number(new Date (e.stepInfo.startDate)) - Number(new Date(p.stepInfo.startDate)) )
         this.project=data;
         this.toastr.success("تم تحميل المراحل بنجاح");
       }

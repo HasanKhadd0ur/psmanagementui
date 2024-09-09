@@ -65,11 +65,24 @@ export class AddStepTrackModalComponent {
   search = (text$: Observable<string>) => 
     text$.pipe(
       map(term => term.length < 2 ? [] : 
-        this.filteredSteps.filter(v => v.stepInfo.stepName.toLowerCase().includes(term.toLowerCase())).slice(0, 10).map( e =>{ this.stepTrackForm.patchValue({ id: e.id });return e.stepInfo.stepName +" % "+ e.currentCompletionRatio}))
-    );
+        this
+        .filteredSteps
+        .filter(v => v.stepInfo.stepName.toLowerCase().includes(term.toLowerCase()))
+        .slice(0, 10)
+      
+      ));
 
-  onStepSelected(step: Step): void {
+      resultFormatter = (step: Step) => `${step.stepInfo.stepName} - ${step.currentCompletionRatio} %`;
 
+      inputFormatter = (step: Step) => step.stepInfo.stepName;
+    
+  onStepSelected(event: any): void {
+
+    const selectedStep = event.item;
+    this.stepTrackForm.patchValue({ 
+      stepName: this.resultFormatter(selectedStep),  
+      id: selectedStep.id 
+    });
 
     debugger
    // this.stepTrackForm.patchValue({ stepName1: step.stepInfo?.stepName });

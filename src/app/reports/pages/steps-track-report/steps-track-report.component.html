@@ -15,11 +15,19 @@
               طباعة
             </button>
             <button
+            [routerLink]="['/reports/definition',projectId]"    
+            type="button" class="btn mr-1 btn-secondary m-1">
+            بطاقة التعريف 
+                      </button>
+            <button
             [routerLink]="['/reports',projectId,'steptracks',trackId]"    
             type="button" class="btn mr-1 btn-secondary m-1">
               تقرير متابعة العمالين
             </button>
-            <button *ngIf="project.currentState.toLowerCase()=='completed'" type="button" class="btn mr-1 btn-secondary m-1">
+            <button 
+            [routerLink]="['/reports/completion',project.id]"
+             
+            *ngIf="project.currentState.toLowerCase()=='completed'" type="button" class="btn mr-1 btn-secondary m-1">
               تقرير انجاز 
             </button>
             <button

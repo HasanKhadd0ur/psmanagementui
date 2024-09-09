@@ -151,8 +151,7 @@ export class ProjectCreateComponent {
     // Autocomplete for Customer
     this.filteredCustomers = this.projectForm.get('customer')!.valueChanges.pipe(
       debounceTime(300),
-      switchMap(value => this.customersService.getCustomersByFilter(value))
-        
+      switchMap(value => this.customersService.getCustomersByFilter(value).pipe( map ( e => e.filter(s => s.customerName.toLocaleLowerCase().includes(value)))))    
     );
   
   }

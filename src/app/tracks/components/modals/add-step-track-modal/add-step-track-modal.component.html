@@ -7,7 +7,11 @@
           <div class="mb-3">
             <label for="stepName" class="form-label">اسم المرحلة</label>
             <input type="text" id="stepName" formControlName="stepName" class="form-control"
-            [ngbTypeahead]="search" (selectItem)="onStepSelected($event.item)">
+            [ngbTypeahead]="search"
+            [resultFormatter]="resultFormatter"
+            [inputFormatter]="inputFormatter"
+            (selectItem)="onStepSelected($event)"
+             >
           </div>
           <input type="number" hidden id="id" formControlName="id" class="form-control" >
           

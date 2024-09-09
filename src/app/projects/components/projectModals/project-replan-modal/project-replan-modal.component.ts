@@ -63,7 +63,7 @@ export class ProjectReplanModalComponent {
   private _setCanMove(){
 
     
-    this.project.currentState.toLowerCase() =="inprogress" ? true : false ; 
+    this.canRePlan=this.project.currentState.toLowerCase() =="inprogress" ? true : false ; 
   } 
 
 }

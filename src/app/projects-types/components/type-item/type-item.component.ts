@@ -20,12 +20,14 @@ export class TypeItemComponent {
     private ser : UserService
   ){}
 
-  canSee(){
-    return this.ser.hasRole(ROLES.CUSTOMERS_PLANER)
-  }
   onEdit() {
     this.edit.emit();
   }
+  
+  canEdit(): boolean {
+    return this.ser.hasRole(ROLES.PROJECTS_PLANNER);
+  }
+
 
   onDelete() {
     this.delete.emit();
