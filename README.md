@@ -344,7 +344,7 @@ __
 ![alt text](src/assets/front-explain/photo_2_2024-09-01_20-11-35.jpg)
 ![alt text](src/assets/front-explain/photo_3_2024-09-01_20-11-35.jpg)
 ___
-## Conclusoin & recomendation
+## Conclusion & recomendation
 The Projects Status Management UI offers a comprehensive and modular approach to managing project-related activities in an efficient and organized manner.
  By employing feature-based decomposition in Angular, the application is structured to provide high scalability, maintainability, and reusability. This design choice facilitates independent development and testing of each feature module, enhancing collaboration among development teams and improving overall productivity.
 and for recomendation, we recommend to apply lazy loading emphasize the performance of the app and its goo architcture
