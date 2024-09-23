@@ -321,28 +321,28 @@ __
 ## Pages
 
 ### Home and login pages 
-![alt text](home.png)
+![alt text](src/assets/front-explain/home.png)
 
-![alt text](login.png)
+![alt text](src/assets/front-explain/login.png)
 
 ### Tracking and Definition 
-![alt text](tracking.png)
+![alt text](src/assets/front-explain/tracking.png)
 
 
 ### Participants and plan management
 
-![alt text](plan.png) 
+![alt text](src/assets/front-explain/plan.png) 
 
-![alt text](participants.png)
+![alt text](src/assets/front-explain/participants.png)
 
 
 ### Reports 
 
-![alt text](image.png)
-![alt text](photo_4_2024-09-01_20-11-35.jpg)
-![alt text](photo_1_2024-09-01_20-11-35.jpg)
-![alt text](photo_2_2024-09-01_20-11-35.jpg)
-![alt text](photo_3_2024-09-01_20-11-35.jpg)
+![alt text](src/assets/front-explain/iemage.png)
+![alt text](src/assets/front-explain/photo_4_2024-09-01_20-11-35.jpg)
+![alt text](src/assets/front-explain/photo_1_2024-09-01_20-11-35.jpg)
+![alt text](src/assets/front-explain/photo_2_2024-09-01_20-11-35.jpg)
+![alt text](src/assets/front-explain/photo_3_2024-09-01_20-11-35.jpg)
 ___
 ## Conclusoin & recomendation
 The Projects Status Management UI offers a comprehensive and modular approach to managing project-related activities in an efficient and organized manner.
